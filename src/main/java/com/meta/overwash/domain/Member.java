@@ -22,7 +22,7 @@ public class Member {
 //	String memberContact;
 //	Integer advancePayment;
 //	Character membership;
-	Integer point;
+//	Integer point;
 	Date signDate;
 	String nickname;
 }
