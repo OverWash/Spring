@@ -16,10 +16,12 @@ import lombok.ToString;
 public class Member {
 
 	Integer memberId;
+	String email;
+	String password;
 	String memberAddress;
-	String memberContact;
-	Integer advancePayment;
-	Character membership;
+//	String memberContact;
+//	Integer advancePayment;
+//	Character membership;
 	Integer point;
 	Date signDate;
 	String nickname;
