@@ -17,6 +17,7 @@ public class Reservation {
 	Date collectDate;
 	Date reservationDate;
 	String request;
+	String laundryType;
 	String reservationStatus;
 	Member member;
 }

@@ -14,8 +14,8 @@ import lombok.ToString;
 public class Receipt {
 	Integer receiptId;
 	String paymentMethod;
-	Integer pointAmount;
 	Integer apAmount;
 	Integer finalPaymentAmount;
+	PaymentRequest pr;
 
 }
