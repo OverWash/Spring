@@ -11,16 +11,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Receipt {
+	Integer receiptId;
+	String paymentMethod;
+	Integer apAmount;
+	Integer finalPaymentAmount;
+	PaymentRequest pr;
 
-	Integer memberId;
-	String email;
-	String password;
-	String memberAddress;
-	String memberContact;
-//	Integer advancePayment;
-//	Character membership;
-//	Integer point;
-	Date signDate;
-	String nickname;
 }

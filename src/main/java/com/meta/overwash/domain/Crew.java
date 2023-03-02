@@ -1,6 +1,6 @@
 package com.meta.overwash.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,16 +11,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Member {
+public class Crew {
 
-	Integer memberId;
+	Integer crewId;
 	String email;
 	String password;
-	String memberAddress;
-	String memberContact;
-//	Integer advancePayment;
-//	Character membership;
-//	Integer point;
-	Date signDate;
-	String nickname;
+	Date crewBirth;
+	String carType;
+	String carNumber;
 }
