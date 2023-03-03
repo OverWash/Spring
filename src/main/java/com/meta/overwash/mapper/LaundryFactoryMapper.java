@@ -5,13 +5,14 @@ import java.util.List;
 import com.meta.overwash.domain.LaundryFactory;
 
 public interface LaundryFactoryMapper {
+	
 	public List<LaundryFactory> getList();
 
-	public Integer get();
+	public void insertLaundryFactory(LaundryFactory factory);
 
-	public void laundryFactoryInsert(LaundryFactory laundryFactory);
+	public LaundryFactory getLaundryFactory(Long factoryId);
 
-	public int laundryFactoryUpdate(LaundryFactory laundryFactory);
+	public int updateLaundryFactory(LaundryFactory factory);
 	
-	public int laundryFactoryDelete(Long factoryId); 
+	public int deleteLaundryFactory(Long factoryId); 
 }

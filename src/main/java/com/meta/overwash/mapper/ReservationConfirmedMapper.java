@@ -5,14 +5,14 @@ import java.util.List;
 import com.meta.overwash.domain.ReservationConfirmed;
 
 public interface ReservationConfirmedMapper {
+	
 	public List<ReservationConfirmed> getList();
 
-	public Integer get();
-
-	public void reservationConfirmInsert(ReservationConfirmed rc);
-
-	public int reservationConfirmUpdate(ReservationConfirmed rc);
+	public void insertReservationConfirm(ReservationConfirmed rc);
 	
-	public int reservationConfirmDelete(Long confirmId); 
+	public ReservationConfirmed getReservationConfirm(Long confirmId); 
 
+	public int updateReservationConfirm(ReservationConfirmed rc);
+	
+	public int deleteReservationConfirm(Long confirmId); 
 }

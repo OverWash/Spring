@@ -5,13 +5,14 @@ import java.util.List;
 import com.meta.overwash.domain.LaundryPrice;
 
 public interface LaundryPriceMapper {
+	
 	public List<LaundryPrice> getList();
 
-	public Integer get();
-
-	public void laundryPriceInsert(LaundryPrice laundryPrice);
-
-	public int laundryPriceUpdate(LaundryPrice laundryPrice);
+	public void insertLaundryPrice(LaundryPrice price);
 	
-	public int laundryPriceDelete(Long priceId); 
+	public LaundryPrice getLaundryPrice(Long priceId); 
+
+	public int updateLaundryPrice(LaundryPrice price);
+	
+	public int deleteLaundryPrice(Long priceId); 
 }

@@ -6,18 +6,13 @@ import com.meta.overwash.domain.Member;
 
 public interface MemberMapper {
 
-	/*
-	public List<Member> getMember();
-	public Integer getMemberNum(); */
-
-	//---------------------
 	public List<Member> getList();
 
-	public Integer get();
+	public void insertMember(Member member);
 
-	public void memberInsert(Member member);
+	public Member getMember(Long memberId);
 
-	public int memberUpdate(Member member);
-	
-	public int memberDelete(Long memberId); 
+	public int updateMember(Member member);
+
+	public int deleteMember(Long memberId);
 }
