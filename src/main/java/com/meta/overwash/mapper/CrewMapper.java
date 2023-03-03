@@ -13,5 +13,5 @@ public interface CrewMapper {
 
 	public int crewUpdate(Crew crew);
 	
-	public int crewDelete(Crew crewId); 
+	public int crewDelete(Long crewId); 
 }
