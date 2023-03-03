@@ -19,5 +19,5 @@ public interface MemberMapper {
 
 	public int memberUpdate(Member member);
 	
-	public int memberDelete(Long memberId);
+	public int memberDelete(Long memberId); 
 }
