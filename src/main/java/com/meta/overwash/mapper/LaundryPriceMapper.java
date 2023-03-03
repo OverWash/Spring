@@ -2,17 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain.LaundryPrice;
+import com.meta.overwash.domain.LaundryPriceDTO;
 
 public interface LaundryPriceMapper {
 	
-	public List<LaundryPrice> getList();
+	public List<LaundryPriceDTO> getList();
 
-	public void insertLaundryPrice(LaundryPrice price);
+	public void insertLaundryPrice(LaundryPriceDTO price);
 	
-	public LaundryPrice getLaundryPrice(Long priceId); 
+	public LaundryPriceDTO getLaundryPrice(Long priceId); 
 
-	public int updateLaundryPrice(LaundryPrice price);
+	public int updateLaundryPrice(LaundryPriceDTO price);
 	
 	public int deleteLaundryPrice(Long priceId); 
 }

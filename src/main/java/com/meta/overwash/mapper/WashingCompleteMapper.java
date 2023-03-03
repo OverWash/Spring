@@ -2,17 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain. WashingComplete;
+import com.meta.overwash.domain. WashingCompleteDTO;
 
 public interface WashingCompleteMapper {
 	
-	public List<WashingComplete> getList();
+	public List<WashingCompleteDTO> getList();
 
-	public void insertWashingComplete(WashingComplete wc);
+	public void insertWashingComplete(WashingCompleteDTO wc);
 	
-	public WashingComplete getWashingComplete(Long wcId); 
+	public WashingCompleteDTO getWashingComplete(Long wcId); 
 
-	public int updateWashingComplete(WashingComplete wc);
+	public int updateWashingComplete(WashingCompleteDTO wc);
 	
 	public int deleteWashingComplete(Long wcId); 
 }

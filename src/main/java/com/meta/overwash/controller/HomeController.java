@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.meta.overwash.domain.Member;
+import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.mapper.MemberMapper;
 
 /**
@@ -29,7 +29,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		List<Member> members = membermap.getList();
+		List<MemberDTO> members = membermap.getList();
 		model.addAttribute("members", members);
 		return "home";
 	}

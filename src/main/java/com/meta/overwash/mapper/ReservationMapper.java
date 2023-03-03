@@ -2,17 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain.Reservation;
+import com.meta.overwash.domain.ReservationDTO;
 
 public interface ReservationMapper {
 	
-	public List<Reservation> getList();
+	public List<ReservationDTO> getList();
 
-	public void insertReservation(Reservation reservation);
+	public void insertReservation(ReservationDTO reservation);
 	
-	public Reservation getReservation(Long reservationId); 
+	public ReservationDTO getReservation(Long reservationId); 
 
-	public int updateReservation(Reservation reservation);
+	public int updateReservation(ReservationDTO reservation);
 	
 	public int deleteReservation(Long reservationId); 
 }

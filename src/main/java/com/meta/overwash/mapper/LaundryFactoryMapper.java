@@ -2,17 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain.LaundryFactory;
+import com.meta.overwash.domain.LaundryFactoryDTO;
 
 public interface LaundryFactoryMapper {
 	
-	public List<LaundryFactory> getList();
+	public List<LaundryFactoryDTO> getList();
 
-	public void insertLaundryFactory(LaundryFactory factory);
+	public void insertLaundryFactory(LaundryFactoryDTO factory);
 
-	public LaundryFactory getLaundryFactory(Long factoryId);
+	public LaundryFactoryDTO getLaundryFactory(Long factoryId);
 
-	public int updateLaundryFactory(LaundryFactory factory);
+	public int updateLaundryFactory(LaundryFactoryDTO factory);
 	
 	public int deleteLaundryFactory(Long factoryId); 
 }

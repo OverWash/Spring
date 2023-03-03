@@ -2,17 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain.Crew;
+import com.meta.overwash.domain.CrewDTO;
 
 public interface CrewMapper {
 	
-	public List<Crew> getList();
+	public List<CrewDTO> getList();
 
-	public void insertCrew(Crew crew);
+	public void insertCrew(CrewDTO crew);
 	
-	public Crew getCrew(Long crewId);
+	public CrewDTO getCrew(Long crewId);
 
-	public int updateCrew(Crew crew);
+	public int updateCrew(CrewDTO crew);
 	
 	public int deleteCrew(Long crewId); 
 }
