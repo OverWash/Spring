@@ -13,5 +13,5 @@ public interface CheckMapper {
 
 	public int checkUpdate(Check check);
 	
-	public int checkDelete(Check checkId); 
+	public int checkDelete(Long checkId); 
 }
