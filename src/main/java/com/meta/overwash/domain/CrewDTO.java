@@ -1,5 +1,7 @@
 package com.meta.overwash.domain;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,10 +11,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Laundry {
-	Integer laundryId;
-	String name;
-	String type;
-	LaundryPrice laundryPrice;
+public class CrewDTO {
 
+	Integer crewId;
+	String email;
+	String password;
+	Date crewBirth;
+	String carType;
+	String carNumber;
 }

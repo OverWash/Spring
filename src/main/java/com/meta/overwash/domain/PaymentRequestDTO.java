@@ -9,8 +9,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class LaundryPrice {
-	Integer priceId;
-	Integer price;
+public class PaymentRequestDTO {
 
+	Integer prId;
+	Integer prPrice;
+	ReservationConfirmedDTO confirm;
 }

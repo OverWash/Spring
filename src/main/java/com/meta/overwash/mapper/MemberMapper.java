@@ -2,10 +2,17 @@ package com.meta.overwash.mapper;
 
 import java.util.List;
 
-import com.meta.overwash.domain.Member;
+import com.meta.overwash.domain.MemberDTO;
 
 public interface MemberMapper {
 
-	public List<Member> getMember();
-	public Integer getMemberNum(); 
+	public List<MemberDTO> getList();
+
+	public void insertMember(MemberDTO member);
+
+	public MemberDTO getMember(Long memberId);
+
+	public int updateMember(MemberDTO member);
+
+	public int deleteMember(Long memberId);
 }

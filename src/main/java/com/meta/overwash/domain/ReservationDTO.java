@@ -11,10 +11,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Delivery {
+public class ReservationDTO {
 
-	Integer deliveryId;
-	Date deliveryDate;
-	Crew crew;
-	WashingComplete wc;
+	Integer reservationId;
+	Date collectDate;
+	Date reservationDate;
+	String request;
+	String laundryType;
+	String reservationStatus;
+	MemberDTO member;
 }
