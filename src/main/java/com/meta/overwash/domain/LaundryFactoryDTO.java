@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class LaundryFactoryDTO {
 
-	Integer factoryId;
-	String factoryContact;
-	String factoryAddress;
+	private Integer factoryId;
+	private String factoryContact;
+	private String factoryAddress;
 }

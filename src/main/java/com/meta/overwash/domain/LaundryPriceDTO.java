@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class LaundryPriceDTO {
-	Integer priceId;
-	Integer price;
+	private Integer priceId;
+	private Integer price;
 
 }

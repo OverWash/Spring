@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.meta.overwash.domain.CheckDTO"		  		   alias="CheckDTO"/>
+		<typeAlias type="com.meta.overwash.domain.CrewDTO"		  		   alias="CrewDTO"/>
+		<typeAlias type="com.meta.overwash.domain.DeliveryDTO"		       alias="DeliveryDTO"/>
+		<typeAlias type="com.meta.overwash.domain.LaundryDTO"		  	   alias="LaundryDTO"/>
+		<typeAlias type="com.meta.overwash.domain.LaundryFactoryDTO"	   alias="LaundryFactoryDTO"/>
+		<typeAlias type="com.meta.overwash.domain.LaundryPriceDTO"		   alias="LaundryPriceDTO"/>
+		<typeAlias type="com.meta.overwash.domain.MemberDTO"		  	   alias="MemberDTO"/>
+		<typeAlias type="com.meta.overwash.domain.PaymentRequestDTO"	   alias="PaymentRequestDTO"/>
+		<typeAlias type="com.meta.overwash.domain.ReceiptDTO"		       alias="ReceiptDTO"/>
+		<typeAlias type="com.meta.overwash.domain.ReservationConfirmedDTO" alias="ReservationConfirmedDTO"/>
+		<typeAlias type="com.meta.overwash.domain.ReservationDTO"		   alias="ReservationDTO"/>
+		<typeAlias type="com.meta.overwash.domain.WashingCompleteDTO"	   alias="WashingCompleteDTO"/>
+	</typeAliases>
+	
+</configuration>

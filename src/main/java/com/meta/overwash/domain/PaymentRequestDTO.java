@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class PaymentRequestDTO {
 
-	Integer prId;
-	Integer prPrice;
-	ReservationConfirmedDTO confirm;
+	private Integer prId;
+	private Integer prPrice;
+	private ReservationConfirmedDTO confirm;
 }
