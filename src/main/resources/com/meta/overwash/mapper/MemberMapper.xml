@@ -2,25 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.MemberMapper">
 
-	<select id="getMember"
-		resultType="com.meta.overwash.domain.Member">
-		SELECT
-		member_id as memberId,
-		member_address as
-		memberAddress,
-		member_contact as memberContact,
-		advance_payment as
-		advancePayment,
-		membership,
-		member_point as point,
-		sign_date as signDate,
-		nickname nickname
-		FROM
-		member
+	<select id="getList"
+		resultType="com.meta.overwash.domain.MemberDTO">
+	  <![CDATA[
+	  	select member_id as memberId, email, password,
+	  		member_address as memberAddress, member_contact as memberContact,
+	  		sign_date as signDate, nickname
+	  	from member where member_id > 0
+	  ]]>
 	</select>
 
-	<select id="getMemberNum" resultType="int">
-		select member_id from member
-		where member_id = 3
+	<insert id="insertMember">
+		insert into member(member_id, email, password,
+			member_address, member_contact, sign_date, nickname)
+		values(member_seq.nextval,
+		#{email}, #{password},
+		#{memberAddress},
+		#{memberContact}, sysdate,
+		#{memberContact})
+	</insert>
+
+	<insert id="insertSelectKeyMember">
+		<selectKey keyProperty="memberId" order="BEFORE"
+			resultType="long">
+			select member_seq.nextval from dual
+		</selectKey>
+		insert into member(member_id, email, password,
+			member_address, member_contact, sign_date, nickname)
+		values(#{memberId},
+		#{email}, #{password},
+		#{memberAddress}, #{memberContact}, sysdate,
+		#{memberContact})
+	</insert>
+
+	<select id="getMember"
+		resultType="com.meta.overwash.domain.MemberDTO">
+		select member_id as memberId, email, password,
+	  		member_address as memberAddress, member_contact as memberContact,
+	  		sign_date as signDate, nickname
+	  	from member
+	  	where member_id=#{memberId}
 	</select>
+
+	<!-- <select id="getMemberNum" resultType="int"> select member_id from member 
+		where member_id=#{memberId} </select> -->
+
+	<update id="updateMember">
+		update member set 
+		<!-- password=#{password},
+		member_address=#{memberAddress},  -->
+		nickname=#{nickname}
+		where
+		member_id=#{memberId}
+	</update>
+
+	<delete id="deleteMember">
+		delete from member where member_id=#{memberId}
+	</delete>
+
 </mapper>
