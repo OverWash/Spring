@@ -13,14 +13,14 @@ import lombok.ToString;
 @ToString
 public class MemberDTO {
 
-	Integer memberId;
-	String email;
-	String password;
-	String memberAddress;
-	String memberContact;
+	private Integer memberId;
+	private String email;
+	private String password;
+	private String memberAddress;
+	private String memberContact;
 //	Integer advancePayment;
 //	Character membership;
 //	Integer point;
-	Date signDate;
-	String nickname;
+	private Date signDate;
+	private String nickname;
 }

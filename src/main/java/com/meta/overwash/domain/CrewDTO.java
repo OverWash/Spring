@@ -13,10 +13,10 @@ import lombok.ToString;
 @ToString
 public class CrewDTO {
 
-	Integer crewId;
-	String email;
-	String password;
-	Date crewBirth;
-	String carType;
-	String carNumber;
+	private Integer crewId;
+	private String email;
+	private String password;
+	private Date crewBirth;
+	private String carType;
+	private String carNumber;
 }

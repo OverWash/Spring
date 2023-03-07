@@ -12,10 +12,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ReceiptDTO {
-	Integer receiptId;
-	String paymentMethod;
-	Integer apAmount;
-	Integer finalPaymentAmount;
-	PaymentRequestDTO pr;
+	private Integer receiptId;
+	private String paymentMethod;
+	private Integer apAmount;
+	private Integer finalPaymentAmount;
+	private PaymentRequestDTO pr;
 
 }

@@ -13,8 +13,8 @@ import lombok.ToString;
 @ToString
 public class DeliveryDTO {
 
-	Integer deliveryId;
-	Date deliveryDate;
-	CrewDTO crew;
-	WashingCompleteDTO wc;
+	private Integer deliveryId;
+	private Date deliveryDate;
+	private CrewDTO crew;
+	private WashingCompleteDTO wc;
 }

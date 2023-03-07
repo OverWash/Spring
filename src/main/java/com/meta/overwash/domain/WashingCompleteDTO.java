@@ -12,8 +12,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class WashingCompleteDTO {
-	Integer wcId;
-	Date wcDate;
-	ReservationConfirmedDTO confirm;
+	private Integer wcId;
+	private Date wcDate;
+	private ReservationConfirmedDTO confirm;
 
 }
