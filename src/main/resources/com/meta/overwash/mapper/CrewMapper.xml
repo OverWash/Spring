@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meta.overwash.mapper.CrewMapper">
+
+	<insert id="insertCrew" parameterType="CrewDTO">
+		insert into
+				crew
+		values (
+				crew_seq.nextval,
+				#{crewContact},
+				#{password},
+				#{crewName},
+				#{crewBirth},
+				#{carType},
+				#{carNumber},
+				sysdate
+		)
+	
+	</insert>
+	
+	<select id="getCrew" parameterType="Long" resultType="CrewDTO">
+		select *
+		from crew
+		where crew_id = #{crewId}
+	</select>
+	
+	<delete id="deleteCrew" parameterType="Long">
+		delete from crew
+		where crew_id = #{crewId}
+	</delete>
+	
+	<update id="updateCrew" parameterType="CrewDTO">
+		update crew
+		set
+			crew_contact = #{crewContact},
+			password = #{password},
+			car_type = #{carType},
+			car_number = #{carNumber}
+		where
+			crew_id = #{crewId}
+	</update>
+	
+	
+	
+
+</mapper>

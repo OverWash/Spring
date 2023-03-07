@@ -6,13 +6,13 @@ import com.meta.overwash.domain.CrewDTO;
 
 public interface CrewMapper {
 	
-	public List<CrewDTO> getList();
+	public List<CrewDTO> getList() throws Exception;
 
-	public void insertCrew(CrewDTO crew);
+	public void insertCrew(CrewDTO crew) throws Exception;
 	
-	public CrewDTO getCrew(Long crewId);
+	public CrewDTO getCrew(Long crewId) throws Exception;
 
-	public int updateCrew(CrewDTO crew);
+	public int updateCrew(CrewDTO crew) throws Exception;
 	
-	public int deleteCrew(Long crewId); 
+	public int deleteCrew(Long crewId) throws Exception; 
 }
