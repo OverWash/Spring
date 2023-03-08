@@ -15,7 +15,7 @@
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="jdbcUrl"
 			value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="laundry2" />
+		<property name="username" value="laundry3" />
 		<property name="password" value="1234" />
 	</bean>
 

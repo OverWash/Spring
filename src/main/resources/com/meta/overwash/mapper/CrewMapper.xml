@@ -7,6 +7,7 @@
 				crew
 		values (
 				crew_seq.nextval,
+				#{email},
 				#{crewContact},
 				#{password},
 				#{crewName},
@@ -39,6 +40,8 @@
 		where
 			crew_id = #{crewId}
 	</update>
+	
+	
 	
 	
 	

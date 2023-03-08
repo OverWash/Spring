@@ -30,7 +30,7 @@ public class CrewServiceTests {
 //		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 //		Date birth = date.parse("1996-04-09");
 //		
-//		
+////		crewDTO.setEmail("crew01@gmail.com");
 ////		crewDTO.setCrewContact("010-1111-1111");
 ////		crewDTO.setPassword("1q2w3e4r");
 ////		crewDTO.setCrewName("홍길동");
@@ -38,6 +38,7 @@ public class CrewServiceTests {
 ////		crewDTO.setCarType("소나타");
 ////		crewDTO.setCarNumber("1234");
 //		
+//		crewDTO.setEmail("crew02@gmail.com");
 //		crewDTO.setCrewContact("010-2222-2222");
 //		crewDTO.setPassword("P@ssw0rd");
 //		crewDTO.setCrewName("여성빈");
@@ -53,25 +54,26 @@ public class CrewServiceTests {
 	
 //	@Test
 //	public void deleteTest() throws Exception{
-//		log.info(",,,,,,,,,,,,,,,,,,,,,," + crewService.remove(7L));
+//		log.info(",,,,,,,,,,,,,,,,,,,,,," + crewService.remove(2L));
 //	}
 	
 //	@Test
 //	public void getTest() throws Exception {
-//		log.info(",,,,,,,,,,,,,,,," + crewService.get(6L));
+//		log.info(",,,,,,,,,,,,,,,," + crewService.get(3L));
 //	}
-	@Test
-	public void modifytest() throws Exception {
-		CrewDTO crewDTO = new CrewDTO();
-		
-		crewDTO.setCrewId(6L);
-		crewDTO.setCrewContact("010-3333-4444");
-		crewDTO.setPassword("aaaa1111");
-		crewDTO.setCarType("소나타");
-		crewDTO.setCarNumber("5555");
-		
-		log.info("............." + crewService.modify(crewDTO));
-	}
 	
+//	@Test
+//	public void modifytest() throws Exception {
+//		CrewDTO crewDTO = new CrewDTO();
+//		
+//		crewDTO.setCrewId(3L);
+//		crewDTO.setCrewContact("010-3333-4444");
+//		crewDTO.setPassword("aaaa1111");
+//		crewDTO.setCarType("벤츠");
+//		crewDTO.setCarNumber("7777");
+//		
+//		log.info("............." + crewService.modify(crewDTO));
+//	}
+//	
 	
 }

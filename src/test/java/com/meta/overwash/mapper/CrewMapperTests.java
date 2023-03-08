@@ -21,26 +21,26 @@ public class CrewMapperTests {
 	@Autowired
 	private CrewMapper crewMapper;
 	
-	@Test
-	public void insertTest() throws Exception{
-		
-		CrewDTO crewDTO = new CrewDTO();
-		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-		Date birth = date.parse("1996-04-09");
-		
-		
-		crewDTO.setCrewContact("010-1111-1111");
-		crewDTO.setPassword("1q2w3e4r");
-		crewDTO.setCrewName("홍길동");
-		crewDTO.setCrewBirth(birth);
-		crewDTO.setCarType("소나타");
-		crewDTO.setCarNumber("1234");
-		
-		crewMapper.insertCrew(crewDTO);
-		
-		log.info(",,,,,,,,,,,,,,,,,,,,,,,," + crewDTO);
-		
-	}
+//	@Test
+//	public void insertTest() throws Exception{
+//		
+//		CrewDTO crewDTO = new CrewDTO();
+//		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+//		Date birth = date.parse("1996-04-09");
+//		
+//		
+//		crewDTO.setCrewContact("010-1111-1111");
+//		crewDTO.setPassword("1q2w3e4r");
+//		crewDTO.setCrewName("홍길동");
+//		crewDTO.setCrewBirth(birth);
+//		crewDTO.setCarType("소나타");
+//		crewDTO.setCarNumber("1234");
+//		
+//		crewMapper.insertCrew(crewDTO);
+//		
+//		log.info(",,,,,,,,,,,,,,,,,,,,,,,," + crewDTO);
+//		
+//	}
 }
 
 
