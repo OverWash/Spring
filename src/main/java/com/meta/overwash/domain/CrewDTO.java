@@ -14,14 +14,11 @@ import lombok.ToString;
 public class CrewDTO {
 
 	private Long crewId;
+	private UserDTO user;
 	private String crewContact;
-	private String password;
 	private String crewName;
 	private Date crewBirth;
 	private String carType;
 	private String carNumber;
-	private Date signDate;
-	
 }
-
 

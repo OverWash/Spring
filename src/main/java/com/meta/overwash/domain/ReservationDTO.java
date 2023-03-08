@@ -17,7 +17,6 @@ public class ReservationDTO {
 	private Date collectDate;
 	private Date reservationDate;
 	private String request;
-	private String laundryType;
 	private String reservationStatus;
 	private MemberDTO member;
 }
