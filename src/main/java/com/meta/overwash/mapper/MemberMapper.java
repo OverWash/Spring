@@ -17,4 +17,6 @@ public interface MemberMapper {
 	public int updateMember(MemberDTO member);
 
 	public int deleteMember(Long memberId);
+	
+	public MemberDTO loginMember(MemberDTO member);
 }

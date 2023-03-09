@@ -1,5 +1,7 @@
 package com.meta.overwash.mapper;
 
+import java.util.stream.IntStream;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,8 @@ import com.meta.overwash.domain.MemberDTO;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/appServlet/security-context.xml" })
 @Log4j
 public class MemberMapperTests {
 	
@@ -27,7 +30,17 @@ public class MemberMapperTests {
 //		member.setMemberAddress("서울시 서초구 양재동");
 //		
 //		mapper.insertMember(member);
-//		
+//
+////		IntStream.range(1, 10).forEach(i -> {
+////			MemberDTO member = new MemberDTO();
+////			member.setEmail("test" + i + "@gmail.com");
+////			member.setPassword("test" + i);
+////			member.setMemberContact(i + "");
+////			member.setMemberAddress("서울시 서초구 양재동");
+////			
+////			mapper.insertMember(member);
+////		});
+//
 //		log.info(member);
 //	}
 	
@@ -52,9 +65,21 @@ public class MemberMapperTests {
 //		log.info("UPDATE COUNT : " + count);
 //	}
 	
-	@Test
-	public void deleteMemberTest() {
-		int count = mapper.deleteMember(2L);
-		log.info("DELETE COUNT : " + count);
-	}
+//	@Test
+//	public void deleteMemberTest() {
+//		int count = mapper.deleteMember(2L);
+//		log.info("DELETE COUNT : " + count);
+//	}
+	
+//	@Test
+//	public void loginMemberTest() {
+//		MemberDTO input = new MemberDTO();
+//		input.setEmail("sj@gmail.com");
+//		input.setPassword("1234");
+//		
+////		log.info("INPUT MEMBER ID: " + input);
+//		MemberDTO member = mapper.loginMember(input);
+//		log.info("SQL RESULT: " + member);
+////		log.info("LOGIN RESULT: " + service.loginMember(member));
+//	}
 }
