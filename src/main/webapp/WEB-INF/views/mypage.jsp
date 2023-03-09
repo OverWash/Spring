@@ -5,13 +5,19 @@
 
 <%@ include file="common/header.jsp"%>
 
-<%@ include file="common/sidebar.jsp"%>
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+	<%@ include file="common/sidebar.jsp"%>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
+			
 			<%@ include file="common/navbar.jsp"%>
 
 				<!-- Begin Page Content -->
@@ -38,7 +44,7 @@
 					<div class="row">
 
 						<div class="col-xl-12 mb-4">
-							<!-- 검수완료리스트(결제연결) -->
+							<!-- 최근 예약 내역 -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
 									<h4 class="m-0 font-weight-bold text-primary">최근예약내역</h4>
@@ -85,17 +91,20 @@
 									</div>									
 								</div>
 							</div>
-							<!-- 검수완료리스트(결제연결) -->
-							
+							<!-- 최근 예약 내역 -->
 						</div>
 					</div>
-
 				</div>
 				<!-- /.container-fluid -->
-
 			</div>
 			<!-- End of Main Content -->
-
+			<%@ include file="common/copyright.jsp"%>
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>
+	<!-- End of Page Wrapper -->	
+			
 <%@ include file="common/footer.jsp"%>
 
+</body>
 </html>
