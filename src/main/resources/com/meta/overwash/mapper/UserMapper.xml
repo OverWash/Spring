@@ -14,6 +14,14 @@
 
 	</insert>
 	
+	<update id="updateUser" parameterType="UserDTO">
+		update users
+		set
+			password = #{password}
+		where
+			user_id = #{userId}
+	</update>
+	
 	
 	
 	

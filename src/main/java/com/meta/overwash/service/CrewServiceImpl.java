@@ -1,5 +1,6 @@
 package com.meta.overwash.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,20 +40,30 @@ public class CrewServiceImpl implements CrewService {
 		crewMapper.insertCrew(crew);
 	}
 
-	@Override
-	public boolean remove(Long crewId) throws Exception {
-		return crewMapper.deleteCrew(crewId) == 1;
-	}
+//	@Override
+//	public boolean remove(Long crewId) throws Exception {
+//		return crewMapper.deleteCrew(crewId) == 1;
+//	}
 
 	@Override
-	public boolean modify(CrewDTO crew) throws Exception {
-//		crewDTO.setPassword(bCryptPasswordEncoder.encode(crewDTO.getPassword()));
+	@Transactional
+	public boolean modify(UserDTO user, CrewDTO crew) throws Exception {
+		
+		if (user.getPassword() != null) {
+			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			if(userMapper.updateUser(user) == 0) return false; 
+		}
+		
 		return crewMapper.updateCrew(crew) == 1;
 	}
 
 	@Override
-	public Map<String, Object> get(Long crewId) throws Exception {
+	public CrewDTO get(Long crewId) throws Exception {
 		return crewMapper.getCrew(crewId);
+	}
+	
+	public List<CrewDTO> getCrewList(String role) throws Exception {
+		return crewMapper.getCrewList(role);
 	}
 	
 }
