@@ -2,6 +2,8 @@ package com.meta.overwash.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,68 +12,128 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.UserDTO;
 
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-					"file:src/main/webapp/WEB-INF/spring/appServlet/security-context.xml"})
+					"file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 @Log4j
 public class CrewServiceTests {
 	
 	@Autowired
 	private CrewService crewService;
 	
-	
 //	@Test
 //	public void insertTest() throws Exception{
 //		
-//		CrewDTO crewDTO = new CrewDTO();
+//		CrewDTO crew = new CrewDTO();
+//		UserDTO user = new UserDTO();
 //		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 //		Date birth = date.parse("1996-04-09");
 //		
+//		user.setEmail("crew03@gmail.com");
+//		user.setPassword("1q2w3e4r");
 //		
-////		crewDTO.setCrewContact("010-1111-1111");
-////		crewDTO.setPassword("1q2w3e4r");
-////		crewDTO.setCrewName("홍길동");
-////		crewDTO.setCrewBirth(birth);
-////		crewDTO.setCarType("소나타");
-////		crewDTO.setCarNumber("1234");
 //		
-//		crewDTO.setCrewContact("010-2222-2222");
-//		crewDTO.setPassword("P@ssw0rd");
-//		crewDTO.setCrewName("여성빈");
-//		crewDTO.setCrewBirth(birth);
-//		crewDTO.setCarType("아반떼");
-//		crewDTO.setCarNumber("1111");
+////		crew.setCrewContact("010-1111-1111");
+////		crew.setCrewName("홍길동");
+////		crew.setCrewBirth(birth);
+////		crew.setCarType("소나타");
+////		crew.setCarNumber("1234");
 //		
-//		crewService.insertCrew(crewDTO);
+//		crew.setCrewContact("010-2222-2222");
+//		crew.setCrewName("여성빈");
+//		crew.setCrewBirth(birth);
+//		crew.setCarType("아반떼");
+//		crew.setCarNumber("1111");
 //		
-//		log.info(",,,,,,,,,,,,,,,,,,,,,,,," + crewDTO);
+//		crewService.insert(user, crew);
+//		
+//		log.info(",," + user + ",," + crew);
 //		
 //	}
-	
 //	@Test
 //	public void deleteTest() throws Exception{
-//		log.info(",,,,,,,,,,,,,,,,,,,,,," + crewService.remove(7L));
+//		log.info(",,,,,,,,,,,,,,,,,,,,,," + crewService.remove(2L));
 //	}
-	
 //	@Test
 //	public void getTest() throws Exception {
-//		log.info(",,,,,,,,,,,,,,,," + crewService.get(6L));
+//		log.info(",,,,,,,,,,,,,,,," + crewService.get(3L));
 //	}
-	@Test
-	public void modifytest() throws Exception {
-		CrewDTO crewDTO = new CrewDTO();
-		
-		crewDTO.setCrewId(6L);
-		crewDTO.setCrewContact("010-3333-4444");
-		crewDTO.setPassword("aaaa1111");
-		crewDTO.setCarType("소나타");
-		crewDTO.setCarNumber("5555");
-		
-		log.info("............." + crewService.modify(crewDTO));
-	}
+//	@Test
+//	public void modifytest() throws Exception {
+//		CrewDTO crewDTO = new CrewDTO();
+//		
+//		crewDTO.setCrewId(3L);
+//		crewDTO.setCrewContact("010-3333-4444");
+//		crewDTO.setPassword("aaaa1111");
+//		crewDTO.setCarType("벤츠");
+//		crewDTO.setCarNumber("7777");
+//		
+//		log.info("............." + crewService.modify(crewDTO));
+//	}
 	
+	
+	@Test
+	public void getTest() throws Exception{
+		
+		CrewDTO crew = crewService.get(1L);
+		
+		System.out.println(crew);
+	}
+//	@Test
+//	public void modifyTest() throws Exception {
+//		
+//		UserDTO user = new UserDTO();
+//		user.setUserId(2L);
+//		user.setEmail("crew04@gmail.com");
+//		
+//		CrewDTO crew = new CrewDTO();
+//		
+//		crew.setCrewId(2L);
+//		crew.setCrewContact("010-3333-1111");
+//		crew.setCarType("벤츠 e클래스");
+//		crew.setCarNumber("8888");
+//		
+//	
+//		log.info("././././././././././././../././. modify : " + crewService.modify(user, crew));
+//		
+//		
+//	}
+//	@Test
+//	public void getListTest() throws Exception{
+//		
+//		List<Map<String, Object>> crewInfoList = crewService.getCrewList("ROLE_CREW");
+//		
+//		System.out.println(crewInfoList);
+//	}
+
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

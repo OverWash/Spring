@@ -2,11 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.MemberMapper">
 
+	<!-- user reseultmap 추가 -->
+	
+	<insert id="insertMmeber">
+		insert into member
+			(member_id, user_id, memberAddress, memberContact, nickname)
+		values
+			(member_seq.nextval, #{userId}, #{memberAddress}, #{memberContact}, #{nickname})
+	</insert>
 
 	<select id="getList" resultType="MemberDTO">
 	  <![CDATA[
 	  	select
-	  		member_id, email, member_address, member_contact, sign_date, nickname
+	  		member_id, member_address, member_contact, nickname
 	  	from
 	  		member
 	  	where
@@ -14,17 +22,11 @@
 	  ]]>
 	</select>
 
-	<insert id="insertMember">
-		insert into member(member_id, email, password,
-			member_address, member_contact, sign_date, nickname)
-		values(member_seq.nextval,
-		#{email}, #{password},
-		#{memberAddress},
-		#{memberContact}, sysdate,
-		#{memberContact})
-	</insert>
+	<!-- <insert id="insertMember">
+		
+	</insert> -->
 
-	<insert id="insertSelectKeyMember">
+	<!-- <insert id="insertSelectKeyMember">
 		<selectKey keyProperty="memberId" order="BEFORE"
 			resultType="long">
 			select member_seq.nextval from dual
@@ -35,11 +37,11 @@
 		#{email}, #{password},
 		#{memberAddress}, #{memberContact}, sysdate,
 		#{memberContact})
-	</insert>
+	</insert> -->
 
 	<select id="getMember" resultType="MemberDTO">
 		select
-			member_id, email, member_address, member_contact, sign_date, nickname
+			member_id, member_address, member_contact, nickname
 	  	from
 	  		member
 	  	where
@@ -47,12 +49,11 @@
 	</select>
 
 	<update id="updateMember">
-		update member set 
-		<!-- password=#{password},
-		member_address=#{memberAddress},  -->
-		nickname=#{nickname}
+		update member 
+		set
+			nickname=#{nickname}
 		where
-		member_id=#{memberId}
+			member_id=#{memberId}
 	</update>
 
 	<delete id="deleteMember">

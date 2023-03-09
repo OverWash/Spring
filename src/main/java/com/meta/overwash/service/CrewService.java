@@ -1,14 +1,20 @@
 package com.meta.overwash.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.UserDTO;
 
 public interface CrewService {
 	
-	public void insertCrew(CrewDTO crewDTO) throws Exception;
+	public void insert(UserDTO userDTO, CrewDTO crewDTO) throws Exception;
 	
-	public boolean remove(Long crewId) throws Exception;
+//	public boolean remove(Long crewId) throws Exception;
 	
-	public boolean modify(CrewDTO crewDTO) throws Exception;
+	public boolean modify(UserDTO user, CrewDTO crewDTO) throws Exception;
 	
 	public CrewDTO get(Long crewId) throws Exception;
+	
+	public List<CrewDTO> getCrewList(String role) throws Exception;
 }
