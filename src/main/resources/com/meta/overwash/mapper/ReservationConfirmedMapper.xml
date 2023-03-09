@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meta.overwash.mapper.ReservationConfirmedMapper">
+
+	<resultMap type="ReservationConfirmedDTO" id="getConfirm">
+		<id property="confirmId" column="confirm_id"/>
+		<result property="confirmDate" column="CONFIRM_DATE"/>
+		<association property="reservation" resultMap="getReservation"/>
+	</resultMap>
+
+	<resultMap type="ReservationDTO" id="getReservation">
+		<id property="reservationId" column="reservation_id"/>
+		<result property="reservationStatus" column="RESERVATION_STATUS"/>
+		<association property="member" resultMap="getMember"/>
+	</resultMap>
+
+	<resultMap type="MemberDTO" id="getMember">
+		<id property="memberId" column="member_id"/>
+		<result property="memberAddress" column="MEMBER_ADDRESS"/>
+		<result property="memberContact" column="MEMBER_CONTACT"/>
+		<result property="nickname" column="nickname"/>
+		<result property="email" column="email"/>
+		
+	</resultMap>
+
+	<select id="getReservationConfirm" resultMap="getConfirm">
+		SELECT 	RC.confirm_id,
+				RC.confirm_date,
+				R.reservation_status,
+				M.email,
+				M.member_contact,
+				M.nickname
+		FROM
+				RESERVATION_CONFIRMED RC,
+				RESERVATION R,
+				MEMBER M
+		WHERE
+				RC.RESERVATION_ID = R.RESERVATION_ID AND
+				R.MEMBER_ID = M.MEMBER_ID AND
+				confirm_Id = #{confirmId}
+
+	</select>
+
+	<select id="getList" resultMap="getConfirm" >
+		SELECT 
+				R.* 
+		FROM
+				(SELECT 
+						ROWNUM RN, R.* 
+				 FROM 
+				 		RESERVATION_CONFIRMED R
+				 		WHERE )
+				 		
+	</select>
+	
+</mapper>

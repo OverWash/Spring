@@ -8,11 +8,11 @@ public interface CheckMapper {
 	
 	public List<CheckDTO> getList();
 	
-	public void insertCrew(CheckDTO check);
+	public void insertCheck(CheckDTO check);
 	
-	public CheckDTO getCrew(Long checkId);
+	public CheckDTO getCheck(Long checkId);
 
-	public int updateCrew(CheckDTO check);
+	public int updateCheck(CheckDTO check);
 	
-	public int deleteCrew(Long checkId); 
+	public int deleteCheck(Long checkId); 
 }

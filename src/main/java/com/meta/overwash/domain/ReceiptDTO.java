@@ -14,8 +14,6 @@ import lombok.ToString;
 public class ReceiptDTO {
 	private Integer receiptId;
 	private String paymentMethod;
-	private Integer apAmount;
-	private Integer finalPaymentAmount;
 	private PaymentRequestDTO pr;
 
 }

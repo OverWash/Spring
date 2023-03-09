@@ -14,5 +14,7 @@ public interface LaundryMapper {
 
 	public int updateLaundry(LaundryDTO laundry);
 	
-	public int deleteLaundry(Long laundryId); 
+	public int deleteLaundry(Long laundryId);
+
+	public int getLaundryCnt(); 
 }
