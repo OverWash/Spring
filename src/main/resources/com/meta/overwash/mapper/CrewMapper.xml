@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.CrewMapper">
-
-	<insert id="insertCrew" parameterType="CrewDTO">
-		insert into
-				crew
-		values (
-				crew_seq.nextval,
-				#{email},
-				#{crewContact},
-				#{password},
-				#{crewName},
-				#{crewBirth},
-				#{carType},
-				#{carNumber},
-				sysdate
-		)
 	
+	
+	<insert id="insertCrew" parameterType="CrewDTO">
+
+		<selectKey resultType="long" order="BEFORE" keyProperty="crewId">
+			select crew_seq.nextval from dual
+		</selectKey>
+		insert into crew
+		values
+		(#{crewId}, #{user.userId}, #{crewContact}, #{crewName}, #{crewBirth}, #{carType}, #{carNumber})
+
 	</insert>
 	
-	<select id="getCrew" parameterType="Long" resultType="CrewDTO">
-		select *
-		from crew
-		where crew_id = #{crewId}
+	<resultMap type="hashMap" id="crewInfo">
+		<result column="email"			property="email"/>
+		<result column="password"		property="password"/>
+		<result column="crew_contact"	property="crewContact"/>
+		<result column="crew_name"		property="crewName"/>
+		<result column="crew_birth"		property="crewBirth"/>
+		<result column="car_type"		property="carType"/>
+		<result column="car_number"		property="carNumber"/>
+	</resultMap>
+	
+	<select id="getCrew" parameterType="Long" resultMap="crewInfo">
+		select
+			u.email 	   as email,
+			u.password     as password,
+			c.crew_contact as crew_contact,
+			c.crew_name	   as crew_name,
+			c.crew_birth   as crew_birth,
+			c.car_type 	   as car_type,
+			c.car_number   as car_number
+		from crew c
+			 join users u
+			   on c.user_id = u.user_id
+		where
+			c.crew_id = #{crewId}
 	</select>
 	
 	<delete id="deleteCrew" parameterType="Long">

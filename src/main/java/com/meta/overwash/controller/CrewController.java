@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.CrewService;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -30,28 +31,17 @@ public class CrewController {
 	
 	@GetMapping("/register")
 	public void crewRegister() throws Exception {
-		
 	}
-	
-	@GetMapping("/login")
-	public void crewLogin() throws Exception {
 		
-	}
-	
-	@PostMapping("/login")
-	public void login() throws Exception {
-		
-	}
-	
 	@GetMapping({"/mypage", "/modify"})
 	public void get(@RequestParam("crewId") Long crewId, Model model) throws Exception {
-		model.addAttribute("crew", crewService.get(crewId));
+		model.addAttribute("crewInfo", crewService.get(crewId));
 	}
 	
 	@PostMapping("/register")
-	public String register(CrewDTO crewDTO, RedirectAttributes rttr) throws Exception {
+	public String register(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
 		
-		crewService.insertCrew(crewDTO);
+		crewService.insert(user, crew);
 		rttr.addFlashAttribute("result", "success"); // view에서 success시 회원 가입 완료 alert?
 		
 		return "redirect:/crew/login";
@@ -68,8 +58,8 @@ public class CrewController {
 	
 	
 	@PatchMapping("/modify")
-	public String modify(CrewDTO crewDTO, RedirectAttributes rttr) throws Exception {
-		if (crewService.modify(crewDTO)) {
+	public String modify(CrewDTO crew, RedirectAttributes rttr) throws Exception {
+		if (crewService.modify(crew)) {
 			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
 		}
 		
