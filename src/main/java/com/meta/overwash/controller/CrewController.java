@@ -22,29 +22,29 @@ public class CrewController {
 	@Autowired
 	private CrewService crewService;
 	
-	@GetMapping("/main")
-	public void crewMain() throws Exception {
-		
-	}
-	
-	@GetMapping("/register")
-	public void crewRegister() throws Exception {
-	}
+//	@GetMapping("/main")
+//	public void crewMain() throws Exception {
+//		
+//	}
+//	
+//	@GetMapping("/register")
+//	public void crewRegister() throws Exception {
+//	}
 		
 	@GetMapping({"/mypage", "/modify"})
 	public void get(@RequestParam("crewId") Long crewId, Model model) throws Exception {
 		model.addAttribute("crewInfo", crewService.get(crewId));
 	}
 	
-	@PostMapping("/register")
-	public String register(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
-		
-		crewService.insert(user, crew);
-		rttr.addFlashAttribute("result", "success"); // view에서 success시 회원 가입 완료 alert?
-		
-		return "redirect:/crew/login";
-	}
-	
+//	@PostMapping("/register")
+//	public String register(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
+//		
+//		crewService.insert(user, crew);
+//		rttr.addFlashAttribute("result", "success"); // view에서 success시 회원 가입 완료 alert?
+//		
+//		return "redirect:/crew/login";
+//	}
+//	
 //	@PostMapping("/remove")
 //	public String remove (@RequestParam("crewId") Long crewId, RedirectAttributes rttr) throws Exception {
 //		if (crewService.remove(crewId)) {

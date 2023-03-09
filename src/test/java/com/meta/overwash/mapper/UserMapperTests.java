@@ -38,7 +38,7 @@ public class UserMapperTests {
 //		user.setPassword(bCryptPasswordEncoder.encode("1234"));
 //		user.setRole("ROLE_CREW");
 		
-		user.setEmail("admin1523");
+		user.setEmail("admin15523");
 		user.setPassword(bCryptPasswordEncoder.encode("1234"));
 		user.setRole("ROLE_ADMIN");
 		
