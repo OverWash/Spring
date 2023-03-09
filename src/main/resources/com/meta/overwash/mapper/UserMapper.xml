@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.UserMapper">
-	
-	
-	<insert id="insertUser" parameterType="UserDTO">
 
-		<selectKey resultType="Long" order="BEFORE" keyProperty="userId">
-			select users_seq.nextval from dual
-		</selectKey>
+
+	<insert id="insertUser">
+
 		insert into users
+		(user_id, email, password, role)
 		values
-		(#{userId}, #{email}, #{password}, #{role}, sysdate, 1)
+		(user_seq.nextval, #{email}, #{password}, #{role})
+
+		<selectKey keyProperty="userId" order="AFTER"
+			resultType="long">
+			select user_seq.currval from dual
+		</selectKey>
 
 	</insert>
-	
-	<update id="updateUser" parameterType="UserDTO">
+
+	<select id="getUser" resultType="UserDTO">
+		select * from users where
+		email=#{email}
+	</select>
+
+	<!-- 계정 비활성화 -->
+	<delete id="deleteUser">
 		update users
 		set
-			password = #{password}
+		enabled=0
 		where
-			user_id = #{userId}
+		user_id=#{userId}
+	</delete>
+
+	<update id="updateUser">
+		update users
+		set
+		password=#{password}
+		where
+		user_id=#{userId}
+
 	</update>
-	
-	
-	
-	
 
 </mapper>
