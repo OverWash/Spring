@@ -26,9 +26,9 @@ public class UserMapperTests {
 	@Test
 	public void insertUserTest() {
 		UserDTO user = new UserDTO();
-//		user.setEmail("member");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_MEMBER");
+		user.setEmail("member");
+		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+		user.setRole("ROLE_MEMBER");
 		
 //		user.setEmail("admin");
 //		user.setPassword(bCryptPasswordEncoder.encode("1234"));
@@ -38,9 +38,9 @@ public class UserMapperTests {
 //		user.setPassword(bCryptPasswordEncoder.encode("1234"));
 //		user.setRole("ROLE_CREW");
 		
-		user.setEmail("admin15523");
-		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-		user.setRole("ROLE_ADMIN");
+//		user.setEmail("admin15523");
+//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+//		user.setRole("ROLE_ADMIN");
 		
 		mapper.insertUser(user);
 		log.info(user);

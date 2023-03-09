@@ -15,5 +15,5 @@ public interface CrewMapper {
 
 	public int updateCrew(CrewDTO crew) throws Exception;
 	
-//	public int deleteCrew(Long crewId) throws Exception; 
+	public int deleteCrew(Long crewId) throws Exception; 
 }
