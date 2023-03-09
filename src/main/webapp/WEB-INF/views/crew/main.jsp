@@ -29,7 +29,7 @@
 							<!-- Project Card Example -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"">
-									<h5 class="m-0 font-weight-bold text-gray-900">매니저뭔가정보</h5>										<div class="dropdown no-arrow">
+									<h5 class="m-0 font-weight-bold text-gray-900">크루뭔가정보</h5>										<div class="dropdown no-arrow">
 											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
 											</a>
@@ -56,12 +56,12 @@
 								</div>
 							</div>
 							
-							<!-- 검수예정목록 -->
+							<!-- 수거예정목록 -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h5 class="m-0 font-weight-bold text-gray-900">검수예정목록</h5>
+									<h5 class="m-0 font-weight-bold text-gray-900">수거예정목록</h5>
 								</div>
-								<div class="card-body border-bottom-info">
+								<div class="card-body border-bottom-success">
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
 											{soogu.list[1]}
@@ -70,7 +70,7 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">검수완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
@@ -83,7 +83,7 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">검수완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
@@ -96,21 +96,21 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">검수완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
 									</div>									
 								</div>
 							</div>
-							<!-- 검수예정목록 -->
+							<!-- 수거예정목록 -->
 							
-							<!-- 세탁예정목록 -->
+							<!-- 수거예정목록 -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h5 class="m-0 font-weight-bold text-gray-900">세탁예정목록</h5>
+									<h5 class="m-0 font-weight-bold text-gray-900">배달예정목록</h5>
 								</div>
-								<div class="card-body border-bottom-info">
+								<div class="card-body border-bottom-success">
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
 											{soogu.list[1]}
@@ -119,7 +119,7 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">세탁완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
@@ -132,7 +132,7 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">세탁완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
@@ -145,14 +145,14 @@
 			                                        <span class="icon text-gray-600">
 			                                            <i class="fas fa-arrow-right"></i>
 			                                        </span>
-			                                        <span class="text font-weight-bold">세탁완료</span>
+			                                        <span class="text font-weight-bold">픽업완료</span>
 	                                    		</a>
 											</span>
 										</h4>
 									</div>									
 								</div>
 							</div>
-							<!-- 세탁예정목록 -->
+							<!-- 수거예정목록 -->
 						</div>
 					<!-- End Content Row -->
 				</div>

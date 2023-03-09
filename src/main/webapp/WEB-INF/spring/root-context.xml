@@ -12,9 +12,9 @@
 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
-			value="oracle.jdbc.driver.OracleDriver" />
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:XE" />
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
 		<property name="username" value="laundry2" />
 		<property name="password" value="1234" />
 	</bean>

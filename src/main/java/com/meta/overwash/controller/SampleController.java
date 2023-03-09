@@ -11,23 +11,48 @@ public class SampleController {
 		return "login";
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("member/main")
 	public String list() {
-		return "list";
+		return "member/main";
 	}
 	
-	@GetMapping("/mypage")
+	@GetMapping("member/mypage")
 	public String mypage() {
-		return "mypage";
+		return "member/mypage";
 	}
 	
-	@GetMapping("/request")
+	@GetMapping("member/request")
 	public String request() {
-		return "request";
+		return "member/request";
+	}
+	
+	@GetMapping("member/result")
+	public String result() {
+		return "member/result";
 	}
 	
 	@GetMapping("/register")
 	public String register() {
 		return "register";
+	}
+	
+	@GetMapping("crew/main")
+	public String crewMain() {
+		return "crew/main";
+	}
+	
+	@GetMapping("crew/mypage")
+	public String crewMypage() {
+		return "crew/mypage";
+	}
+	
+	@GetMapping("admin/main")
+	public String adminMain() {
+		return "admin/main";
+	}
+	
+	@GetMapping("admin/mypage")
+	public String adminMypage() {
+		return "admin/mypage";
 	}
 }
