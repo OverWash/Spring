@@ -18,6 +18,6 @@ public class ReservationConfirmedMapperTests {
 
 	@Test
 	public void selectTest() {
-		System.out.println(rc.getReservationConfirm(1));
+//		System.out.println(rc.getReservationConfirm(1));
 	}
 }
