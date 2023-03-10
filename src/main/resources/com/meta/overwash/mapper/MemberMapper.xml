@@ -22,8 +22,8 @@
 	
 	<resultMap type="MemberDTO" id="memberInfo">
 		<result column="member_id" 		property="memberId"/>
-		<result column="member_contact"	property="memeberContact"/>
-		<result column="member_address"	property="memeberAddress"/>
+		<result column="member_contact"	property="memberContact"/>
+		<result column="member_address"	property="memberAddress"/>
 		<result column="nickname"	property="nickname"/>
 		<association property="user" resultMap="user" />
 	</resultMap>
@@ -36,7 +36,7 @@
 			m.member_id	     as member_id,
 			m.member_contact as member_contact,
 			m.member_address as member_address,
-			m.nickname 		 as nickname,
+			m.nickname 		 as nickname
 		from member m
 			 join users u
 			   on m.user_id = u.user_id

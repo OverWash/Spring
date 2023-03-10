@@ -1,5 +1,7 @@
 package com.meta.overwash.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.MemberService;
+import com.meta.overwash.service.ReservationService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -27,10 +30,14 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private ReservationService reservationService;
+	
 	@GetMapping("/main")
-	public void main() {
-		// 메인페이지에서 보여줄 것들 추가
-		
+	public void main(Principal principal, Model model) {
+		String username = principal.getName();
+		model.addAttribute("reservations", reservationService.getListEach(999L));
+		model.addAttribute("username", username);
 	}
 
 	@GetMapping({ "/mypage", "/modify" })
@@ -57,6 +64,13 @@ public class MemberController {
 
 		return "redirect:/member/main";
 	}
+	
+	@GetMapping("/request")
+	public void request(@RequestParam("memberId") Long memberId, Model model) throws Exception {
+		model.addAttribute("member", memberService.get(memberId));
+	}
+	
+	
 
 	
 	

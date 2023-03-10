@@ -77,6 +77,14 @@ body {
 	
 	background-color: #000
 }
+/* 스크롤 제거 */
+body{
+ -ms-overflow-style: none;
+ }
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
 	outline: 0 !important
