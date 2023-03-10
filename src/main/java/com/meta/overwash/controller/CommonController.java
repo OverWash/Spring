@@ -1,5 +1,6 @@
 package com.meta.overwash.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,17 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
+import com.meta.overwash.service.CrewService;
+import com.meta.overwash.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 public class CommonController {
+	
+	@Autowired
+	CrewService crewService;
+	
+	@Autowired
+	MemberService memberService;
 
-	// 추후에 처음 서버 켰을 때 루트 페이지를 여기로 변경해야 함
-	@GetMapping("/login")
-	public void login(String error, String logout, Model model) {
+	// 처음 서버 켰을 때 루트 페이지가 로그인 페이지
+	@GetMapping("/")
+	public String login(String error, String logout, Model model) {
+		
+		log.info("ROOT: LOGIN PAGE LOADED");
+		
 		// 로그인 실패 시 view로 에러 메시지 넘겨 줌
 		if (error != null) {
 			model.addAttribute("error", "로그인에 실패하였습니다.");
@@ -27,11 +41,11 @@ public class CommonController {
 		if (logout != null) {
 			model.addAttribute("logout", "로그아웃 완료.");
 		}
-	}
-	@GetMapping("/signup")
-	public void signup() {
 		
+		return "login";
 	}
+
+	// 로그아웃 처리 어떻게?
 	@GetMapping("/logout")
 	public void logout() {
 
@@ -51,8 +65,8 @@ public class CommonController {
 
 	@PostMapping("/register")
 	public String register(String role) {
-		
-		return role.equals("ROLE_MEMBER") ? "redirect:/register/member" : "redirect:/register/crew";
+		// redirect에서 forward 방식으로 변경
+		return role.equals("ROLE_MEMBER") ? "/register/member" : "/register/crew"; 
 	}
 	
 	@GetMapping({"/register/member", "/register/crew"})
@@ -61,37 +75,26 @@ public class CommonController {
 	}
 	
 	@PostMapping("/register/member")
-	public String registerMember() {
+	public String registerMember(UserDTO user, MemberDTO member) throws Exception {
+		//form에서 값 제대로 넘어왔는지 확인
+		log.info("form data user!  " + user);
+		log.info("form data member!  " + member);
 		
-		return "redirect:/login";
+		memberService.insert(user, member);
+		
+		return "redirect:/";
 	}
 	
-	
-//	@PostMapping("/register")
-//	public String register(UserDTO user) {
-//		// 가입 시 입력한 유형이 멤버이면
-//		if (user.getRole().equals("ROLE_MEMBER")) {
-//			
-//		} else if (user.getRole().equals("ROLE_CREW")) {
-//			
-//		}
-//			
-//		
-//		return "redirect:/login";
-//	}
+	@PostMapping("/register/crew")
+	public String registerCrew(UserDTO user, CrewDTO crew) throws Exception {
+		//form에서 값 제대로 넘어왔는지 확인
+		log.info("form data user!  " + user);
+		log.info("form data crew!  " + crew);
+		
+		crewService.insert(user, crew);
+		
+		return "redirect:/";
+	}
 
-	// ------- test------
 
-	// 권한 확인용 임시 url 나중에 삭제하기
-//	@GetMapping("/admin/main")
-//	public void mainAdmin() {
-//
-//	}
-//
-//	@GetMapping("/crew/main")
-//	public void mainCrew() {
-//
-//	}
-
-	// -------------------
 }

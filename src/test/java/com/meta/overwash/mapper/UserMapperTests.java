@@ -23,35 +23,36 @@ public class UserMapperTests {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Test
-	public void insertUserTest() {
-		UserDTO user = new UserDTO();
-		user.setEmail("member");
-		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-		user.setRole("ROLE_MEMBER");
-		
-//		user.setEmail("admin");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_ADMIN");
-		
-//		user.setEmail("crew");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_CREW");
-		
-//		user.setEmail("admin15523");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_ADMIN");
-		
-		mapper.insertUser(user);
-		log.info(user);
-	}
-
 //	@Test
-//	public void getUserTest() {
+//	public void insertUserTest() {
 //		UserDTO user = new UserDTO();
 //		user.setEmail("member");
-//		log.info(mapper.getUser("member"));
-//
+//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+//		user.setRole("ROLE_MEMBER");
+//		
+////		user.setEmail("admin");
+////		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+////		user.setRole("ROLE_ADMIN");
+//		
+////		user.setEmail("crew");
+////		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+////		user.setRole("ROLE_CREW");
+//		
+////		user.setEmail("admin15523");
+////		user.setPassword(bCryptPasswordEncoder.encode("1234"));
+////		user.setRole("ROLE_ADMIN");
+//		
+//		mapper.insertUser(user);
+//		log.info(user);
 //	}
+
+	@Test
+	public void getUserTest() {
+		UserDTO user = mapper.getUser("sojong1003@gmail.com");
+		log.info("TEST!!!!!!!!!" + user);
+
+	}
+	
+
 
 }

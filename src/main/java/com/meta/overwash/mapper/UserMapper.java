@@ -6,11 +6,12 @@ public interface UserMapper {
 
 	public void insertUser(UserDTO user);
 
-	// for login
+	// for login security
 	public UserDTO getUser(String email);
 
-	public int deleteUser(Long user_id);
+	public int deleteUser(Long userId);
 
 	public int updateUser(UserDTO user);
-
+	
+	public UserDTO getUserById(Long userId);
 }

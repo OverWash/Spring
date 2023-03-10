@@ -51,18 +51,4 @@ public class CrewController {
 		return "redirect:/crew/main";
 	}
 
-//	@GetMapping("/register")
-//	public void crewRegister() throws Exception {
-//		
-//	}
-
-//	@PostMapping("/register")
-//	public String register(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
-//		
-//		crewService.insert(user, crew);
-//		rttr.addFlashAttribute("result", "success"); // view에서 success시 회원 가입 완료 alert?
-//		
-//		return "redirect:/crew/register";
-//	}
-
 }

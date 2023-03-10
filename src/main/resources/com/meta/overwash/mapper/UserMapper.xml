@@ -16,26 +16,40 @@
 
 	</insert>
 
+	<!-- 이메일로 스프링 시큐리티 검사 -->
 	<select id="getUser" resultType="UserDTO">
-		select * from users where
-		email=#{email}
+		select * 
+			from users 
+		where
+			email = #{email}
+	</select>
+	
+	<!-- userId로 user 검색 -->
+	<select id="getUserById" resultType="UserDTO">
+		select * 
+			from users 
+		where
+			user_id = #{userId}
 	</select>
 
 	<!-- 계정 비활성화 -->
 	<delete id="deleteUser">
 		update users
 		set
-		enabled=0
+			enabled = 0
 		where
-		user_id=#{userId}
+			user_id = #{userId}
 	</delete>
 
+	<!-- 비밀번호 수정 -->
 	<update id="updateUser">
 		update users
 		set
-		password=#{password}
+			password = #{password}
 		where
-		user_id=#{userId}
-
+			user_id = #{userId}
 	</update>
+	
+
+
 </mapper>

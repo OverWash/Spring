@@ -32,6 +32,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		
 		// 로그인 성공 시 수행할 작업
 		if (roleNames.contains("ROLE_MEMBER")) {
+			
 			response.sendRedirect("/member/main");
 			return;
 		}
