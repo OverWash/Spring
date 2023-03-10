@@ -30,26 +30,26 @@ public class CrewController {
 	public void get(@RequestParam("crewId") Long crewId, Model model) throws Exception {
 		model.addAttribute("crewInfo", crewService.get(crewId));
 	}
+ 
+//	@PostMapping("/remove")
+//	public String remove(@RequestParam("crewId") Long crewId, RedirectAttributes rttr) throws Exception {
+//		if (crewService.remove(crewId)) {
+//			rttr.addFlashAttribute("result", "success"); // view에서 success시 탈퇴 완료 alert?
+//		}
+//
+//		return "redirect:/login"; // /crew/login 에서 /login 으로 변경함
+//	}
 
-	@PostMapping("/remove")
-	public String remove(@RequestParam("crewId") Long crewId, RedirectAttributes rttr) throws Exception {
-		if (crewService.remove(crewId)) {
-			rttr.addFlashAttribute("result", "success"); // view에서 success시 탈퇴 완료 alert?
-		}
-
-		return "redirect:/login"; // /crew/login 에서 /login 으로 변경함
-	}
-
-	@PatchMapping("/modify")
-	public String modify(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
-		if (crewService.modify(user, crew)) {
-			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
-		} else {
-			rttr.addAttribute("result", "fail"); // view에서 fail시 변경 실패 alert?
-		}
-
-		return "redirect:/crew/main";
-	}
+//	@PatchMapping("/modify")
+//	public String modify(UserDTO user, CrewDTO crew, RedirectAttributes rttr) throws Exception {
+//		if (crewService.modify(user, crew)) {
+//			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
+//		} else {
+//			rttr.addAttribute("result", "fail"); // view에서 fail시 변경 실패 alert?
+//		}
+//
+//		return "redirect:/crew/main";
+//	}
 
 //	@GetMapping("/register")
 //	public void crewRegister() throws Exception {

@@ -33,9 +33,9 @@
 	<update id="updateUser">
 		update users
 		set
-		password=#{password}
+				password= #{password}
 		where
-		user_id=#{userId}
+				user_id= #{userId}
 
 	</update>
 </mapper>

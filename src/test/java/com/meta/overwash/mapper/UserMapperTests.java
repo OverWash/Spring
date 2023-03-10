@@ -26,7 +26,9 @@ public class UserMapperTests {
 	@Test
 	public void insertUserTest() {
 		UserDTO user = new UserDTO();
-		user.setEmail("member");
+		
+//		user
+//		user.setEmail("member");
 		user.setPassword(bCryptPasswordEncoder.encode("1234"));
 		user.setRole("ROLE_MEMBER");
 		

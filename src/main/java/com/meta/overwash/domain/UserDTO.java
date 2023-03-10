@@ -79,4 +79,7 @@ public class UserDTO implements UserDetails {
 		return signDate;
 	}
 
+	public String getEmail() {
+		return email;
+	}
 }

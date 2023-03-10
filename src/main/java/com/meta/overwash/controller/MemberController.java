@@ -38,25 +38,25 @@ public class MemberController {
 		model.addAttribute("memberInfo", memberService.get(memberId));
 	}
 	
-	@PostMapping("/remove")
-	public String remove(@RequestParam("memberId") Long memberId, RedirectAttributes rttr) throws Exception {
-		if (memberService.remove(memberId)) {
-			rttr.addFlashAttribute("result", "success"); // view에서 success시 탈퇴 완료 alert?
-		}
-
-		return "redirect:/login";
-	}
+//	@PostMapping("/remove")
+//	public String remove(@RequestParam("memberId") Long memberId, RedirectAttributes rttr) throws Exception {
+//		if (memberService.remove(memberId)) {
+//			rttr.addFlashAttribute("result", "success"); // view에서 success시 탈퇴 완료 alert?
+//		}
+//
+//		return "redirect:/login";
+//	}
 	
-	@PatchMapping("/modify")
-	public String modify(UserDTO user, MemberDTO member, RedirectAttributes rttr) throws Exception {
-		if (memberService.modify(user, member)) {
-			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
-		} else {
-			rttr.addAttribute("result", "fail"); // view에서 fail시 변경 실패 alert?
-		}
-
-		return "redirect:/member/main";
-	}
+//	@PatchMapping("/modify")
+//	public String modify(UserDTO user, MemberDTO member, RedirectAttributes rttr) throws Exception {
+//		if (memberService.modify(user, member)) {
+//			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
+//		} else {
+//			rttr.addAttribute("result", "fail"); // view에서 fail시 변경 실패 alert?
+//		}
+//
+//		return "redirect:/member/main";
+//	}
 
 	
 	

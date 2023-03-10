@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class CrewDTO {
 
-	private Integer crewId;
+	private Long crewId;
 	private UserDTO user;
 	private Date crewBirth;
 	private String crewContact;
