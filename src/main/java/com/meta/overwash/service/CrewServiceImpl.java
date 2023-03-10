@@ -40,10 +40,10 @@ public class CrewServiceImpl implements CrewService {
 		crewMapper.insertCrew(crew);
 	}
 
-//	@Override
-//	public boolean remove(Long crewId) throws Exception {
-//		return crewMapper.deleteCrew(crewId) == 1;
-//	}
+	@Override
+	public boolean remove(Long crewId) throws Exception {
+		return crewMapper.deleteCrew(crewId) == 1;
+	}
 
 	@Override
 	@Transactional

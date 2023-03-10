@@ -4,6 +4,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.meta.overwash.domain.UserDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -24,7 +28,10 @@ public class CommonController {
 			model.addAttribute("logout", "로그아웃 완료.");
 		}
 	}
-
+	@GetMapping("/signup")
+	public void signup() {
+		
+	}
 	@GetMapping("/logout")
 	public void logout() {
 
@@ -42,11 +49,30 @@ public class CommonController {
 
 	}
 
+	@PostMapping("/register")
+	public String register(String role) {
+		
+		return role.equals("ROLE_MEMBER") ? "redirect:/register/member" : "redirect:/register/crew";
+	}
+	
+	@GetMapping({"/register/member", "/register/crew"})
+	public void registerUser() {
+		
+	}
+	
+	@PostMapping("/register/member")
+	public String registerMember() {
+		
+		return "redirect:/login";
+	}
+	
+	
 //	@PostMapping("/register")
 //	public String register(UserDTO user) {
+//		// 가입 시 입력한 유형이 멤버이면
 //		if (user.getRole().equals("ROLE_MEMBER")) {
 //			
-//		} else if (user.getRole().equals("ROLE_MEMBER")) {
+//		} else if (user.getRole().equals("ROLE_CREW")) {
 //			
 //		}
 //			

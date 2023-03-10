@@ -10,7 +10,7 @@ public interface CrewService {
 	
 	public void insert(UserDTO userDTO, CrewDTO crewDTO) throws Exception;
 	
-//	public boolean remove(Long crewId) throws Exception;
+	public boolean remove(Long crewId) throws Exception;
 	
 	public boolean modify(UserDTO user, CrewDTO crewDTO) throws Exception;
 	

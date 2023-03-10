@@ -2,8 +2,6 @@ package com.meta.overwash.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,35 +23,35 @@ public class CrewServiceTests {
 	@Autowired
 	private CrewService crewService;
 	
-//	@Test
-//	public void insertTest() throws Exception{
-//		
-//		CrewDTO crew = new CrewDTO();
-//		UserDTO user = new UserDTO();
-//		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-//		Date birth = date.parse("1996-04-09");
-//		
-//		user.setEmail("crew03@gmail.com");
-//		user.setPassword("1q2w3e4r");
-//		
-//		
-////		crew.setCrewContact("010-1111-1111");
-////		crew.setCrewName("홍길동");
-////		crew.setCrewBirth(birth);
-////		crew.setCarType("소나타");
-////		crew.setCarNumber("1234");
-//		
-//		crew.setCrewContact("010-2222-2222");
-//		crew.setCrewName("여성빈");
+	@Test
+	public void insertTest() throws Exception{
+		
+		CrewDTO crew = new CrewDTO();
+		UserDTO user = new UserDTO();
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		Date birth = date.parse("1996-04-10");
+		
+		user.setEmail("crew99@gmail.com");
+		user.setPassword("1111");
+		
+		
+//		crew.setCrewContact("010-1111-1111");
+//		crew.setCrewName("홍길동");
 //		crew.setCrewBirth(birth);
-//		crew.setCarType("아반떼");
-//		crew.setCarNumber("1111");
-//		
-//		crewService.insert(user, crew);
-//		
-//		log.info(",," + user + ",," + crew);
-//		
-//	}
+//		crew.setCarType("소나타");
+//		crew.setCarNumber("1234");
+		
+		crew.setCrewContact("010-1111-9999");
+		crew.setCrewName("백성준");
+		crew.setCrewBirth(birth);
+		crew.setCarType("레이");
+		crew.setCarNumber("0900");
+		
+		crewService.insert(user, crew);
+		
+		log.info(",," + user + ",," + crew);
+		
+	}
 //	@Test
 //	public void deleteTest() throws Exception{
 //		log.info(",,,,,,,,,,,,,,,,,,,,,," + crewService.remove(2L));
@@ -76,30 +74,37 @@ public class CrewServiceTests {
 //	}
 	
 	
-	@Test
-	public void getTest() throws Exception{
-		
-		CrewDTO crew = crewService.get(1L);
-		
-		System.out.println(crew);
-	}
+//	@Test
+//	public void getTest() throws Exception{
+//		
+//		CrewDTO crew = crewService.get(1L);
+//		
+//		System.out.println(crew);
+//	}
 //	@Test
 //	public void modifyTest() throws Exception {
-//		
+		
 //		UserDTO user = new UserDTO();
 //		user.setUserId(2L);
-//		user.setEmail("crew04@gmail.com");
+//		user.setEmail("crew05@gmail.com");
 //		
 //		CrewDTO crew = new CrewDTO();
 //		
 //		crew.setCrewId(2L);
-//		crew.setCrewContact("010-3333-1111");
-//		crew.setCarType("벤츠 e클래스");
-//		crew.setCarNumber("8888");
+//		crew.setCrewContact("010-1111-1111");
+//		crew.setCarType("벤츠 s클래스");
+//		crew.setCarNumber("4444");
+		
+		// db에 있는 데이터를 가져와야함
+//		CrewDTO db = crewService.get(2L);
+//		db.getUser().setPassword("2222");
 //		
-//	
-//		log.info("././././././././././././../././. modify : " + crewService.modify(user, crew));
+//		db.setCarType("롤스로이스");
+//		db.setCrewId(2L);
+//		UserDTO user = db.getUser();
 //		
+//			
+//		log.info("././././././././././././../././. modify : " + crewService.modify(user, db));
 //		
 //	}
 //	@Test
@@ -109,7 +114,18 @@ public class CrewServiceTests {
 //		
 //		System.out.println(crewInfoList);
 //	}
-
+	
+//	@Test
+//	public void deleteTest() throws Exception{
+//		
+//		CrewDTO crew = crewService.get(2L);
+//		
+//		crewService.remove(crew.getCrewId());
+//		
+//		
+//		
+//	}
+	
 	
 }
 

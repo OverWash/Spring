@@ -15,11 +15,13 @@
 	</insert>
 	
 	<resultMap type="UserDTO" id="user">
+		<result column="user_id"		property="userId"/>
 		<result column="email"			property="email"/>
 		<result column="password"		property="password"/>
 	</resultMap>
 	
 	<resultMap type="CrewDTO" id="crewInfo">
+		<result column="crew_id" 		property="crewId"/>
 		<result column="crew_contact"	property="crewContact"/>
 		<result column="crew_name"		property="crewName"/>
 		<result column="crew_birth"		property="crewBirth"/>
@@ -28,20 +30,12 @@
 		<association property="user" resultMap="user" />
 	</resultMap>
 	
-	<!-- <resultMap type="hashMap" id="crewInfo">
-		<result column="email"			property="email"/>
-		<result column="password"		property="password"/>
-		<result column="crew_contact"	property="crewContact"/>
-		<result column="crew_name"		property="crewName"/>
-		<result column="crew_birth"		property="crewBirth"/>
-		<result column="car_type"		property="carType"/>
-		<result column="car_number"		property="carNumber"/>
-	</resultMap> -->
-	
 	<select id="getCrew" parameterType="Long" resultMap="crewInfo">
 		select
+			u.user_id	   as user_id,
 			u.email 	   as email,
 			u.password     as password,
+			c.crew_id	   as crew_id,
 			c.crew_contact as crew_contact,
 			c.crew_name	   as crew_name,
 			c.crew_birth   as crew_birth,
@@ -54,10 +48,17 @@
 			c.crew_id = #{crewId}
 	</select>
 	
-<!-- 	<delete id="deleteCrew" parameterType="Long">
-		delete from crew
-		where crew_id = #{crewId}
-	</delete> -->
+ 	<update id="deleteCrew" parameterType="Long">
+		update users
+		set
+			enabled = 0
+		where
+			user_id = (
+						select user_id
+						from crew
+						where crew_id = #{crewId}
+			)
+	</update>
 	
 	<update id="updateCrew" parameterType="CrewDTO">
 		update crew
@@ -73,6 +74,7 @@
 		select
 			u.email 	   as email,
 			u.password     as password,
+			c.crew_id	   as crew_id,
 			c.crew_contact as crew_contact,
 			c.crew_name	   as crew_name,
 			c.crew_birth   as crew_birth,

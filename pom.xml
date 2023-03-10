@@ -79,7 +79,6 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-			<!-- <scope>runtime</scope> -->
 		</dependency>
 
 		<!-- @Inject -->
@@ -176,7 +175,6 @@
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -201,7 +199,6 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-
 
 	</dependencies>
 	<build>
