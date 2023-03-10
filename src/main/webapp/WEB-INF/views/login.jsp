@@ -21,25 +21,26 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">
-											<strong>overWash</strong>
-										</h1>
+										<h3 class="h3 text-gray-900 mb-4">
+											<strong>OverWash</strong>
+										</h3>
 									</div>
-									<!-- Login Form -->
-									<h2>
-										<c:out value="${error}" />
-									</h2>
-									<h2>
-										<c:out value="${logout}" />
-									</h2>
 									
+									<h5 class="h5 text-gray-900 mb-4">
+										<c:out value="${error}" />
+									</h5>
+									<h5 class="h5 text-gray-900 mb-4">
+										<c:out value="${logout}" />
+									</h5>
+									
+									<!-- Login Form -->
 									<form class="user" action="/login" method="post">
 										<div class="form-group">
-											<input type="text" name='username' class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" required="required">
+											<input type="email" name='username' class="form-control form-control-user" id="username" aria-describedby="emailHelp" placeholder="Email" required="required">
 										</div>
 
 										<div class="form-group">
-											<input type='password' name='password' class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required="required">
+											<input type='password' name='password' class="form-control form-control-user" id="password" placeholder="Password" required="required">
 										</div>
 										
 										<!--  security remember-me -->
