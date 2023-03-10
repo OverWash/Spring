@@ -10,8 +10,7 @@
 		values
 		(users_seq.nextval, #{email}, #{password}, #{role})
 
-		<selectKey keyProperty="userId" order="AFTER"
-			resultType="long">
+		<selectKey keyProperty="userId" order="AFTER" resultType="long">
 			select users_seq.currval from dual
 		</selectKey>
 
@@ -39,5 +38,4 @@
 		user_id=#{userId}
 
 	</update>
-
 </mapper>
