@@ -83,15 +83,15 @@ public class CommonController {
 	// ------- test------
 
 	// 권한 확인용 임시 url 나중에 삭제하기
-	@GetMapping("/admin/main")
-	public void mainAdmin() {
-
-	}
-
-	@GetMapping("/crew/main")
-	public void mainCrew() {
-
-	}
+//	@GetMapping("/admin/main")
+//	public void mainAdmin() {
+//
+//	}
+//
+//	@GetMapping("/crew/main")
+//	public void mainCrew() {
+//
+//	}
 
 	// -------------------
 }
