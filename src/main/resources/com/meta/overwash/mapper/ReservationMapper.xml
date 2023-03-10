@@ -70,16 +70,19 @@
 
 	<select id="getListEach" resultMap="reservationMap">
 	  <![CDATA[
-	  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
-	  		r.reservation_status
-	  	FROM
-	  		reservation r, member m
-	  	WHERE
-	  		r.reservation_id > 0
-	  	AND
-	  		#{memberId} = r.member_id
+		  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
+		  		r.reservation_status, u.email
+		  	FROM
+		  		reservation r, member m, users u
+		  	WHERE
+		  		r.reservation_id > 0
+		  	AND
+		  		#{member.memberId} = r.member_id
+            AND
+                m.user_id = #{}
 	  ]]>
 	</select>
+
 
 	<select id="getListEachOne" resultMap="reservationMap">
 		<![CDATA[

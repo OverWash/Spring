@@ -35,7 +35,7 @@ public class MemberController {
 	
 	@GetMapping("/main")
 	public void main(Principal principal, Model model) {
-		String username = principal.getName();
+		String username = principal.getName(); // 이거 이메일임.
 		model.addAttribute("reservations", reservationService.getListEach(999L));
 		model.addAttribute("username", username);
 	}
@@ -66,8 +66,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("/request")
-	public void request(@RequestParam("memberId") Long memberId, Model model) throws Exception {
-		model.addAttribute("member", memberService.get(memberId));
+	public void request(Principal principal, Model model) throws Exception {
+		String username = principal.getName();
+		
+//		model.addAttribute("member", memberService.get(memberId));
 	}
 	
 	
