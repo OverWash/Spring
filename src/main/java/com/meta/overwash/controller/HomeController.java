@@ -29,8 +29,8 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		List<MemberDTO> members = membermap.getList();
-		model.addAttribute("members", members);
+//		List<MemberDTO> members = membermap.getList();
+//		model.addAttribute("members", members);
 		return "home";
 	}
 

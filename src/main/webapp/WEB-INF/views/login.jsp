@@ -17,10 +17,10 @@
   <form method='post' action="/login">
   
   <div>
-    <input type='text' name='username' value='admin'>
+    <input type='text' name='username' value='member'>
   </div>
   <div>
-    <input type='password' name='password' value='admin'>
+    <input type='password' name='password' value='1234'>
   </div>
   <div>
   <div>
