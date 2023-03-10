@@ -13,10 +13,11 @@ import lombok.ToString;
 @ToString
 public class ReservationDTO {
 
-	private Integer reservationId;
+	private Long reservationId;
 	private Date collectDate;
 	private Date reservationDate;
 	private String request;
+	private String laundryType;
 	private String reservationStatus;
 	private MemberDTO member;
 }

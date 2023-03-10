@@ -12,8 +12,6 @@ import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.MemberMapper;
 import com.meta.overwash.mapper.UserMapper;
 
-import lombok.AllArgsConstructor;
-
 @Service
 public class MemberServiceImpl implements MemberService {
 
