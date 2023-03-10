@@ -14,8 +14,10 @@ import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryDTO;
 import com.meta.overwash.domain.PagenationDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
+import com.meta.overwash.service.AdminService;
 import com.meta.overwash.service.LaundryService;
 import com.meta.overwash.service.PaymentService;
+import com.meta.overwash.service.ReservationConfirmedService;
 
 @Controller
 @RequestMapping("/admin")
@@ -24,30 +26,36 @@ public class AdminController {
 	@Autowired
 	LaundryService laundryService;
 
+	@Autowired
+	PaymentService paymentService;
+
 	// 검수 예정 내역
 	// 세탁 예정 목록
+	// 초기 화면일 뿐임
 	@GetMapping("/main")
-	public void main(Criteria cri, Model model) {
-		PagenationDTO paging = new PagenationDTO(cri, laundryService.getCount());
-		model.addAttribute("laundryPaging", paging);
+	public void adminMain() {
 
 	}
 
 	// 이동 시 검수 디테일페이지로 이동
 	// 의류 가격에 대한 데이터를 띄워야하므로 laundryList를 보내줌
 	@GetMapping("/check/{rcno}")
-	public String check(@PathVariable("rcno") Long rcNo, Model model) {
+	public String adminCheckDetail(@PathVariable("rcno") Long rcNo, Model model) {
 
 		model.addAttribute("laundryList", laundryService.getList());
-
 		return "/admin/check";
 	}
 
+	// 결제 요청
 	@PostMapping("/request")
-	public void request(ArrayList<LaundryDTO> laundryList) {
-		System.out.println(laundryList);
-		for (LaundryDTO l : laundryList) {
-			System.out.println(l);
+	public String adminPaymentRequest(ArrayList<LaundryDTO> laundryList, ReservationConfirmedDTO rcDto, Model model) {
+			model.addAttribute("msg", "결제요청이 완료되었습니다.");
+			if (paymentService.requestToAdmin(rcDto.getConfirmId(), laundryList) != null) {
+
+		} else {
+			model.addAttribute("msg", "결제 요청이 취소되었습니다.");
 		}
+		return "/admin/main";
 	}
+
 }
