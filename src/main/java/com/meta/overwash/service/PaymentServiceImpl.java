@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.meta.overwash.domain.CheckDTO;
+import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryDTO;
 import com.meta.overwash.domain.PaymentRequestDTO;
 import com.meta.overwash.domain.ReceiptDTO;
@@ -21,8 +22,10 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Autowired
 	ReservationConfirmedMapper rcMapper;
+
 	@Autowired
 	CheckMapper checkMapper;
+
 	@Autowired
 	PaymentRequestMapper prMapper;
 
@@ -39,26 +42,21 @@ public class PaymentServiceImpl implements PaymentService {
 	 */
 	@Override
 	@Transactional
-	public PaymentRequestDTO request(Integer confirmId, List<LaundryDTO> laundryList) {
-		try {
-			ReservationConfirmedDTO rcDto = rcMapper.getReservationConfirm(confirmId);
-			int price = 0;
-			for (LaundryDTO laundry : laundryList) {
-				CheckDTO check = new CheckDTO(null, rcDto, laundry);
-//				checkMapper.insertCheck(check);
-				price += laundry.getLaundryPrice().getPrice();
-			}
-
-			PaymentRequestDTO prDto = new PaymentRequestDTO();
-			prDto.setPrPrice(price);
-			prDto.setConfirm(rcDto);
-			prMapper.insertPaymentRequest(prDto);
-			reservationMapper.updateReservation(rcDto.getReservation());
-			return prDto;
-
-		} catch (Exception e) {
-			return null;
+	public PaymentRequestDTO requestToAdmin(Integer confirmId, List<LaundryDTO> laundryList) {
+		ReservationConfirmedDTO rcDto = rcMapper.getReservationConfirm(confirmId);
+		int price = 0;
+		for (LaundryDTO laundry : laundryList) {
+			CheckDTO check = new CheckDTO(null, rcDto, laundry);
+			checkMapper.insertCheck(check);
+			price += laundry.getLaundryPrice().getPrice();
 		}
+
+		PaymentRequestDTO prDto = new PaymentRequestDTO();
+		prDto.setPrPrice(price);
+		prDto.setConfirm(rcDto);
+		prMapper.insertPaymentRequest(prDto);
+		reservationMapper.updateReservation(rcDto.getReservation());
+		return prDto;
 	}
 
 	// 고객
@@ -69,9 +67,39 @@ public class PaymentServiceImpl implements PaymentService {
 	 * 
 	 * */
 	@Override
-	public boolean process(ReceiptDTO receipt, PaymentRequestDTO paymentDto) {
+	public boolean paymentProcess(ReceiptDTO receipt) {
 
 		return false;
+	}
+
+	// RestController Paging 관리자 내역
+	@Override
+	public List<PaymentRequestDTO> getListToAdmin(Criteria cri) {
+
+		return prMapper.getListToAdmin(cri);
+	}
+
+	@Override
+	public List<PaymentRequestDTO> getListToMember(Criteria cri, Long memberId) {
+
+		return prMapper.getListToAdmin(cri);
+	}
+
+	@Override
+	public Long getCountToMember(Long memberId) {
+
+		return prMapper.getCountToMember(memberId);
+	}
+
+	@Override
+	public PaymentRequestDTO get(Long pno) {
+		return prMapper.getPaymentRequest(pno);
+	}
+
+	@Override
+	public Long getCountToAdmin() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
