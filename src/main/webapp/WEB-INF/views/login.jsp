@@ -35,11 +35,11 @@
 									
 									<form class="user" action="/login" method="post">
 										<div class="form-group">
-											<input type="text" name='username' class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
+											<input type="text" name='username' class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" required="required">
 										</div>
 
 										<div class="form-group">
-											<input type='password' name='password' class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+											<input type='password' name='password' class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required="required">
 										</div>
 										
 										<!--  security remember-me -->

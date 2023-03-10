@@ -158,7 +158,11 @@
 							<div class="modal-body">정말 로그아웃할까요?</div>
 							<div class="modal-footer">
 								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-								<a class="btn btn-primary" href="login.html">Logout</a>
+								<!-- <a class="btn btn-primary" href="/logout">Logout</a> -->
+								<form action="/logout" method="post">
+									<input type="submit" class="btn btn-primary" value="Logout" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								</form>
+								
 							</div>
 						</div>
 					</div>

@@ -28,6 +28,11 @@ public class CommonController {
 
 	// 처음 서버 켰을 때 루트 페이지가 로그인 페이지
 	@GetMapping("/")
+	public String start() {
+		return "redirect:/login";
+	}
+	
+	@GetMapping("/login")
 	public String login(String error, String logout, Model model) {
 		
 		log.info("ROOT: LOGIN PAGE LOADED");
@@ -45,11 +50,14 @@ public class CommonController {
 		return "login";
 	}
 
-	// 로그아웃 처리 어떻게?
-	@GetMapping("/logout")
-	public void logout() {
-
-	}
+	
+	 // 로그아웃 처리 어떻게?
+	 
+//	 @GetMapping("/logout") 
+//	 public void logout() {
+//	 
+//	 }
+	 
 
 	// 접근 권한 에러 커스텀 처리
 	@GetMapping("/accessError")
