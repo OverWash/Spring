@@ -19,12 +19,26 @@
 		<result property="memberAddress" column="MEMBER_ADDRESS"/>
 		<result property="memberContact" column="MEMBER_CONTACT"/>
 		<result property="nickname" column="nickname"/>
-		<result property="email" column="email"/>
-		
+
 	</resultMap>
 
+	<insert id="insertReservationConfirm">
+		<selectKey keyProperty="reservationConfirmId" resultType="Long" order="BEFORE">
+			SELECT RESERVATION_CONFIRMED_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO RESERVATION_CONFIRM 
+		VALUES(
+				#{confirmId},
+				SYSDATE,
+				#{factory.factoryId},
+				#{crew.crewId},
+				#{reservation.reservationId}
+				)
+	</insert>
+
 	<select id="getReservationConfirm" resultMap="getConfirm">
-		SELECT 	RC.confirm_id,
+		SELECT
+				RC.confirm_id,
 				RC.confirm_date,
 				R.reservation_status,
 				M.email,
@@ -41,7 +55,8 @@
 
 	</select>
 
-	<select id="getList" resultMap="getConfirm" >
+	<select id="getList" resultMap="getConfirm">
+	<![CDATA[
 		SELECT 
 				R.* 
 		FROM
@@ -49,8 +64,15 @@
 						ROWNUM RN, R.* 
 				 FROM 
 				 		RESERVATION_CONFIRMED R
-				 		WHERE )
-				 		
+				 		WHERE ROWNUM < = #{pageNum} * #{amount}
+  		 		 )
+  		 WHERE 
+  		 		 RN > (#{pageNum}-1) * #{amount}
+	]]>
 	</select>
-	
+
+	<select id="getCount" resultType="Long">
+		SELECT COUNT(*) FROM ReservationConfirm
+	</select>
+
 </mapper>
