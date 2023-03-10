@@ -19,15 +19,26 @@
 									<strong>크루 회원가입</strong>
 								</h4>
 							</div>
-							<form class="user" action="/register/crew" method="post" accept-charset="UTF-8">
+							<form id="form" class="user" action="/register/crew" method="post" accept-charset="UTF-8">
 								<!-- user info (email, password) -->
-								<div class="form-group">
-									<input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일 주소" required="required">
+								<div class="form-group row">
+									<div class="col-sm-6 mb-3 mb-sm-0">
+										<input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일 주소" required="required">
+									</div>
+
+									<div class="col-sm-6">
+										<input type="button" class="btn btn-secondary btn-user btn-block" id="emailCheckBtn" name="emailCheckBtn" value="중복체크">
+									</div>
+
+									<div class="text-center">
+										<span id="impossible">이미 존재하는 아이디입니다.</span> <span id="possible">생성 가능한 아이디입니다.</span>
+									</div>
+
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="비밀번호" required="required">
 								</div>
-								
+
 								<!-- crew info -->
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="crewName" name="crewName" placeholder="이름" required="required">
@@ -37,22 +48,21 @@
 								</div>
 								<div class="form-group">
 									<input type="date" class="form-control form-control-user" id="crewBirth" name="crewBirth" placeholder="생년월일" required="required">
-								</div> 
-								
- 								<div class="form-group row">
+								</div>
+
+								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control form-control-user" id="carType" name="carType" placeholder="차종(ex. 모닝)" required="required">
 									</div>
-									
+
 									<div class="col-sm-6">
 										<input type="text" class="form-control form-control-user" id="carNumber" name="carNumber" placeholder="차량 번호" required="required">
 									</div>
 								</div>
-								
-								<input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+								<input id="submitBtn" type="submit" class="btn btn-primary btn-user btn-block" value="Register Account"> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							</form>
-							
+
 							<hr>
 							<div class="text-center">
 								<a class="small" href="/">Already have an account? Login!</a>
@@ -64,6 +74,9 @@
 		</div>
 	</div>
 	<%@ include file="../common/footer.jsp"%>
+	<%@ include file="../common/checkEmail.jsp" %>
+	
 
 </body>
 </html>
+

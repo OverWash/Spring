@@ -59,9 +59,7 @@ public class CommonController {
 	}
 
 	@GetMapping("/register")
-	public void register() {
-
-	}
+	public void register() {}
 
 	@PostMapping("/register")
 	public String register(String role) {
@@ -70,9 +68,7 @@ public class CommonController {
 	}
 	
 	@GetMapping({"/register/member", "/register/crew"})
-	public void registerUser() {
-		
-	}
+	public void registerUser() {}
 	
 	@PostMapping("/register/member")
 	public String registerMember(UserDTO user, MemberDTO member) throws Exception {

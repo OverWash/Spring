@@ -40,28 +40,28 @@
 		</div>
 	</div>
 	<%@ include file="common/footer.jsp"%>
-
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#crewBtn').on("click", function(){
+				console.log('crewBtn clicked');
+				
+				$('#role').attr("value", "ROLE_CREW");
+				$('#form').submit();
+			});
+			
+			$('#memberBtn').on("click", function(){
+				console.log('memberBtn clicked');
+				
+				$('#role').attr("value", "ROLE_MEMBER");
+				$('#form').submit();
+			});
+			
+		})
+		
+	</script>
 </body>
 </html>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function(){
-		
-		$('#crewBtn').on("click", function(){
-			console.log('crewBtn clicked');
-			
-			$('#role').attr("value", "ROLE_CREW");
-			$('#form').submit();
-		});
-		
-		$('#memberBtn').on("click", function(){
-			console.log('memberBtn clicked');
-			
-			$('#role').attr("value", "ROLE_MEMBER");
-			$('#form').submit();
-		});
-		
-	})
-	
-</script>
