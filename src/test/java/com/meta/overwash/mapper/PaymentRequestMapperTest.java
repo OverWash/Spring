@@ -1,7 +1,6 @@
 package com.meta.overwash.mapper;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.util.HashMap;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.meta.overwash.domain.MemberDTO;
-import com.meta.overwash.domain.PaymentRequestDTO;
-import com.meta.overwash.domain.ReservationConfirmedDTO;
+import com.meta.overwash.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -23,11 +20,23 @@ public class PaymentRequestMapperTest {
 	@Autowired
 	PaymentRequestMapper prMapper;
 
+//	@Test
+//	public void InsertprMapper() {
+//		PaymentRequestDTO prdto = new PaymentRequestDTO();
+//		prdto.setPrPrice(30000);
+//		prdto.setConfirm(new ReservationConfirmedDTO(1, Timestamp.valueOf("2022-09-30 00:00:00"), null, null, null));
+//		prMapper.insertPaymentRequest(prdto);
+//	}
+
 	@Test
-	public void InsertprMapper() {
-		PaymentRequestDTO prdto = new PaymentRequestDTO();
-		prdto.setPrPrice(30000);
-		prdto.setConfirm(new ReservationConfirmedDTO(1, Timestamp.valueOf("2022-09-30 00:00:00"), null, null, null));
-		prMapper.insertPaymentRequest(prdto);
+	public void getListToMember() {
+		HashMap<String, Long> map = new HashMap<String, Long>();
+		Criteria cri = new Criteria();
+		map.put("pageNum", (long) cri.getPageNum());
+		map.put("amount", (long) cri.getAmount());
+		map.put("memberId", 1L);
+
+		prMapper.getListToMember(map);
+
 	}
 }

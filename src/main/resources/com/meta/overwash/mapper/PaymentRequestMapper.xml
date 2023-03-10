@@ -4,7 +4,7 @@
 
 <!-- 테스트 쿼리  -->
 	<insert id="insertPaymentRequest">
-		<selectKey keyProperty="prId" order="BEFORE" resultType="Integer">
+		<selectKey keyProperty="prId" order="BEFORE" resultType="Long">
 			SELECT PAYMENT_REQUEST_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO payment_request(pr_id,pr_price
@@ -33,5 +33,51 @@
 		#{prPrice},
 		#{confirm.confirmId})
 	</insert> -->
+
+
+
+	<select id="getList" resultType="PaymentRequestDTO">
+	<![CDATA[
+		SELECT 
+				PR.* 
+		FROM
+				(SELECT 
+						ROWNUM RN, PR.* 
+				 FROM 
+				 		PAYMENT_REQUEST PR
+				 		WHERE ROWNUM < = #{pageNum} * #{amount}
+  		 		 )
+  		 WHERE 
+  		 		 RN > (#{pageNum}-1) * #{amount}
+	]]>
+	</select>
+
+	<select id="getCount" resultType="Long">
+		SELECT COUNT(*) FROM PAYMENT_REQUEST
+	</select>
+
+	<select resultMap="PaymentRequestDTO" id="getListToMember" parameterType="HashMap">
+		<![CDATA[
+		SELECT * from
+					(SELECT
+							ROWNUM RN
+					FROM
+							MEMBER M
+					JOIN 
+							RESERVATION R ON M.MEMBER_ID = R.MEMBER_ID
+					JOIN 
+							RESERVATION_CONFIRMED RC ON R.RESERVATION_ID = RC.RESERVATION_ID
+					JOIN 
+							PAYMENT_REQUEST PR ON PR.CONFIRM_ID = RC.CONFIRM_ID
+					WHERE 
+							ROWNUM < = #{pageNum} * #{amount}
+							AND
+							M.MEMBER_ID = #{memberId}
+					)
+		WHERE RN > (#{pageNum}-1) * #{amount}
+	]]>
+
+
+	</select>
 
 </mapper>
