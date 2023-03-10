@@ -1,63 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.MemberMapper">
-
-	<!-- user reseultmap 추가 -->
 	
-	<insert id="insertMmeber">
+	
+	<insert id="insertMember" parameterType="MemberDTO">
+		<selectKey resultType="long" order="BEFORE" keyProperty="memberId">
+			select member_id.nextval from dual
+		</selectKey>
 		insert into member
 			(member_id, user_id, memberAddress, memberContact, nickname)
 		values
-			(member_seq.nextval, #{userId}, #{memberAddress}, #{memberContact}, #{nickname})
+			(#{memberId}, #{userId}, #{memberAddress}, #{memberContact}, #{nickname})
 	</insert>
-
-	<select id="getList" resultType="MemberDTO">
-	  <![CDATA[
-	  	select
-	  		member_id, member_address, member_contact, nickname
-	  	from
-	  		member
-	  	where
-	  		member_id > 0
-	  ]]>
-	</select>
-
-	<!-- <insert id="insertMember">
-		
-	</insert> -->
-
-	<!-- <insert id="insertSelectKeyMember">
-		<selectKey keyProperty="memberId" order="BEFORE"
-			resultType="long">
-			select member_seq.nextval from dual
-		</selectKey>
-		insert into member(member_id, email, password,
-			member_address, member_contact, sign_date, nickname)
-		values(#{memberId},
-		#{email}, #{password},
-		#{memberAddress}, #{memberContact}, sysdate,
-		#{memberContact})
-	</insert> -->
-
-	<select id="getMember" resultType="MemberDTO">
+	
+	
+	<resultMap type="UserDTO" id="user">
+		<result column="user_id"		property="userId"/>
+		<result column="email"			property="email"/>
+		<result column="password"		property="password"/>
+	</resultMap>
+	
+	<resultMap type="MemberDTO" id="memberInfo">
+		<result column="member_id" 		property="memberId"/>
+		<result column="member_contact"	property="memeberContact"/>
+		<result column="member_address"	property="memeberAddress"/>
+		<result column="nickname"	property="nickname"/>
+		<association property="user" resultMap="user" />
+	</resultMap>
+	
+	<select id="getMember" resultMap="memberInfo">
 		select
-			member_id, member_address, member_contact, nickname
-	  	from
-	  		member
-	  	where
-	  		member_id=#{memberId}
-	</select>
-
-	<update id="updateMember">
-		update member 
-		set
-			nickname=#{nickname}
+			u.user_id	     as user_id,
+			u.email 	     as email,
+			u.password       as password,
+			m.member_id	     as member_id,
+			m.member_contact as member_contact,
+			m.member_address as member_address,
+			m.nickname 		 as nickname,
+		from member m
+			 join users u
+			   on m.user_id = u.user_id
 		where
-			member_id=#{memberId}
+			m.member_id = #{memberId}
+	</select>
+	
+ 	<update id="deleteMember" parameterType="Long">
+		update users
+		set
+			enabled = 0
+		where
+			user_id = (
+						select user_id
+						from member
+						where member_id = #{memberId}
+			)
+	</update>
+	
+	<update id="updateMember" parameterType="MemberDTO">
+		update member
+		set
+			member_address = #{memberAddress},
+			nickname = #{nickname},
+		where
+			where member_id = #{memberId}
 	</update>
 
-	<delete id="deleteMember">
-		delete from member where member_id=#{memberId}
-	</delete>
+	<select id="getMemberList" parameterType="String" resultMap="memberInfo">
+		select
+			u.user_id	     as user_id,
+			u.email 	     as email,
+			u.password       as password,
+			m.member_id	     as member_id,
+			m.member_contact as member_contact,
+			m.member_address as member_address,
+			m.nickname 		 as nickname,
+		from member m
+			 join users u
+			   on m.user_id = u.user_id
+		where
+			u.role = #{role}
+	</select>
+
+
 
 </mapper>
