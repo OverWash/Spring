@@ -20,9 +20,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication auth) throws IOException, ServletException {
 		
+		log.info("로그인 성공... 해당 권한 페이지로 이동합니다.");
+		
 		// 권한을 리스트로 추출
 		List<String> roleNames = new ArrayList<>();
-		System.out.println("1111");
 		
 		auth.getAuthorities().forEach(a -> {
 			roleNames.add(a.getAuthority());

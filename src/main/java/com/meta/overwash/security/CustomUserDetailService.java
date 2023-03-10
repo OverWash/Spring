@@ -21,8 +21,6 @@ public class CustomUserDetailService implements UserDetailsService {
 		System.out.println("userdatilservice: " + username);
 		UserDTO user = mapper.getUser(username);
 		
-		System.out.println("27Line" + user);
-
 		return user;
 	}
 
