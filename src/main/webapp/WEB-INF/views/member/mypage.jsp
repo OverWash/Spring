@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -10,15 +9,15 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-	<%@ include file="../common/sidebar.jsp"%>
+		<%@ include file="../common/sidebar.jsp"%>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
-			
-			<%@ include file="../common/navbar.jsp"%>
+
+				<%@ include file="../common/navbar.jsp"%>
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
@@ -29,7 +28,7 @@
 							<h1 class="font-weight-bold text-primary">회원정보</h1>
 							<h2>{member.정보1}</h2>
 							<h2>{member.정보2}</h2>
-						</div>	
+						</div>
 						<!-- 세탁 버튼 -->
 						<div class="col-xl-6 col-lg-7">
 							<div class="card shadow mb-4">
@@ -39,7 +38,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- Content Row -->
 					<div class="row">
 
@@ -52,43 +51,31 @@
 								<div class="card-body">
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{reservation.list[1]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">상세보기</span>
-	                                    		</a>
+											{reservation.list[1]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">상세보기</span>
+												</a>
 											</span>
 										</h4>
 									</div>
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{reservation.list[2]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">상세보기</span>
-	                                    		</a>
+											{reservation.list[2]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">상세보기</span>
+												</a>
 											</span>
 										</h4>
 									</div>
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{reservation.list[3]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">상세보기</span>
-	                                    		</a>
+											{reservation.list[3]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">상세보기</span>
+												</a>
 											</span>
 										</h4>
-									</div>									
+									</div>
 								</div>
 							</div>
 							<!-- 최근 예약 내역 -->
@@ -102,9 +89,9 @@
 		</div>
 		<!-- End of Content Wrapper -->
 	</div>
-	<!-- End of Page Wrapper -->	
-			
-<%@ include file="../common/footer.jsp"%>
+	<!-- End of Page Wrapper -->
+
+	<%@ include file="../common/footer.jsp"%>
 
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -10,16 +9,16 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-	<%@ include file="../common/sidebar.jsp"%>
+		<%@ include file="../common/sidebar.jsp"%>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
-			
+
 				<%@ include file="../common/navbar.jsp"%>
-				
+
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
@@ -72,15 +71,14 @@
 									</div>
 									<!-- Card Body -->
 									<div class="card-body">
-										<div class="mt-4 text-center small">
-										</div>
+										<div class="mt-4 text-center small"></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- End Content Row -->
-					
+
 					<!-- Content Row -->
 					<div class="row">
 						<!-- Content Column -->
@@ -98,7 +96,7 @@
 										<div class="progress mb-4">
 											<div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
-									</div>	
+									</div>
 									<div class="reservationList">
 										<h4 class="small font-weight-bold">
 											{reservationlist 차례로 출력} <span class="float-right">예약완료</span>
@@ -106,7 +104,7 @@
 										<div class="progress mb-4">
 											<div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
-									</div>	
+									</div>
 								</div>
 							</div>
 
@@ -122,43 +120,31 @@
 								<div class="card-body">
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{check.list[1]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">결제하기</span>
-	                                    		</a>
+											{check.list[1]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">결제하기</span>
+												</a>
 											</span>
 										</h4>
 									</div>
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{check.list[2]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">결제하기</span>
-	                                    		</a>
+											{check.list[2]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">결제하기</span>
+												</a>
 											</span>
 										</h4>
 									</div>
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{check.list[3]}
-											<span class="float-right">
-												<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-			                                        <span class="icon text-gray-600">
-			                                            <i class="fas fa-arrow-right"></i>
-			                                        </span>
-			                                        <span class="text font-weight-bold">결제하기</span>
-	                                    		</a>
+											{check.list[3]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
+													</span> <span class="text font-weight-bold">결제하기</span>
+												</a>
 											</span>
 										</h4>
-									</div>									
+									</div>
 								</div>
 							</div>
 							<!-- 검수완료리스트(결제연결) -->
@@ -173,9 +159,9 @@
 		</div>
 		<!-- End of Content Wrapper -->
 	</div>
-	<!-- End of Page Wrapper -->			
+	<!-- End of Page Wrapper -->
 
-<%@ include file="../common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 
 </body>
 </html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security" xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customAuthenticationSuccessHandler" class="com.meta.overwash.security.CustomAuthenticationSuccessHandler" />
+	<bean id="customAccessDeniedHandler" class="com.meta.overwash.security.CustomAccessDeniedHandler" />
+	<bean id="customUserDetailService" class="com.meta.overwash.security.CustomUserDetailService" />
+
+
+	<security:http>
+		<security:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/crew/*" access="hasRole('ROLE_CREW')" />
+		<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
+
+		<security:form-login login-page="/login" authentication-success-handler-ref="customAuthenticationSuccessHandler" />
+		<security:access-denied-handler ref="customAccessDeniedHandler" />
+		<security:logout invalidate-session="true" />
+
+	</security:http>
+
+
+
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="customUserDetailService">
+
+			<security:password-encoder ref="bcryptPasswordEncoder" />
+
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+
+</beans>
