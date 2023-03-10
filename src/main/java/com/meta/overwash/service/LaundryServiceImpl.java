@@ -19,10 +19,5 @@ public class LaundryServiceImpl implements LaundryService {
 
 		return laundryMapper.getList();
 	}
-
-	@Override
-	public int getCount() {
-		return laundryMapper.getLaundryCnt();
-	}
-
+	
 }
