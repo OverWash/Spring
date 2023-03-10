@@ -26,7 +26,7 @@
 					<!-- Content Row -->
 					<div class="row">
 						<div class="col-xl-6 col-lg-7">
-							<h1>회원정보</h1>
+							<h1 class="font-weight-bold text-primary">회원정보</h1>
 							<h2>{member.정보1}</h2>
 							<h2>{member.정보2}</h2>
 						</div>	

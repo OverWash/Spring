@@ -36,10 +36,10 @@ public class ReservationServiceTests {
 //	}
 	//OK
 	
+	
 //	public void updateReservationStatus(ReservationDTO reservation) {
 //		mapper.updateReservationStatus(reservation);
 //	}
-//	
 //	@Test
 //	public void registerWashingComplete() {
 //		ReservationDTO reservation = new ReservationDTO();
