@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 
 
 @Log4j
-public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
+public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,

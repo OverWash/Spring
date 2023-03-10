@@ -11,7 +11,7 @@ import com.meta.overwash.mapper.UserMapper;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
-public class UserDetailServiceImpl implements UserDetailsService {
+public class CustomUserDetailService implements UserDetailsService {
 
 	@Autowired
 	private UserMapper mapper;
