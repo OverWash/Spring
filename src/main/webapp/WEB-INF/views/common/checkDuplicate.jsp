@@ -3,21 +3,18 @@
 <script type="text/javascript" src="/resources/js/common.js"></script>
 <script type="text/javascript">
 	$(function() {
-		// 이메일 체크 결과 란은 초기에 hide로 설정
+		// 이메일 체크 결과 초기에 hide로 설정
 		$('#impossibleEmail').hide();
 		$('#possibleEmail').hide();
-		
+		var emailChecked = false;
+
+		// 연락처 체크 결과 초기에 hide로 설정
 		$('#impossibleContact').hide();
 		$('#possibleContact').hide();
-
-		var emailChecked = false;
 		var contactChecked = false;
-		
 		
 		// 이메일 중복 검사
 		$('#emailCheckBtn').on("click", function() {
-			// console.log('emailCheckBtn clicked');
-
 			const email = $('#email').val();
 			
 			// 아무것도 입력하지 않았으면 ajax 호출 취소
@@ -30,12 +27,10 @@
 				if (result == "impossible") {
 					$('#impossibleEmail').show();
 					$('#possibleEmail').hide();
-					
 					emailChecked = false;
 				} else {
 					$('#impossibleEmail').hide();
 					$('#possibleEmail').show();
-
 					emailChecked = true;
 				}
 			});
@@ -44,9 +39,9 @@
 		
 		
 		// 연락처 중복 검사
-		$('#contactCheckBtn').on('click', function(){
-						
+		$('#contactCheckBtn').on('click', function(){	
 			const contact = $('#contact').val();
+			const type = $('input[name=type]').val();
 			
 			// 아무것도 입력하지 않았으면 ajax 호출 취소
 			if (contact == "") {
@@ -54,56 +49,30 @@
 				return false;
 			}
 			
-			const type = $('input[name=type]').val();
-			
-			// js 서비스에 type 넘겨줘서 거기서 판단하고 ajax 요청 경로를 바꾸는 걸로 수정하기
-			
-			if (type == "member") {
-				commonService.checkMemberContact(contact, function(result){
-					if (result == "impossible") {
-						$('#possibleContact').hide();
-						$('#impossibleContact').show();
-						
-						contactChecked = false;
-					} else {
-						$('#possibleContact').show();
-						$('#impossibleContact').hide();
-						
-						contactChecked = true;
-					}
-				});	
-			}
-			
-			if (type == "crew") {
-				commonService.checkCrewContact(contact, function(result){
-					if (result == "impossible") {
-						$('#possibleContact').hide();
-						$('#impossibleContact').show();
-						
-						contactChecked = false;
-					} else {
-						$('#possibleContact').show();
-						$('#impossibleContact').hide();
-						
-						contactChecked = true;
-					}
-				});	
-			}
+			commonService.checkContact(contact, type, function(result){
+				if (result == "impossible") {
+					$('#possibleContact').hide();
+					$('#impossibleContact').show();
+					contactChecked = false;
+				} else {
+					$('#possibleContact').show();
+					$('#impossibleContact').hide();
+					contactChecked = true;
+				}
+			});				
 		});
 		
 		
 		$('#form').on("submit", function(e) {
-			// e.preventDefault();
-
+			
 			$(':required', this).parent().show();
 
 			var invalidInputs = $(":invalid", this);
 
-			// console.log(invalidInputs);
-
 			// 입력되지 않은 required input이 있으면 form submit event 취소
 			if (invalidInputs.length > 0) return;
 
+			// form submit event 취소
 			if (event.originalEvent) return false;
 
 			// 이메일, 연락처 중복 검사를 모두 완료해야 회원가입 등록 가능
@@ -115,6 +84,5 @@
 				return false;
 			}
 		});
-
 	});
 </script>
