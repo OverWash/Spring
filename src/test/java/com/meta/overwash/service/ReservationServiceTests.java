@@ -1,5 +1,7 @@
 package com.meta.overwash.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,8 @@ import com.meta.overwash.mapper.ReservationMapper;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
 public class ReservationServiceTests {
 	
@@ -57,4 +60,9 @@ public class ReservationServiceTests {
 //		updateReservationStatus(reservation);
 //	}
 	//OK
+	@Test
+	public void getListMemberTest() {
+		String username = "member@gmail.com";
+		service.getListMember(username).forEach(reservations -> log.info(reservations));
+	}
 }

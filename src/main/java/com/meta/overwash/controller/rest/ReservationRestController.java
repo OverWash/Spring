@@ -13,7 +13,11 @@ import com.google.gson.Gson;
 import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.service.ReservationService;
 
+import lombok.extern.log4j.Log4j;
+
+@RequestMapping("/reservations*")
 @RestController
+@Log4j
 public class ReservationRestController {
 	
 	@Autowired

@@ -36,9 +36,16 @@ public class MemberController {
 	@GetMapping("/main")
 	public void main(Principal principal, Model model) {
 		String username = principal.getName(); // 이거 이메일임.
-		model.addAttribute("reservations", reservationService.getListEach(999L));
+		model.addAttribute("reservations", reservationService.getListMember(username));
 		model.addAttribute("username", username);
 	}
+	
+	@GetMapping("/request")
+	public void request(Principal principal, Model model) throws Exception {
+		String username = principal.getName();
+//		model.addAttribute("member", memberService.get(memberId));
+	}
+	
 
 	@GetMapping({ "/mypage", "/modify" })
 	public void get(@RequestParam("memberId") Long memberId, Model model) throws Exception {
@@ -65,12 +72,7 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 	
-	@GetMapping("/request")
-	public void request(Principal principal, Model model) throws Exception {
-		String username = principal.getName();
-		
-//		model.addAttribute("member", memberService.get(memberId));
-	}
+
 	
 	
 

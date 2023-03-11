@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../common/header.jsp"%>
+
 <body id="page-top">
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -54,25 +55,13 @@
 									</div>
 								</div>
 							</div>
-							<div class="temporary2">
-								<div class="card shadow mb-4">
-									<!-- Card Header - Dropdown -->
-									<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">이벤트</h6>
-									</div>
-									<!-- Card Body -->
-									<div class="card-body">
-										<div class="mt-4 text-center small"></div>
-									</div>
-								</div>
-							</div>
 						</div>
 					</div>
 					<!-- End Content Row -->
 
 					<!-- Content Row -->
 					<div class="row">
-						<!-- Content Column -->
+						<!-- 예약리스트 Content Column -->
 						<div class="col-xl-12 mb-4">
 							<!-- Project Card Example -->
 							<div class="card shadow mb-4">
@@ -80,29 +69,24 @@
 									<h5 class="m-0 font-weight-bold text-primary">예약리스트</h5>
 								</div>
 								<div class="card-body">
-
 									<c:forEach items="${reservations}" var="reservations">
 											<div class="reservations">
 												<h4 class="small font-weight-bold">                                                                
-													<a class="dropdown-item" href="/reservations/getdetail?=${reservations.reservationId}" id="reservationDetailLink" data-toggle="modal" data-target="#reservationDetailModal">
+													<a class="dropdown-item" href="getdetail?=${reservations.reservationId}" id="reservationDetailLink" data-toggle="modal" data-target="#reservationDetailModal">
 														${reservations.collectDate} | ${reservations.reservationStatus}
 													</a>
 													<span class="float-right"></span>
 												</h4>
-												
 												<div class="progress progress-sm mb-4">
 													<div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
 												</div>
 											</div>
 									</c:forEach>
-
 								</div>
 							</div>
-
 						</div>
-
+						<!-- End of 예약리스트 Content Column -->
 						<div class="col-xl-12 mb-4">
-
 							<!-- 검수완료리스트(결제연결) -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
@@ -139,15 +123,14 @@
 	<!-- End of Page Wrapper -->
     
    	<!-- 예약상세 Modal-->
-    <div class="modal fade" id="reservationDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="reservationDetailModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">예약상세</h5>
                 </div>
                 <div class="modal-body">
-                	Select "Logout" below if you are ready to end your current session.
+                	예약상세 보여줘야함...
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">돌아가기</button>
@@ -158,6 +141,7 @@
     <!-- 예약상세 Modal-->
     
 	<%@ include file="../common/footer.jsp"%>
+	<!-- 
 	<script>
 	$('#reservationDetailLink').on('click', function(){
 		$.ajax({
@@ -182,6 +166,6 @@
 		})
 	})
 		
-	</script>
+	</script> -->
 </body>
 </html>

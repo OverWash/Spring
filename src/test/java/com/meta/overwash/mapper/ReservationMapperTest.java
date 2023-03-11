@@ -1,5 +1,7 @@
 package com.meta.overwash.mapper;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.ReservationDTO;
+import com.meta.overwash.domain.UserDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -25,36 +28,30 @@ public class ReservationMapperTest {
 	@Autowired
 	BCryptPasswordEncoder bc;
 
-	@Test
-	public void getListEachOneTest() throws Exception {
-		ReservationDTO reservation = new ReservationDTO();
-		MemberDTO member = new MemberDTO();
-
-		reservation.setMember(memberMapper.getMember(999L));
-
-		member.setMemberId(999L);
-		reservation.setReservationId(1L);
-		reservation.setMember(member);
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$:" + reservation.getReservationId());
-		log.info("$$$$$$$$$$$$$$$$$$$$$$$:" + reservation.getMember().getMemberId());
-
-		mapper.getListEachOne(reservation);
-
-//		log.info(member);
-	}
+//	@Test
+//	public void getListEachOneTest() throws Exception {
+//		ReservationDTO reservation = new ReservationDTO();
+//		MemberDTO member = new MemberDTO();
+//		UserDTO user = new UserDTO();
+//		user.setEmail("member2@gmail.com");
+//		reservation.setReservationId(6L);
+//		member.setUser(user);
+//		reservation.setMember(member);
+//		mapper.getListEachOne(reservation);
+//	}
+	//OK
 
 //	@Test
 //	public void insertTest() {
 //
 //		try {
-//			MemberDTO member = memberMapper.getMember(999L);
+//			MemberDTO member = memberMapper.getMember(2L);
 //			Date day = new Date();
 //
 //			ReservationDTO reservation = new ReservationDTO();
 //			reservation.setMember(member);
 //			reservation.setCollectDate(day);
-//			reservation.setRequest("999의 테스트 요청입니다4");
-//			reservation.setMember(member);
+//			reservation.setRequest("OldMebmer's request3");
 //
 //			mapper.insertReservation(reservation);
 //			log.info(member);
@@ -96,5 +93,12 @@ public class ReservationMapperTest {
 //		mapper.insertWashingComplete(washingComplete);
 //	}
 	// OK
-
+	
+//	@Test
+//	public void getListMember() throws Exception {
+//		String username = "member@gmail.com";
+//
+//		mapper.getListMember(username);
+//	}
+	//OK
 }

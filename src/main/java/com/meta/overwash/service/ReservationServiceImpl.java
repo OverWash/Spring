@@ -54,6 +54,11 @@ public class ReservationServiceImpl implements ReservationService{
 		updateReservationStatus(reservation);
 	}
 
+	@Override
+	public List<ReservationDTO> getListMember(String username) {
+		return mapper.getListMember(username);
+	}
+
 
 
 

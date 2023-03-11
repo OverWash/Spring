@@ -15,7 +15,7 @@ public interface ReservationMapper {
 
 	public void insertReservation(ReservationDTO reservation);
 
-//	public ReservationDTO getReservation(Long reservationId);
+	public List<ReservationDTO> getListMember(String username);
 
 	public void insertWashingComplete(WashingCompleteDTO washingComplete);
 

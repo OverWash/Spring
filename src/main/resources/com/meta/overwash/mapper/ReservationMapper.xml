@@ -78,26 +78,49 @@
 		  		r.reservation_id > 0
 		  	AND
 		  		#{member.memberId} = r.member_id
-            AND
-                m.user_id = #{}
 	  ]]>
 	</select>
-
-
+ 
 	<select id="getListEachOne" resultMap="reservationMap">
 		<![CDATA[
-		  	SELECT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
+		  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
 		  		r.reservation_status
 		  	FROM
-		  		Reservation R, MEMBER M
+		  		Reservation R, MEMBER M, users u, users u2
 			WHERE
 			r.Reservation_id > 0
 		]]>
 			AND
-			r.member_id = #{member.memberId}
-			AND
-			r.reservation_id = #{reservationId}
+                u.email = #{member.user.email}
+		  	AND
+		  		u.email = u2.email
+            AND 
+                r.member_id = u.user_id
+            AND
+                r.reservation_id = #{reservationId}
 	</select>
+			<!-- r.member_id = #{member.memberId}
+			AND
+			r.reservation_id = #{reservationId} -->
+	<select id="getListMember" resultMap="reservationMap">
+		<![CDATA[
+			SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
+		  		r.reservation_status, u.email
+		  	FROM
+		  		reservation r, users u, users u2
+		  	WHERE
+		  		r.reservation_id > 0
+		]]>
+            AND
+                u.email = #{username}
+		  	AND
+		  		u.email = u2.email
+            AND 
+                r.member_id = u.user_id
+                
+	</select>
+	
+		
 
 	<select id="getListCheckComplete" resultMap="reservationMap"
 		parameterType="ReservationDTO">
