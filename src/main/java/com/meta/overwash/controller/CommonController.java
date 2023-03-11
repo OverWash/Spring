@@ -28,13 +28,14 @@ public class CommonController {
 	// 처음 서버 켰을 때 루트 페이지가 로그인 페이지
 	@GetMapping("/")
 	public String start() {
+		log.info("ROOT : SEVER LOADED");
 		return "redirect:/login";
 	}
 	
 	@GetMapping("/login")
 	public String login(String error, String logout, Model model) {
 		
-		log.info("ROOT: LOGIN PAGE LOADED");
+		log.info("ROOT : LOGIN PAGE LOADED");
 		
 		// 로그인 실패 시 view로 에러 메시지 넘겨 줌
 		if (error != null) {

@@ -29,7 +29,7 @@
 						<div class="col-xl-6 col-lg-7">
 							<div class="card shadow mb-4">
 								<div class="card-body">
-									<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="/resources/img/wash-icon.png">
+									<button id="reservationBtn"><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="/resources/img/wash-icon.png"></button>
 								</div>
 							</div>
 						</div>
@@ -162,6 +162,21 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#reservationBtn').on("click", function(){
+				console.log('예약 신청 버튼 클릭');
+				location.href = "request";
+			});
+			
+			
+			
+		})
+		
+	</script>
 
 </body>
 </html>
