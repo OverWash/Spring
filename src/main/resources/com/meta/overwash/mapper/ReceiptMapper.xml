@@ -30,7 +30,7 @@
 		JOIN
 			reservation r ON r.reservation_id = rc.reservation_id
 		WHERE 
-			rec.receipt_id = #{receiptId}
+			r.reservation_id = #{reservationId}
 	</select>
 
 	<select id="getReceiptList" resultMap="receiptMap">

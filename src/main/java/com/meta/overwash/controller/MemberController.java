@@ -55,8 +55,15 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 
+	
+	// ----------테스트용-----------
 	@GetMapping("/request")
 	public void request() {
+		
+	}
+	
+	@GetMapping("/result")
+	public void result() {
 		
 	}
 	

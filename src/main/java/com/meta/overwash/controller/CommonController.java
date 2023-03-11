@@ -18,10 +18,10 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class CommonController {
-	
+
 	@Autowired
 	CrewService crewService;
-	
+
 	@Autowired
 	MemberService memberService;
 
@@ -31,12 +31,12 @@ public class CommonController {
 		log.info("ROOT : SEVER LOADED");
 		return "redirect:/login";
 	}
-	
+
 	@GetMapping("/login")
 	public String login(String error, String logout, Model model) {
-		
+
 		log.info("ROOT : LOGIN PAGE LOADED");
-		
+
 		// 로그인 실패 시 view로 에러 메시지 넘겨 줌
 		if (error != null) {
 			model.addAttribute("error", "로그인에 실패하였습니다.");
@@ -46,7 +46,7 @@ public class CommonController {
 		if (logout != null) {
 			model.addAttribute("logout", "로그아웃 완료.");
 		}
-		
+
 		return "login";
 	}
 
@@ -58,45 +58,52 @@ public class CommonController {
 	}
 
 	@GetMapping("/register")
-	public void register() {}
+	public void register() {
+	}
 
 	@PostMapping("/register")
 	public String register(String role) {
 		// forward 방식
-		return role.equals("ROLE_MEMBER") ? "/register/member" : "/register/crew"; 
+		return role.equals("ROLE_MEMBER") ? "/register/member" : "/register/crew";
 	}
-	
-	@GetMapping({"/register/member", "/register/crew"})
+
+	@GetMapping({ "/register/member", "/register/crew" })
 	public void registerUser() {
-		
+
 	}
-	
+
 	@PostMapping("/register/member")
 	public String registerMember(UserDTO user, MemberDTO member) throws Exception {
-		//form에서 값 제대로 넘어왔는지 확인
+		// form에서 값 제대로 넘어왔는지 확인
 		log.info("form data user!  " + user);
 		log.info("form data member!  " + member);
-		
+
 		memberService.insert(user, member);
-		
+
 		return "redirect:/login";
 	}
-	
+
 	@PostMapping("/register/crew")
 	public String registerCrew(UserDTO user, CrewDTO crew) throws Exception {
-		//form에서 값 제대로 넘어왔는지 확인
+		// form에서 값 제대로 넘어왔는지 확인
 		log.info("form data user!  " + user);
 		log.info("form data crew!  " + crew);
-		
+
 		crewService.insert(user, crew);
-		
+
 		return "redirect:/login";
 	}
 
-	
-	// for test
+	// --------------------------
+	/* 테스트용 나중에 삭제 */
 	@GetMapping("/admin/main")
-	public void adminMain() {}
-	
+	public void adminMain() {
+	}
 
+	@GetMapping("/table")
+	public void table() {
+
+	}
+	
+	// --------------------------
 }
