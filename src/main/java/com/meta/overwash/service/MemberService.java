@@ -7,7 +7,6 @@ import com.meta.overwash.domain.UserDTO;
 
 public interface MemberService {
 
-
 	public void insert(UserDTO user, MemberDTO member) throws Exception;
 	
 	public boolean remove(Long memberId) throws Exception;
@@ -17,4 +16,7 @@ public interface MemberService {
 	public MemberDTO get(Long memberId) throws Exception;
 	
 	public List<MemberDTO> getMemberList(String role) throws Exception;
+	
+	public String getContact(String contact) throws Exception;
+	
 }

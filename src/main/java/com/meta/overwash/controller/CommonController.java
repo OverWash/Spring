@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.meta.overwash.domain.CrewDTO;
 import com.meta.overwash.domain.MemberDTO;
@@ -50,15 +49,6 @@ public class CommonController {
 		return "login";
 	}
 
-	
-	 // 로그아웃 처리 어떻게?
-	 
-//	 @GetMapping("/logout") 
-//	 public void logout() {
-//	 
-//	 }
-	 
-
 	// 접근 권한 에러 커스텀 처리
 	@GetMapping("/accessError")
 	public void accessError(Authentication auth, Model model) {
@@ -71,12 +61,14 @@ public class CommonController {
 
 	@PostMapping("/register")
 	public String register(String role) {
-		// redirect에서 forward 방식으로 변경
+		// forward 방식
 		return role.equals("ROLE_MEMBER") ? "/register/member" : "/register/crew"; 
 	}
 	
 	@GetMapping({"/register/member", "/register/crew"})
-	public void registerUser() {}
+	public void registerUser() {
+		
+	}
 	
 	@PostMapping("/register/member")
 	public String registerMember(UserDTO user, MemberDTO member) throws Exception {
@@ -86,7 +78,7 @@ public class CommonController {
 		
 		memberService.insert(user, member);
 		
-		return "redirect:/";
+		return "redirect:/login";
 	}
 	
 	@PostMapping("/register/crew")
@@ -97,8 +89,13 @@ public class CommonController {
 		
 		crewService.insert(user, crew);
 		
-		return "redirect:/";
+		return "redirect:/login";
 	}
 
+	
+	// for test
+	@GetMapping("/admin/main")
+	public void adminMain() {}
+	
 
 }

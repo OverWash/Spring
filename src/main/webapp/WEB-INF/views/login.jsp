@@ -36,7 +36,7 @@
 									<!-- Login Form -->
 									<form class="user" action="/login" method="post">
 										<div class="form-group">
-											<input type="email" name='username' class="form-control form-control-user" id="username" aria-describedby="emailHelp" placeholder="Email" required="required">
+											<input type="text" name='username' class="form-control form-control-user" id="username" placeholder="Email" required="required">
 										</div>
 
 										<div class="form-group">

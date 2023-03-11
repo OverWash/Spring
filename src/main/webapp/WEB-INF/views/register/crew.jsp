@@ -31,7 +31,7 @@
 									</div>
 
 									<div class="text-center">
-										<span id="impossible">이미 존재하는 아이디입니다.</span> <span id="possible">생성 가능한 아이디입니다.</span>
+										<span id="impossibleEmail">이미 존재하는 아이디입니다.</span> <span id="possibleEmail">생성 가능한 아이디입니다.</span>
 									</div>
 
 								</div>
@@ -43,9 +43,24 @@
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="crewName" name="crewName" placeholder="이름" required="required">
 								</div>
-								<div class="form-group">
-									<input type="tel" class="form-control form-control-user" id="crewContact" name="crewContact" placeholder="연락처(숫자만 입력)" required="required">
+								
+								<div class="form-group row">
+									<div class="form-group">
+										<input type="tel" class="form-control form-control-user" id="contact" name="crewContact" placeholder="연락처(숫자만 입력)" required="required">
+									</div>
+
+									<!-- 연락처 중복체크 -->
+									<div class="col-sm-6">
+										<input type="button" class="btn btn-secondary btn-user btn-block" id="contactCheckBtn" name="contactCheckBtn" value="중복체크">
+									</div>
+
+									<div class="text-center">
+										<span id="impossibleContact">이미 존재하는 연락처입니다.</span> <span id="possibleContact">등록 가능한 연락처입니다.</span>
+									</div>
+									
+									<input type="hidden" name="type" value="crew">
 								</div>
+								
 								<div class="form-group">
 									<input type="date" class="form-control form-control-user" id="crewBirth" name="crewBirth" placeholder="생년월일" required="required">
 								</div>
@@ -74,7 +89,7 @@
 		</div>
 	</div>
 	<%@ include file="../common/footer.jsp"%>
-	<%@ include file="../common/checkEmail.jsp" %>
+	<%@ include file="../common/checkDuplicate.jsp" %>
 	
 
 </body>

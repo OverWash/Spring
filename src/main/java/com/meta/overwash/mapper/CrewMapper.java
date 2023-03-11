@@ -15,4 +15,6 @@ public interface CrewMapper {
 	public int updateCrew(CrewDTO crew);
 
 	public int deleteCrew(Long crewId);
+	
+	public String getCrewContact(String contact) throws Exception;
 }

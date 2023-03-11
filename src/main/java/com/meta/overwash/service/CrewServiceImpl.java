@@ -1,7 +1,6 @@
 package com.meta.overwash.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.meta.overwash.domain.CrewDTO;
-import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.CrewMapper;
 import com.meta.overwash.mapper.UserMapper;
@@ -64,6 +62,11 @@ public class CrewServiceImpl implements CrewService {
 	
 	public List<CrewDTO> getCrewList(String role) throws Exception {
 		return crewMapper.getCrewList(role);
+	}
+
+	@Override
+	public String getContact(String contact) throws Exception {
+		return crewMapper.getCrewContact(contact);
 	}
 	
 }

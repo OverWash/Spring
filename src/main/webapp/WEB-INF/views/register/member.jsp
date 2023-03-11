@@ -21,18 +21,18 @@
 							</div>
 							<form id="form" class="user" action="/register/member" method="post" accept-charset="UTF-8">
 								<!-- user info (email, password) -->
-								<!-- user info (email, password) -->
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="email" class="form-control form-control-user" id="email" name="email" placeholder="이메일 주소" required="required">
 									</div>
-
+									
+									<!-- 이메일 중복체크 -->
 									<div class="col-sm-6">
 										<input type="button" class="btn btn-secondary btn-user btn-block" id="emailCheckBtn" name="emailCheckBtn" value="중복체크">
 									</div>
 
 									<div class="text-center">
-										<span id="impossible">이미 존재하는 아이디입니다.</span> <span id="possible">생성 가능한 아이디입니다.</span>
+										<span id="impossibleEmail">이미 존재하는 아이디입니다.</span> <span id="possibleEmail">생성 가능한 아이디입니다.</span>
 									</div>
 
 								</div>
@@ -45,9 +45,26 @@
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="nickname" name="nickname" placeholder="닉네임" required="required">
 								</div>
-								<div class="form-group">
-									<input type="tel" class="form-control form-control-user" id="memberContact" name="memberContact" placeholder="연락처(숫자만 입력)" required="required">
+								
+								
+								<div class="form-group row">
+									<div class="form-group">
+										<input type="tel" class="form-control form-control-user" id="contact" name="memberContact" placeholder="연락처(숫자만 입력)" required="required">
+									</div>
+
+									<!-- 연락처 중복체크 -->
+									<div class="col-sm-6">
+										<input type="button" class="btn btn-secondary btn-user btn-block" id="contactCheckBtn" name="contactCheckBtn" value="중복체크">
+									</div>
+
+									<div class="text-center">
+										<span id="impossibleContact">이미 존재하는 연락처입니다.</span> <span id="possibleContact">등록 가능한 연락처입니다.</span>
+									</div>
+									
+									<input type="hidden" name="type" value="member">
 								</div>
+								
+							
 								<div class="form-group">
 									<input type="text" class="form-control form-control-user" id="memberAddress" name="memberAddress" placeholder="주소" required="required">
 								</div>
@@ -66,7 +83,7 @@
 		</div>
 	</div>
 	<%@ include file="../common/footer.jsp"%>
-	<%@ include file="../common/checkEmail.jsp" %>
+	<%@ include file="../common/checkDuplicate.jsp" %>
 
 </body>
 </html>

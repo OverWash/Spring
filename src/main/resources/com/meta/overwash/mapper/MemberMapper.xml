@@ -81,6 +81,14 @@
 			u.role = #{role}
 	</select>
 
+	<select id="getMemberContact" resultType="String">
+		select 
+			member_contact 
+		from 
+			member 
+		where 
+			member_contact = #{memberContact}
+	</select>
 
 
 </mapper>
