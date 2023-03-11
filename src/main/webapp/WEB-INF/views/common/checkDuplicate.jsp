@@ -92,12 +92,6 @@
 		});
 		
 		
-
-		
-		
-		
-		
-		
 		$('#form').on("submit", function(e) {
 			// e.preventDefault();
 
@@ -112,8 +106,7 @@
 
 			if (event.originalEvent) return false;
 
-			// 이메일 중복이 아니어야 submit 가능
-			// 핸드폰 중복 검사도 추가하기
+			// 이메일, 연락처 중복 검사를 모두 완료해야 회원가입 등록 가능
 			if (emailChecked && contactChecked) {
 				$('form').submit();
 			} else {
