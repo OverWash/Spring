@@ -2,10 +2,89 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.ReservationMapper">
 
+
 	<update id="updateReservation">
 		UPDATE RESERVATION SET RESERVATION_STATUS =#{reservationStatus}
 		WHERE RESERVATION_ID = #{reservationId}
 	</update>
+
+	<resultMap type="WashingCompleteDTO" id="WashingCompleteMap">
+		<id property="wcId" column="wc_id"/>
+		<result property="wcDate" column="wc_date"/>
+		<association property="confirm" resultMap="reservationConfirmedMap"/>
+	</resultMap>
 	
+	<resultMap type="ReservationConfirmedDTO" id="reservationConfirmedMap">
+      <id property="confirmId" column="confirm_id"/>
+      <result property="confirmDate" column="confirm_date"/>
+      <association property="reservation" resultMap="reservationMap"/>
+	</resultMap>
+
+	<resultMap type="ReservationDTO" id="reservationMap">
+		<id property="reservationId" column="reservation_id"/>
+		<result property="collectDate" column="collect_date"/>
+		<result property="reservationDate" column="reservation_date"/>
+		<result property="request" column="request"/>
+		<result property="laundryType" column="laundry_type"/>
+		<result property="reservationStatus" column="reservation_status"/>
+		<association property="member" resultMap="memberMap"/>
+	</resultMap>
 	
+	<resultMap type="MemberDTO" id="memberMap">
+		<id property="memberId" column="member_id"/>
+		<result property="email" column="email"/>
+		<result property="password" column="password"/>
+		<result property="memberAddress" column="member_address"/>
+		<result property="memberContact" column="member_contact"/>
+		<result property="signDate" column="sign_date"/>
+		<result property="nickname" column="nickname"/>
+	</resultMap>
+	
+	<select id="getList" resultMap="reservationMap">
+	  <![CDATA[
+	  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
+	  		r.laundry_type, r.reservation_status
+	  	FROM
+	  		reservation r, member m
+	  	WHERE
+	  		r.reservation_id > 0
+	  ]]>
+	</select>
+	
+	<select id="getListEach" resultMap="reservationMap">
+	  <![CDATA[
+	  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
+	  		r.laundry_type, r.reservation_status
+	  	FROM
+	  		reservation r, member m
+	  	WHERE
+	  		r.reservation_id > 0
+	  	AND
+	  		#{memberId} = r.member_id
+	  ]]>
+	</select>
+	
+	<update id="updateReservationStatus" parameterType="ReservationDTO">
+		UPDATE reservation
+		SET reservation_status =#{reservationStatus}
+		WHERE reservation_id = #{reservationId}
+	</update>
+	
+	<insert id="insertReservation" parameterType="ReservationDTO">
+		INSERT INTO	reservation
+		VALUES		(reservation_seq.nextval, #{collectDate}, sysdate,
+					#{request}, '일반세탁', '주문접수', #{member.memberId})
+	</insert>
+	
+	<insert id="insertReservationConfirmed" parameterType="ReservationConfirmedDTO">
+		INSERT INTO	reservation_confirmed
+		VALUES		(reservation_seq.nextval, sysdate, #{factoryId},
+					#{crew.crewId}, #{reservation.reservationId})
+	</insert>
+	
+	<insert id="insertWashingComplete" parameterType="WashingCompleteDTO">
+		INSERT INTO	washing_complete
+		VALUES		(WASHING_COMPLETE_SEQ.nextval, sysdate, #{confirm.confirmId})			
+	</insert>
+
 </mapper>

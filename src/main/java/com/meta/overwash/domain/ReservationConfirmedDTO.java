@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ReservationConfirmedDTO {
-	private Integer confirmId;
+	private Long confirmId;
 	private Date confirmDate;
 	private LaundryFactoryDTO factory;
 	private CrewDTO crew;

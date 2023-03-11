@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.meta.overwash.domain.LaundryDTO;
+import com.meta.overwash.domain.WashingCompleteDTO;
 import com.meta.overwash.mapper.LaundryMapper;
 
+import lombok.extern.log4j.Log4j;
+
 @Service
+@Log4j
 public class LaundryServiceImpl implements LaundryService {
 
 	@Autowired
@@ -19,5 +23,11 @@ public class LaundryServiceImpl implements LaundryService {
 
 		return laundryMapper.getList();
 	}
-	
+
+	@Override
+	public WashingCompleteDTO updateWashComplete() {
+
+		return null;
+	}
+
 }
