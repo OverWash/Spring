@@ -11,7 +11,7 @@ public interface ReservationMapper {
 
 	public List<ReservationDTO> getListEach(Long memberId);
 
-	public List<ReservationDTO> getListEachOne(ReservationDTO reservation);
+	public ReservationDTO getListEachOne(ReservationDTO reservation);
 
 	public void insertReservation(ReservationDTO reservation);
 
@@ -20,5 +20,10 @@ public interface ReservationMapper {
 	public void insertWashingComplete(WashingCompleteDTO washingComplete);
 
 	public int updateReservationStatus(ReservationDTO reservation);
-
+	
+	public Long getMemberId(String username);
 }
+
+
+
+

@@ -1,5 +1,7 @@
 package com.meta.overwash.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -8,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
 import com.meta.overwash.domain.ReservationDTO;
+import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.domain.WashingCompleteDTO;
 import com.meta.overwash.mapper.ReservationMapper;
 
@@ -60,9 +64,34 @@ public class ReservationServiceTests {
 //		updateReservationStatus(reservation);
 //	}
 	//OK
+//	@Test
+//	public void getListMemberTest() {
+//		String username = "member@gmail.com";
+//		service.getListMember(username).forEach(reservations -> log.info(reservations));
+//	}
+	
 	@Test
-	public void getListMemberTest() {
+	public void RequestReservationTest() {
+		log.info("============reservation Register============");
+		ReservationDTO reservation = new ReservationDTO();
+		Date date = new Date();
+		
+		String request = "LastTestlaundryRequest";
+		
 		String username = "member@gmail.com";
-		service.getListMember(username).forEach(reservations -> log.info(reservations));
+		Long memberId = service.getMemberId(username);
+		
+		UserDTO user = new UserDTO();
+		
+		MemberDTO member = new MemberDTO();
+		member.setUser(user);
+		member.setMemberId(memberId);
+		
+		reservation.setCollectDate(date);
+		reservation.setRequest(request);
+		reservation.setMember(member);
+		
+		service.register(reservation);
 	}
+	
 }

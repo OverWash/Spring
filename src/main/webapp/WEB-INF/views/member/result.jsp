@@ -28,36 +28,8 @@
 					<!-- Content Row -->
 					<div class="row">
 						<div class="col-xl-12 mb-4">
-							<!-- 수거 날짜 선택 -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h4 class="m-0 font-weight-bold text-primary">수거 예정일</h4>
-								</div>
-								<div class="card-body">{reservation.collectdate}</div>
-							</div>
-							<!-- End 수거 날짜 선택 -->
-							<!-- 서비스 선택 -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h4 class="m-0 font-weight-bold text-primary">선택 서비스</h4>
-								</div>
-								<div class="card-body">
-									<div class="reservationList">
-										{reservation.some information} <span class="float-right"> </span>
-									</div>
-								</div>
-							</div>
-							<!-- End of 서비스 선택 -->
-							<!-- 요청사항 입력 -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h4 class="m-0 font-weight-bold text-primary">요청사항</h4>
-								</div>
-								<div class="card-body">{reservation.request}</div>
-							</div>
-							<!-- End of 요청사항 입력 -->
 							<div class="my-2"></div>
-							<a href="#" class="btn btn-primary btn-icon-split btn-lg">
+							<a href="main" class="btn btn-primary btn-icon-split btn-lg">
 								<span class="icon text-white-50"> <i class="fas fa-arrow-right"></i>
 								</span> <span class="text">메인 페이지로</span>
 							</a>

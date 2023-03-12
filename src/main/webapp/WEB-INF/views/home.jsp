@@ -5,5 +5,6 @@
 	<div>${members[0].memberAddress}</div>
 </section>
 <%@ include file="common/footer.jsp"%>
+
 </body>
 </html>

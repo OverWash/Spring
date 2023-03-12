@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 public class CommonController {
-
+	
 	// 추후에 처음 서버 켰을 때 루트 페이지를 여기로 변경해야 함
 	@GetMapping("/login")
 	public void login(String error, String logout, Model model) {

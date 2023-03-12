@@ -31,7 +31,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	@Override
-	public List<ReservationDTO> getListEachOne(ReservationDTO reservation) {
+	public ReservationDTO getListEachOne(ReservationDTO reservation) {
 		return mapper.getListEachOne(reservation);
 	}
 	
@@ -57,6 +57,11 @@ public class ReservationServiceImpl implements ReservationService{
 	@Override
 	public List<ReservationDTO> getListMember(String username) {
 		return mapper.getListMember(username);
+	}
+
+	@Override
+	public Long getMemberId(String username) {
+		return mapper.getMemberId(username);
 	}
 
 

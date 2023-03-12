@@ -39,25 +39,33 @@ public class ReservationMapperTest {
 //		reservation.setMember(member);
 //		mapper.getListEachOne(reservation);
 //	}
-	//OK
+//	OK
+	
+	@Test
+	public void getUserIdTest() {
+		String username = "member2@gmail.com";
+		mapper.getMemberId(username);
+	}
 
-//	@Test
-//	public void insertTest() {
-//
-//		try {
-//			MemberDTO member = memberMapper.getMember(2L);
-//			Date day = new Date();
-//
-//			ReservationDTO reservation = new ReservationDTO();
-//			reservation.setMember(member);
-//			reservation.setCollectDate(day);
-//			reservation.setRequest("OldMebmer's request3");
-//
-//			mapper.insertReservation(reservation);
-//			log.info(member);
-//		} catch (Exception e) {
-//		}
-//	}
+	@Test
+	public void insertTest() {
+		for(int i = 7; i< 102; i++) {
+			try {
+				MemberDTO member = memberMapper.getMember(1L);
+				Date day = new Date();
+
+				ReservationDTO reservation = new ReservationDTO();
+				reservation.setMember(member);
+				reservation.setCollectDate(day);
+				reservation.setRequest("NewMebmer's request6" + i);
+
+				mapper.insertReservation(reservation);
+				log.info(member);
+			} catch (Exception e) {
+			}
+		}
+
+	}
 	// OK
 
 //	@Test
