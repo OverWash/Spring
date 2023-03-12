@@ -4,8 +4,8 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-	<input id="role" type="text" value="<sec:authentication property='principal.role' />"> 
-	
+	<input id="role" type="text" value="<sec:authentication property='principal.role' />">
+
 	<!-- Sidebar - Brand -->
 	<a class="sidebar-brand d-flex align-items-center justify-content-center">
 		<div class="sidebar-brand-text mx-3">overWash</div>
@@ -29,15 +29,15 @@
 
 		<!-- Nav Item - Pages Collapse Menu -->
 
-		<!-- Nav Item - Charts -->
+		<li class="nav-item"><a class="nav-link" href="/payment/processes">
+				<i class="fas fa-fw fa-table"></i> <span>결제요청내역</span>
+			</a></li>
+
 		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
 				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
 			</a></li>
 
-		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" >
-				<i class="fas fa-fw fa-table"></i> <span>Tables</span>
-			</a></li>
+
 
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
@@ -72,7 +72,7 @@
 			</a></li>
 
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" >
+		<li class="nav-item"><a class="nav-link">
 				<i class="fas fa-fw fa-table"></i> <span><sec:authentication property="principal.role" /></span>
 			</a></li>
 
@@ -104,12 +104,12 @@
 		<!-- Nav Item - Pages Collapse Menu -->
 
 		<!-- Nav Item - Charts -->
-		<li class="nav-item"><a class="nav-link" >
+		<li class="nav-item"><a class="nav-link">
 				<i class="fas fa-fw fa-table"></i> <span>크루</span>
 			</a></li>
 
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link" >
+		<li class="nav-item"><a class="nav-link">
 				<i class="fas fa-fw fa-table"></i> <span>Tables</span>
 			</a></li>
 
@@ -132,10 +132,10 @@
 		$("#admin").hide();
 		$("#member").hide();
 		$("#crew").hide();
-		
+
 		$("#role").hide();
 		const role = $("#role").val();
-		
+
 		if (role == "ROLE_ADMIN") {
 			$("#admin").show();
 		} else if (role == "ROLE_MEMBER") {
@@ -143,6 +143,6 @@
 		} else {
 			$("#crew").show();
 		}
-		
+
 	});
 </script>

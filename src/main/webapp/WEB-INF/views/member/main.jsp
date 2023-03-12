@@ -115,7 +115,7 @@
 							<!-- 검수완료리스트(결제연결) -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h5 class="m-0 font-weight-bold text-primary">검수완료내역</h5>
+									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
 								<div class="card-body">
 									<div class="reservationList">
