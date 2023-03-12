@@ -35,19 +35,19 @@ public class PaymentServiceImpl implements PaymentService {
 		receiptMapper.insertReceipt(receipt);
 		// 영수증 발급 후 예약의 예약상태 '결제완료'로 변경
 		// 그러기 위해서는 예약번호를 들고와야.. 어디서?
-		// 결제를 진행할때는 결제요청서를 가지고 있음. 결제요청서에는 예약확정번호가 잇고 거기엔 예약번호가 잇다.
+		// 결제를 진행할때는 결제요청서를 가지고 있음. 결제요청서에는 예약확정번호가 있고 거기엔 예약번호가 있다.
 		
 		// reservationMapper.updateReservationStatus(null);
 	}
 	
 	@Override
-	public ReceiptDTO getReceipt(Long reservationId) {
-		return receiptMapper.getReceipt(reservationId);
+	public ReceiptDTO getReceipt(Long receiptId) {
+		return receiptMapper.getReceipt(receiptId);
 	}
 	
 	@Override
-	public List<ReceiptDTO> getReceiptList() {
-		return receiptMapper.getReceiptList();
+	public List<ReceiptDTO> getReceiptList(Long userId) {
+		return receiptMapper.getReceiptList(userId);
 	}
 
 	

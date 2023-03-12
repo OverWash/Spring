@@ -30,10 +30,10 @@
 		JOIN
 			reservation r ON r.reservation_id = rc.reservation_id
 		WHERE 
-			r.reservation_id = #{reservationId}
+			rec.receipt_id = #{receiptId}
 	</select>
 
-	<select id="getReceiptList" resultMap="receiptMap">
+	<select id="getReceiptList" parameterType="long" resultMap="receiptMap">
 		SELECT 
 			rec.receipt_id, rec.payment_method, 
 			p.pr_id, p.pr_price,
@@ -50,6 +50,10 @@
 			crew c ON rc.crew_id = c.crew_id
 		JOIN
 			reservation r ON r.reservation_id = rc.reservation_id
+		JOIN
+			member m ON m.member_id = r.member_id
+		WHERE
+			m.user_id = #{userId}
 	</select>
 
 	<resultMap type="ReceiptDTO" id="receiptMap">
@@ -80,5 +84,12 @@
 		<id property="reservationId" column="reservation_id" />
 		<result property="reservationDate" column="reservation_date" />
 	</resultMap>
+	
+	<resultMap type="MemberDTO" id="memberMap">
+      <id property="memberId" column="member_Id" />
+      <result property="memberAddress" column="member_address" />
+      <result property="memberContact" column="member_contact" />
+      <result property="nickname" column="nickname" />
+   </resultMap>
 
 </mapper>  

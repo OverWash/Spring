@@ -8,9 +8,9 @@ public interface ReceiptMapper {
 
 	public void insertReceipt(ReceiptDTO receipt);
 
-	// 한 예약건에 대한 영수증이므로 예약번호로 영수증을 가져온다
-	public ReceiptDTO getReceipt(Long reservationId);
+	// 영수증번호로 상세보기 가져옴
+	public ReceiptDTO getReceipt(Long receiptId);
 
-	public List<ReceiptDTO> getReceiptList();
+	public List<ReceiptDTO> getReceiptList(Long userId);
 
 }
