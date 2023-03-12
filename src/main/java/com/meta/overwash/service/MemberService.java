@@ -13,7 +13,7 @@ public interface MemberService {
 	
 	public boolean modify(UserDTO user, MemberDTO member) throws Exception;
 	
-	public MemberDTO get(Long memberId) throws Exception;
+	public MemberDTO getMember(Long userId) throws Exception;
 	
 	public List<MemberDTO> getMemberList(String role) throws Exception;
 	
