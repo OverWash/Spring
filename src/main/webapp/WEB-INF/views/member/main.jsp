@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <%@ include file="../common/header.jsp"%>
@@ -30,7 +30,8 @@
 							</div>
 						</div>
 						<!-- End of 세탁 버튼 -->
-						<div class="col-xl-6 col-md-6 mb-4"><!-- 최근예약현황 -->
+						<div class="col-xl-6 col-md-6 mb-4">
+							<!-- 최근예약현황 -->
 							<div class="lastReservation">
 								<div class="card shadow mb-4">
 									<!-- Card Header - Dropdown -->
@@ -52,18 +53,16 @@
 									<!-- Card Body -->
 									<div class="card-body">
 										<div class="mt-4 text-center small">
-		                                    <div class="progress mb-4">
-		                                        <div class="progress-bar" id="lastResStatProgressBar"role="progressbar" style="width: 16%"></div>
-		                                    </div>										
-											${lastReservation.reservationId}<br/>
-											${lastReservation.collectDate}<br/>
-											${lastReservation.reservationStatus}<br/>	
-											<input type="hidden" id="lastResStatus" name="lastResStatus" value="${lastReservation.reservationStatus}">
+											<div class="progress mb-4">
+												<div class="progress-bar" id="lastResStatProgressBar" role="progressbar" style="width: 16%"></div>
+											</div>
+											${lastReservation.reservationId}<br /> ${lastReservation.collectDate}<br /> ${lastReservation.reservationStatus}<br /> <input type="hidden" id="lastResStatus" name="lastResStatus" value="${lastReservation.reservationStatus}">
 										</div>
 									</div>
 								</div>
 							</div>
-						</div><!-- End of 최근예약현황 -->
+						</div>
+						<!-- End of 최근예약현황 -->
 					</div>
 					<!-- End Content Row -->
 
@@ -79,21 +78,18 @@
 								</div>
 								<div class="card-body">
 									<c:forEach items="${reservations}" var="reservations">
-											<div class="reservations">
-												<h4 class="small font-weight-bold">                                                                
-													<a id="reservationDetailLink" data-toggle="modal" data-target="#reservationDetailModal">
-														<span class="float-leftt">예약번호 ${reservations.reservationId}</span> 
-														 예약날짜 ${reservations.reservationDate}
-														<span class="float-right">${reservations.reservationStatus}</span> 
-													</a>
-													<span class="float-right"></span>
-												</h4>
-												<div class="progress progress-sm mb-4">
-													<div class="progress-bar" role="progressbar" id="ResStatProgressBar${reservations.reservationId}" style="width: 20%">
+										<div class="reservations">
+											<h4 class="small font-weight-bold">
+												<span class="float-leftt">No. ${reservations.reservationId}</span> 예약날짜 :
+												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${reservations.reservationDate}" />
+												<span class="float-right">${reservations.reservationStatus}</span> <span class="float-right"></span>
+											</h4>
+											<div class="progress progress-sm mb-4">
+												<div class="progress-bar" role="progressbar" id="ResStatProgressBar${reservations.reservationId}" style="width: 20%">
 													<input type="hidden" id="resListStatus${reservations.reservationId}" name="lastResStatus${reservations.reservationId}" value="${reservations.reservationStatus}">
-													</div>
 												</div>
 											</div>
+										</div>
 									</c:forEach>
 								</div>
 							</div>
@@ -109,11 +105,8 @@
 									<c:forEach items="${reservations}" var="checkCompletes">
 										<div class="reservationList">
 											<h5 class="middle font-weight-light">
-												{reservations.collectDate} 
-												<span class="float-right"> 
-													<a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> 
-														<span class="text font-weight-bold">결제하기</span>
+												{reservations.collectDate} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> <span class="text font-weight-bold">결제하기</span>
 													</a>
 												</span>
 											</h5>
@@ -134,14 +127,14 @@
 		<!-- End of Content Wrapper -->
 	</div>
 	<!-- End of Page Wrapper -->
-       
+
 	<%@ include file="../common/footer.jsp"%>
-    
-    <!-- request Modal-->
-	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog" >
+
+	<!-- request Modal-->
+	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-			  	<form class="user" action="request" method=POST>
+				<form class="user" action="request" method=POST>
 					<div class="col-sm-12 mb-4">
 						<!-- 수거 날짜 선택 -->
 						<div class="card shadow mb-4">
@@ -176,43 +169,66 @@
 			</div>
 		</div>
 	</div>
-	    <!-- request Modal-->
-	    
+	<!-- request Modal-->
+
 	<script type="text/javascript">
-	
- 	/*모달*/
-	function fnModuleInfo(str){
-	   $('#MoaModal .modal-content').load("moaModal?id="+str);
-	   $('#MoaModal').modal();
- 	}
-
-	let lastResStatus = $('#lastResStatus').val();
-	let resListLength = $('#reservationListSize').val();
-	lastResStatus = "세탁완료";
-	console.log(lastResStatus);
-	console.log(resListLength);
-	 
-
-  	fillProgressBar();
- 	
-	function fillProgressBar(){
-		if(lastResStatus === "예약확정"){
-			$("#lastResStatProgressBar").css("width", "33%");
-		} else if(lastResStatus === "검수완료"){
-			$("#lastResStatProgressBar").css("width", "50%");
-		} else if(lastResStatus === "결제완료"){
-			$("#lastResStatProgressBar").addClass("bg-info").css("width", "60%");
-		} else if(lastResStatus === "세탁완료"){
-			$("#lastResStatProgressBar").addClass("bg-info").css("width", "80%");
-		} else if(lastResStatus === "배달완료"){
-			$("#lastResStatProgressBar").addClass("bg-success").css("width", "100%");
-		} else if(lastResStatus === "예약취소"){
-			$("#lastResStatProgressBar").addClass("bg-dark").css("width", "100%");
+		/*모달*/
+		function fnModuleInfo(str) {
+			$('#MoaModal .modal-content').load("moaModal?id=" + str);
+			$('#MoaModal').modal();
 		}
-	} 
-	
-	
-	
+
+		
+		let lastResStatus = $('#lastResStatus').val();
+		let resListLength = $('#reservationListSize').val();
+		lastResStatus = "세탁완료";
+		console.log(lastResStatus);
+		console.log(resListLength);
+		for (let i = 0; i < resListLength; i++) {
+			let resStatId = "resListStatus"+i;
+			let resStat = $('#'+resStatId).val();
+			let resProgressBarId = "ResStatProgressBar"+i;
+			
+			if (resStat === "예약확정") {
+				$('#'+resProgressBarId).css("width", "33%");
+			} else if (resStat === "검수완료") {
+				$('#'+resProgressBarId).css("width", "50%");
+			} else if (resStat === "결제완료") {
+				$('#'+resProgressBarId).addClass("bg-info").css("width",
+						"60%");
+			} else if (resStat === "세탁완료") {
+				$('#'+resProgressBarId).addClass("bg-info").css("width",
+						"80%");
+			} else if (resStat === "배달완료") {
+				$('#'+resProgressBarId).addClass("bg-success").css(
+						"width", "100%");
+			} else if (resStat === "예약취소") {
+				$('#'+resProgressBarId).addClass("bg-dark").css("width",
+						"100%");
+			}
+		}
+
+		fillProgressBar();
+
+		function fillProgressBar() {
+			if (lastResStatus === "예약확정") {
+				$("#lastResStatProgressBar").css("width", "33%");
+			} else if (lastResStatus === "검수완료") {
+				$("#lastResStatProgressBar").css("width", "50%");
+			} else if (lastResStatus === "결제완료") {
+				$("#lastResStatProgressBar").addClass("bg-info").css("width",
+						"60%");
+			} else if (lastResStatus === "세탁완료") {
+				$("#lastResStatProgressBar").addClass("bg-info").css("width",
+						"80%");
+			} else if (lastResStatus === "배달완료") {
+				$("#lastResStatProgressBar").addClass("bg-success").css(
+						"width", "100%");
+			} else if (lastResStatus === "예약취소") {
+				$("#lastResStatProgressBar").addClass("bg-dark").css("width",
+						"100%");
+			}
+		}
 	</script>
 </body>
 </html>
