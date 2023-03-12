@@ -13,7 +13,7 @@ public interface CrewService {
 	
 	public boolean modify(UserDTO user, CrewDTO crewDTO) throws Exception;
 	
-	public CrewDTO get(Long crewId) throws Exception;
+	public CrewDTO getCrew(Long userId) throws Exception;
 	
 	public List<CrewDTO> getCrewList(String role) throws Exception;
 	

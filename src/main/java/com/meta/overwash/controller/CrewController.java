@@ -1,8 +1,10 @@
 package com.meta.overwash.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,14 +24,19 @@ public class CrewController {
 	private CrewService crewService;
 
 	@GetMapping("/main")
-	public void crewMain() throws Exception {
+	public void crewMain(HttpSession session) throws Exception {
+		// 메인페이지에서 보여줄 것들 추가
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CrewDTO crew = crewService.getCrew(user.getUserId());
 
+		session.setAttribute("username", crew.getCrewName()); // navBar에 크루 네임 계속 보여 주기 위해
+		session.setAttribute("member", crew);
 	}
 
-	@GetMapping({ "/mypage", "/modify" })
-	public void get(@RequestParam("crewId") Long crewId, Model model) throws Exception {
-		model.addAttribute("crewInfo", crewService.get(crewId));
-	}
+//	@GetMapping({ "/mypage", "/modify" })
+//	public void get(@RequestParam("userId") Long userId, Model model) throws Exception {
+//		model.addAttribute("crewInfo", crewService.getCrew(userId));
+//	}
 
 	@PostMapping("/remove")
 	public String remove(@RequestParam("crewId") Long crewId, RedirectAttributes rttr) throws Exception {

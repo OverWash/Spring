@@ -56,8 +56,8 @@ public class CrewServiceImpl implements CrewService {
 	}
 
 	@Override
-	public CrewDTO get(Long crewId) throws Exception {
-		return crewMapper.getCrew(crewId);
+	public CrewDTO getCrew(Long userId) throws Exception {
+		return crewMapper.getCrew(userId);
 	}
 	
 	public List<CrewDTO> getCrewList(String role) throws Exception {

@@ -10,7 +10,7 @@ public interface CrewMapper {
 
 	public List<CrewDTO> getCrewList(String role) throws Exception;
 
-	public CrewDTO getCrew(Long crewId);
+	public CrewDTO getCrew(Long userId);
 
 	public int updateCrew(CrewDTO crew);
 
