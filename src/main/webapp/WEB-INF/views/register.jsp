@@ -7,41 +7,31 @@
 <body>
 
 	<div class="container" style="margin-top: 20%;">
-		<form action="/register" method="post">
-			<input type="submit" value="크루회원가입" name="ROLE_CREW"> <input type="submit" value="멤버회원가입" name="ROLE_MEMBER"> <input type="hidden" value="ROLE_MEMBER" name="role" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		</form>
+		
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
 				<div class="row">
-					<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-					<div class="col-lg-7">
+					<!-- <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> -->
+					<div class="col-lg-7" align="center">
 						<div class="p-5">
 							<div class="text-center">
-								<h1 class="h4 text-gray-900 mb-4">
+								<h4 class="h4 text-gray-900 mb-4">
 									<strong>환영합니다!</strong>
-								</h1>
+								</h4>
+								<h6  class="h6 text-gray-900 mb-4">회원 유형을 선택해 주세요</h6>
 							</div>
-							<form class="user">
-								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="nickname" placeholder="NickName">
-								</div>
-								<div class="form-group">
-									<input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
-								</div>
-								<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-									</div>
-									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
-									</div>
-								</div>
-								<a href="login.html" class="btn btn-primary btn-user btn-block"> Register Account </a>
+							
+							<form id="form" action="/register" method="post" >
+								<input id="crewBtn" type="button" value="크루" class="btn btn-secondary btn-user btn-block"  style="font-size: 1.1rem; padding: 0.2rem"> 
+								<input id="memberBtn" type="button" value="회원" class="btn btn-secondary btn-user btn-block"  style="font-size: 1.1rem; padding: 0.2rem"> 
+								<input id="role" type="hidden" name="role" /> 
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							</form>
+														
 							<hr>
 							<div class="text-center">
-								<a class="small" href="login.html">Already have an account? Login!</a>
+								<a class="small" href="/">Already have an account? Login!</a>
 							</div>
 						</div>
 					</div>
@@ -50,7 +40,28 @@
 		</div>
 	</div>
 	<%@ include file="common/footer.jsp"%>
-
-	>>>>>>> refs/remotes/origin/feature/bootstrap_reset
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#crewBtn').on("click", function(){
+				console.log('crewBtn clicked');
+				
+				$('#role').attr("value", "ROLE_CREW");
+				$('#form').submit();
+			});
+			
+			$('#memberBtn').on("click", function(){
+				console.log('memberBtn clicked');
+				
+				$('#role').attr("value", "ROLE_MEMBER");
+				$('#form').submit();
+			});
+			
+		})
+		
+	</script>
 </body>
 </html>
+

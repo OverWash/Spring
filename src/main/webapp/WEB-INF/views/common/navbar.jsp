@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!-- Topbar -->
 				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -127,7 +128,9 @@
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">(안녕하세요,{member}님!)</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> 안녕하세요, ${username} 님!</span> 
+								
+								<img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
 							</a> 
 							<!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -158,7 +161,10 @@
 							<div class="modal-body">정말 로그아웃할까요?</div>
 							<div class="modal-footer">
 								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-								<a class="btn btn-primary" href="login.html">Logout</a>
+								<form action="/logout" method="post">
+									<input type="submit" class="btn btn-primary" value="Logout" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								</form>
+								
 							</div>
 						</div>
 					</div>

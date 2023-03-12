@@ -45,7 +45,7 @@
 			 join users u
 			   on c.user_id = u.user_id
 		where
-			c.crew_id = #{crewId}
+			c.user_id = #{userId}
 	</select>
 	
  	<update id="deleteCrew" parameterType="Long">
@@ -87,9 +87,13 @@
 			u.role = #{role}
 	</select>
 	
-	
-	
-	
-	
+	<select id="getCrewContact" resultType="String">
+		select 
+			crew_contact 
+		from 
+			crew 
+		where 
+			crew_contact = #{crewContact}
+	</select>
 
 </mapper>

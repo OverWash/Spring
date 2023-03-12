@@ -1,11 +1,10 @@
 package com.meta.overwash.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,17 +25,21 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
+
 	@GetMapping("/main")
-	public void main() {
+	public void main(HttpSession session) throws Exception {
 		// 메인페이지에서 보여줄 것들 추가
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberDTO member = memberService.getMember(user.getUserId());
 		
+		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
+		session.setAttribute("member", member);
 	}
 
-	@GetMapping({ "/mypage", "/modify" })
-	public void get(@RequestParam("memberId") Long memberId, Model model) throws Exception {
-		model.addAttribute("memberInfo", memberService.get(memberId));
-	}
+//	@GetMapping({ "/mypage", "/modify" })
+//	public void get(@RequestParam("memberId") Long memberId, Model model) throws Exception {
+//		model.addAttribute("memberInfo", memberService.get(memberId));
+//	}
 	
 	@PostMapping("/remove")
 	public String remove(@RequestParam("memberId") Long memberId, RedirectAttributes rttr) throws Exception {
@@ -58,6 +61,17 @@ public class MemberController {
 		return "redirect:/member/main";
 	}
 
+	
+	// ----------테스트용-----------
+	@GetMapping("/request")
+	public void request() {
+		
+	}
+	
+	@GetMapping("/result")
+	public void result() {
+		
+	}
 	
 	
 	

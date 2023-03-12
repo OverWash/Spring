@@ -27,11 +27,12 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-//		List<MemberDTO> members = membermap.getList();
-//		model.addAttribute("members", members);
-		return "home";
-	}
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home(Locale locale, Model model) {
+////		List<MemberDTO> members = membermap.getList();
+////		model.addAttribute("members", members);
+//		System.out.println("SERVER ON");
+//		return "home";
+//	}
 
 }
