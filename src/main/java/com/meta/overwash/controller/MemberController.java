@@ -1,7 +1,5 @@
 package com.meta.overwash.controller;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.MemberService;
-import com.meta.overwash.service.UserService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -28,18 +25,15 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
-	
-	@Autowired
-	private UserService userService;
-	
+
 	@GetMapping("/main")
-	public void main(Principal principal, HttpSession session) throws Exception {
+	public void main(HttpSession session) throws Exception {
 		// 메인페이지에서 보여줄 것들 추가
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		MemberDTO member = memberService.getMember(user.getUserId());
 		
-		session.setAttribute("member", member); // navBar에 닉네임 계속 보여 주기 위해
-		
+		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
+		session.setAttribute("member", member);
 	}
 
 //	@GetMapping({ "/mypage", "/modify" })

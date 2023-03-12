@@ -130,7 +130,7 @@
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
+		$(function() {
 			$('#receiptTable').DataTable(); // table 띄우기
 			$('#receiptId').hide();
 			$('#confirmId').hide();
