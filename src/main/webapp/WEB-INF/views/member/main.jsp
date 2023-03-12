@@ -23,7 +23,7 @@
 						<div class="col-xl-6 col-lg-7">
 							<div class="card shadow mb-4">
 								<div class="card-body">
-									<a class="btn" onclick="fnModuleInfo('${test.id})'">
+									<a class="btn" onclick="fnModuleInfo('${test.id}')">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/undraw_booking_re_gw4j.svg">
 									</a>
 								</div>
@@ -176,47 +176,24 @@
 			</div>
 		</div>
 	</div>
-    
-	<script>
+	    <!-- request Modal-->
+	    
+	<script type="text/javascript">
 	
  	/*모달*/
-	function fnModuleInfo(){
-	   $('#moaModal').modal();
-	}
-	
+	function fnModuleInfo(str){
+	   $('#MoaModal .modal-content').load("moaModal?id="+str);
+	   $('#MoaModal').modal();
+ 	}
+
 	let lastResStatus = $('#lastResStatus').val();
 	let resListLength = $('#reservationListSize').val();
 	lastResStatus = "세탁완료";
 	console.log(lastResStatus);
 	console.log(resListLength);
-	
-/* 	function fillEachProgressBar(){
-		for(int i=0;i<resListLength;i++){
-			let reslistBarId = "#ResStatProgressBar"+i;
-			let ResStatId = "#resListStatus"+i;
-			let ResStat = $(ResStatId).val();
-			console.log(ResStat);
-			if(lastResStat === "예약확정"){
-				$("#lastResStatProgressBar").css("width", "33%");
-			} else if(ResStat === "검수완료"){
-				$("#lastResStatProgressBar").css("width", "50%");
-			} else if(ResStat === "결제완료"){
-				$("#lastResStatProgressBar").addClass("bg-info").css("width", "60%");
-			} else if(ResStat === "세탁완료"){
-				$("#lastResStatProgressBar").addClass("bg-info").css("width", "80%");
-			} else if(ResStat === "배달완료"){
-				$("#lastResStatProgressBar").addClass("bg-success").css("width", "100%");
-			} else if(ResStat === "예약취소"){
-				$("#lastResStatProgressBar").addClass("bg-dark").css("width", "100%");
-			}
-		}
-	} */
-	
-	/* 
-	<div class="progress-bar" role="progressbar" id="ResStatProgressBar${reservations.reservationId}" style="width: 20%">
-	<input type="hidden" id="resListStatus" name="lastResStatus${reservations.reservationId}" value="${reservations.reservationStatus}">
-	 */
- 	fillProgressBar();
+	 
+
+/*  	fillProgressBar();
  	
 	function fillProgressBar(){
 		if(lastResStatus === "예약확정"){
@@ -234,7 +211,7 @@
 		}
 	} 
 	
-	
+	 */
 	
 	</script>
 </body>
