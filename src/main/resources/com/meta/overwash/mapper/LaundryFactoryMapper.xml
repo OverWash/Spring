@@ -4,11 +4,11 @@
 
 	<select id="getLaundryFactoryByAddr" resultType="LaundryFactoryDTO">
 		SELECT
-		FACTORY_ID
+		*
 		FROM
 		LAUNDRY_FACTORY
 		WHERE
-		FACTORY_ADDRESS LIKE CONCAT(‘%’, #{factoryAddress}, ‘%’)
+		FACTORY_ADDRESS LIKE '%'||#{factoryAddress}||'%'
 	</select>
-
+	
 </mapper>

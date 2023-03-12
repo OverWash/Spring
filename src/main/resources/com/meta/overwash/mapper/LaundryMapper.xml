@@ -16,12 +16,11 @@
 
 	<select id="getList" resultMap="LaundryMap">
 		<![CDATA[
-			SELECT	l.name, lp.price
+			SELECT	l.name, lp.price , l.type
 			FROM	laundry l, laundry_price lp
 			WHERE	l.price_id = lp.price_id
 		]]>
 	</select>
-
 
 	<select resultType="Long" id="getLaundryCnt">
 		SELECT COUNT(*) FROM LAUNDRY

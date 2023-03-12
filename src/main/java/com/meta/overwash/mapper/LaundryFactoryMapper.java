@@ -16,5 +16,5 @@ public interface LaundryFactoryMapper {
 
 	public int deleteLaundryFactory(Long factoryId);
 
-	public LaundryFactoryDTO getLaundryFactoryByAddr(String factoryAddress);
+	public LaundryFactoryDTO getLaundryFactoryByAddr(LaundryFactoryDTO factory);
 }
