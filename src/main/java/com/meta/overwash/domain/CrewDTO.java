@@ -17,7 +17,7 @@ public class CrewDTO {
 	private UserDTO user;
 	private Date crewBirth;
 	private String crewContact;
-	private String CrewName;
+	private String crewName;
 	private String carType;
 	private String carNumber;
 }

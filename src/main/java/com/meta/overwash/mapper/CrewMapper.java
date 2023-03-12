@@ -3,6 +3,7 @@ package com.meta.overwash.mapper;
 import java.util.List;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.UserDTO;
 
 public interface CrewMapper {
 
@@ -10,9 +11,10 @@ public interface CrewMapper {
 
 	public List<CrewDTO> getCrewList(String role) throws Exception;
 
-	public CrewDTO getCrew(Long crewId);
+	public CrewDTO getCrew(Long userId) throws Exception;
 
-	public int updateCrew(CrewDTO crew);
+	public int updateCrew(CrewDTO crew) throws Exception;
 
-	public int deleteCrew(Long crewId);
+	public int deleteCrew(Long crewId) throws Exception;
+	
 }

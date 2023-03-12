@@ -58,13 +58,28 @@ public class CrewServiceImpl implements CrewService {
 	}
 
 	@Override
-	public CrewDTO get(Long crewId) throws Exception {
-		return crewMapper.getCrew(crewId);
+	public CrewDTO get(Long userId) throws Exception {
+		return crewMapper.getCrew(userId);
 	}
 	
 	public List<CrewDTO> getCrewList(String role) throws Exception {
 		return crewMapper.getCrewList(role);
 	}
+
+	@Override
+	public boolean checkPw(UserDTO user) throws Exception {
+		UserDTO userInfo = userMapper.getUser(user.getEmail());
+		
+		if (userInfo != null) {
+			if (bCryptPasswordEncoder.matches(user.getPassword(), userInfo.getPassword())) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
+	
 	
 }
 

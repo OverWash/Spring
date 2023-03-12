@@ -24,7 +24,7 @@
 		<result column="member_id" 		property="memberId"/>
 		<result column="member_contact"	property="memberContact"/>
 		<result column="member_address"	property="memberAddress"/>
-		<result column="nickname"	property="nickname"/>
+		<result column="nickname"		property="nickname"/>
 		<association property="user" resultMap="user" />
 	</resultMap>
 	
@@ -41,7 +41,7 @@
 			 join users u
 			   on m.user_id = u.user_id
 		where
-			m.member_id = #{memberId}
+			m.user_id = #{userId}
 	</select>
 	
  	<update id="deleteMember" parameterType="Long">

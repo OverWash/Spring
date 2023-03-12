@@ -5,11 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meta.overwash.domain.MemberDTO;
+import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.MemberService;
 
 @RestController
@@ -32,5 +34,13 @@ public class MemberRestController {
 		return memberService.remove(memberId) == true ? new ResponseEntity<String>("success", HttpStatus.OK)
 				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 
+	}
+	
+	@PostMapping("/checkPw")
+	public String checkPw(@RequestBody UserDTO user) throws Exception{
+		if (memberService.checkPw(user)) {
+			return "success";
+		} 
+		return "fail";
 	}
 }

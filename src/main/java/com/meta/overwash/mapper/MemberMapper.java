@@ -1,6 +1,7 @@
 package com.meta.overwash.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.meta.overwash.domain.MemberDTO;
 
@@ -10,7 +11,7 @@ public interface MemberMapper {
 	
 	public List<MemberDTO> getMemberList(String role) throws Exception;
 	
-	public MemberDTO getMember(Long memberId) throws Exception;
+	public MemberDTO getMember(Long userId) throws Exception;
 
 	public int updateMember(MemberDTO member) throws Exception;
 	

@@ -20,4 +20,6 @@
 	<!-- Page level custom scripts -->
 	<script src="/resources/js/demo/chart-area-demo.js"></script>
 	<script src="/resources/js/demo/chart-pie-demo.js"></script>
+	
+	
 
