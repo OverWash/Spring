@@ -1,7 +1,5 @@
 package com.meta.overwash.controller.rest;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,10 +26,10 @@ public class PaymentRestController {
 		return paymentService.getReceipt(reservationId);
 	}
 	
-	@GetMapping("/receipt/list")
-	public List<ReceiptDTO> getReceiptList() {
-		return paymentService.getReceiptList();
-	}
+//	@GetMapping("/receipts")
+//	public List<ReceiptDTO> getReceiptList() {
+//		return paymentService.getReceiptList();
+//	}
 	
 	
 }

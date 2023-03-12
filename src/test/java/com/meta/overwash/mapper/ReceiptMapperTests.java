@@ -1,5 +1,6 @@
 package com.meta.overwash.mapper;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,10 +17,10 @@ public class ReceiptMapperTests {
 	@Autowired
 	private ReceiptMapper receiptMapper;
 	
-//	@Test
-//	public void getReceiptListTest() {
-//		log.info(receiptMapper.getReceiptList(4L));
-//	}
+	@Test
+	public void getReceiptListTest() {
+		log.info(receiptMapper.getReceiptList(4L));
+	}
 	
 //	@Test
 //	public void getReceiptTest() {

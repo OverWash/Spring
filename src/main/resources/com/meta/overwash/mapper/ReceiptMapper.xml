@@ -17,7 +17,7 @@
 			rec.receipt_id, rec.payment_method, 
 			p.pr_id, p.pr_price,
 			r.reservation_id, r.reservation_date,
-			rc.confirm_date,
+			rc.confirm_id, rc.confirm_date,
 			c.crew_contact
 		FROM
 			receipt rec
@@ -38,7 +38,7 @@
 			rec.receipt_id, rec.payment_method, 
 			p.pr_id, p.pr_price,
 			r.reservation_id, r.reservation_date,
-			rc.confirm_date,
+			rc.confirm_id, rc.confirm_date,
 			c.crew_contact
 		FROM
 			receipt rec
