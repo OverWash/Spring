@@ -1,6 +1,8 @@
 package com.meta.overwash.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,9 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.meta.overwash.domain.CheckDTO;
 import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryDTO;
+import com.meta.overwash.domain.PagenationDTO;
 import com.meta.overwash.domain.PaymentRequestDTO;
-import com.meta.overwash.domain.ReceiptDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
+import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.CheckMapper;
 import com.meta.overwash.mapper.PaymentRequestMapper;
 import com.meta.overwash.mapper.ReservationConfirmedMapper;
@@ -32,17 +35,10 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	ReservationMapper reservationMapper;
 
-	// 관리자
-	/*-	
-	 * 관리자가 검품 시 CheckDTO의 list를 받고 confirmId를 받는다.
-	 * => 서비스에서는 Check물품과 Confirm Id를 통해 Check에 한 번에 insert 
-	 * => 총 금액은 미리 가져놓아둠 
-	 * => 결제요청서 생성 (의류에 대한 정보를 갖고 있을 수 있음) (insert)
-	 * 
-	 */
+	// 결제 요청서 생성
 	@Override
 	@Transactional
-	public PaymentRequestDTO requestToAdmin(Integer confirmId, List<LaundryDTO> laundryList) {
+	public PaymentRequestDTO requestToAdmin(Long confirmId, List<LaundryDTO> laundryList) {
 		ReservationConfirmedDTO rcDto = rcMapper.getReservationConfirm(confirmId);
 		int price = 0;
 		for (LaundryDTO laundry : laundryList) {
@@ -55,40 +51,35 @@ public class PaymentServiceImpl implements PaymentService {
 		prDto.setPrPrice(price);
 		prDto.setConfirm(rcDto);
 		prMapper.insertPaymentRequest(prDto);
-		reservationMapper.updateReservation(rcDto.getReservation());
+		rcDto.getReservation().setReservationStatus("검수완료");
+		reservationMapper.updateReservationStatus(rcDto.getReservation());
 		return prDto;
-	}
-
-	// 고객
-	/*-
-	 * 결제 진행 시 어떤 건에 대해 결제를 진행할 지 
-	 * 정보가 있어야 하기 때문에 파라미터로 결제요청 번호를 받음
-	 * 또, 결제 방식에 대한 정보를 받아야 해서 
-	 * 
-	 * */
-	@Override
-	public boolean paymentProcess(ReceiptDTO receipt) {
-
-		return false;
 	}
 
 	// RestController Paging 관리자 내역
 	@Override
-	public List<PaymentRequestDTO> getListToAdmin(Criteria cri) {
+	public Map<String, Object> getListToAdmin(Criteria cri) {
+		Map<String, Object> map = new HashMap<String, Object>();
 
-		return prMapper.getListToAdmin(cri);
+		map.put("paymentPaging", new PagenationDTO(cri, getCountToAdmin(cri).intValue()));
+		map.put("paymentRequests", prMapper.getListToAdmin(cri));
+		return map;
 	}
 
+	// Rest Controller Paging 고객 내역
 	@Override
-	public List<PaymentRequestDTO> getListToMember(Criteria cri, Long memberId) {
+	public Map<String, Object> getListToMember(Criteria cri, Long userId) {
+		// Mapper에 들어갈 파라미터 map으로 변환
+		HashMap<String, Object> vo = new HashMap<String, Object>();
+		vo.put("pageNum", cri.getPageNum());
+		vo.put("amount", cri.getAmount());
+		vo.put("userId", userId);
 
-		return prMapper.getListToAdmin(cri);
-	}
-
-	@Override
-	public Long getCountToMember(Long memberId) {
-
-		return prMapper.getCountToMember(memberId);
+		// 페이징 처리를 위해 map으로 데이터 리턴
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paymentPaging", new PagenationDTO(cri, getCountToMember(userId, cri).intValue()));
+		map.put("paymentRequests", prMapper.getListToMember(vo));
+		return map;
 	}
 
 	@Override
@@ -96,10 +87,17 @@ public class PaymentServiceImpl implements PaymentService {
 		return prMapper.getPaymentRequest(pno);
 	}
 
-	@Override
-	public Long getCountToAdmin() {
-		// TODO Auto-generated method stub
-		return null;
+	/* ------------서비스 내부에서 쓸 메소드 -------------- */
+
+	private Long getCountToMember(Long userId, Criteria cri) {
+		UserDTO user = new UserDTO();
+		user.setUserId(userId);
+		return prMapper.getCountToMember(user);
+	}
+
+	private Long getCountToAdmin(Criteria cri) {
+
+		return prMapper.getCountToAdmin(cri);
 	}
 
 }

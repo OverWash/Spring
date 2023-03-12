@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.PaymentRequestDTO;
+import com.meta.overwash.domain.UserDTO;
 
 public interface PaymentRequestMapper {
 
@@ -15,7 +16,7 @@ public interface PaymentRequestMapper {
 	public List<PaymentRequestDTO> getListToAdmin(Criteria cri);
 
 	// paging 결제요청 갯수
-	public Long getCountToAdmin();
+	public Long getCountToAdmin(Criteria cri);
 
 	// 결제요청 수정
 	public Long updatePaymentRequest(PaymentRequestDTO pr);
@@ -29,9 +30,9 @@ public interface PaymentRequestMapper {
 	public PaymentRequestDTO getPaymentRequest(Long prId);
 
 	// 고객의 결제요청 갯수 페이징처리용
-	public Long getCountToMember(Long memberId);
+	public Long getCountToMember(UserDTO user);
 
 	// 고객의 결제요청 리스트
-	public List<PaymentRequestDTO> getListToMember(HashMap<String, Long> hashMap);
+	public List<PaymentRequestDTO> getListToMember(HashMap<String, Object> hashMap);
 
 }
