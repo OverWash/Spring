@@ -4,7 +4,7 @@
 		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center">
 				<div class="sidebar-brand-text mx-3">
 					overWash
 				</div>
@@ -15,8 +15,8 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active">
-				<a class="nav-link" href="index.html">
-					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Main</span>
+				<a class="nav-link" href="/member/main">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>메인</span>
 				</a>
 			</li>
 
@@ -24,13 +24,13 @@
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
-			<div class="sidebar-heading">Addons</div>
+			<div class="sidebar-heading">메뉴</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="charts.html">
-					<i class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
+			<li class="nav-item"><a class="nav-link" href="/payment/receipts">
+					<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
 				</a></li>
 
 			<!-- Nav Item - Tables -->
