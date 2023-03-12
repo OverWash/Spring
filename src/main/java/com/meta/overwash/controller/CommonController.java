@@ -100,10 +100,6 @@ public class CommonController {
 	public void adminMain() {
 	}
 
-	@GetMapping("/table")
-	public void table() {
-
-	}
 	
 	// --------------------------
 }
