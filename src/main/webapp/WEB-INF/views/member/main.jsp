@@ -193,7 +193,7 @@
 	console.log(resListLength);
 	 
 
-/*  	fillProgressBar();
+  	fillProgressBar();
  	
 	function fillProgressBar(){
 		if(lastResStatus === "예약확정"){
@@ -211,7 +211,7 @@
 		}
 	} 
 	
-	 */
+	
 	
 	</script>
 </body>
