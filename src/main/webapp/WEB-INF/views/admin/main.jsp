@@ -142,5 +142,6 @@
 		<!-- End of Page Wrapper -->
 
 		<%@ include file="../common/footer.jsp"%>
+		<script src="/resources/js/admin.js" ></script>
 </body>
 </html>
