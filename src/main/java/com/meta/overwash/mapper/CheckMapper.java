@@ -1,8 +1,10 @@
 package com.meta.overwash.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.meta.overwash.domain.CheckDTO;
+import com.meta.overwash.domain.ReservationConfirmedDTO;
 
 public interface CheckMapper {
 	
@@ -14,5 +16,7 @@ public interface CheckMapper {
 
 	public int updateCheck(CheckDTO check);
 	
-	public int deleteCheck(Long checkId); 
+	public int deleteCheck(Long checkId);
+
+	public Map<String, Object> getListByConfirmId(ReservationConfirmedDTO rcDto); 
 }
