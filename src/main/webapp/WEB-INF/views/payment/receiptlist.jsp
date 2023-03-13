@@ -50,10 +50,9 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
 											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기"></td>
+											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
-										<input id="receiptId" type="text" value="<c:out value='${receipts.receiptId}' />"   >
-										<input id="confirmId" type="text" value="<c:out value='${receipts.pr.confirm.confirmId}' />" >
+										
 									</c:forEach>
 								</tbody>
 							</table>
@@ -122,35 +121,30 @@
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#receiptTable').DataTable(); // table 띄우기
-			$('#receiptId').hide();
-			$('#confirmId').hide();
+			$('#paymentRequestTable').DataTable(); // table 띄우기
 
-			// modal 띄우기
-			$('#checkListBtn').on("click", function(e) {
-				$('#checkListModal').modal("show");				
-				const receiptId = $('#receiptId').val();
-				const confirmId = $('#confirmId').val();
-				
-				$('#receiptIdText').text(receiptId);
-
-				// ajax 호출
-				paymentService.getCheckList(confirmId, function(data){
-					//console.log(data);
-					var html = '';
-					$(data).each(function(){
-						//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
-						html += '<tr>';
-						html += '<td>'+ this.laundry.name +'</td>';
-						html += '<td>'+ this.laundry.laundryPrice.price +'</td>';
-						html += '</tr>';	
-					});
-					
-					$("#checkTableBody").empty();
-					$("#checkTableBody").append(html); 
-				});
-			});
 		});
+		
+		function checkList(event, prId, confirmId) {
+			$('#checkListModal').modal("show"); // modal 띄우기
+			$('#prIdText').text(prId);
+			
+			// ajax 호출
+			paymentService.getCheckList(confirmId, function(data){
+				//console.log(data);
+				var html = '';
+				$(data).each(function(){
+					//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
+					html += '<tr>';
+					html += '<td>'+ this.laundry.name +'</td>';
+					html += '<td>'+ this.laundry.laundryPrice.price +'</td>';
+					html += '</tr>';	
+				});
+				
+				$("#checkTableBody").empty();
+				$("#checkTableBody").append(html); 
+			});
+		}
 	</script>
 </body>
 </html>
