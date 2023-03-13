@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../common/header.jsp"%>
-
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -25,9 +24,10 @@
 					<!-- Content Row -->
 					<div class="row">
 						<div class="col-xl-6 col-lg-7">
-							<h1 class="font-weight-bold text-primary">회원정보</h1>
-							<h2>{member.정보1}</h2>
-							<h2>{member.정보2}</h2>
+								<h1>회원정보</h1>
+								<h2>${memberDTO.nickname}</h2>
+								<h2>${memberDTO.user.email}</h2>
+								
 						</div>
 						<!-- 세탁 버튼 -->
 						<div class="col-xl-6 col-lg-7">
@@ -51,7 +51,7 @@
 								<div class="card-body">
 									<div class="reservationList">
 										<h4 class="middle font-weight-bold">
-											{reservation.list[1]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+											{reservation.list[1]} <span class="float-right"> <a href="./modifyInfo" class="btn btn-light btn-icon-split" style="line-height: 1;">
 													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
 													</span> <span class="text font-weight-bold">상세보기</span>
 												</a>
@@ -92,6 +92,7 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
+	<script type=""></script>
 
 </body>
 </html>

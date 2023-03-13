@@ -17,11 +17,18 @@ public interface ReservationMapper {
 
 	public List<ReservationDTO> getListMember(String username);
 
+	public int updateReservation(ReservationDTO reservation);
+
+	public int deleteReservation(Long reservationId);	
+	
 	public void insertWashingComplete(WashingCompleteDTO washingComplete);
 
 	public int updateReservationStatus(ReservationDTO reservation);
 	
 	public Long getMemberId(String username);
+	 
+	public ReservationDTO getReservation(Long reservationId);
+	
 }
 
 

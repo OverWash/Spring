@@ -9,13 +9,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
+		"file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
 public class LaundryMapperTests {
-	
+
 	@Autowired
 	private LaundryMapper mapper;
-	
+
 	@Test
 	public void getListTest() {
 		log.info(mapper.getList());

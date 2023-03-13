@@ -2,9 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-
 <%@ include file="../common/header.jsp"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -103,7 +102,7 @@
 							<!-- 검수완료리스트(결제연결) -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h5 class="m-0 font-weight-bold text-primary">검수완료내역</h5>
+									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
 								<div class="card-body">
 									<c:forEach items="${reservations}" var="checkCompletes">
@@ -133,6 +132,16 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){	
+			$('#reservationBtn').on("click", function(){
+				location.href = "request";
+			});
+		})
+		
+	</script>
 
 	<!-- request Modal-->
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">

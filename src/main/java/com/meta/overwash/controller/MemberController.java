@@ -2,22 +2,19 @@ package com.meta.overwash.controller;
 
 import java.security.Principal;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
@@ -33,19 +30,20 @@ import lombok.extern.log4j.Log4j;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
-	
+
 	@Autowired
 	private ReservationService reservationService;
 	
-	@GetMapping("/table")
-	public void table(Principal principal, Model model) {
-		String username = principal.getName(); // 이거 이메일임.
-		model.addAttribute("reservations", reservationService.getListMember(username));
-		model.addAttribute("username", username);
-	}
-	
 	@GetMapping("/main")
-	public void main(Principal principal, Model model) {
+	public void main(HttpSession session, Principal principal, Model model) throws Exception {
+		
+		// 메인페이지에서 보여줄 것들 추가
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		MemberDTO member = memberService.getMember(user.getUserId());
+		
+		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
+		session.setAttribute("member", member);
+		
 		String username = principal.getName(); // 이거 이메일임.
 		List<ReservationDTO> reservations = reservationService.getListMember(username);
 		int lastNum = reservations.size()-1;
@@ -74,38 +72,19 @@ public class MemberController {
 		return "/member/main";
 	}
 	
-
-
-	@GetMapping({ "/mypage", "/modify" })
-	public void get(@RequestParam("memberId") Long memberId, Model model) throws Exception {
-		model.addAttribute("memberInfo", memberService.get(memberId));
+	@PostMapping("/mypage")
+	public String myPage(HttpServletRequest request, Model model) throws Exception{
+		Long userId = Long.parseLong(request.getParameter("userId"));
+		model.addAttribute("memberDTO", memberService.getMember(userId));
+		
+		return "member/mypage";
 	}
 	
-	@PostMapping("/remove")
-	public String remove(@RequestParam("memberId") Long memberId, RedirectAttributes rttr) throws Exception {
-		if (memberService.remove(memberId)) {
-			rttr.addFlashAttribute("result", "success"); // view에서 success시 탈퇴 완료 alert?
-		}
-
-		return "redirect:/login";
+	@PostMapping("/modifyInfo")
+	public String modifyInfo(HttpServletRequest request, Model model) throws Exception{
+		Long userId = Long.parseLong(request.getParameter("userId"));
+		model.addAttribute("memberDTO", memberService.getMember(userId));
+		return "member/modifyInfo";
 	}
-	
-	@PatchMapping("/modify")
-	public String modify(UserDTO user, MemberDTO member, RedirectAttributes rttr) throws Exception {
-		if (memberService.modify(user, member)) {
-			rttr.addAttribute("result", "success");// view에서 success시 변경 완료 alert?
-		} else {
-			rttr.addAttribute("result", "fail"); // view에서 fail시 변경 실패 alert?
-		}
 
-		return "redirect:/member/main";
-	}
-	
-
-	
-	
-
-	
-	
-	
 }

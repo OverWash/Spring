@@ -3,29 +3,27 @@
 <mapper namespace="com.meta.overwash.mapper.LaundryMapper">
 
 	<resultMap type="LaundryDTO" id="LaundryMap">
-		<id property="laundryId" column="laundry_id"/>
-		<result property="name" column="name"/>
-		<result property="type" column="type"/>
-		<association property="laundryPrice" resultMap="priceMap"/>
+		<id property="laundryId" column="laundry_id" />
+		<result property="name" column="name" />
+		<result property="type" column="type" />
+		<association property="laundryPrice" resultMap="priceMap" />
 	</resultMap>
-	
+
 	<resultMap type="LaundryPriceDTO" id="priceMap">
-		<id property="priceId" column="price_id"/>
-		<result property="price" column="price"/>
+		<id property="priceId" column="price_id" />
+		<result property="price" column="price" />
 	</resultMap>
-	
 
 	<select id="getList" resultMap="LaundryMap">
 		<![CDATA[
-			SELECT	l.name, lp.price
+			SELECT	l.name, lp.price , l.type
 			FROM	laundry l, laundry_price lp
 			WHERE	l.price_id = lp.price_id
 		]]>
 	</select>
-	
-	
-	
 
-
+	<select resultType="Long" id="getLaundryCnt">
+		SELECT COUNT(*) FROM LAUNDRY
+	</select>
 
 </mapper>

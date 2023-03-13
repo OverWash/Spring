@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class CheckDTO {
-	private Integer checkId;
+	private Long checkId;
 	private ReservationConfirmedDTO confirm;
 	private LaundryDTO laundry;
 }

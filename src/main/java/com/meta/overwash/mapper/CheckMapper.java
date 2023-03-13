@@ -1,18 +1,22 @@
 package com.meta.overwash.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.meta.overwash.domain.CheckDTO;
+import com.meta.overwash.domain.ReservationConfirmedDTO;
 
 public interface CheckMapper {
 	
 	public List<CheckDTO> getList();
 	
-	public void insertCrew(CheckDTO check);
+	public void insertCheck(CheckDTO check);
 	
-	public CheckDTO getCrew(Long checkId);
+	public CheckDTO getCheck(Long checkId);
 
-	public int updateCrew(CheckDTO check);
+	public int updateCheck(CheckDTO check);
 	
-	public int deleteCrew(Long checkId); 
+	public int deleteCheck(Long checkId);
+
+	public Map<String, Object> getListByConfirmId(ReservationConfirmedDTO rcDto); 
 }
