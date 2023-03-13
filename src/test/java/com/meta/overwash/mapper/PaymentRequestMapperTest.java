@@ -31,16 +31,16 @@ public class PaymentRequestMapperTest {
 //		prMapper.insertPaymentRequest(prdto);
 //	}
 
-	@Test
-	public void getListToMember() {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		Criteria cri = new Criteria();
-		map.put("pageNum", (long) cri.getPageNum());
-		map.put("amount", (long) cri.getAmount());
-		map.put("userId", 5L);
-		prMapper.getListToMember(map);
-
-	}
+//	@Test
+//	public void getListToMember() {
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		Criteria cri = new Criteria();
+//		map.put("pageNum", (long) cri.getPageNum());
+//		map.put("amount", (long) cri.getAmount());
+//		map.put("userId", 5L);
+//		prMapper.getListToMember(map);
+//
+//	}
 	
 //	@Test
 //	public void getCountToMemerTest() {

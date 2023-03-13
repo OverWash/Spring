@@ -6,14 +6,12 @@
 	<resultMap type="ReservationConfirmedDTO" id="getConfirm">
 		<id property="confirmId" column="confirm_id" />
 		<result property="confirmDate" column="CONFIRM_DATE" />
-		<association property="reservation"
-			resultMap="getReservation" />
+		<association property="reservation" resultMap="getReservation" />
 	</resultMap>
 
 	<resultMap type="ReservationDTO" id="getReservation">
 		<id property="reservationId" column="reservation_id" />
-		<result property="reservationStatus"
-			column="RESERVATION_STATUS" />
+		<result property="reservationStatus" column="RESERVATION_STATUS" />
 		<association property="member" resultMap="getMember" />
 	</resultMap>
 
@@ -121,5 +119,4 @@
 		</if>	
  
 	</select>
-
 </mapper>

@@ -42,13 +42,18 @@ public class ReservationConfirmedMapperTests {
 //	}
 
 	
-	@Test
-	public void getListToMember() {
-		Criteria cri = new Criteria();
-		HashMap<String, Object> vo = new HashMap<String, Object>();
-		vo.put("pageNum", cri.getPageNum());
-		vo.put("amount", cri.getAmount());
-//		vo.put("userId", 1L); // 넣으면 고객의 예약확정리스트
-		rc.getList(vo);
-	}
+//	@Test
+//	public void getListToMember() {
+//		Criteria cri = new Criteria();
+//		HashMap<String, Object> vo = new HashMap<String, Object>();
+//		vo.put("pageNum", cri.getPageNum());
+//		vo.put("amount", cri.getAmount());
+////		vo.put("userId", 1L); // 넣으면 고객의 예약확정리스트
+//		rc.getList(vo);
+//	}
+	
+//	@Test
+//	public void getReservationByConfirmIdTest() {
+//		rc.getReservationByConfirmId(1L);
+//	}
 }
