@@ -1,6 +1,7 @@
 package com.meta.overwash.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -67,6 +68,19 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberDTO> getMemberList(String role) throws Exception {
 		return memberMapper.getMemberList(role);
+	}
+	
+	@Override
+	public boolean checkPw(UserDTO user) throws Exception {
+		UserDTO userInfo = userMapper.getUser(user.getEmail());
+		
+		if (userInfo != null) {
+			if (bCryptPasswordEncoder.matches(user.getPassword(), userInfo.getPassword())) {
+				return true;
+			}
+		}
+		return false;
+		
 	}
 
 	@Override

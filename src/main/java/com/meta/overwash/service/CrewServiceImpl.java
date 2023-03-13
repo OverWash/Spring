@@ -65,6 +65,17 @@ public class CrewServiceImpl implements CrewService {
 	}
 
 	@Override
+	public boolean checkPw(UserDTO user) throws Exception {
+		UserDTO userInfo = userMapper.getUser(user.getEmail());
+		
+		if (userInfo != null) {
+			if (bCryptPasswordEncoder.matches(user.getPassword(), userInfo.getPassword())) {
+				return true;
+			}
+		}
+		return false;
+		
+	}
 	public String getContact(String contact) throws Exception {
 		return crewMapper.getCrewContact(contact);
 	}

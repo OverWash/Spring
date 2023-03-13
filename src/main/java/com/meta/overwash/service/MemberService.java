@@ -17,6 +17,8 @@ public interface MemberService {
 	
 	public List<MemberDTO> getMemberList(String role) throws Exception;
 	
+	public boolean checkPw(UserDTO user) throws Exception;
+	
 	public String getContact(String contact) throws Exception;
 	
 }

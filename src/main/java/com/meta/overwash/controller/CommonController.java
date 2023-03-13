@@ -1,5 +1,6 @@
 package com.meta.overwash.controller;
 
+
 import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.meta.overwash.domain.CrewDTO;
 import com.meta.overwash.domain.MemberDTO;
@@ -20,6 +22,7 @@ import com.meta.overwash.service.MemberService;
 import lombok.extern.log4j.Log4j;
 
 @Controller
+@RequestMapping
 @Log4j
 public class CommonController {
 
@@ -107,5 +110,29 @@ public class CommonController {
 	}
 
 	
-	// --------------------------
+//	@PostMapping("/register")
+//	public String register(UserDTO user) {
+//		// 가입 시 입력한 유형이 멤버이면
+//		if (user.getRole().equals("ROLE_MEMBER")) {
+//			
+//		} else if (user.getRole().equals("ROLE_CREW")) {
+//			
+//		}
+//			
+//		
+//		return "redirect:/login";
+//	}
+
+	// ------- test------
+
+	// 권한 확인용 임시 url 나중에 삭제하기
+//	@GetMapping("/admin/main")
+//	public void mainAdmin() {
+//
+//	}
+//
+//	@GetMapping("/crew/main")
+//	public void mainCrew() {
+//
+//	}
 }

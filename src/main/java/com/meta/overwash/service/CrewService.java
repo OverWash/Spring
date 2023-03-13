@@ -16,6 +16,8 @@ public interface CrewService {
 	public CrewDTO getCrew(Long userId) throws Exception;
 	
 	public List<CrewDTO> getCrewList(String role) throws Exception;
+
+	public boolean checkPw(UserDTO user) throws Exception;
 	
 	public String getContact(String contact) throws Exception;
 }
