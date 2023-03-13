@@ -26,11 +26,11 @@
 	</resultMap>
 
 	<insert id="insertReservationConfirm">
-		<selectKey keyProperty="reservationConfirmId"
+		<selectKey keyProperty="confirmId"
 			resultType="Long" order="BEFORE">
 		SELECT RESERVATION_CONFIRMED_SEQ.NEXTVAL FROM	DUAL
 		</selectKey>
-		INSERT INTO RESERVATION_CONFIRM
+		INSERT INTO RESERVATION_CONFIRMED
 		VALUES(
 				#{confirmId},
 				SYSDATE,

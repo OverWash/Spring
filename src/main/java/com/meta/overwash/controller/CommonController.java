@@ -102,12 +102,12 @@ public class CommonController {
 	}
 
 	// --------------------------
-	/* 테스트용 나중에 삭제 */
-	@GetMapping("/admin/main")
-	public void adminMain(Principal principal, HttpSession session) {
-		// 메인페이지에서 보여줄 것들 추가	
-		session.setAttribute("username", principal.getName()); // navBar에 닉네임 계속 보여 주기 위해
-	}
+//	/* 테스트용 나중에 삭제 */
+//	@GetMapping("/admin/main")
+//	public void adminMain(Principal principal, HttpSession session) {
+//		// 메인페이지에서 보여줄 것들 추가	
+//		session.setAttribute("username", principal.getName()); // navBar에 닉네임 계속 보여 주기 위해
+//	}
 
 	
 //	@PostMapping("/register")

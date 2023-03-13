@@ -153,12 +153,9 @@ $(function(){
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								 <sec:authorize access="hasRole('ROLE_MEMBER')">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">(안녕하세요, ${memberDTO.nickname}님!)</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
-								</sec:authorize>
-								<sec:authorize access="hasRole('ROLE_CREW')">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">(안녕하세요, ${crewDTO.crewName}님!)</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
-								</sec:authorize>
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> 안녕하세요, ${username} 님!</span> 
+
+								<img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
 							</a> 
 							<!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

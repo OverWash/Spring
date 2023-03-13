@@ -169,9 +169,12 @@
 			$('#reservationBtn').on("click", function(){
 				location.href = "request";
 			});
+			
+			
+			
 		})
 		
 	</script>
-
+	
 </body>
 </html>

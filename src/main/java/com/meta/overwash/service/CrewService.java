@@ -3,7 +3,9 @@ package com.meta.overwash.service;
 import java.util.List;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
+import com.meta.overwash.domain.WashingCompleteDTO;
 
 public interface CrewService {
 	
@@ -20,4 +22,10 @@ public interface CrewService {
 	public boolean checkPw(UserDTO user) throws Exception;
 	
 	public String getContact(String contact) throws Exception;
+	
+	public List<ReservationDTO> getToBeCollectList() throws Exception;
+
+	public List<WashingCompleteDTO> getDeliveryList(String status) throws Exception;
+	
+	public boolean updateStatus(Long reservationId) throws Exception;
 }

@@ -25,7 +25,6 @@
 		<result property="collectDate" column="collect_date"/>
 		<result property="reservationDate" column="reservation_date"/>
 		<result property="request" column="request"/>
-		<result property="laundryType" column="laundry_type"/>
 		<result property="reservationStatus" column="reservation_status"/>
 		<association property="member" resultMap="memberMap"/>
 	</resultMap>
@@ -86,5 +85,13 @@
 		INSERT INTO	washing_complete
 		VALUES		(WASHING_COMPLETE_SEQ.nextval, sysdate, #{confirm.confirmId})			
 	</insert>
+
+	<select id="getReservation" resultMap="reservationMap">
+	SELECT *
+	FROM RESERVATION R
+		 JOIN MEMBER M
+		   ON R.MEMBER_ID = M.MEMBER_ID
+	WHERE RESERVATION_ID = #{reservationId}
+	</select>
 
 </mapper>
