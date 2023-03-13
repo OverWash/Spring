@@ -49,7 +49,7 @@
 											<td>${delivery.confirm.reservation.reservationStatus}</td>
 											<td>${delivery.confirm.reservation.member.memberAddress}</td>
 											<td>${delivery.confirm.reservation.member.memberContact}</td>
-											<td>${collect.member.nickname}</td>
+											<td>${delivery.confirm.reservation.member.nickname}</td>
 											<td>
 												<form action="/crew/delivery/${delivery.confirm.reservation.reservationId}" method="post" id="deliveryForm">
 													<button id="deliveryBtn" class="btn btn-primary">배달하기</button>
