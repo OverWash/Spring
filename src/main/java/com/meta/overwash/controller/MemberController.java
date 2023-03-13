@@ -51,7 +51,6 @@ public class MemberController {
 		Long usersId = user.getUserId();
 		List<ReservationDTO> reservations = reservationService.getListMember(member.getMemberId());
 		List<PaymentRequestDTO> prList = paymentService.getPrListToMember(usersId);
-		System.out.println("===============================prList : " + prList);
 		if(reservations.size() > 0 ) {
 			int lastNum = reservations.size()-1;
 			ReservationDTO lastReservation = reservations.get(lastNum);

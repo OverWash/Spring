@@ -23,7 +23,8 @@ public class PaymentRequestController {
 	@GetMapping("/member/process/{pno}")
 	public String process(@PathVariable("pno") Long pno, Model model) {
 		model.addAttribute("payment", paymentService.get(pno));
-		return "/payment/process";
+		
+		return "redirect:/member/main";
 	}
 
 	// 결제 요청

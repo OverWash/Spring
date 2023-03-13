@@ -5,6 +5,7 @@
 <%@ include file="../common/header.jsp"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
+
 <body id="page-top">
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -36,35 +37,26 @@
 								<div class="card shadow mb-4">
 									<!-- Card Header - Dropdown -->
 									<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-										<div>
-										<h5 class="m-0 font-weight-bold text-dark">최근예약현황</h5>
-										</div>
-										<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                가장 최근 예약 내역입니다</div>
-                                            <div class="dropdown no-arrow">
-											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-												<div class="dropdown-header">Dropdown Header:</div>
-												<a class="dropdown-item" href="#">Action</a>
-												<a class="dropdown-item" href="#">Another action</a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="#">Something else here</a>
+										<div class="row no-gutters align-items-center">
+											<div class="col mr-2">
+												<div class="h5 mb-0 font-weight-bold text-gray-800">최근 예약 내역</div>
+												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">가장 최근 예약 내역입니다</div>
+											</div>
+											<div class="col-auto">
+												<i class="fas fa-calendar fa-2x text-gray-300"></i>
 											</div>
 										</div>
 									</div>
 									<!-- Card Body -->
 									<div class="card-body">
 										<div class="mt-4">
-										<div class="card-body">
-											No. ${reservations[0].reservationId}<br />
-											예약일자 : <fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${reservations[0].reservationDate}" />
-											<br />
-											수거희망날짜 : <fmt:formatDate pattern="yyyy.MM.dd" value="${reservations[0].collectDate}" />
-											<br />예약상태 : ${reservations[0].reservationStatus}<br /> 
-											<input type="hidden" id="lastResStatus" name="lastResStatus" value="${reservations[0].reservationStatus}">
-										</div>
+											<div class="card-body">
+												No. ${reservations[0].reservationId}<br /> 예약일자 :
+												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${reservations[0].reservationDate}" />
+												<br /> 수거희망날짜 :
+												<fmt:formatDate pattern="yyyy.MM.dd" value="${reservations[0].collectDate}" />
+												<br />예약상태 : ${reservations[0].reservationStatus}<br /> <input type="hidden" id="lastResStatus" name="lastResStatus" value="${reservations[0].reservationStatus}">
+											</div>
 											<div class="progress mb-4">
 												<div class="progress-bar" id="lastResStatProgressBar" role="progressbar" style="width: 16%"></div>
 											</div>
@@ -97,8 +89,7 @@
 											</h4>
 											<div class="progress progress-sm mb-4">
 												<div class="progress-bar" role="progressbar" id="ResStatProgressBar${status.count}" style="width: 10%">
-													<input type="hidden" id="resListNum${status.count}" value="${reservations.reservationId}">
-													<input type="hidden" id="resListStatus${status.count}" value="${reservations.reservationStatus}">
+													<input type="hidden" id="resListNum${status.count}" value="${reservations.reservationId}"> <input type="hidden" id="resListStatus${status.count}" value="${reservations.reservationStatus}">
 												</div>
 											</div>
 										</div>
@@ -118,11 +109,13 @@
 									<c:forEach items="${prList}" var="prList" varStatus="status">
 										<div class="reservationList">
 											<h5 class="middle font-weight-light">
-												no.${prList.confirm.reservation.reservationId}&nbsp 
-												예약날짜 : <fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${prList.confirm.reservation.reservationDate}" />
-												결제요청금액 : ${prList.prPrice}원
-												<span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+												no.${prList.confirm.reservation.reservationId}&nbsp 예약날짜 :
+												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${prList.confirm.reservation.reservationDate}" />
+												결제요청금액 : ${prList.prPrice}원 <span class="float-right"> <a href="/member/process/${prList.prId}" class="btn btn-light btn-icon-split" style="line-height: 1;">
 														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> <span class="text font-weight-bold">결제하기</span>
+													</a>
+													<a onclick="popPayModal('${prList.confirm.reservation.reservationId}')">
+														<i class="fa fa-arrow-circle-right fa-lg"></i>
 													</a>
 												</span>
 											</h5>
@@ -145,8 +138,7 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
-
-	<!-- request Modal-->
+	<!-- Reservation request Modal-->
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -158,7 +150,7 @@
 								<h4 class="m-0 font-weight-bold text-primary">수거일을 선택하세요</h4>
 							</div>
 							<div class="card-body">
-   								 <input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
+								<input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
 							</div>
 						</div>
 						<!-- End 수거 날짜 선택 -->
@@ -186,27 +178,82 @@
 			</div>
 		</div>
 	</div>
-	<!-- request Modal-->
+	<!-- Reservation request Modal-->
+	
+	<!-- Payment Request Modal-->
+	<div class="modal fade" id="payModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form class="user" action="/member/process/${prList.prId}" method="POST">
+					<div class="col-sm-12 mb-4">
+						<!-- 수거 날짜 선택 -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h4 class="m-0 font-weight-bold text-primary">결제 수단을 선택하세요</h4>
+							</div>
+							<div class="card-body">
+								<select name="paymentMethod" class="custom-select custom-select-sm form-control form-control-sm">
+									<option value="문화상품권">문화상품권</option>
+									<option value="모바일결제">모바일결제</option>
+									<option value="신용카드">신용카드</option>
+									<option value="토스">토스</option>
+									<option value="PAYCO">PAYCO</option>
+									<option value="KakaoPay">KakaoPay</option>
+								</select>
+								<input type="hidden" id="prId" name="prId" >
+								<input type="hidden" id="confirmId" name="confirmId" >
+							</div>
+						</div>
+						<!-- End 수거 날짜 선택 -->
+						<!-- 요청사항 입력 -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h4 class="m-0 font-weight-bold text-primary">요청사항을 입력해 주세요</h4>
+							</div>
+							<div class="card-body">
+								<div class="input-group">
+									<input type="text" id="request" name="request" class="form-control bg-light border-0 large" placeholder="요청사항을 입력하세요">
+								</div>
+							</div>
+						</div>
+						<input id="requestSubmit" type='submit'>
+						<!-- End of 요청사항 입력 -->
+						<button class="btn btn-primary">결제하기</button>
+					</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Payment Request Modal-->
+	
 	<input type="hidden" id="username" value="${member.user.email}" />
 	<script type="text/javascript">
-
-		/*모달*/
+		/* 예약신청 모달*/
 		function fnModuleInfo() {
 			$('#MoaModal').modal();
 		}
+		
+		/* 결제요청 모달 */
+		function popPayModal(str) {
+			$('#payModal .modal-content').load("payModal?id="+str);
+			$('#payModal').modal();
+		}
+		
+		
 		/* 최근예약내역 progressBar */
 		let lastResStatus = $('#lastResStatus').val();
 		let resListLength = $('#reservationListSize').val();
-		
+
 		progressBar(lastResStatus, "lastResStatProgressBar");
-		
+
 		/* 예약리스트 progressBar */
- 		for (let i = 1; i < 6; i++) {
-			let resStat = $("#resListStatus"+i).val();
-			let resProgressBarId = "ResStatProgressBar"+i;
-			
+		for (let i = 1; i < 6; i++) {
+			let resStat = $("#resListStatus" + i).val();
+			let resProgressBarId = "ResStatProgressBar" + i;
+
 			progressBar(resStat, resProgressBarId);
-		} 
+		}
 
 		/* progressBar */
 		function progressBar(resStat, resProgressBarId) {
@@ -227,8 +274,9 @@
 				$('#' + resProgressBarId).addClass("bg-dark").css("width",
 						"100%");
 			}
-		
-/* 		
+		}
+
+		/* 		
 		function getPaymentRequestlist(){
 			$.ajax({
 				url : '/member/payment',
@@ -240,8 +288,7 @@
 					alert("에러 : " + status + " | " + message);
 			},
 		}
-			 */
-		}
+		 */
 	</script>
 </body>
 </html>

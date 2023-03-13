@@ -10183,7 +10183,7 @@ opacity
 
 @media ( min-width :768px) {
 	.sidebar {
-		width: 8rem !important
+		width: 9rem !important
 	}
 	.sidebar .nav-item .collapse {
 		position: relative;
