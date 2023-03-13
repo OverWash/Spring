@@ -132,16 +132,6 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
-	
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(function(){	
-			$('#reservationBtn').on("click", function(){
-				location.href = "request";
-			});
-		})
-		
-	</script>
 
 	<!-- request Modal-->
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
@@ -186,11 +176,7 @@
 	<!-- request Modal-->
 
 	<script type="text/javascript">
-		$('#requestSubmit').on("click", function(){
-			console.log($('#requestSubmit').val());
-		});
-		
-	
+
 		/*모달*/
 		function fnModuleInfo() {
 			$('#MoaModal').modal();

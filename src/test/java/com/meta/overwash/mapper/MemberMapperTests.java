@@ -5,13 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-<<<<<<< HEAD
-import com.meta.overwash.domain.MemberDTO;
-import com.meta.overwash.domain.UserDTO;
-
-=======
->>>>>>> branch 'main' of https://github.com/OverWash/overwash.git
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)

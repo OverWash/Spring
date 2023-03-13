@@ -55,8 +55,8 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public List<ReservationDTO> getListMember(String username) {
-		return mapper.getListMember(username);
+	public List<ReservationDTO> getListMember(Long memberId) {
+		return mapper.getListMember(memberId);
 	}
 
 	@Override
