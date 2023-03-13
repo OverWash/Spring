@@ -1,15 +1,20 @@
 package com.meta.overwash.controller;
 
+
+import java.security.Principal;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.CrewService;
 import com.meta.overwash.service.MemberService;
@@ -20,16 +25,25 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping
 @Log4j
 public class CommonController {
-	
+
 	@Autowired
-	private CrewService crewService;
-	
+	CrewService crewService;
+
 	@Autowired
-	private MemberService memberService;
-	
-	// 추후에 처음 서버 켰을 때 루트 페이지를 여기로 변경해야 함
+	MemberService memberService;
+
+	// 처음 서버 켰을 때 루트 페이지가 로그인 페이지
+	@GetMapping("/")
+	public String start() {
+		log.info("ROOT : SEVER LOADED");
+		return "redirect:/login";
+	}
+
 	@GetMapping("/login")
-	public void login(String error, String logout, Model model) {
+	public String login(String error, String logout, Model model) {
+
+		log.info("ROOT : LOGIN PAGE LOADED");
+
 		// 로그인 실패 시 view로 에러 메시지 넘겨 줌
 		if (error != null) {
 			model.addAttribute("error", "로그인에 실패하였습니다.");
@@ -39,14 +53,8 @@ public class CommonController {
 		if (logout != null) {
 			model.addAttribute("logout", "로그아웃 완료.");
 		}
-	}
-	@GetMapping("/signup")
-	public void signup() {
-		
-	}
-	@GetMapping("/logout")
-	public void logout() {
 
+		return "login";
 	}
 
 	// 접근 권한 에러 커스텀 처리
@@ -58,25 +66,49 @@ public class CommonController {
 
 	@GetMapping("/register")
 	public void register() {
-
 	}
 
 	@PostMapping("/register")
 	public String register(String role) {
-		
-		return role.equals("ROLE_MEMBER") ? "redirect:/register/member" : "redirect:/register/crew";
+		// forward 방식
+		return role.equals("ROLE_MEMBER") ? "/register/member" : "/register/crew";
 	}
-	
-	@GetMapping({"/register/member", "/register/crew"})
+
+	@GetMapping({ "/register/member", "/register/crew" })
 	public void registerUser() {
-		
+
 	}
-	
+
 	@PostMapping("/register/member")
-	public String registerMember() {
-		
+	public String registerMember(UserDTO user, MemberDTO member) throws Exception {
+		// form에서 값 제대로 넘어왔는지 확인
+		log.info("form data user!  " + user);
+		log.info("form data member!  " + member);
+
+		memberService.insert(user, member);
+
 		return "redirect:/login";
 	}
+
+	@PostMapping("/register/crew")
+	public String registerCrew(UserDTO user, CrewDTO crew) throws Exception {
+		// form에서 값 제대로 넘어왔는지 확인
+		log.info("form data user!  " + user);
+		log.info("form data crew!  " + crew);
+
+		crewService.insert(user, crew);
+
+		return "redirect:/login";
+	}
+
+	// --------------------------
+	/* 테스트용 나중에 삭제 */
+	@GetMapping("/admin/main")
+	public void adminMain(Principal principal, HttpSession session) {
+		// 메인페이지에서 보여줄 것들 추가	
+		session.setAttribute("username", principal.getName()); // navBar에 닉네임 계속 보여 주기 위해
+	}
+
 	
 //	@PostMapping("/register")
 //	public String register(UserDTO user) {
@@ -103,6 +135,4 @@ public class CommonController {
 //	public void mainCrew() {
 //
 //	}
-
-	// -------------------
 }

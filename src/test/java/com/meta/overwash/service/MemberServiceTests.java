@@ -1,8 +1,5 @@
 package com.meta.overwash.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.meta.overwash.domain.CrewDTO;
-import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.UserMapper;
 
@@ -60,6 +55,6 @@ public class MemberServiceTests {
 	
 	@Test
 	public void getMember() throws Exception{
-		System.out.println(service.get(6L));
+		System.out.println(service.getMember(6L));
 	}
 }

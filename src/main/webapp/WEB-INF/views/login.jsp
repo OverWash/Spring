@@ -21,51 +21,47 @@
 							<div class="col-lg-6">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">
-											<strong>overWash</strong>
-										</h1>
+										<h3 class="h3 text-gray-900 mb-4">
+											<strong>OverWash</strong>
+										</h3>
 									</div>
-									<!-- Login Form -->
-									<h2>
+									
+									<h5 class="h5 text-gray-900 mb-4">
 										<c:out value="${error}" />
-									</h2>
-									<h2>
+									</h5>
+									<h5 class="h5 text-gray-900 mb-4">
 										<c:out value="${logout}" />
-									</h2>
+									</h5>
+									
+									<!-- Login Form -->
 									<form class="user" action="/login" method="post">
 										<div class="form-group">
-											<input type="text" name='username' value='member' class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+											<input type="text" name='username' class="form-control form-control-user" id="username" placeholder="Email" required="required">
 										</div>
-
-
-
-
 
 										<div class="form-group">
-											<input type='password' name='password' value='1234' class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+											<input type='password' name='password' class="form-control form-control-user" id="password" placeholder="Password" required="required">
 										</div>
+										
+										<!--  security remember-me -->
 										<div class="form-group">
 											<div class="custom-control custom-checkbox small">
 												<input type="checkbox" class="custom-control-input" id="customCheck"> <label class="custom-control-label" for="customCheck">Remember Me</label>
 											</div>
 										</div>
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <input type='submit'>
-										<a href="/" class="btn btn-secondary btn-user btn-block" style="font-size: 1.2rem; padding: 0.2rem"> Login </a>
+										
+										<!-- CSRF 토큰으로 domain 직접 입력 판별 -->
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+										
+										<button type='submit' class="btn btn-secondary btn-user btn-block" style="font-size: 1.2rem; padding: 0.2rem"> Login </button>
+								
 										<p></p>
-										<a href="#" class="btn btn-secondary btn-icon-split">
-											<span class="icon text-white-50"> <i class="fas fa-flag"></i>
-											</span> <span class="text">For Crew</span>
-										</a>
-
-										<a href="#" class="btn btn-secondary btn-icon-split">
-											<span class="icon text-white-50"> <i class="fas fa-info"></i>
-											</span> <span class="text">For Manager</span>
-										</a>
+										
 									</form>
 									<!-- Login Form -->
 									<hr>
 									<div class="text-center">
-										<a class="small" href="register.html">Create an Account!</a>
+										<a class="small" href="/register">Create an Account!</a>
 									</div>
 								</div>
 							</div>

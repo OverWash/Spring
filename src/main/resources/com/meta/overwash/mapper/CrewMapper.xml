@@ -86,5 +86,14 @@
 		where
 			u.role = #{role}
 	</select>
+	
+	<select id="getCrewContact" resultType="String">
+		select 
+			crew_contact 
+		from 
+			crew 
+		where 
+			crew_contact = #{crewContact}
+	</select>
 
 </mapper>

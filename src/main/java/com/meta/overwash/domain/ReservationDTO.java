@@ -2,6 +2,8 @@ package com.meta.overwash.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,10 +16,11 @@ import lombok.ToString;
 public class ReservationDTO {
 
 	private Long reservationId;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date collectDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date reservationDate;
 	private String request;
-	private String laundryType;
 	private String reservationStatus;
 	private MemberDTO member;
 }

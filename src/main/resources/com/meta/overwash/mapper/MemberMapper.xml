@@ -24,12 +24,13 @@
 		<result column="member_id" 		property="memberId"/>
 		<result column="member_contact"	property="memberContact"/>
 		<result column="member_address"	property="memberAddress"/>
-		<result column="nickname"		property="nickname"/>
+		<result column="nickname"	property="nickname"/>
 		<association property="user" resultMap="user" />
 	</resultMap>
 	
+	<!-- userId로 getMember로 수정함 -->
 	<select id="getMember" resultMap="memberInfo">
-		select
+		SELECT
 			u.user_id	     as user_id,
 			u.email 	     as email,
 			u.password       as password,
@@ -37,10 +38,11 @@
 			m.member_contact as member_contact,
 			m.member_address as member_address,
 			m.nickname 		 as nickname
-		from member m
-			 join users u
-			   on m.user_id = u.user_id
-		where
+		FROM 
+			member m
+		JOIN 
+			users u ON m.user_id = u.user_id
+		WHERE
 			m.user_id = #{userId}
 	</select>
 	
@@ -73,7 +75,7 @@
 			m.member_id	     as member_id,
 			m.member_contact as member_contact,
 			m.member_address as member_address,
-			m.nickname 		 as nickname,
+			m.nickname 		 as nickname
 		from member m
 			 join users u
 			   on m.user_id = u.user_id
@@ -81,6 +83,14 @@
 			u.role = #{role}
 	</select>
 
+	<select id="getMemberContact" resultType="String">
+		select 
+			member_contact 
+		from 
+			member 
+		where 
+			member_contact = #{memberContact}
+	</select>
 
 
 </mapper>

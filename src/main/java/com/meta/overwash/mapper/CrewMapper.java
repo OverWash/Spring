@@ -17,4 +17,5 @@ public interface CrewMapper {
 
 	public int deleteCrew(Long crewId) throws Exception;
 	
+	public String getCrewContact(String contact) throws Exception;
 }

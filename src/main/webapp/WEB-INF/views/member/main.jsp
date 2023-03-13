@@ -29,7 +29,7 @@
 						<div class="col-xl-6 col-lg-7">
 							<div class="card shadow mb-4">
 								<div class="card-body">
-									<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="/resources/img/wash-icon.png">
+									<button id="reservationBtn"><img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="/resources/img/wash-icon.png"></button>
 								</div>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 							<!-- 검수완료리스트(결제연결) -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h5 class="m-0 font-weight-bold text-primary">검수완료내역</h5>
+									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
 								<div class="card-body">
 									<div class="reservationList">
@@ -162,6 +162,16 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){	
+			$('#reservationBtn').on("click", function(){
+				location.href = "request";
+			});
+		})
+		
+	</script>
 
 </body>
 </html>

@@ -31,8 +31,8 @@ public class CrewServiceTests {
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		Date birth = date.parse("1996-04-10");
 		
-		user.setEmail("crew99@gmail.com");
-		user.setPassword("1111");
+		user.setEmail("crew");
+		user.setPassword("1234");
 		
 		
 //		crew.setCrewContact("010-1111-1111");

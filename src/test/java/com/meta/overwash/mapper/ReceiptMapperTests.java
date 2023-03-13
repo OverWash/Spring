@@ -12,21 +12,19 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration({ "file:src/main/webapp/WEB-INF/spring/root-context.xml",
 "file:src/main/webapp/WEB-INF/spring/security-context.xml" })
 @Log4j
-public class MemberMapperTests {
+public class ReceiptMapperTests {
 	
 	@Autowired
-	MemberMapper mapper;
-	
-//	@Test
-//	public void getMemberContactTest() throws Exception {
-//		String contact = "01020002004";
-//		String result = mapper.getMemberContact(contact);
-//		log.info("연락처 찾기 결과: " + result);
-//	}
+	private ReceiptMapper receiptMapper;
 	
 	@Test
-	public void getMember() throws Exception {
-		log.info("getMember ........." + mapper.getMember(4L));
+	public void getReceiptListTest() {
+		log.info(receiptMapper.getReceiptList(4L));
 	}
 	
+//	@Test
+//	public void getReceiptTest() {
+//		log.info(receiptMapper.getReceipt(1L));
+//	}
+		
 }

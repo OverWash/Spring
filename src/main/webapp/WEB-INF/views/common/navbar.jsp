@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <script src="/resources/js/jquery-3.6.0.min.js"></script>
 <script>
 $(function(){
@@ -23,7 +26,6 @@ $(function(){
 		$("#formCrewModifyInfo").submit();	
 	});
 })
-
 </script>
 
 <!-- Topbar -->
@@ -223,7 +225,10 @@ $(function(){
 							<div class="modal-body">정말 로그아웃할까요?</div>
 							<div class="modal-footer">
 								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-								<a class="btn btn-primary" href="login.html">Logout</a>
+								<form action="/logout" method="post">
+									<input type="submit" class="btn btn-primary" value="Logout" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								</form>
+								
 							</div>
 						</div>
 					</div>
