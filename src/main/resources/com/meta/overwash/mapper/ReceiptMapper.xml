@@ -12,6 +12,7 @@
 			(#{receiptId}, #{paymentMethod}, #{pr.prId})
 	</insert>
 
+	<!-- 영수증 번호로 영수증 하나를 가져옴 -->
 	<select id="getReceipt" parameterType="long" resultMap="receiptMap">
 		SELECT 
 			rec.receipt_id, rec.payment_method, 
@@ -33,6 +34,7 @@
 			rec.receipt_id = #{receiptId}
 	</select>
 
+	<!-- 회원이 보유한 영수증 리스트 -->
 	<select id="getReceiptList" parameterType="long" resultMap="receiptMap">
 		SELECT 
 			rec.receipt_id, rec.payment_method, 
@@ -55,6 +57,34 @@
 		WHERE
 			m.user_id = #{userId}
 	</select>
+	
+	<!-- 회원이 보유한 영수증 중 예약상태가 '배달완료'인 리스트 -->
+	<select id="getDeliveryCompletedList" parameterType="long" resultMap="receiptMap">
+		SELECT 
+			rec.receipt_id, rec.payment_method, 
+			p.pr_id, p.pr_price,
+			r.reservation_id, r.reservation_date, r.reservation_status,
+			rc.confirm_id, rc.confirm_date,
+			c.crew_contact
+		FROM
+			receipt rec
+		JOIN 
+			payment_request p ON rec.pr_id = p.pr_id
+		JOIN
+			reservation_confirmed rc ON p.confirm_id = rc.confirm_id
+		JOIN
+			crew c ON rc.crew_id = c.crew_id
+		JOIN
+			reservation r ON r.reservation_id = rc.reservation_id
+		JOIN
+			member m ON m.member_id = r.member_id
+		WHERE
+			m.user_id = #{userId}
+		AND
+			r.reservation_status = '배달완료'
+	</select>
+	
+	
 
 	<resultMap type="ReceiptDTO" id="receiptMap">
 		<id property="receiptId" column="receipt_id" />

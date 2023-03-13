@@ -129,6 +129,11 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<ReceiptDTO> getReceiptList(Long userId) {
 		return receiptMapper.getReceiptList(userId);
 	}
+	
+	@Override
+	public List<ReceiptDTO> getDeliveryCompletedList(Long userId) {
+		return receiptMapper.getDeliveryCompletedList(userId);
+	}
 
 	/* ------------서비스 내부에서 쓸 메소드 -------------- */
 
@@ -142,5 +147,7 @@ public class PaymentServiceImpl implements PaymentService {
 
 		return prMapper.getCountToAdmin(cri);
 	}
+
+	
 
 }

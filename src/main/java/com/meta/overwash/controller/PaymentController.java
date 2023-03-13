@@ -55,5 +55,11 @@ public class PaymentController {
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // 현재 로그인 유저의 객체를 가져옴
 		model.addAttribute("receipts", paymentService.getReceiptList(user.getUserId()));
 	}
+	
+	@GetMapping("/completedlist")
+	public void getDeliveryCompletedList(Principal principal, Model model) {
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // 현재 로그인 유저의 객체를 가져옴
+		model.addAttribute("completedList", paymentService.getDeliveryCompletedList(user.getUserId()));
+	}
 
 }

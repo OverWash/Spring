@@ -40,7 +40,7 @@
 				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
 			</a></li>
 
-		<li class="nav-item"><a class="nav-link" href="/payment/lastorderlist">
+		<li class="nav-item"><a class="nav-link" href="/payment/completedlist">
 				<i class="fas fa-fw fa-table"></i> <span>지난주문내역</span>
 			</a></li>
 

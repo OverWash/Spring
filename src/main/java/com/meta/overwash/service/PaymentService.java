@@ -33,7 +33,10 @@ public interface PaymentService {
 	// 영수증 하나 가져오기
 	public ReceiptDTO getReceipt(Long receiptId);
 
-	// 영수증 리스트
+	// 회원이 보유한 영수증 리스트
 	public List<ReceiptDTO> getReceiptList(Long userId);
 	
+	// 회원이 보유한 영수증 중 예약상태가 '배달완료'인 리스트
+	public List<ReceiptDTO> getDeliveryCompletedList(Long userId);
+
 }

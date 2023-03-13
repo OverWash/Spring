@@ -42,18 +42,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${receipts}" var="receipts">
+									<c:forEach items="${completedList}" var="completedList">
 										<tr>
-											<td>${receipts.receiptId}</td>
-											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${receipts.pr.prPrice}" /></td>
-											<td>${receipts.paymentMethod}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
-											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="detailReceiptBtn" class="btn btn-primary" type="button" value="상세보기"></td>
+											<td>${completedList.receiptId}</td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${completedList.pr.prPrice}" /></td>
+											<td>${completedList.paymentMethod}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${completedList.pr.confirm.reservation.reservationDate}" /></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${completedList.pr.confirm.confirmDate}" /></td>
+											<td>${completedList.pr.confirm.crew.crewContact}</td>
+											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
-										<input id="receiptId" type="text" value="<c:out value='${receipts.receiptId}' />"   >
-										<input id="confirmId" type="text" value="<c:out value='${receipts.pr.confirm.confirmId}' />" >
 									</c:forEach>
 								</tbody>
 							</table>
@@ -65,8 +63,8 @@
 			</div>
 			<!-- End of Main Content -->
 
-			<!-- 상세 영수증 모달창 -->
-			<div class="modal fade" id="detailReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<!-- 검수 내역 모달창 -->
+			<div class="modal fade" id="checkListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" >
 					<div class="modal-content">
 						<div class="modal-header">
@@ -94,15 +92,7 @@
 														<th>가격</th>
 													</tr>
 												</thead>
-												<tbody>
-													<%-- <c:forEach items="${checks}" var="receipts"> --%>
-														<tr>
-															<td></td>
-															<td></td>
-														
-														</tr>
-													<%-- </c:forEach> --%>
-												</tbody>
+												<tbody id="checkTableBody"></tbody>
 											</table>
 										</div>
 									</div>
@@ -115,8 +105,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -130,23 +118,31 @@
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
 	<script type="text/javascript">
-		$(function() {
-			$('#receiptTable').DataTable(); // table 띄우기
-			$('#receiptId').hide();
-			$('#confirmId').hide();
+	$(function() {
+		$('#paymentRequestTable').DataTable(); // table 띄우기
 
-			// modal 띄우기
-			$('#detailReceiptBtn').on("click", function(e) {
-				$('#detailReceiptModal').modal("show");				
-				const receiptId = $('#receiptId').val();
-				const confirmId = $('#confirmId').val();
-				
-				$('#receiptIdText').text(receiptId);
-				// ajax 호출
-
+	});
+	
+	function checkList(event, prId, confirmId) {
+		$('#checkListModal').modal("show"); // modal 띄우기
+		$('#prIdText').text(prId);
+		
+		// ajax 호출
+		paymentService.getCheckList(confirmId, function(data){
+			//console.log(data);
+			var html = '';
+			$(data).each(function(){
+				//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
+				html += '<tr>';
+				html += '<td>'+ this.laundry.name +'</td>';
+				html += '<td>'+ this.laundry.laundryPrice.price +'</td>';
+				html += '</tr>';	
 			});
-
+			
+			$("#checkTableBody").empty();
+			$("#checkTableBody").append(html); 
 		});
+	}
 	</script>
 </body>
 </html>
