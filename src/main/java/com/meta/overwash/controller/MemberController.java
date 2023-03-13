@@ -61,7 +61,7 @@ public class MemberController {
 		reservation.setMember(member);
 		reservationService.register(reservation);
 
-		return "/member/main";
+		return "redirect:/member/main";
 	}
 	
 	@PostMapping("/mypage")

@@ -29,13 +29,17 @@
 
 		<!-- Nav Item - Pages Collapse Menu -->
 
-		<li class="nav-item"><a class="nav-link" href="/payment/processes">
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
 				<i class="fas fa-fw fa-table"></i> <span>결제요청내역</span>
 			</a></li>
 
 
-		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
+		<li class="nav-item"><a class="nav-link" href="/payment/receiptlist">
 				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
+			</a></li>
+
+		<li class="nav-item"><a class="nav-link" href="/payment/lastorderlist">
+				<i class="fas fa-fw fa-table"></i> <span>지난주문내역</span>
 			</a></li>
 
 

@@ -74,20 +74,25 @@ public class PaymentServiceImpl implements PaymentService {
 		return map;
 	}
 
-	// Rest Controller Paging 고객 내역
+//	// Rest Controller Paging 고객 내역
+//	@Override
+//	public Map<String, Object> getListToMember(Criteria cri, Long userId) {
+//		// Mapper에 들어갈 파라미터 map으로 변환
+//		HashMap<String, Object> vo = new HashMap<String, Object>();
+//		vo.put("pageNum", cri.getPageNum());
+//		vo.put("amount", cri.getAmount());
+//		vo.put("userId", userId);
+//
+//		// 페이징 처리를 위해 map으로 데이터 리턴
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put("paymentPaging", new PagenationDTO(cri, getCountToMember(userId, cri).intValue()));
+//		map.put("paymentRequests", prMapper.getListToMember(vo));
+//		return map;
+//	}
+	
 	@Override
-	public Map<String, Object> getListToMember(Criteria cri, Long userId) {
-		// Mapper에 들어갈 파라미터 map으로 변환
-		HashMap<String, Object> vo = new HashMap<String, Object>();
-		vo.put("pageNum", cri.getPageNum());
-		vo.put("amount", cri.getAmount());
-		vo.put("userId", userId);
-
-		// 페이징 처리를 위해 map으로 데이터 리턴
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("paymentPaging", new PagenationDTO(cri, getCountToMember(userId, cri).intValue()));
-		map.put("paymentRequests", prMapper.getListToMember(vo));
-		return map;
+	public List<PaymentRequestDTO> getPrListToMember(Long userId) {
+		return prMapper.getPrListToMemberNotPaging(userId);
 	}
 
 	@Override

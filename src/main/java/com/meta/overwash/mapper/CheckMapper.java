@@ -7,16 +7,16 @@ import com.meta.overwash.domain.CheckDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
 
 public interface CheckMapper {
-	
+
 	public List<CheckDTO> getList();
-	
+
 	public void insertCheck(CheckDTO check);
-	
+
 	public CheckDTO getCheck(Long checkId);
 
 	public int updateCheck(CheckDTO check);
-	
+
 	public int deleteCheck(Long checkId);
 
-	public Map<String, Object> getListByConfirmId(ReservationConfirmedDTO rcDto); 
+	public List<CheckDTO>  getListByConfirmId(ReservationConfirmedDTO rcDto);
 }

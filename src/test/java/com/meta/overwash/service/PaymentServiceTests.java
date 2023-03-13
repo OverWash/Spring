@@ -49,12 +49,12 @@ public class PaymentServiceTests {
 //		paymentService.getListToAdmin(cri);
 //	}
 
-	@Test
-	public void getListToMemberTest() throws Exception {
-
-		Criteria cri = new Criteria();
-		paymentService.getListToMember(cri, 4L);
-	}
+//	@Test
+//	public void getListToMemberTest() throws Exception {
+//
+//		Criteria cri = new Criteria();
+//		paymentService.getListToMember(cri, 4L);
+//	}
 
 //	@Test
 //	public void getReceiptDetailTest() {
@@ -66,5 +66,9 @@ public class PaymentServiceTests {
 //            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
 //        }
 //	}
-
+	
+//	@Test
+//	public void getPrListToMemberTest() {
+//		System.out.println(paymentService.getPrListToMember(4L));
+//	}
 }

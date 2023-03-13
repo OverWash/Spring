@@ -99,13 +99,13 @@
 						</div>
 						<!-- End of 예약리스트 Content Column -->
 						<div class="col-xl-12 mb-4">
-							<!-- 검수완료리스트(결제연결) -->
+							<!-- 결제완료리스트 top 5 (결제연결) -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
 									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
 								<div class="card-body">
-									<c:forEach items="${reservations}" var="checkCompletes">
+									<c:forEach items="${paymentRequests}" var="checkCompletes">
 										<div class="reservationList">
 											<h5 class="middle font-weight-light">
 												{reservations.collectDate} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">

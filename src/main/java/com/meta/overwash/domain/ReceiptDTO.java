@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ReceiptDTO {
-	private Integer receiptId;
+	private Long receiptId;
 	private String paymentMethod;
 	private PaymentRequestDTO pr;
 }
