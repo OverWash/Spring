@@ -117,6 +117,8 @@
 		]]>
             AND
                 r.member_id = #{memberId}
+            ORDER BY
+				r.reservation_date DESC
                 
 	</select>
 	

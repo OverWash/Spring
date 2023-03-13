@@ -34,5 +34,7 @@ public interface PaymentRequestMapper {
 
 	// 고객의 결제요청 리스트
 	public List<PaymentRequestDTO> getListToMember(HashMap<String, Object> hashMap);
+	
+	public List<PaymentRequestDTO> getPrListToMemberNotPaging(Long userId);
 
 }

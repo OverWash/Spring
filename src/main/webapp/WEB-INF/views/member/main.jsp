@@ -25,7 +25,7 @@
 									<a class="btn" onclick="fnModuleInfo()">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/undraw_booking_re_gw4j.svg">
 									</a>
-									<h5 class="float-right m-0 font-weight-bold text-dark">+예약하기</h5>
+									<h4 class="float-right m-0 font-weight-bold text-dark">+예약하기</h4>
 								</div>
 							</div>
 						</div>
@@ -36,8 +36,12 @@
 								<div class="card shadow mb-4">
 									<!-- Card Header - Dropdown -->
 									<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-										<h6 class="m-0 font-weight-bold text-primary">최근예약현황</h6>
-										<div class="dropdown no-arrow">
+										<div>
+										<h5 class="m-0 font-weight-bold text-dark">최근예약현황</h5>
+										</div>
+										<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                가장 최근 예약 내역입니다</div>
+                                            <div class="dropdown no-arrow">
 											<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 												<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
 											</a>
@@ -52,14 +56,18 @@
 									</div>
 									<!-- Card Body -->
 									<div class="card-body">
-										<div class="mt-4 text-center small">
-											<p>임시로 자바스크립트로 세탁완료 걸어둔 상태</p>
+										<div class="mt-4">
+										<div class="card-body">
+											No. ${reservations[0].reservationId}<br />
+											예약일자 : <fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${reservations[0].reservationDate}" />
+											<br />
+											수거희망날짜 : <fmt:formatDate pattern="yyyy.MM.dd" value="${reservations[0].collectDate}" />
+											<br />예약상태 : ${reservations[0].reservationStatus}<br /> 
+											<input type="hidden" id="lastResStatus" name="lastResStatus" value="${reservations[0].reservationStatus}">
+										</div>
 											<div class="progress mb-4">
 												<div class="progress-bar" id="lastResStatProgressBar" role="progressbar" style="width: 16%"></div>
 											</div>
-											${lastReservation.reservationId}<br />
-											<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${lastReservation.collectDate}" />
-											<br /> ${lastReservation.reservationStatus}<br /> <input type="hidden" id="lastResStatus" name="lastResStatus" value="${lastReservation.reservationStatus}">
 										</div>
 									</div>
 								</div>
@@ -80,7 +88,7 @@
 									<input type="hidden" id="reservationListSize" name="reservationListSize" value="${fn:length(reservations)}">
 								</div>
 								<div class="card-body">
-									<c:forEach items="${reservations}" var="reservations">
+									<c:forEach items="${reservations}" var="reservations" begin="1" end="5" varStatus="status">
 										<div class="reservations">
 											<h4 class="small font-weight-bold">
 												<span>No. ${reservations.reservationId}</span> 예약날짜 :
@@ -88,8 +96,9 @@
 												<span class="float-right">${reservations.reservationStatus}</span> <span class="float-right"></span>
 											</h4>
 											<div class="progress progress-sm mb-4">
-												<div class="progress-bar" role="progressbar" id="ResStatProgressBar${reservations.reservationId}" style="width: 20%">
-													<input type="hidden" id="resListStatus${reservations.reservationId}" name="lastResStatus${reservations.reservationId}" value="${reservations.reservationStatus}">
+												<div class="progress-bar" role="progressbar" id="ResStatProgressBar${status.count}" style="width: 10%">
+													<input type="hidden" id="resListNum${status.count}" value="${reservations.reservationId}">
+													<input type="hidden" id="resListStatus${status.count}" value="${reservations.reservationStatus}">
 												</div>
 											</div>
 										</div>
@@ -104,8 +113,9 @@
 								<div class="card-header py-3">
 									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
+								<div id="ajax-pr-list"></div>
 								<div class="card-body">
-									<c:forEach items="${reservations}" var="checkCompletes">
+									<c:forEach items="${reservations}" var="reservations" begin="1" end="5" varStatus="status">
 										<div class="reservationList">
 											<h5 class="middle font-weight-light">
 												{reservations.collectDate} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
@@ -174,39 +184,39 @@
 		</div>
 	</div>
 	<!-- request Modal-->
-
+	<input type="hidden" id="username" value="${member.user.email}" />
 	<script type="text/javascript">
 
 		/*모달*/
 		function fnModuleInfo() {
 			$('#MoaModal').modal();
 		}
-
+		/* 최근예약내역 progressBar */
 		let lastResStatus = $('#lastResStatus').val();
 		let resListLength = $('#reservationListSize').val();
-		lastResStatus = "세탁완료";
-		for (let i = 0; i < resListLength; i++) {
-			let resStatId = "resListStatus" + i;
-			let resStat = $('#' + resStatId).val();
-			let resProgressBarId = "ResStatProgressBar" + i;
-
-			progressBar(resStat, resProgressBarId);
-
-		}
-
+		
 		progressBar(lastResStatus, "lastResStatProgressBar");
+		
+		/* 예약리스트 progressBar */
+ 		for (let i = 1; i < 6; i++) {
+			let resStat = $("#resListStatus"+i).val();
+			let resProgressBarId = "ResStatProgressBar"+i;
+			
+			progressBar(resStat, resProgressBarId);
+		} 
 
+		/* progressBar */
 		function progressBar(resStat, resProgressBarId) {
 			if (resStat === "예약확정") {
-				$('#' + resProgressBarId).css("width", "33%");
+				$('#' + resProgressBarId).css("width", "20%");
 			} else if (resStat === "검수완료") {
-				$('#' + resProgressBarId).css("width", "50%");
+				$('#' + resProgressBarId).css("width", "40%");
 			} else if (resStat === "결제완료") {
 				$('#' + resProgressBarId).addClass("bg-info").css("width",
-						"60%");
+						"50%");
 			} else if (resStat === "세탁완료") {
 				$('#' + resProgressBarId).addClass("bg-info").css("width",
-						"80%");
+						"75%");
 			} else if (resStat === "배달완료") {
 				$('#' + resProgressBarId).addClass("bg-success").css("width",
 						"100%");
@@ -214,6 +224,20 @@
 				$('#' + resProgressBarId).addClass("bg-dark").css("width",
 						"100%");
 			}
+		
+/* 		
+		function getPaymentRequestlist(){
+			$.ajax({
+				url : '/member/payment',
+				method : 'GET',
+				contentType:'application/json;charaset=utf-8',
+				dataType:'json',
+				userId : $('#username').val(),
+				error : function(error, status, message) {}
+					alert("에러 : " + status + " | " + message);
+			},
+		}
+			 */
 		}
 	</script>
 </body>

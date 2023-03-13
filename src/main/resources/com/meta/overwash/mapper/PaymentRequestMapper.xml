@@ -203,4 +203,22 @@
 				AND
 				user_Id= #{userId}
 	</select>
+	
+	<select id="getPrListToMemberNotPaging" resultMap="PrMap">
+      SELECT  
+            PR.PR_ID,
+            R.RESERVATION_DATE,
+            RC.CONFIRM_DATE,
+            PR.PR_PRICE,
+            R.RESERVATION_ID,
+            RC.CONFIRM_ID          
+      FROM
+            PAYMENT_REQUEST PR 
+      JOIN   RESERVATION_CONFIRMED RC ON PR.CONFIRM_ID = RC.CONFIRM_ID
+      JOIN   RESERVATION R ON RC.RESERVATION_ID = R.RESERVATION_ID
+      JOIN   MEMBER M ON M.MEMBER_ID = R.MEMBER_ID
+      WHERE
+            M.USER_ID = #{userId}
+   </select>
+	
 </mapper>

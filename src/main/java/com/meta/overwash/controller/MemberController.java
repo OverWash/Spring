@@ -34,13 +34,15 @@ public class MemberController {
 	@Autowired
 	private ReservationService reservationService;
 	
+	
+	
 	@GetMapping("/main")
 	public void main(HttpSession session, Principal principal, Model model) throws Exception {
 		
 		// 메인페이지에서 보여줄 것들 추가
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		MemberDTO member = memberService.getMember(user.getUserId());
-		
+		member.getUser().getUserId();
 		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
 		session.setAttribute("member", member);
 				
@@ -49,10 +51,11 @@ public class MemberController {
 		if(reservations.size() > 0 ) {
 			int lastNum = reservations.size()-1;
 			ReservationDTO lastReservation = reservations.get(lastNum);
-			model.addAttribute("lastNum", lastNum);
 			model.addAttribute("reservations", reservations);
 			model.addAttribute("lastReservation", lastReservation);
 		}
+		
+		
 	}
 	
 	@PostMapping("/request")
@@ -61,7 +64,7 @@ public class MemberController {
 		reservation.setMember(member);
 		reservationService.register(reservation);
 
-		return "/member/main";
+		return "redirect:/member/main";
 	}
 	
 	@PostMapping("/mypage")

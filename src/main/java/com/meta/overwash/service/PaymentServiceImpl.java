@@ -137,5 +137,10 @@ public class PaymentServiceImpl implements PaymentService {
 
 		return prMapper.getCountToAdmin(cri);
 	}
-
+	
+	@Override
+	   public List<PaymentRequestDTO> getPrListToMember(Long userId) {
+	      return prMapper.getPrListToMemberNotPaging(userId);
+	   }
+	
 }
