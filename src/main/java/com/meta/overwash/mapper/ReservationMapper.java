@@ -15,7 +15,7 @@ public interface ReservationMapper {
 
 	public void insertReservation(ReservationDTO reservation);
 
-	public List<ReservationDTO> getListMember(String username);
+	public List<ReservationDTO> getListMember(Long memberId);
 
 	public int updateReservation(ReservationDTO reservation);
 

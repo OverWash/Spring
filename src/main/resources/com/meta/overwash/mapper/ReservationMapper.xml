@@ -109,18 +109,14 @@
 	<select id="getListMember" resultMap="reservationMap">
 		<![CDATA[
 			SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
-		  		r.reservation_status, u.email
+		  		r.reservation_status
 		  	FROM
-		  		reservation r, users u, users u2
+		  		reservation r
 		  	WHERE
 		  		r.reservation_id > 0
 		]]>
             AND
-                u.email = #{username}
-		  	AND
-		  		u.email = u2.email
-            AND 
-                r.member_id = u.user_id
+                r.member_id = #{memberId}
                 
 	</select>
 	

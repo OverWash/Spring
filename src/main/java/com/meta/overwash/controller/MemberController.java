@@ -43,15 +43,16 @@ public class MemberController {
 		
 		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
 		session.setAttribute("member", member);
+				
+		List<ReservationDTO> reservations = reservationService.getListMember(member.getMemberId());
 		
-		String username = principal.getName(); // 이거 이메일임.
-		List<ReservationDTO> reservations = reservationService.getListMember(username);
-		int lastNum = reservations.size()-1;
-		ReservationDTO lastReservation = reservations.get(lastNum);
-		model.addAttribute("lastNum", lastNum);
-		model.addAttribute("reservations", reservations);
-		model.addAttribute("lastReservation", lastReservation);
-		model.addAttribute("username", username);
+		if(reservations.size() > 0 ) {
+			int lastNum = reservations.size()-1;
+			ReservationDTO lastReservation = reservations.get(lastNum);
+			model.addAttribute("lastNum", lastNum);
+			model.addAttribute("reservations", reservations);
+			model.addAttribute("lastReservation", lastReservation);
+		}
 	}
 	
 	@PostMapping("/request")
