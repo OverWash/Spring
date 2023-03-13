@@ -55,14 +55,7 @@ public class MemberController {
 		}
 	}
 	
-	@PostMapping("/request")
-	public String result(Principal principal, ReservationDTO reservation, HttpSession session) throws ParseException {
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		reservation.setMember(member);
-		reservationService.register(reservation);
-
-		return "redirect:/member/main";
-	}
+	
 	
 	@PostMapping("/mypage")
 	public String myPage(HttpServletRequest request, Model model) throws Exception{

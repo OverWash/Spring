@@ -91,7 +91,7 @@ public class ReservationServiceTests {
 		reservation.setRequest(request);
 		reservation.setMember(member);
 		
-		service.register(reservation);
+		service.insert(reservation);
 	}
 	
 }
