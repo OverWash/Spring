@@ -14,18 +14,19 @@ import lombok.extern.log4j.Log4j;
 @Service
 @Log4j
 public class LaundryServiceImpl implements LaundryService {
-	
+
 	@Autowired
-	LaundryMapper mapper;
-	
+	LaundryMapper laundryMapper;
+
 	@Override
 	public List<LaundryDTO> getList() {
-		return mapper.getList();
+
+		return laundryMapper.getList();
 	}
 
 	@Override
 	public WashingCompleteDTO updateWashComplete() {
-		
+
 		return null;
 	}
 

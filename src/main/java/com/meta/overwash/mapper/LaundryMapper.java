@@ -10,4 +10,13 @@ public interface LaundryMapper {
 	public List<LaundryDTO> getList();
 	public ReservationConfirmedDTO updateWashComplete();
 
+	public void insertLaundry(LaundryDTO laundry);
+
+	public int getLaundry(Long laundryId); 
+
+	public int updateLaundry(LaundryDTO laundry);
+	
+	public int deleteLaundry(Long laundryId);
+
+	public int getLaundryCnt(); 
 }

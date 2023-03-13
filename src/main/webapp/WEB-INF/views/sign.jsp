@@ -41,7 +41,7 @@
 								<div class="p-5">
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">
-											<strong>Test</strong>
+											<strong>overWash</strong>
 										</h1>
 									</div>
 									<form class="user">
@@ -57,7 +57,7 @@
 												<label class="custom-control-label" for="customCheck">Remember Me</label>
 											</div>
 										</div>
-										<a href="/test" class="btn btn-secondary btn-user btn-block" style="font-size: 1.2rem; padding: 0.2rem"> Login </a>
+										<a href="/sign" class="btn btn-secondary btn-user btn-block" style="font-size: 1.2rem; padding: 0.2rem"> Login </a>
 										<p></p>
 										<a href="#" class="btn btn-secondary btn-icon-split" style="margin-left: 3.5rem">
 											<span class="icon text-white-50"> <i class="fas fa-flag"></i>

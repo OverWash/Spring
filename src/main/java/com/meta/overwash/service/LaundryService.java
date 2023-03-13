@@ -7,5 +7,6 @@ import com.meta.overwash.domain.WashingCompleteDTO;
 
 public interface LaundryService {
 	public List<LaundryDTO> getList();
+
 	public WashingCompleteDTO updateWashComplete();
 }

@@ -8,19 +8,21 @@ import com.meta.overwash.domain.WashingCompleteDTO;
 
 
 public interface ReservationMapper {
-	
+
 	public List<ReservationDTO> getList();
 
 	public List<ReservationDTO> getListEach(Long memberId);
 	
 	public void insertReservation(ReservationDTO reservation);
-	
-	public ReservationDTO getReservation(Long reservationId);
+
+	public int updateReservation(ReservationDTO reservation);
+
+	public int deleteReservation(Long reservationId);	
 	
 	public void insertWashingComplete(WashingCompleteDTO washingComplete);
 	
 	public int updateReservationStatus(ReservationDTO reservation);
-	
-	public int deleteReservation(Long reservationId); 
+	 
+	public ReservationDTO getReservation(Long reservationId);
 	
 }
