@@ -33,6 +33,7 @@
 				<i class="fas fa-fw fa-table"></i> <span>결제요청내역</span>
 			</a></li>
 
+
 		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
 				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
 			</a></li>
@@ -67,7 +68,7 @@
 		<!-- Nav Item - Pages Collapse Menu -->
 
 		<!-- Nav Item - Charts -->
-		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
+		<li class="nav-item"><a class="nav-link">
 				<i class="fas fa-fw fa-table"></i> <span>관리자</span>
 			</a></li>
 

@@ -108,36 +108,6 @@ $(function(){
 								<h6 class="dropdown-header">Message Center</h6>
 								<a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div class="font-weight-bold">
-										<div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-										<div class="small text-gray-500">Emily Fowler · 58m</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-										<div class="status-indicator"></div>
-									</div>
-									<div>
-										<div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-										<div class="small text-gray-500">Jae Chun · 1d</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-										<div class="status-indicator bg-warning"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-										<div class="small text-gray-500">Morgan Alvarez · 2d</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
 										<img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
 										<div class="status-indicator bg-success"></div>
 									</div>
@@ -153,12 +123,7 @@ $(function(){
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								 <sec:authorize access="hasRole('ROLE_MEMBER')">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">(안녕하세요, ${memberDTO.nickname}님!)</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
-								</sec:authorize>
-								<sec:authorize access="hasRole('ROLE_CREW')">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">(안녕하세요, ${crewDTO.crewName}님!)</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
-								</sec:authorize>
+								<span class="mr-2 d-none d-lg-inline text-gray-900 font-weight-bold">안녕하세요, ${username}님!</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
 							</a> 
 							<!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -208,8 +173,8 @@ $(function(){
                             </div>
 						</li>
 					</ul>
-
 				</nav>
+				<!-- End of Topbar -->
 				<!-- Logout Modal-->
 				<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">

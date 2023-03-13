@@ -28,39 +28,13 @@ public class UserMapperTests {
 	UserMapper userMapper;
 	
 	@Autowired
-	CrewMapper crewMapper;
+	MemberMapper memberMapper;
 	
 	@Autowired
-	MemberMapper memberMapper;
+	CrewMapper crewMapper;
 
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
-//	@Test
-//	public void insertUserTest() {
-//		UserDTO user = new UserDTO();
-		
-//		user
-//		user.setEmail("member");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_MEMBER");
-		
-//		user.setEmail("admin");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_ADMIN");
-		
-//		user.setEmail("crew");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_CREW");
-		
-//		user.setEmail("admin15523");
-//		user.setPassword(bCryptPasswordEncoder.encode("1234"));
-//		user.setRole("ROLE_ADMIN");
-		
-//		mapper.insertUser(user);
-//		log.info(user);
-//	}
 
 
 //	@Test
@@ -70,7 +44,7 @@ public class UserMapperTests {
 //
 //	}
 	
-	@Test
+
 	public void insertUserTest() throws Exception {
 		
 		IntStream.range(1, 8).forEach(i -> {
@@ -147,6 +121,4 @@ public class UserMapperTests {
 	
 	}
 	
-
-
 }

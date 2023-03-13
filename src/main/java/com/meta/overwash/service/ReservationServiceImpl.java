@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.WashingCompleteDTO;
@@ -30,6 +31,11 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	@Override
+	public ReservationDTO getListEachOne(ReservationDTO reservation) {
+		return mapper.getListEachOne(reservation);
+	}
+	
+	@Override
 	public void register(ReservationDTO reservation) {
 		mapper.insertReservation(reservation);
 	}
@@ -38,16 +44,27 @@ public class ReservationServiceImpl implements ReservationService{
 	public void updateReservationStatus(ReservationDTO reservation) {
 		mapper.updateReservationStatus(reservation);
 	}
-
-
+	
 	@Override
+	@Transactional
 	public void registerWashingComplete(WashingCompleteDTO washComplete) {
 		mapper.insertWashingComplete(washComplete);
 		ReservationDTO reservation = washComplete.getConfirm().getReservation();
 		reservation.setReservationStatus("세탁완료");
 		updateReservationStatus(reservation);
 	}
-	
+
+	@Override
+	public List<ReservationDTO> getListMember(String username) {
+		return mapper.getListMember(username);
+	}
+
+	@Override
+	public Long getMemberId(String username) {
+		return mapper.getMemberId(username);
+	}
+
+
 
 
 }
