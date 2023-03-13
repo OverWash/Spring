@@ -2,18 +2,15 @@ package com.meta.overwash.controller;
 
 import java.security.Principal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,42 +56,30 @@ public class MemberController {
 		model.addAttribute("username", username);
 	}
 	
-	@GetMapping("/request")
-	public void request() throws Exception {
-	}
+//	@GetMapping("/request")
+//	public void request() throws Exception {
+//	}
 	
-	@PostMapping("/result")
-	public String result(Principal principal, RedirectAttributes rttr, 
-			HttpServletRequest httpServletRequest, ModelAndView mav) throws ParseException {
+	@PostMapping("/request")
+//	public String result(Principal principal, ReservationDTO reservation,
+//		 ModelAndView mav) throws ParseException {
+		public String result(Principal principal, ReservationDTO reservation) throws ParseException {
 		log.info("============reservation Register============");
-		ReservationDTO reservation = new ReservationDTO();
-		String dateStr = httpServletRequest.getParameter("collectDate");
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = format.parse(dateStr);	
 		
-		String request = httpServletRequest.getParameter("laundryRequest");
-		
+		Date date = reservation.getCollectDate();
+		String request = reservation.getRequest();
 		String username = principal.getName();
 		Long memberId = reservationService.getMemberId(username);
-		
-		System.out.println("|||||||||||||||||"+username);
-		System.out.println("|||||||||||||||||"+memberId);
-		System.out.println("|||||||||||||||||"+date);
-		System.out.println("|||||||||||||||||"+request);
-		
 		UserDTO user = new UserDTO();
-		
 		MemberDTO member = new MemberDTO();
 		member.setUser(user);
 		member.setMemberId(memberId);
-		
 		reservation.setCollectDate(date);
 		reservation.setRequest(request);
 		reservation.setMember(member);
-		
 		reservationService.register(reservation);
-		
-		return "result";
+
+		return "/member/main";
 	}
 	
 

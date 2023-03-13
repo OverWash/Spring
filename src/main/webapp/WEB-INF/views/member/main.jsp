@@ -23,7 +23,7 @@
 						<div class="col-xl-6 col-lg-7">
 							<div class="card shadow mb-4">
 								<div class="card-body">
-									<a class="btn" onclick="fnModuleInfo('${test.id}')">
+									<a class="btn" onclick="fnModuleInfo()">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/undraw_booking_re_gw4j.svg">
 									</a>
 									<h5 class="float-right m-0 font-weight-bold text-dark">+예약하기</h5>
@@ -138,7 +138,7 @@
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form class="user" action="request" method=POST>
+				<form class="user" action="/member/request" method="POST">
 					<div class="col-sm-12 mb-4">
 						<!-- 수거 날짜 선택 -->
 						<div class="card shadow mb-4">
@@ -146,7 +146,7 @@
 								<h4 class="m-0 font-weight-bold text-primary">수거일을 선택하세요</h4>
 							</div>
 							<div class="card-body">
-								<input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
+   								 <input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
 							</div>
 						</div>
 						<!-- End 수거 날짜 선택 -->
@@ -157,11 +157,11 @@
 							</div>
 							<div class="card-body">
 								<div class="input-group">
-									<input type="text" id="laundryRequest" name="laundryRequest" class="form-control bg-light border-0 large" placeholder="요청사항을 입력하세요" aria-label="Search" aria-describedby="basic-addon2">
+									<input type="text" id="request" name="request" class="form-control bg-light border-0 large" placeholder="요청사항을 입력하세요">
 								</div>
 							</div>
 						</div>
-						<input type='submit'>
+						<input id="requestSubmit" type='submit'>
 						<!-- End of 요청사항 입력 -->
 						<div class="my-2"></div>
 						<a href="#" class="btn btn-primary btn-icon-split btn-lg">
@@ -169,6 +169,7 @@
 							</span> <span class="text">예약 신청하기</span>
 						</a>
 					</div>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
 			</div>
 		</div>
@@ -176,9 +177,13 @@
 	<!-- request Modal-->
 
 	<script type="text/javascript">
+		$('#requestSubmit').on("click", function(){
+			console.log($('#requestSubmit').val());
+		});
+		
+	
 		/*모달*/
-		function fnModuleInfo(str) {
-			$('#MoaModal .modal-content').load("moaModal?id=" + str);
+		function fnModuleInfo() {
 			$('#MoaModal').modal();
 		}
 

@@ -76,7 +76,7 @@ public class ReservationServiceTests {
 		ReservationDTO reservation = new ReservationDTO();
 		Date date = new Date();
 		
-		String request = "LastTestlaundryRequest";
+		String request = "예약좀 해줘요 제발";
 		
 		String username = "member@gmail.com";
 		Long memberId = service.getMemberId(username);
