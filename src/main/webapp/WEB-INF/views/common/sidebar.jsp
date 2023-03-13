@@ -28,11 +28,13 @@
 		<div class="sidebar-heading">메뉴</div>
 
 		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link" href="/reservation/list">
+				<i class="fas fa-fw fa-table"></i> <span>예약내역</span>
+			</a></li>		
 
 		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
 				<i class="fas fa-fw fa-table"></i> <span>결제요청내역</span>
 			</a></li>
-
 
 		<li class="nav-item"><a class="nav-link" href="/payment/receiptlist">
 				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
