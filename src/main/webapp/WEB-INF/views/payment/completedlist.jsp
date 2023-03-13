@@ -124,6 +124,7 @@
 	});
 	
 	function checkList(event, prId, confirmId) {
+		event.preventDefault(); // 버블링 방지
 		$('#checkListModal').modal("show"); // modal 띄우기
 		$('#prIdText').text(prId);
 		
