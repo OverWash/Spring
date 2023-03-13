@@ -29,7 +29,7 @@
 							<h6 class="m-0 font-weight-bold text-primary">예약 목록</h6>
 						</div>
 						<div class="card-body">
-							<table id="receiptTable" class="table table-striped table-bordered" style="width: 100%">
+							<table id="completedTable" class="table table-striped table-bordered" style="width: 100%">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -119,7 +119,7 @@
 
 	<script type="text/javascript">
 	$(function() {
-		$('#paymentRequestTable').DataTable(); // table 띄우기
+		$('#completedTable').DataTable(); // table 띄우기
 
 	});
 	

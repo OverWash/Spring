@@ -140,8 +140,7 @@
 	<update id="updateReservationStatus"
 		parameterType="ReservationDTO">
 		UPDATE reservation
-		SET reservation_status
-		=#{reservationStatus}
+		SET reservation_status = #{reservationStatus}
 		WHERE reservation_id = #{reservationId}
 	</update>
 

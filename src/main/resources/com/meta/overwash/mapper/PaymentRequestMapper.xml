@@ -202,6 +202,8 @@
       JOIN   MEMBER M ON M.MEMBER_ID = R.MEMBER_ID
       WHERE
             M.USER_ID = #{userId}
+     		AND 
+			RESERVATION_STATUS LIKE '%'||'검수완료'||'%'
    </select>
 	
 
@@ -219,6 +221,6 @@
 		WHERE
 				RESERVATION_STATUS LIKE '%'||'검수완료'||'%'
 				AND
-				user_Id= #{userId}
+				user_Id = #{userId}
 	</select>
 </mapper>

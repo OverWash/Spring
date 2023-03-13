@@ -28,7 +28,7 @@ public interface PaymentService {
 
 	// 고객 영수증 발급 (결제 수행)
 	// 결제 후 예약테이블의 예약상태를 '결제완료'로 변경	
-	public void paymentProcess(ReceiptDTO receipt);
+	public void paymentProcess(Long prId, Long confirmId, ReceiptDTO receipt);
 
 	// 영수증 하나 가져오기
 	public ReceiptDTO getReceipt(Long receiptId);

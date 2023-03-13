@@ -21,7 +21,7 @@
 
 					<!-- Page Heading -->
 					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 요청 내역</h3>
-					<p class="mb-4">${username}님의 결제 요청 내역입니다. 결제를 진행해 주세요.</p>
+					<p class="mb-4">${username}님의결제요청내역입니다.결제를진행해주세요.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -33,11 +33,12 @@
 								<thead>
 									<tr>
 										<th>No</th>
-										<th>예약 No</th>
+										<th>예약No</th>
 										<th>예약일</th>
-										<th>예약 확정일</th>
-										<th>총 금액</th>
-										<th>검수 내역</th>
+										<th>예약확정일</th>
+										<th>금액</th>
+										<th>검수내역</th>
+										<th>결제하기</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -48,9 +49,10 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.confirmDate}" /></td>
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${prList.prPrice}" /></td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})" ></td>
+											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
+											<td><input id="payProcessBtn" class="btn btn-primary" type="button" value="결제하기" onclick="payProcess(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
 										</tr>
-										
+
 									</c:forEach>
 								</tbody>
 							</table>
@@ -62,9 +64,9 @@
 			</div>
 			<!-- End of Main Content -->
 
-						<!-- 검수 내역 모달창 -->
+			<!-- 검수 내역 모달창 -->
 			<div class="modal fade" id="checkListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" >
+				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="font-weight-bold">결제요청서 No.</h5>
@@ -104,6 +106,63 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- 결제 진행 모달창 -->
+			<div class="modal fade" id="payProcessModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="font-weight-bold">결제요청서 No.</h5>
+							<h5 id="prIdText2" class="font-weight-bold"></h5>
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<form id="requestForm" class="user" action="/payment/process" method="POST">
+							<div class="modal-body">
+								<hr>
+								<!-- Content Row -->
+								<div class="row">
+									<div class="col-xl-12 mb-4">
+										<div class="card shadow mb-4">
+											<div class="card-header py-3">
+												<h6 class="m-0 font-weight-bold text-primary">결제수단을 선택해 주세요</h6>
+											</div>
+
+											<!-- 결제수단 체크박스 -->
+											<div class="card-body">
+												<!-- <div class="input-group">
+													<label><input type="radio" id="paymentMethod" name="paymentMethod" value="신용카드" > 신용카드</label>
+												</div>
+												<div class="input-group">
+													<label><input type="radio" id="paymentMethod" name="paymentMethod" value="카드" > 카드</label>
+												</div>
+												 -->
+												<select name="paymentMethod" class="custom-select custom-select-sm form-control form-control-sm">
+													<option value="문화상품권">문화상품권</option>
+													<option value="모바일결제">모바일 결제</option>
+													<option value="신용카드">신용카드</option>
+													<option value="토스">토스</option>
+													<option value="PAYCO">PAYCO</option>
+													<option value="KakaoPay">KakaoPay</option>
+												</select>
+												<input id="prId" type="hidden" name="prId">
+												<input id="confirmId" type="hidden" name="confirmId">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+								<button class="btn btn-primary" type="button" onclick="return chk_form()">결제하기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -122,7 +181,20 @@
 			$('#paymentRequestTable').DataTable(); // table 띄우기
 		});
 		
+		function payProcess(event, prId, confirmId) {
+			event.preventDefault(); // 버블링 방지
+			$('#payProcessModal').modal("show"); // modal 띄우기
+			$('#prIdText2').text(prId);
+			$('#prId').attr("value", prId);
+			$('#confirmId').attr("value", confirmId);
+		}
+		
+		function chk_form() {
+			$("#requestForm").submit();
+		}
+		
 		function checkList(event, prId, confirmId) {
+			event.preventDefault(); // 버블링 방지
 			$('#checkListModal').modal("show"); // modal 띄우기
 			$('#prIdText').text(prId);
 			

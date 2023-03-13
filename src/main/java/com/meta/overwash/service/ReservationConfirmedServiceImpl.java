@@ -11,6 +11,7 @@ import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryFactoryDTO;
 import com.meta.overwash.domain.PagenationDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
+import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.LaundryFactoryMapper;
 import com.meta.overwash.mapper.ReservationConfirmedMapper;

@@ -7,8 +7,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.meta.overwash.domain.ReceiptDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.MemberService;
 import com.meta.overwash.service.PaymentService;
@@ -35,11 +37,12 @@ public class PaymentController {
 	
 	// 고객의 결제진행(완료) 시 영수증 발급 
 	// rest로 변경?
-//	@PostMapping("/process")
-//	public String processRequest(Long prId) {
-//		receiptService.paymentProcess(prId);
-//		return "/member/main";
-//	}
+	@PostMapping("/process")
+	public String processRequest(Long prId, Long confirmId, ReceiptDTO receipt) {
+		log.info("processRequest 컨트롤러 호출 ....");
+		paymentService.paymentProcess(prId, confirmId, receipt);
+		return "redirect:/member/main";
+	}
 	
 	// view
 	// 멤버 권한

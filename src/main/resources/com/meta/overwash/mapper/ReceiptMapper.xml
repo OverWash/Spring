@@ -81,7 +81,7 @@
 		WHERE
 			m.user_id = #{userId}
 		AND
-			r.reservation_status = '배달완료'
+			r.reservation_status LIKE  '%'||'배달완료'||'%'
 	</select>
 	
 	

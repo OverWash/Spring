@@ -15,6 +15,7 @@ import com.meta.overwash.domain.PagenationDTO;
 import com.meta.overwash.domain.PaymentRequestDTO;
 import com.meta.overwash.domain.ReceiptDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
+import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.CheckMapper;
 import com.meta.overwash.mapper.PaymentRequestMapper;
@@ -23,6 +24,7 @@ import com.meta.overwash.mapper.ReservationConfirmedMapper;
 import com.meta.overwash.mapper.ReservationMapper;
 
 import lombok.extern.log4j.Log4j;
+import oracle.jdbc.driver.LogicalConnection;
 
 @Service
 @Log4j
@@ -108,16 +110,21 @@ public class PaymentServiceImpl implements PaymentService {
 	 * 
 	 * */
 	@Override
-	// @Transactional
-	public void paymentProcess(ReceiptDTO receipt) {
-		log.info("결제 진행......");
-
-//		receiptMapper.insertReceipt();
+	@Transactional
+	public void paymentProcess(Long prId, Long confirmId, ReceiptDTO receipt) {
+		log.info("결제 진행 서비스 호출......");
+		
 		// 영수증 발급 후 예약의 예약상태 '결제완료'로 변경
-		// 그러기 위해서는 예약번호를 들고와야.. 어디서?
 		// 결제를 진행할때는 결제요청서를 가지고 있음. 결제요청서에는 예약확정번호가 있고 거기엔 예약번호가 있다.
-
-		// reservationMapper.updateReservationStatus(null);
+		
+		PaymentRequestDTO pr = prMapper.getPaymentRequest(prId);
+		ReservationConfirmedDTO rc = rcMapper.getReservationConfirm(confirmId);
+		ReservationDTO r = rc.getReservation();
+		r.setReservationStatus("결제완료");
+		receipt.setPr(pr);
+		
+		receiptMapper.insertReceipt(receipt);
+		reservationMapper.updateReservationStatus(r);
 	}
 
 	@Override

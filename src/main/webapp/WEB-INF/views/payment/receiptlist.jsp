@@ -121,14 +121,14 @@
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
 	<script type="text/javascript">
 		$(function() {
-			$('#paymentRequestTable').DataTable(); // table 띄우기
+			$('#receiptTable').DataTable(); // table 띄우기
 
 		});
 		
-		function checkList(event, prId, confirmId) {
+		function checkList(event, receiptId, confirmId) {
 			event.preventDefault(); // 버블링 방지
 			$('#checkListModal').modal("show"); // modal 띄우기
-			$('#prIdText').text(prId);
+			$('#receiptIdText').text(receiptId);
 			
 			// ajax 호출
 			paymentService.getCheckList(confirmId, function(data){
