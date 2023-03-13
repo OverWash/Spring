@@ -106,7 +106,7 @@
                 r.reservation_id = #{reservationId}
 	</select>
 
-	<select id="getListMember" resultMap="reservationMap">
+	<select id="getListByMember" resultMap="reservationMap">
 		<![CDATA[
 			SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 
 		  		r.reservation_status
@@ -119,14 +119,7 @@
                 r.member_id = #{memberId}
                 
 	</select>
-	
-	<select id="getMemberId" resultType="Long">
-		SELECT DISTINCT member_id
-        FROM member m, users u, users u2
-        WHERE  u.email = #{username}
-        AND m.member_id = u.user_id
-	</select>
-		
+
 
 	<select id="getListCheckComplete" resultMap="reservationMap"
 		parameterType="ReservationDTO">

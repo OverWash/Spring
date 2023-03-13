@@ -44,7 +44,7 @@ public class MemberController {
 		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
 		session.setAttribute("member", member);
 				
-		List<ReservationDTO> reservations = reservationService.getListMember(member.getMemberId());
+		List<ReservationDTO> reservations = reservationService.getListByMember(member.getMemberId());
 		
 		if(reservations.size() > 0 ) {
 			int lastNum = reservations.size()-1;

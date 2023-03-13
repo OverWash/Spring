@@ -13,7 +13,7 @@ public interface ReservationService {
 
 	public ReservationDTO getListEachOne(ReservationDTO reservation);
 
-	public List<ReservationDTO> getListMember(Long memberId);
+	public List<ReservationDTO> getListByMember(Long memberId);
 
 	// 예약 신청
 	public void insert(ReservationDTO reservation);
@@ -24,6 +24,5 @@ public interface ReservationService {
 	// 세탁 완료에 추가 ?
 	public void insertWashingComplete(WashingCompleteDTO washComplete);
 
-	public Long getMemberId(String username);
 
 }
