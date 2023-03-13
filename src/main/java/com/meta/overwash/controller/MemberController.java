@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.meta.overwash.domain.MemberDTO;
+import com.meta.overwash.domain.PaymentRequestDTO;
 import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.MemberService;
+import com.meta.overwash.service.PaymentService;
 import com.meta.overwash.service.ReservationService;
 
 import lombok.extern.log4j.Log4j;
@@ -34,7 +36,8 @@ public class MemberController {
 	@Autowired
 	private ReservationService reservationService;
 	
-	
+	@Autowired
+	PaymentService paymentService;
 	
 	@GetMapping("/main")
 	public void main(HttpSession session, Principal principal, Model model) throws Exception {
@@ -42,17 +45,19 @@ public class MemberController {
 		// 메인페이지에서 보여줄 것들 추가
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		MemberDTO member = memberService.getMember(user.getUserId());
-		member.getUser().getUserId();
+
 		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
 		session.setAttribute("member", member);
-				
+		Long usersId = user.getUserId();
 		List<ReservationDTO> reservations = reservationService.getListMember(member.getMemberId());
-		
+		List<PaymentRequestDTO> prList = paymentService.getPrListToMember(usersId);
+		System.out.println("===============================prList : " + prList);
 		if(reservations.size() > 0 ) {
 			int lastNum = reservations.size()-1;
 			ReservationDTO lastReservation = reservations.get(lastNum);
 			model.addAttribute("reservations", reservations);
 			model.addAttribute("lastReservation", lastReservation);
+			model.addAttribute("prList", prList);
 		}
 		
 		

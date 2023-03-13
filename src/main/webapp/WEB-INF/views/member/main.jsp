@@ -115,10 +115,11 @@
 								</div>
 								<div id="ajax-pr-list"></div>
 								<div class="card-body">
-									<c:forEach items="${reservations}" var="reservations" begin="1" end="5" varStatus="status">
+									<c:forEach items="${prList}" var="prList" varStatus="status">
 										<div class="reservationList">
-											<h5 class="middle font-weight-light">
-												{reservations.collectDate} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
+											<h5 class="small font-weight-light">
+												no.${prList.confirm.reservation.reservationId}&nbsp 예약날짜 : ${prList.confirm.reservation.reservationDate} 결제요청금액 : ${prList.prPrice}원
+												<span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
 														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> <span class="text font-weight-bold">결제하기</span>
 													</a>
 												</span>
