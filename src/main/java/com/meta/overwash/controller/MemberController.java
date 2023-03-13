@@ -56,26 +56,18 @@ public class MemberController {
 		model.addAttribute("username", username);
 	}
 	
-//	@GetMapping("/request")
-//	public void request() throws Exception {
-//	}
-	
 	@PostMapping("/request")
-//	public String result(Principal principal, ReservationDTO reservation,
-//		 ModelAndView mav) throws ParseException {
 		public String result(Principal principal, ReservationDTO reservation) throws ParseException {
-		log.info("============reservation Register============");
 		
-		Date date = reservation.getCollectDate();
-		String request = reservation.getRequest();
 		String username = principal.getName();
 		Long memberId = reservationService.getMemberId(username);
+		
 		UserDTO user = new UserDTO();
 		MemberDTO member = new MemberDTO();
+		
 		member.setUser(user);
 		member.setMemberId(memberId);
-		reservation.setCollectDate(date);
-		reservation.setRequest(request);
+
 		reservation.setMember(member);
 		reservationService.register(reservation);
 
