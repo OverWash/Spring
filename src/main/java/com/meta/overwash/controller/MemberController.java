@@ -56,17 +56,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/request")
-		public String result(Principal principal, ReservationDTO reservation) throws ParseException {
-		
-		String username = principal.getName();
-		Long memberId = reservationService.getMemberId(username);
-		
-		UserDTO user = new UserDTO();
-		MemberDTO member = new MemberDTO();
-		
-		member.setUser(user);
-		member.setMemberId(memberId);
-
+	public String result(Principal principal, ReservationDTO reservation, HttpSession session) throws ParseException {
+		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		reservation.setMember(member);
 		reservationService.register(reservation);
 
