@@ -1,8 +1,11 @@
 package com.meta.overwash.service;
 
+import java.util.List;
 import java.util.Map;
+
+import com.meta.overwash.domain.CheckDTO;
 
 public interface CheckService {
 
-	public Map<String, Object> getCheckList(Long confirmId);
+	public List<CheckDTO> getCheckList(Long confirmId);
 }

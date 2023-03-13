@@ -49,7 +49,7 @@ public class MemberController {
 		session.setAttribute("username", member.getNickname()); // navBar에 닉네임 계속 보여 주기 위해
 		session.setAttribute("member", member);
 		Long usersId = user.getUserId();
-		List<ReservationDTO> reservations = reservationService.getListMember(member.getMemberId());
+		List<ReservationDTO> reservations = reservationService.getListByMember(member.getMemberId());
 		List<PaymentRequestDTO> prList = paymentService.getPrListToMember(usersId);
 		if(reservations.size() > 0 ) {
 			int lastNum = reservations.size()-1;
@@ -60,15 +60,6 @@ public class MemberController {
 		}
 		
 		
-	}
-	
-	@PostMapping("/request")
-	public String result(Principal principal, ReservationDTO reservation, HttpSession session) throws ParseException {
-		MemberDTO member = (MemberDTO) session.getAttribute("member");
-		reservation.setMember(member);
-		reservationService.register(reservation);
-
-		return "redirect:/member/main";
 	}
 	
 	@PostMapping("/mypage")

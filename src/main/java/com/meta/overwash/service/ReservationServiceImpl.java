@@ -36,7 +36,7 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 	
 	@Override
-	public void register(ReservationDTO reservation) {
+	public void insert(ReservationDTO reservation) {
 		mapper.insertReservation(reservation);
 	}
 
@@ -47,7 +47,7 @@ public class ReservationServiceImpl implements ReservationService{
 	
 	@Override
 	@Transactional
-	public void registerWashingComplete(WashingCompleteDTO washComplete) {
+	public void insertWashingComplete(WashingCompleteDTO washComplete) {
 		mapper.insertWashingComplete(washComplete);
 		ReservationDTO reservation = washComplete.getConfirm().getReservation();
 		reservation.setReservationStatus("세탁완료");
@@ -55,16 +55,8 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public List<ReservationDTO> getListMember(Long memberId) {
-		return mapper.getListMember(memberId);
+	public List<ReservationDTO> getListByMember(Long memberId) {
+		return mapper.getListByMember(memberId);
 	}
-
-	@Override
-	public Long getMemberId(String username) {
-		return mapper.getMemberId(username);
-	}
-
-
-
 
 }

@@ -32,6 +32,11 @@ public class ReservationServiceTests {
 	ReservationMapper mapper;
 	
 //	@Test
+//	public void getListByMemberTest() {
+//		log.info(mapper.getListByMember(1L));
+//	}
+	
+//	@Test
 //	public void getListTest() {
 //		service.getList().forEach(reservation -> log.info(reservation));
 //	}
@@ -70,28 +75,28 @@ public class ReservationServiceTests {
 //		service.getListMember(username).forEach(reservations -> log.info(reservations));
 //	}
 	
-	@Test
-	public void RequestReservationTest() {
-		log.info("============reservation Register============");
-		ReservationDTO reservation = new ReservationDTO();
-		Date date = new Date();
-		
-		String request = "예약좀 해줘요 제발";
-		
-		String username = "member@gmail.com";
-		Long memberId = service.getMemberId(username);
-		
-		UserDTO user = new UserDTO();
-		
-		MemberDTO member = new MemberDTO();
-		member.setUser(user);
-		member.setMemberId(memberId);
-		
-		reservation.setCollectDate(date);
-		reservation.setRequest(request);
-		reservation.setMember(member);
-		
-		service.register(reservation);
-	}
+//	@Test
+//	public void RequestReservationTest() {
+//		log.info("============reservation Register============");
+//		ReservationDTO reservation = new ReservationDTO();
+//		Date date = new Date();
+//		
+//		String request = "예약좀 해줘요 제발";
+//		
+//		String username = "member@gmail.com";
+//		Long memberId = service.getMemberId(username);
+//		
+//		UserDTO user = new UserDTO();
+//		
+//		MemberDTO member = new MemberDTO();
+//		member.setUser(user);
+//		member.setMemberId(memberId);
+//		
+//		reservation.setCollectDate(date);
+//		reservation.setRequest(request);
+//		reservation.setMember(member);
+//		
+//		service.insert(reservation);
+//	}
 	
 }

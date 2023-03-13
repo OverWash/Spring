@@ -21,7 +21,7 @@
 
 					<!-- Page Heading -->
 					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 완료 내역</h3>
-					<p class="mb-4">${member.nickname}님의 결제 영수증 목록입니다.</p>
+					<p class="mb-4">${username}님의 결제 영수증 목록입니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -50,10 +50,9 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
 											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="detailReceiptBtn" class="btn btn-primary" type="button" value="상세보기"></td>
+											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
-										<input id="receiptId" type="text" value="<c:out value='${receipts.receiptId}' />"   >
-										<input id="confirmId" type="text" value="<c:out value='${receipts.pr.confirm.confirmId}' />" >
+										
 									</c:forEach>
 								</tbody>
 							</table>
@@ -65,8 +64,8 @@
 			</div>
 			<!-- End of Main Content -->
 
-			<!-- 상세 영수증 모달창 -->
-			<div class="modal fade" id="detailReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<!-- 검수 내역 모달창 -->
+			<div class="modal fade" id="checkListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" >
 					<div class="modal-content">
 						<div class="modal-header">
@@ -94,15 +93,7 @@
 														<th>가격</th>
 													</tr>
 												</thead>
-												<tbody>
-													<%-- <c:forEach items="${checks}" var="receipts"> --%>
-														<tr>
-															<td></td>
-															<td></td>
-														
-														</tr>
-													<%-- </c:forEach> --%>
-												</tbody>
+												<tbody id="checkTableBody"></tbody>
 											</table>
 										</div>
 									</div>
@@ -115,8 +106,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -129,24 +118,34 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"></script>
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
+	<script type="text/javascript" src="/resources/js/payment.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			$('#receiptTable').DataTable(); // table 띄우기
-			$('#receiptId').hide();
-			$('#confirmId').hide();
-
-			// modal 띄우기
-			$('#detailReceiptBtn').on("click", function(e) {
-				$('#detailReceiptModal').modal("show");				
-				const receiptId = $('#receiptId').val();
-				const confirmId = $('#confirmId').val();
-				
-				$('#receiptIdText').text(receiptId);
-				// ajax 호출
-
-			});
 
 		});
+		
+		function checkList(event, receiptId, confirmId) {
+			event.preventDefault(); // 버블링 방지
+			$('#checkListModal').modal("show"); // modal 띄우기
+			$('#receiptIdText').text(receiptId);
+			
+			// ajax 호출
+			paymentService.getCheckList(confirmId, function(data){
+				//console.log(data);
+				var html = '';
+				$(data).each(function(){
+					//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
+					html += '<tr>';
+					html += '<td>'+ this.laundry.name +'</td>';
+					html += '<td>'+ this.laundry.laundryPrice.price +'</td>';
+					html += '</tr>';	
+				});
+				
+				$("#checkTableBody").empty();
+				$("#checkTableBody").append(html); 
+			});
+		}
 	</script>
 </body>
 </html>
