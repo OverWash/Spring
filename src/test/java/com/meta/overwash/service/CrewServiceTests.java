@@ -31,8 +31,8 @@ public class CrewServiceTests {
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 		Date birth = date.parse("1996-04-10");
 		
-		user.setEmail("crew99@gmail.com");
-		user.setPassword("1111");
+		user.setEmail("crew");
+		user.setPassword("1234");
 		
 		
 //		crew.setCrewContact("010-1111-1111");
@@ -72,8 +72,6 @@ public class CrewServiceTests {
 //		
 //		log.info("............." + crewService.modify(crewDTO));
 //	}
-	
-	
 //	@Test
 //	public void getTest() throws Exception{
 //		
@@ -82,8 +80,7 @@ public class CrewServiceTests {
 //		System.out.println(crew);
 //	}
 //	@Test
-//	public void modifyTest() throws Exception {
-		
+//	public void modifyTest() throws Exception {		
 //		UserDTO user = new UserDTO();
 //		user.setUserId(2L);
 //		user.setEmail("crew05@gmail.com");
@@ -95,17 +92,17 @@ public class CrewServiceTests {
 //		crew.setCarType("벤츠 s클래스");
 //		crew.setCarNumber("4444");
 		
-		// db에 있는 데이터를 가져와야함
+//		 //db에 있는 데이터를 가져와야함
 //		CrewDTO db = crewService.get(2L);
 //		db.getUser().setPassword("2222");
 //		
-//		db.setCarType("롤스로이스");
+//		db.setCarType("마이바흐");
 //		db.setCrewId(2L);
 //		UserDTO user = db.getUser();
-//		
-//			
+		
+			
 //		log.info("././././././././././././../././. modify : " + crewService.modify(user, db));
-//		
+		
 //	}
 //	@Test
 //	public void getListTest() throws Exception{
@@ -113,8 +110,7 @@ public class CrewServiceTests {
 //		List<Map<String, Object>> crewInfoList = crewService.getCrewList("ROLE_CREW");
 //		
 //		System.out.println(crewInfoList);
-//	}
-	
+//	}	
 //	@Test
 //	public void deleteTest() throws Exception{
 //		

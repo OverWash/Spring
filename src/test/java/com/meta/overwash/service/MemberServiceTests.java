@@ -1,8 +1,5 @@
 package com.meta.overwash.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.meta.overwash.domain.CrewDTO;
-import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.UserMapper;
 
@@ -31,23 +26,23 @@ public class MemberServiceTests {
 
 	@Autowired
 	BCryptPasswordEncoder be;
-	@Test
-	public void insertMemberTest() throws Exception{
-		UserDTO user = new UserDTO();
-		user.setEmail("admin");
-		user.setPassword(be.encode("overwash"));
-		user.setRole("ROLE_ADMIN");
-		um.insertUser(user);
+//	@Test
+//	public void insertMemberTest() throws Exception{
+//		UserDTO user = new UserDTO();
+//		user.setEmail("member2");
+//		user.setPassword("1234");
+//		user.setRole("ROLE_MEMBER");
+//		
+////		um.insertUser(user);
 //		MemberDTO member = new MemberDTO();
-//		member.setMemberContact("01012345678");
-//		member.setMemberAddress("서울시 서초구 양재동");
+//		member.setMemberContact("01011112222");
+//		member.setMemberAddress("서울시 송파구 잠실동");
 //		member.setNickname("새회원");
 //		
 //		service.insert(user, member);
-		
-//		log.info(",," + user + ",," + member);
-		
-	}
+//		log.info(",,$$$$$$$$$$$$$$$$$" + user + ",," + member);
+//		
+//	}
 
 //	@Test
 //	public void loginMemberTest() {
@@ -57,4 +52,9 @@ public class MemberServiceTests {
 //		
 //		log.info("LOGIN RESULT: " + service.loginMember(member));
 //	}
+	
+	@Test
+	public void getMember() throws Exception{
+		System.out.println(service.getMember(6L));
+	}
 }

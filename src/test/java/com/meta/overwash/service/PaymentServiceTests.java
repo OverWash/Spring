@@ -19,10 +19,10 @@ public class PaymentServiceTests {
 
 	@Autowired
 	PaymentService paymentService;
-	
+
 	@Autowired
 	MemberMapper mm;
-	
+
 	@Autowired
 	MemberService memberService;
 
@@ -42,18 +42,29 @@ public class PaymentServiceTests {
 //		});
 //		paymentService.requestToAdmin(2L, dtoList);
 //	}
-	
+
 //	@Test
 //	public void getListToAdminTest() {
 //		Criteria cri = new Criteria();
 //		paymentService.getListToAdmin(cri);
 //	}
-	
+
 	@Test
 	public void getListToMemberTest() throws Exception {
-		
-		
+
 		Criteria cri = new Criteria();
 		paymentService.getListToMember(cri, 4L);
 	}
+
+//	@Test
+//	public void getReceiptDetailTest() {
+//		HashMap<String, Object> receipts = new HashMap<>(); 
+//		receipts = paymentService.getReceiptDetail(1L);
+//	    
+//		System.out.println("TEST!!!!!!!!!!!!!");
+//		for (Entry<String, Object> entrySet : receipts.entrySet()) {
+//            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
+//        }
+//	}
+
 }
