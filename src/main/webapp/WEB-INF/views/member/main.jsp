@@ -25,7 +25,7 @@
 									<a class="btn" onclick="fnModuleInfo()">
 										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/undraw_booking_re_gw4j.svg">
 									</a>
-									<h5 class="float-right m-0 font-weight-bold text-dark">+예약하기</h5>
+									<h5 class="float-right m-0 font-weight-bold text-dark">세탁 신청</h5>
 								</div>
 							</div>
 						</div>
@@ -133,26 +133,27 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
-	<!-- request Modal-->
+	<!-- 예약 신청 모달창 Modal -->
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<form class="user" action="/member/request" method="POST">
+				<form id="requestForm" class="user" action="/reservation/request" method="POST">
 					<div class="col-sm-12 mb-4">
 						<!-- 수거 날짜 선택 -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">수거일을 선택하세요</h4>
+								<h6 class="m-0 font-weight-bold text-primary">수거일을 선택하세요</h6>
 							</div>
 							<div class="card-body">
    								 <input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
 							</div>
 						</div>
 						<!-- End 수거 날짜 선택 -->
+						
 						<!-- 요청사항 입력 -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">요청사항을 입력해 주세요</h4>
+								<h6 class="m-0 font-weight-bold text-primary">요청사항을 입력해 주세요</h6>
 							</div>
 							<div class="card-body">
 								<div class="input-group">
@@ -160,13 +161,15 @@
 								</div>
 							</div>
 						</div>
-						<input id="requestSubmit" type='submit'>
-						<!-- End of 요청사항 입력 -->
+							
+						<!-- a 태그 누르면 form 리턴해서 전송  -->
 						<div class="my-2"></div>
-						<a href="#" class="btn btn-primary btn-icon-split btn-lg">
-							<span class="icon text-white-50"> <i class="fas fa-check"></i>
-							</span> <span class="text">예약 신청하기</span>
+						<a href="#" onclick="return chk_form()" class="btn btn-primary btn-icon-split btn-sm">
+							<span class="icon text-white-60"> <i class="fas fa-check"></i>
+							</span> <span class="text">신청하기</span>
 						</a>
+						
+						
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
@@ -181,6 +184,11 @@
 		function fnModuleInfo() {
 			$('#MoaModal').modal();
 		}
+		
+		function chk_form() {
+			$("#requestForm").submit();
+		}
+		
 
 		let lastResStatus = $('#lastResStatus').val();
 		let resListLength = $('#reservationListSize').val();
