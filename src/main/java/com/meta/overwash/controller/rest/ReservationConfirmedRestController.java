@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meta.overwash.domain.Criteria;
@@ -19,6 +20,7 @@ public class ReservationConfirmedRestController {
 	ReservationConfirmedService rcService;
 
 	// 관리자 예약 확정 리스트에 대한 컨트롤러 
+	@GetMapping("/admin/confirmed")
 	public ResponseEntity<Map<String, Object>> reservationConfirmedList(Criteria cri) {
 		rcService.getList(cri);
 		

@@ -45,9 +45,7 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 		rcDto.setFactory(factory);
 		rcMapper.insertReservationConfirm(rcDto);
 		rcDto.getReservation().setReservationStatus("예약확정");
-		System.out.println("========================");
-		System.out.println(rcDto);
-		System.out.println("========================");
+
 		resMapper.updateReservationStatus(rcDto.getReservation());
 		return rcDto;
 	}

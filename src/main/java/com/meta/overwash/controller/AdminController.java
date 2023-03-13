@@ -28,6 +28,7 @@ public class AdminController {
 	public void adminMain(Principal principal, HttpSession session) {
 		// 메인페이지에서 보여줄 것들 추가	
 		session.setAttribute("username", principal.getName()); // navBar에 닉네임 계속 보여 주기 위해
+		
 	}
 	
 	// 이동 시 검수 디테일페이지로 이동
@@ -35,7 +36,16 @@ public class AdminController {
 	@GetMapping("/check/{rcno}")
 	public String adminCheckDetail(@PathVariable("rcno") Long rcNo, Model model) {
 		model.addAttribute("laundryList", laundryService.getList());
+		return "/admin/detail";
+	}
+	
+	@GetMapping("/check")
+	public String adminCheck() {
 		return "/admin/check";
 	}
-
+	
+	@GetMapping("/complete")
+	public void adminLaundryComplete() {
+		
+	}
 }

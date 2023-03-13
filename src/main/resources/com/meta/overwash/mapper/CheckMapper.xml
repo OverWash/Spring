@@ -7,6 +7,7 @@
 	</resultMap>
 
 	<resultMap type="LaundryDTO" id="laundryMap">
+		<result property="name" column="name"/>
 		<association property="laundryPrice" resultMap="priceMap" />
 	</resultMap>
 

@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../common/header.jsp"%>
-
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -61,33 +62,9 @@
 								<div class="card-header py-3">
 									<h5 class="m-0 font-weight-bold text-gray-900">검수예정목록</h5>
 								</div>
-								<div class="card-body border-bottom-info">
+								<div class="c  ard-body border-bottom-info">
 									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{soogu.list[1]} <span class="float-right"> <a href="#" class="btn btn-secondary btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">검수완료</span>
-												</a>
-											</span>
-										</h4>
-									</div>
-									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{soogu.list[2]} <span class="float-right"> <a href="#" class="btn btn-secondary btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">검수완료</span>
-												</a>
-											</span>
-										</h4>
-									</div>
-									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{v.list[3]} <span class="float-right"> <a href="#" class="btn btn-secondary btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">검수완료</span>
-												</a>
-											</span>
-										</h4>
+										<!-- 검수예정에 대한 데이터 삽입!! -->
 									</div>
 								</div>
 							</div>
@@ -99,32 +76,8 @@
 									<h5 class="m-0 font-weight-bold text-gray-900">세탁예정목록</h5>
 								</div>
 								<div class="card-body border-bottom-info">
-									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{soogu.list[1]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">세탁완료</span>
-												</a>
-											</span>
-										</h4>
-									</div>
-									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{soogu.list[2]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">세탁완료</span>
-												</a>
-											</span>
-										</h4>
-									</div>
-									<div class="reservationList">
-										<h4 class="middle font-weight-bold">
-											{v.list[3]} <span class="float-right"> <a href="#" class="btn btn-light btn-icon-split" style="line-height: 1;">
-													<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i>
-													</span> <span class="text font-weight-bold">세탁완료</span>
-												</a>
-											</span>
-										</h4>
+									<div id="reservationList">
+										<!-- 세탁예정목록에 대한 데이터 삽입!! -->
 									</div>
 								</div>
 							</div>

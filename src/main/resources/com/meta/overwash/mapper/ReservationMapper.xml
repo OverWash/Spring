@@ -155,7 +155,7 @@
 	<insert id="insertReservation" parameterType="ReservationDTO">
 		INSERT INTO
 		reservation
-		VALUES (reservation_seq.nextval, #{collectDate}, sysdate,
+		VALUES (reservation_seq.nextval, #{collectDate}, SYSDATE,
 		#{request}, '주문접수', #{member.memberId})
 	</insert>
 

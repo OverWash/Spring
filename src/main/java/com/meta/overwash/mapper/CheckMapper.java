@@ -18,5 +18,5 @@ public interface CheckMapper {
 	
 	public int deleteCheck(Long checkId);
 
-	public Map<String, Object> getListByConfirmId(ReservationConfirmedDTO rcDto); 
+	public List<CheckDTO> getListByConfirmId(ReservationConfirmedDTO rcDto); 
 }

@@ -1,4 +1,4 @@
-package com.meta.overwash.domain;
+   package com.meta.overwash.domain;
 
 import java.util.Date;
 

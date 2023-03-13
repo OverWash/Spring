@@ -7,7 +7,8 @@ import com.meta.overwash.domain. WashingCompleteDTO;
 public interface WashingCompleteMapper {
 	
 	public List<WashingCompleteDTO> getList();
-
+	
+	// 관리자 세탁완료 시 데이터 삽입
 	public void insertWashingComplete(WashingCompleteDTO wc);
 	
 	public WashingCompleteDTO getWashingComplete(Long wcId); 

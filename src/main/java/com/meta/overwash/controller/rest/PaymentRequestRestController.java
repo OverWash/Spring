@@ -18,7 +18,8 @@ public class PaymentRequestRestController {
 	PaymentService paymentService;
 
 	// 관리자가 요청하는 결제리스트
-	@GetMapping("/admin/payment")
+	@GetMapping(value="/admin/payment")
+	
 	public ResponseEntity<Map<String, Object>> paymentListToAdmin(Criteria cri) {
 
 		return new ResponseEntity<Map<String, Object>>(paymentService.getListToAdmin(cri), HttpStatus.OK);

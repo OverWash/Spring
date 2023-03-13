@@ -89,7 +89,12 @@ public class PaymentServiceImpl implements PaymentService {
 		map.put("paymentRequests", prMapper.getListToMember(vo));
 		return map;
 	}
-
+	
+	@Override
+	public List<PaymentRequestDTO> getListToMember(Long userId){
+			return prMapper.getListToMemberNotPaging(userId);
+	}
+	
 	@Override
 	public PaymentRequestDTO get(Long pno) {
 		return prMapper.getPaymentRequest(pno);

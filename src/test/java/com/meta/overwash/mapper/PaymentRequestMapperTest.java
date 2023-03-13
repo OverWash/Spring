@@ -31,20 +31,25 @@ public class PaymentRequestMapperTest {
 //		prMapper.insertPaymentRequest(prdto);
 //	}
 
-	@Test
-	public void getListToMember() {
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		Criteria cri = new Criteria();
-		map.put("pageNum", (long) cri.getPageNum());
-		map.put("amount", (long) cri.getAmount());
-		map.put("userId", 5L);
-		prMapper.getListToMember(map);
-
-	}
-	
+//	@Test
+//	public void getListToMember() {
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		Criteria cri = new Criteria();
+//		map.put("pageNum", (long) cri.getPageNum());
+//		map.put("amount", (long) cri.getAmount());
+//		map.put("userId", 5L);
+//		prMapper.getListToMember(map);
+//
+//	}
+//	
 //	@Test
 //	public void getCountToMemerTest() {
 //		UserDTO users=um.getUser("member5@gmail.com");
 //		prMapper.getCountToMember(users);
 //	}
+	
+	@Test
+	public void getListToMemberNotPaging() {
+		prMapper.getListToMemberNotPaging(4L);
+	}
 }

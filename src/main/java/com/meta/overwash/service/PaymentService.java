@@ -17,9 +17,9 @@ public interface PaymentService {
 
 	/*----------------------------------------------------------------------------------*/
 
-	// 고객 결제요청 수
+	// 고객 결제요청 리스트 
 	public Map<String, Object> getListToMember(Criteria cri, Long userId);
-
+	
 	// 상세 내역 조회
 	public PaymentRequestDTO get(Long pno);
 
@@ -30,5 +30,7 @@ public interface PaymentService {
 	public ReceiptDTO getReceipt(Long receiptId);
 
 	public List<ReceiptDTO> getReceiptList(Long userId);
+
+	List<PaymentRequestDTO> getListToMember(Long userId);
 	 
 }
