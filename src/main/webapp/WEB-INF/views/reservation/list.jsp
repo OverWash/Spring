@@ -7,7 +7,7 @@
 
 <%@ include file="../common/header.jsp"%>
 <head>
-	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 </head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
@@ -23,7 +23,7 @@
 
 					<!-- Page Heading -->
 					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">예약 현황</h3>
-					<p class="mb-4">${username} 님의 예약 목록입니다. 예약 상태로 진행 상황을 실시간으로 확인하실 수 있습니다.</p>
+					<p class="mb-4">${username}님의 예약 목록입니다. 예약 상태로 진행 상황을 실시간으로 확인하실 수 있습니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -47,10 +47,9 @@
 											<td>${reservationList.reservationId}</td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${reservationList.collectDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${reservationList.reservationDate}" /></td>
-											<td>${reservationList.reservationStatus}</td>
-											<td><button id="detailBtn" class="btn btn-dark" onclick="requestDetail(event, ${reservationList.reservationId}, ${reservationList.request})" >상세보기</button></td>
+											<td>${reservationList.reservationStatus} </td>
+											<td class="checkInput"><button class="btn btn-dark detailBtn" value="${reservationList.request}">상세보기</button></td>
 										</tr>
-										
 									</c:forEach>
 								</tbody>
 							</table>
@@ -64,7 +63,7 @@
 
 			<!-- 검수 내역 모달창 -->
 			<div class="modal fade" id="checkListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" >
+				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="font-weight-bold">예약 No.</h5>
@@ -84,7 +83,7 @@
 										</div>
 										<!-- 요청사항 상세보기 -->
 										<div id="request" class="card-body">
-											
+											<p id="requestText"></p>
 										</div>
 									</div>
 								</div>
@@ -108,19 +107,21 @@
 	<script type="text/javascript">
 		$(function() {
 			$('#reservationTable').DataTable(); // table 띄우기
-
+			
 		});
-		
-		function requestDetail(event, rId, request) {
+
+		$(".detailBtn").on('click', function() {
 			event.preventDefault(); // 버블링 방지
 			$('#checkListModal').modal("show");
-			$('#rIdText').text(rId);
-			if (request == null) {
+			
+			
+			if (this.value == "") {
 				$('#request').text("요청사항이 없습니다.");
 			} else {
-				$('#request').text(request);
-			}
-		}
+				$('#request').text(this.value);
+			} 			
+		})
+		
 	</script>
 </body>
 </html>

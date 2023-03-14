@@ -20,8 +20,6 @@ public class ReservationDTO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd" )
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date reservationDate;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date deliveryDate;
 	private String request;
 	private String reservationStatus;
 	private MemberDTO member;
