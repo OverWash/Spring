@@ -4,7 +4,7 @@
 
 
 	<update id="updateReservation">
-		UPDATE RESERVATION SET RESERVATION_STATUS =#{reservationStatus}
+		UPDATE RESERVATION SET RESERVATION_STATUS = #{reservationStatus}
 		WHERE RESERVATION_ID = #{reservationId}
 	</update>
 
@@ -41,13 +41,12 @@
 	</resultMap>
 
 	<resultMap type="ReservationDTO" id="reservationMap">
-		<id property="reservationId" column="reservation_id" />
-		<result property="collectDate" column="collect_date" />
-		<result property="reservationDate" column="reservation_date" />
-		<result property="request" column="request" />
-		<result property="reservationStatus"
-			column="reservation_status" />
-		<association property="member" resultMap="memberMap" />
+		<id property="reservationId" column="reservation_id"/>
+		<result property="collectDate" column="collect_date"/>
+		<result property="reservationDate" column="reservation_date"/>
+		<result property="request" column="request"/>
+		<result property="reservationStatus" column="reservation_status"/>
+		<association property="member" resultMap="memberMap"/>
 	</resultMap>
 
 	<resultMap type="MemberDTO" id="memberMap">
@@ -139,17 +138,17 @@
 	  ]]>
 	</select>
 
-	<update id="updateReservationStatus"
-		parameterType="ReservationDTO">
+	<update id="updateReservationStatus" parameterType="ReservationDTO">
 		UPDATE reservation
-		SET reservation_status = #{reservationStatus}
+		SET reservation_status = #{reservationStatus},
+			collect_date = SYSDATE
 		WHERE reservation_id = #{reservationId}
 	</update>
 
 	<insert id="insertReservation" parameterType="ReservationDTO">
 		INSERT INTO
 		reservation
-		VALUES (reservation_seq.nextval, #{collectDate}, sysdate,
+		VALUES (reservation_seq.nextval, #{collectDate}, SYSDATE,
 		#{request}, '주문접수', #{member.memberId})
 	</insert>
 
@@ -157,7 +156,7 @@
 		parameterType="ReservationConfirmedDTO">
 		INSERT INTO reservation_confirmed
 		VALUES
-		(reservation_seq.nextval, sysdate, #{factoryId},
+		(reservation_seq.nextval, SYSDATE, #{factoryId},
 		#{crew.crewId},
 		#{reservation.reservationId})
 	</insert>
@@ -166,7 +165,15 @@
 		parameterType="WashingCompleteDTO">
 		INSERT INTO washing_complete
 		VALUES
-		(WASHING_COMPLETE_SEQ.nextval, sysdate, #{confirm.confirmId})
+		(WASHING_COMPLETE_SEQ.nextval, SYSDATE, #{confirm.confirmId})
 	</insert>
+
+	<select id="getReservation" resultMap="reservationMap">
+	SELECT *
+	FROM RESERVATION R
+		 JOIN MEMBER M
+		   ON R.MEMBER_ID = M.MEMBER_ID
+	WHERE RESERVATION_ID = #{reservationId}
+	</select>
 
 </mapper>

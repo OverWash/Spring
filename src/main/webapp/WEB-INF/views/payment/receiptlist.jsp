@@ -6,7 +6,9 @@
 
 
 <%@ include file="../common/header.jsp"%>
-
+<head>
+	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+</head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
 	<div id="wrapper">
@@ -20,8 +22,8 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 완료 내역</h3>
-					<p class="mb-4">${username}님의 결제 영수증 목록입니다.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 영수증 목록</h3>
+					<p class="mb-4">${username} 님의 결제 영수증 목록입니다. 결제가 완료된 예약 건을 확인하실 수 있습니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -50,7 +52,7 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
 											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
+											<td><input id="checkListBtn" class="btn btn-dark" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
 										
 									</c:forEach>
@@ -115,9 +117,6 @@
 	<%@ include file="../common/footer.jsp"%>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"></script>
-	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
-
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
 	<script type="text/javascript">
 		$(function() {

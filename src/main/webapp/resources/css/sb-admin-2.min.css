@@ -68,11 +68,11 @@ body {
 	line-height: 1.5;
 	color: #858796;
 	text-align: left;
-	background-image: url(/resources/img/background-img.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
-	
+	margin: 0;
+	padding: 0;
 	background-color: #000
 }
 /* 스크롤 제거 */
@@ -226,8 +226,9 @@ caption {
 }
 
 th {
-	text-align: inherit;
-	text-align: -webkit-match-parent
+	/* text-align: inherit;
+	text-align: -webkit-match-parent */
+	text-align: center;
 }
 
 label {
@@ -569,8 +570,7 @@ pre code {
 .row {
 	display: flex;
 	flex-wrap: wrap;
-	margin-right: -.75rem;
-	margin-left: -.75rem
+	justify-content: center;
 }
 
 .no-gutters {
@@ -1473,7 +1473,8 @@ pre code {
 .table {
 	width: 100%;
 	margin-bottom: 1rem;
-	color: #858796
+	color: #858796;
+	text-align: center;
 }
 
 .table td, .table th {
@@ -4786,12 +4787,12 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 .page-item.active .page-link {
 	z-index: 3;
 	color: #fff;
-	background-color: #4e73df;
-	border-color: #4e73df
+	background-color: #5a5c69;
+	border-color: #5a5c69
 }
 
 .page-item.disabled .page-link {
-	color: #858796;
+	color: #a4a6b4;
 	pointer-events: none;
 	cursor: auto;
 	background-color: #fff;
@@ -9458,8 +9459,8 @@ a:focus {
 
 .container, .container-fluid, .container-lg, .container-md,
 	.container-sm, .container-xl {
-	padding-left: 1.5rem;
-	padding-right: 1.5rem
+	padding-left: 13rem;
+	padding-right: 13rem
 }
 
 .scroll-to-top {
@@ -9572,8 +9573,8 @@ opacity
 }
 
 .bg-gradient-primary {
-	background-color: #4e73df;
-	background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+	background-color:#5a5c69;
+	/* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
 	background-size: cover
 }
 
@@ -10181,7 +10182,11 @@ opacity
 
 @media ( min-width :768px) {
 	.sidebar {
+<<<<<<< HEAD
 		width: 9rem !important
+=======
+		width: 12rem !important
+>>>>>>> branch 'main' of https://github.com/OverWash/Spring.git
 	}
 	.sidebar .nav-item .collapse {
 		position: relative;
@@ -10538,13 +10543,13 @@ opacity
 }
 
 .bg-login-image {
-	background: url(/resources/img/login-image-member.jpg);
+	background: url(/resources/img/background-img.png);
 	background-position: center;
 	background-size: cover
 }
 
 .bg-register-image {
-	background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+	background: url(/resources/img/background-img.png);
 	background-position: center;
 	background-size: cover
 }
@@ -11265,18 +11270,7 @@ rect(
 )
 }
 }
-.error:after {
-	content: attr(data-text);
-	position: absolute;
-	left: 2px;
-	text-shadow: -1px 0 #e74a3b;
-	top: 0;
-	color: #5a5c69;
-	background: #f8f9fc;
-	overflow: hidden;
-	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim 2s infinite linear alternate-reverse
-}
+
 
 @
 -webkit-keyframes noise-anim-2 { 0%{
@@ -11890,7 +11884,7 @@ rect(
 )
 }
 }
-.error:before {
+.error::before {
 	content: attr(data-text);
 	position: absolute;
 	left: -2px;
@@ -11900,11 +11894,26 @@ rect(
 	background: #f8f9fc;
 	overflow: hidden;
 	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim-2 3s infinite linear alternate-reverse
+	animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
 
+.error::after {
+	content: attr(data-text);
+	position: absolute;
+	left: 2px;
+	text-shadow: -1px 0 #e74a3b;
+	top: 0;
+	color: #5a5c69;
+	background: #f8f9fc;
+	overflow: hidden;
+	clip: rect(0, 900px, 0, 0);
+	animation: noise-anim-2 1s infinite linear alternate-reverse;
+}
+
+
+
 footer.sticky-footer {
-	padding: 2rem 0;
+	padding: 1rem 0;
 	flex-shrink: 0
 }
 

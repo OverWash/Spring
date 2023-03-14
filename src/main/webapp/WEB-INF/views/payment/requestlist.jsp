@@ -6,7 +6,9 @@
 
 
 <%@ include file="../common/header.jsp"%>
-
+<head>
+	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+</head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
 	<div id="wrapper">
@@ -20,13 +22,13 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 요청 내역</h3>
-					<p class="mb-4">${username}님의결제요청내역입니다.결제를진행해주세요.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 요청 목록</h3>
+					<p class="mb-4">${username} 님의 결제 요청 목록입니다. 결제 버튼을 눌러 결제 수단을 선택하고 결제를 진행해 주세요.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">결제요청서 목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">결제 요청서 목록</h6>
 						</div>
 						<div class="card-body">
 							<table id="paymentRequestTable" class="table table-striped table-bordered" style="width: 100%">
@@ -49,8 +51,8 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.confirmDate}" /></td>
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${prList.prPrice}" /></td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
-											<td><input id="payProcessBtn" class="btn btn-primary" type="button" value="결제하기" onclick="payProcess(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
+											<td><input id="checkListBtn" class="btn btn-dark" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
+											<td><input id="payProcessBtn" class="btn btn-dark" type="button" value="결제하기" onclick="payProcess(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
 										</tr>
 
 									</c:forEach>
@@ -172,9 +174,6 @@
 	<%@ include file="../common/footer.jsp"%>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"></script>
-	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
-
 	<script type="text/javascript" src="/resources/js/payment.js"></script>
 	<script type="text/javascript">
 		$(function() {

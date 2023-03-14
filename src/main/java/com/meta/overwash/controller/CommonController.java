@@ -17,6 +17,7 @@ import com.meta.overwash.domain.CrewDTO;
 import com.meta.overwash.domain.MemberDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.service.CrewService;
+import com.meta.overwash.service.LaundryService;
 import com.meta.overwash.service.MemberService;
 
 import lombok.extern.log4j.Log4j;
@@ -31,6 +32,9 @@ public class CommonController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	LaundryService laundryService;
 
 	// 처음 서버 켰을 때 루트 페이지가 로그인 페이지
 	@GetMapping("/")
@@ -99,6 +103,11 @@ public class CommonController {
 		crewService.insert(user, crew);
 
 		return "redirect:/login";
+	}
+	
+	@GetMapping("/info/pricelist")
+	public void priceList(Model model) {
+		model.addAttribute("laundrylist", laundryService.getList());
 	}
 
 	@GetMapping("/info/guide")

@@ -138,6 +138,7 @@
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
+
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -161,7 +162,7 @@
 							</div>
 						</div>
 						<!-- End 수거 날짜 선택 -->
-						
+
 						<!-- 요청사항 입력 -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
@@ -173,7 +174,7 @@
 								</div>
 							</div>
 						</div>
-							
+
 						<!-- a 태그 누르면 form 리턴해서 전송  -->
 						<div class="my-2"></div>
 						<a href="#" onclick="return chk_form()" class="btn btn-primary btn-icon-split btn-sm">
@@ -271,11 +272,9 @@
 				$('#' + resProgressBarId).addClass("bg-info").css("width",
 						"75%");
 			} else if (resStat === "배달완료") {
-				$('#' + resProgressBarId).addClass("bg-success").css("width",
-						"100%");
+				$('#' + resProgressBarId).addClass("bg-success").css("width", "100%");
 			} else if (resStat === "예약취소") {
-				$('#' + resProgressBarId).addClass("bg-dark").css("width",
-						"100%");
+				$('#' + resProgressBarId).addClass("bg-dark").css("width", "100%");
 			}
 		}
 
