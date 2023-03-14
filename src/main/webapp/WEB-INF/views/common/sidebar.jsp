@@ -4,7 +4,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-	<input id="role" type="text" value="<sec:authentication property='principal.role' />">
+	<input id="role" type="hidden" value="<sec:authentication property='principal.role' />">
 
 	<!-- Sidebar - Brand -->
 	<a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -23,7 +23,7 @@
 
 		<!-- Divider -->
 		<hr class="sidebar-divider">
-
+		
 		<!-- Heading -->
 		<div class="sidebar-heading">메뉴</div>
 
@@ -37,13 +37,31 @@
 			</a></li>
 
 		<li class="nav-item"><a class="nav-link" href="/payment/receiptlist">
-				<i class="fas fa-fw fa-list"></i> <span>결제 완료 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>결제 영수증 목록</span>
 			</a></li>
 
 		<li class="nav-item"><a class="nav-link" href="/payment/completedlist">
-				<i class="fas fa-fw fa-list"></i> <span>지난 예역 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>지난 예약 목록</span>
 			</a></li>
 
+		<!-- Divider -->
+		<hr class="sidebar-divider d-none d-md-block">
+		
+		<!-- Heading -->
+		<div class="sidebar-heading">안내</div>
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link" href="/info/pricelist">
+				<i class="fas fa-fw fa-table"></i> <span>가격 안내</span>
+			</a></li>		
+
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+				<i class="fas fa-fw fa-info"></i> <span>이용 방법</span>
+			</a></li>
+			
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+				<i class="fas fa-fw fa-info"></i> <span>세탁 과정</span>
+			</a></li>
 
 
 		<!-- Divider -->
@@ -104,22 +122,22 @@
 
 		<!-- Nav Item - Charts -->
 		<li class="nav-item"><a class="nav-link" href="/crew/pickuplist">
-				<i class="fas fa-fw fa-table"></i> <span>수거 예정 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>수거 가능 목록</span>
 			</a></li>
 
 		<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link" href="/crew/tobedelivery">
-				<i class="fas fa-fw fa-table"></i> <span>배달 예정 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>배달 가능 목록</span>
 			</a></li>
 			
 			<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link" href="/crew/delivering">
-				<i class="fas fa-fw fa-table"></i> <span>배달 중인 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>배달 중인 목록</span>
 			</a></li>
 
 		<!-- Nav Item - Tables -->
 		<li class="nav-item"><a class="nav-link" href="/crew/donedelivery">
-				<i class="fas fa-fw fa-table"></i> <span>배달 완료 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>배달 완료 목록</span>
 			</a></li>
 
 		<!-- Divider -->
@@ -138,16 +156,13 @@
 		$("#member").hide();
 		$("#crew").hide();
 
-		$("#role").hide();
-		const role = $("#role").val();
-
+		const role = $('#role').val();	 
 		if (role == "ROLE_ADMIN") {
 			$("#admin").show();
 		} else if (role == "ROLE_MEMBER") {
 			$("#member").show();
 		} else {
 			$("#crew").show();
-		}
-
+		} 
 	});
 </script>

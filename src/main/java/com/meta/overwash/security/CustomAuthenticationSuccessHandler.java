@@ -29,7 +29,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 			roleNames.add(a.getAuthority());
 		});
 		
-		log.warn("ROLENAMES: " + roleNames);
+//		log.info("ROLENAMES: " + roleNames);
 		
 		// 로그인 성공 시 수행할 작업
 		if (roleNames.contains("ROLE_MEMBER")) {
@@ -48,7 +48,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 			return;
 		}
 
-		// 가진 권한이 없으면 로그인 페이지로 재이동
+		// 가진 권한이 없으면 잘못된 접근이므로 로그인 페이지로 재이동
 		response.sendRedirect("/login");
 
 	}

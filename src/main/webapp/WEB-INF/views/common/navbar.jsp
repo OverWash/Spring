@@ -131,14 +131,14 @@ $(function(){
                                 aria-labelledby="userDropdown">
                                 
                                 <sec:authorize access="hasRole('ROLE_MEMBER')">
-	                                <form action="/member/mypage" method="post" id="formMemberMyPage">
+	                                <%-- <form action="/member/mypage" method="post" id="formMemberMyPage">
 	                                <a class="dropdown-item" href="#" id="memberMyPage">
 	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 	                                    마이페이지
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	                                </a>
-      	                          </form>
+      	                          </form> --%>
                                   <form action="/member/modifyInfo" method="post" id="formMemberModifyInfo">
 	                                <a class="dropdown-item" href="#" id="memberModifyInfo">
 	                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -149,14 +149,14 @@ $(function(){
                                   </form>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('ROLE_CREW')">
-	                                <form action="/crew/mypage" method="post" id="formCrewMyPage">
+	                                <%-- <form action="/crew/mypage" method="post" id="formCrewMyPage">
 	                                <a class="dropdown-item" href="#" id="crewMyPage">
 	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 	                                    마이페이지
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	                                </a>
-      	                          </form>
+      	                          </form> --%>
                                   <form action="/crew/modifyInfo" method="post" id="formCrewModifyInfo">
 	                                <a class="dropdown-item" href="#" id="crewModifyInfo">
 	                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>

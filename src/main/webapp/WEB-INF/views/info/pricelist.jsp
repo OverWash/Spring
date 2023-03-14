@@ -3,7 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%@ include file="../common/header.jsp"%>
-
+<head>
+	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+</head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
 	<div id="wrapper">
@@ -17,27 +19,39 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">테이블</h1>
-                    <p class="mb-4">데이터테이블 </p>
+                   <h3 class="h3 mb-2 text-gray-800 font-weight-bold">세탁 가격 안내</h3>
+                    <p class="mb-4">이름, 가격, 타입별로 정렬하여 더욱 편하게 확인하세요. </p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">가격표</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body">   	
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
 						        <thead>
 						            <tr>
-						                <th>Position</th>
-						                <th>Office</th>
+						                <th>이름</th>
+						                <th>가격</th>
+						                <th>타입</th>
 						            </tr>
 						        </thead>
 						        <tbody>
-						        	<c:forEach items="${reservations}" var="reservations">
+						        	<c:forEach items="${laundrylist}" var="laundrylist">
 						            <tr>
-						                <td>${reservations.collectDate}</td>
-						                <td>${reservations.reservationStatus}</td>
+						                <td>${laundrylist.name}</td>
+						                <td>${laundrylist.laundryPrice.price}</td>
+						                <td>
+							                <c:if test="${laundrylist.type eq 'c'}" var="c" scope="session">
+							            		의류
+							            	</c:if>
+							            	<c:if test="${laundrylist.type eq 's'}" var="s" scope="session">
+							            		신발
+							            	</c:if>
+							            	<c:if test="${laundrylist.type eq 'b'}" var="b" scope="session">
+							            		침구류
+							            	</c:if>
+						                </td>
 						            </tr>
 						            </c:forEach>
 						        </tbody>
@@ -59,14 +73,18 @@
 
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"></script>
-
-	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
-
-
 	<script type="text/javascript">
 		$(document).ready(function () {
-		    $('#example').DataTable();
+		    /* $('#example').DataTable(); */
+		    
+			var table = new DataTable('#example', {
+		        columnDefs: [
+		            {
+		                target: 0,
+		                type: 'anti-the',
+		            },
+		        ],
+		    });
 		});
 	</script>
 </body>

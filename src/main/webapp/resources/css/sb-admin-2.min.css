@@ -11266,18 +11266,7 @@ rect(
 )
 }
 }
-.error:after {
-	content: attr(data-text);
-	position: absolute;
-	left: 2px;
-	text-shadow: -1px 0 #e74a3b;
-	top: 0;
-	color: #5a5c69;
-	background: #f8f9fc;
-	overflow: hidden;
-	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim 2s infinite linear alternate-reverse
-}
+
 
 @
 -webkit-keyframes noise-anim-2 { 0%{
@@ -11891,7 +11880,7 @@ rect(
 )
 }
 }
-.error:before {
+.error::before {
 	content: attr(data-text);
 	position: absolute;
 	left: -2px;
@@ -11901,8 +11890,23 @@ rect(
 	background: #f8f9fc;
 	overflow: hidden;
 	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim-2 3s infinite linear alternate-reverse
+	animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
+
+.error::after {
+	content: attr(data-text);
+	position: absolute;
+	left: 2px;
+	text-shadow: -1px 0 #e74a3b;
+	top: 0;
+	color: #5a5c69;
+	background: #f8f9fc;
+	overflow: hidden;
+	clip: rect(0, 900px, 0, 0);
+	animation: noise-anim-2 1s infinite linear alternate-reverse;
+}
+
+
 
 footer.sticky-footer {
 	padding: 1rem 0;
