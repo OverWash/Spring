@@ -21,4 +21,10 @@ public interface ReservationConfirmedMapper {
 //	public Long deleteReservationConfirm(Long confirmId);
 
 	public Long getCount(UserDTO users);
+	
+	//관리자 세탁예정목록 가져오기(결제가 완료된)
+	public List<ReservationConfirmedDTO> getListByPaymentComplete();
+	
+	
+	
 }

@@ -17,8 +17,10 @@ public interface PaymentService {
 
 	/*----------------------------------------------------------------------------------*/
 
-	// 고객 결제요청 리스트 (페이징 o)
-	//public Map<String, Object> getListToMember(Criteria cri, Long userId);
+	// 고객 결제요청 리스트 
+//	public Map<String, Object> getListToMember(Criteria cri, Long userId);
+//	// 고객 결제요청 리스트 (페이징 o)
+//	//public Map<String, Object> getListToMember(Criteria cri, Long userId);
 	// 고객 결제요청 리스트 (페이징 x)
 	List<PaymentRequestDTO> getPrListToMember(Long userId);
 	
@@ -35,6 +37,9 @@ public interface PaymentService {
 
 	// 회원이 보유한 영수증 리스트
 	public List<ReceiptDTO> getReceiptList(Long userId);
+
+	List<PaymentRequestDTO> getListToMember(Long userId);
+	 
 	
 	// 회원이 보유한 영수증 중 예약상태가 '배달완료'인 리스트
 	public List<ReceiptDTO> getDeliveryCompletedList(Long userId);

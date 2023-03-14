@@ -1,7 +1,6 @@
 package com.meta.overwash.controller.rest;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +19,7 @@ public class CheckRestController {
 	@Autowired
 	CheckService checkService;
 	
+
 	// 검수 리스트를 json 으로 전송
 	@GetMapping(value = "/check/{confirmId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<CheckDTO>> getCheckList(@PathVariable("confirmId") Long confirmId) {

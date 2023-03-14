@@ -41,10 +41,14 @@ public class PaymentRequestMapperTest {
 //		prMapper.getListToMember(map);
 //
 //	}
-	
 //	@Test
 //	public void getCountToMemerTest() {
 //		UserDTO users=um.getUser("member5@gmail.com");
 //		prMapper.getCountToMember(users);
 //	}
+	
+	@Test
+	public void getListToMemberNotPaging() {
+		prMapper.getListToMemberNotPaging(4L);
+	}
 }

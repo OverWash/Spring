@@ -1,6 +1,7 @@
 package com.meta.overwash.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryFactoryDTO;
 import com.meta.overwash.domain.PagenationDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
-import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.LaundryFactoryMapper;
 import com.meta.overwash.mapper.ReservationConfirmedMapper;
@@ -29,7 +29,6 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 
 	@Autowired
 	ReservationMapper resMapper;
-	
 	@Override
 	@Transactional
 	// 크루가 수거하기 버튼 클릭 시 동작하는 서비스
@@ -68,6 +67,15 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 		map.put("reservationConfirmedPaging", new PagenationDTO(cri, rcMapper.getCount(new UserDTO()).intValue()));
 		map.put("reservationConfirmeds", rcMapper.getList(vo));
 		return map;
+	}
+
+	
+	// 결제완료내역을 가져오는 리스트
+	@Override
+	public List<ReservationConfirmedDTO> getListToPaymentCompleteList() {
+
+		return rcMapper.getListByPaymentComplete();
+
 	}
 
 }
