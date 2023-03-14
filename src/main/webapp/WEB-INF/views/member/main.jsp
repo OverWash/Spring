@@ -23,8 +23,7 @@
 							<div class="card shadow mb-4">
 								<div class="card-body">
 									<a class="btn" onclick="fnModuleInfo()">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/booking.svg"
-											style=max-width:61%										>
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/booking.svg" style="max-width:61%">
 									</a>
 									<h4 class="float-right m-0 font-weight-bold text-dark">+예약하기</h4>
 								</div>
