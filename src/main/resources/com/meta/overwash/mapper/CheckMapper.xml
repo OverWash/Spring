@@ -3,7 +3,7 @@
 <mapper namespace="com.meta.overwash.mapper.CheckMapper">
 
 	<resultMap id="checkMap" type="CheckDTO">
-		<association property="laundry" resultMap="laundrMap" />
+		<association property="laundry" resultMap="laundryMap" />
 	</resultMap>
 
 	<resultMap type="LaundryDTO" id="laundryMap">

@@ -44,7 +44,7 @@ public class UserMapperTests {
 //
 //	}
 	
-
+	@Test
 	public void insertUserTest() throws Exception {
 		
 		IntStream.range(1, 8).forEach(i -> {

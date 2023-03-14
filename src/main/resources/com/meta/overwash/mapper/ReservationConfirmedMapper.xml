@@ -3,15 +3,15 @@
 <mapper namespace="com.meta.overwash.mapper.ReservationConfirmedMapper">
 
 	<resultMap type="ReservationConfirmedDTO" id="getConfirm">
-		<id property="confirmId" column="confirm_id"/>
-		<result property="confirmDate" column="CONFIRM_DATE"/>
-		<association property="reservation" resultMap="getReservation"/>
+		<id property="confirmId" column="confirm_id" />
+		<result property="confirmDate" column="CONFIRM_DATE" />
+		<association property="reservation" resultMap="getReservation" />
 	</resultMap>
 
 	<resultMap type="ReservationDTO" id="getReservation">
-		<id property="reservationId" column="reservation_id"/>
-		<result property="reservationStatus" column="RESERVATION_STATUS"/>
-		<association property="member" resultMap="getMember"/>
+		<id property="reservationId" column="reservation_id" />
+		<result property="reservationStatus" column="RESERVATION_STATUS" />
+		<association property="member" resultMap="getMember" />
 	</resultMap>
 
 	<resultMap type="MemberDTO" id="getMember">
@@ -26,7 +26,7 @@
 		<selectKey keyProperty="reservationConfirmId" resultType="Long" order="BEFORE">
 			SELECT RESERVATION_CONFIRMED_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO RESERVATION_CONFIRM
+		INSERT INTO RESERVATION_CONFIRMED
 		VALUES(
 		#{confirmId},
 		SYSDATE,
@@ -130,6 +130,5 @@
 		WHERE
 		R.RESERVATION_STATUS LIKE '%'||'결제완료'||'%'
 	</select>
-
 
 </mapper>

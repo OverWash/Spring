@@ -36,8 +36,8 @@ public class MemberRestController {
 
 	}
 	
-	@PostMapping("/checkPw")
-	public String checkPw(@RequestBody UserDTO user) throws Exception{
+	@PostMapping("/checkpw")
+	public String checkpw(@RequestBody UserDTO user) throws Exception{
 		if (memberService.checkPw(user)) {
 			return "success";
 		} 
