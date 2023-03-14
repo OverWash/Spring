@@ -4,7 +4,7 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-	<input id="role" type="text" value="<sec:authentication property='principal.role' />">
+	<input id="role" type="hidden" value="<sec:authentication property='principal.role' />">
 
 	<!-- Sidebar - Brand -->
 	<a class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -156,16 +156,13 @@
 		$("#member").hide();
 		$("#crew").hide();
 
-		$("#role").hide();
-		const role = $("#role").val();
-
+		const role = $('#role').val();	 
 		if (role == "ROLE_ADMIN") {
 			$("#admin").show();
 		} else if (role == "ROLE_MEMBER") {
 			$("#member").show();
 		} else {
 			$("#crew").show();
-		}
-
+		} 
 	});
 </script>
