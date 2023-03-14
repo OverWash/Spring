@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.DeliveryDTO;
 import com.meta.overwash.domain.UserDTO;
+import com.meta.overwash.domain.WashingCompleteDTO;
 import com.meta.overwash.service.CrewService;
 import com.meta.overwash.service.ReservationConfirmedService;
 
@@ -36,11 +39,12 @@ public class CrewController {
 		CrewDTO crew = crewService.getCrew(user.getUserId());
 
 		model.addAttribute("collectList", crewService.getToBeCollectList()); // 수거해야할 리스트
-		model.addAttribute("deliveryList", crewService.getDeliveryList("세탁완료")); // 배달해야할 리스트
-		model.addAttribute("deliveringCnt", crewService.getDeliveryList("배달중").size());
-		model.addAttribute("doneDeliverCnt", crewService.getDeliveryList("배달완료").size());
+		model.addAttribute("wcList", crewService.getWcList()); // 배달해야할 리스트
+		model.addAttribute("deliveringCnt", crewService.getDeliveryList(crew.getCrewId(), "배달중").size());
+		model.addAttribute("doneDeliverCnt", crewService.getDeliveryList(crew.getCrewId(), "배달완료").size());
 		session.setAttribute("username", crew.getCrewName()); // navBar에 크루 네임 계속 보여 주기 위해
 		session.setAttribute("member", crew);
+		session.setAttribute("crewId", crew.getCrewId());
 	}
 
 	@PostMapping("/mypage")
@@ -71,41 +75,59 @@ public class CrewController {
 	public void pickupList(Model model) throws Exception {
 		model.addAttribute("collectList", crewService.getToBeCollectList());
 	}
-	
+
 	@GetMapping("/tobedelivery")
 	public void tobedelivery(Model model) throws Exception {
-		model.addAttribute("deliveryList", crewService.getDeliveryList("세탁완료")); // 배달해야할 리스트
+		model.addAttribute("wcList", crewService.getWcList()); // 배달해야할 리스트
 	}
-	
+
 	@GetMapping("/delivering")
 	public void delivering(Model model) throws Exception {
-		model.addAttribute("deliveryList", crewService.getDeliveryList("배달중")); // 배달해야할 리스트
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CrewDTO crew = crewService.getCrew(user.getUserId());
+		model.addAttribute("deliveryList", crewService.getDeliveryList(crew.getCrewId(), "배달중"));
 	}
-	
+
 	@GetMapping("/donedelivery")
 	public void donedelivery(Model model) throws Exception {
-		model.addAttribute("deliveryList", crewService.getDeliveryList("배달완료")); // 배달해야할 리스트
+		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		CrewDTO crew = crewService.getCrew(user.getUserId());
+		model.addAttribute("deliveryList", crewService.getDeliveryList(crew.getCrewId(), "배달완료"));
 	}
 
 	@PostMapping("/collect/{reservationId}")
-	public String collect(@PathVariable("reservationId") Long reservationId, CrewDTO crew, String flag) throws Exception {
+	public String collect(@PathVariable("reservationId") Long reservationId, CrewDTO crew, String flag)
+			throws Exception {
 		rcService.insertReservationConfirmed(reservationId, crew);
 		if (flag.equals("table"))
 			return "redirect:/crew/pickuplist";
 		return "redirect:/crew/main";
 	}
-	
+
 	@PostMapping("/delivery/{reservationId}")
-	public String delivery(@PathVariable("reservationId") Long reservationId, String flag) throws Exception {
-		crewService.updateDelivering(reservationId);
+	public String delivery(@PathVariable("reservationId") Long reservationId, String flag, Long wcId, Long crewId)
+			throws Exception {
+
+		CrewDTO crewDTO = new CrewDTO();
+		crewDTO.setCrewId(crewId);
+
+		WashingCompleteDTO washingCompleteDTO = new WashingCompleteDTO();
+		washingCompleteDTO.setWcId(wcId);
+
+		DeliveryDTO deliveryDTO = new DeliveryDTO();
+		deliveryDTO.setCrew(crewDTO);
+		deliveryDTO.setWc(washingCompleteDTO);
+
+		crewService.updateDelivering(reservationId, deliveryDTO);
 		if (flag.equals("table"))
 			return "redirect:/crew/tobedelivery";
 		return "redirect:/crew/main";
 	}
-	
-	@PostMapping("/doneDelivery/{reservationId}")
-	public String doneDelivery(@PathVariable("reservationId") Long reservationId, String flag) throws Exception {
-		crewService.updateDoneDelivery(reservationId);
+
+	@PostMapping("/donedelivery/{reservationId}")
+	public String doneDelivery(@PathVariable("reservationId") Long reservationId, String flag, Long crewId, Long deliveryId)
+			throws Exception {
+		crewService.updateResDoneDelivery(reservationId, deliveryId);
 		if (flag.equals("table"))
 			return "redirect:/crew/delivering";
 		return "redirect:/crew/main";

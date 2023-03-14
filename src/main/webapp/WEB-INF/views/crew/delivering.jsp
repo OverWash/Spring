@@ -45,15 +45,16 @@
 									<c:forEach items="${deliveryList}" var="delivery" varStatus="i">
 										<tr>
 											<td>${i.count}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${delivery.wcDate}" /></td>
-											<td>${delivery.confirm.reservation.reservationStatus}</td>
-											<td>${delivery.confirm.reservation.member.memberAddress}</td>
-											<td>${delivery.confirm.reservation.member.memberContact}</td>
-											<td>${delivery.confirm.reservation.member.nickname}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${delivery.wc.wcDate}" /></td>
+											<td>${delivery.status}</td>
+											<td>${delivery.wc.confirm.reservation.member.memberAddress}</td>
+											<td>${delivery.wc.confirm.reservation.member.memberContact}</td>
+											<td>${delivery.wc.confirm.reservation.member.nickname}</td>
 											<td>
-												<form action="/crew/doneDelivery/${delivery.confirm.reservation.reservationId}" method="post" id="doneDeliveryForm">
-													<button id="doneDelivery" class="btn btn-primary">배달완료</button>
-													<input type="hidden" value="${member.crewId }" name="crewId">
+												<form action="/crew/donedelivery/${delivery.wc.confirm.reservation.reservationId}" method="post" onsubmit="doneDelivery()">
+													<button class="btn btn-primary">배달완료</button>
+													<input type="hidden" name="deliveryId" value="${delivery.deliveryId }">
+													<input type="hidden" name="crewId" value="${crewId }">
 													<input type="hidden" name="flag" value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 												</form>
@@ -84,19 +85,15 @@
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
 	<script type="text/javascript">
-		$(function() {
+		function doneDelivery() {
+			alert("배달을 완료합니다.");
+		}	
+	
+	 $(function() {
 			$('#collectTable').DataTable(); // table 띄우기
-			
-			$("#doneDelivery").click(function(e){
-				e.preventDefault();
-				alert("배달을 완료합니다.");
-				$("#doneDeliveryForm").submit();		
-			});
-		});
 		
+		}); 
 		
-		  
-
 	</script>
 </body>
 </html>

@@ -42,19 +42,20 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${deliveryList}" var="delivery" varStatus="i">
+									<c:forEach items="${wcList}" var="wc" varStatus="i">
 										<tr>
 											<td>${i.count}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${delivery.wcDate}" /></td>
-											<td>${delivery.confirm.reservation.reservationStatus}</td>
-											<td>${delivery.confirm.reservation.member.memberAddress}</td>
-											<td>${delivery.confirm.reservation.member.memberContact}</td>
-											<td>${delivery.confirm.reservation.member.nickname}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${wc.wcDate}" /></td>
+											<td>${wc.confirm.reservation.reservationStatus}</td>
+											<td>${wc.confirm.reservation.member.memberAddress}</td>
+											<td>${wc.confirm.reservation.member.memberContact}</td>
+											<td>${wc.confirm.reservation.member.nickname}</td>
 											<td>
-												<form action="/crew/delivery/${delivery.confirm.reservation.reservationId}" method="post" id="deliveryForm">
-													<button id="delivery" class="btn btn-primary">배달하기</button>
-													<input type="hidden" value="${member.crewId }" name="crewId">
-													<input type="hidden" name="flag" value="table">
+												<form action="/crew/delivery/${wc.confirm.reservation.reservationId}" method="post" onsubmit="delivery()">
+													<button class="btn btn-primary">배달하기</button>
+													<input type="hidden" name="wcId"   value="${wc.wcId }">
+													<input type="hidden" name="crewId" value="${crewId }">
+													<input type="hidden" name="flag"   value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 												</form>
 											</td>
@@ -84,18 +85,15 @@
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
 	<script type="text/javascript">
-		$(function() {
+	
+		function delivery() {
+			alert("배송을 진행합니다.");
+		}
+	
+		 $(function() {
 			$('#collectTable').DataTable(); // table 띄우기
 			
-			$("#delivery").click(function(e){
-				e.preventDefault();
-				alert("배송을 진행합니다.");
-				$("#deliveryForm").submit();		
-			});
-		});
-		
-		
-		  
+		}); 
 
 	</script>
 </body>

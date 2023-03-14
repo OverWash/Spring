@@ -3,6 +3,7 @@ package com.meta.overwash.mapper;
 import java.util.List;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.DeliveryDTO;
 import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.domain.WashingCompleteDTO;
@@ -23,9 +24,15 @@ public interface CrewMapper {
 	
 	public List<ReservationDTO> selectToBeCollectList() throws Exception;
 	
-	public List<WashingCompleteDTO> selectDelivery() throws Exception;
+	public List<WashingCompleteDTO> selectWcList() throws Exception;
 	
-	public int updateStatus(Long reservationId) throws Exception;
+	public int updateDelivering(Long reservationId) throws Exception;
 
-	public int updateDoneDelivery(Long reservationId) throws Exception;
+	public int updateResStatusDeliverDone(Long reservationId) throws Exception;
+	
+	public int updateDoneDelivery(Long deliveryId) throws Exception;
+	
+	public int insertDelivery(DeliveryDTO deliveryDTO) throws Exception;
+	
+	public List<DeliveryDTO> selectDeliveryList(Long crewId) throws Exception;
 }

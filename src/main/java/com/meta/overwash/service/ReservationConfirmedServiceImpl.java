@@ -39,7 +39,7 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 		rcDto.setCrew(crew);
 		rcDto.setReservation(resMapper.getReservation(reservationId));
 		System.out.println(rcDto);
-		String memberAddress = rcDto.getReservation().getMember().getMemberAddress().split(" ")[0];
+		String memberAddress = rcDto.getReservation().getMember().getMemberAddress().split(" ")[1];
 
 		LaundryFactoryDTO factory = new LaundryFactoryDTO();
 		factory.setFactoryAddress(memberAddress);

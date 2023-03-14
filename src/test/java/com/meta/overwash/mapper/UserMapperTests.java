@@ -44,81 +44,81 @@ public class UserMapperTests {
 //
 //	}
 	
-
-	public void insertUserTest() throws Exception {
-		
-		IntStream.range(1, 8).forEach(i -> {
-			// user 생성
-			UserDTO user = new UserDTO();
-			user.setPassword(bCryptPasswordEncoder.encode("1234"));
-			
-			if (i < 4) {
-				// crew 생성
-				user.setEmail("crew" + i + "@gmail.com");			
-				user.setRole("ROLE_CREW");
-				userMapper.insertUser(user);
-				
-				CrewDTO crew = new CrewDTO();
-				
-				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-				Date birth = null;
-				try {
-					birth = date.parse("1996-04-09");
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				crew.setCrewContact("0101000100" + i);
-				crew.setCrewName("테스트크루" + i);
-				crew.setCrewBirth(birth);
-				crew.setCarType("소나타" + i);
-				crew.setCarNumber("11가100" + i);
-				
-				crew.setUser(user);
-				
-				try {
-					
-					crewMapper.insertCrew(crew);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				log.info(",,,,,,,,,,,,,,,,,,,,,,,," + crew);
-				
-			} else  if (i < 7) {
-				// member 생성
-				user.setEmail("member" + i + "@gmail.com");			
-				user.setRole("ROLE_MEMBER");
-				userMapper.insertUser(user);
-				
-				MemberDTO member = new MemberDTO();
-				
-				member.setNickname("테스트멤버" + i);
-				member.setMemberAddress("서울시 은평구 갈현" + i + "동");
-				member.setMemberContact("0102000200" + i);
-				
-				member.setUser(user);
-				
-				try {
-					memberMapper.insertMember(member);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				log.info(",,,,,,,,,,,,,,,,,,,,,,,," + member);
-				
-			} else {
-				// admin 생성
-				user.setEmail("admin");
-				user.setPassword(bCryptPasswordEncoder.encode("overwash"));
-				user.setRole("ROLE_ADMIN");
-				userMapper.insertUser(user);
-			}
-		});
-	
-	}
+//	@Test
+//	public void insertUserTest() throws Exception {
+//		
+//		IntStream.range(1, 8).forEach(i -> {
+//			// user 생성
+//			UserDTO user = new UserDTO();
+//			user.setPassword(bCryptPasswordEncoder.encode("1234"));
+//			
+//			if (i < 4) {
+//				// crew 생성
+//				user.setEmail("crew" + i + "@gmail.com");			
+//				user.setRole("ROLE_CREW");
+//				userMapper.insertUser(user);
+//				
+//				CrewDTO crew = new CrewDTO();
+//				
+//				SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+//				Date birth = null;
+//				try {
+//					birth = date.parse("1996-04-09");
+//				} catch (ParseException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//				crew.setCrewContact("0101000100" + i);
+//				crew.setCrewName("테스트크루" + i);
+//				crew.setCrewBirth(birth);
+//				crew.setCarType("소나타" + i);
+//				crew.setCarNumber("11가100" + i);
+//				
+//				crew.setUser(user);
+//				
+//				try {
+//					
+//					crewMapper.insertCrew(crew);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//				log.info(",,,,,,,,,,,,,,,,,,,,,,,," + crew);
+//				
+//			} else  if (i < 7) {
+//				// member 생성
+//				user.setEmail("member" + i + "@gmail.com");			
+//				user.setRole("ROLE_MEMBER");
+//				userMapper.insertUser(user);
+//				
+//				MemberDTO member = new MemberDTO();
+//				
+//				member.setNickname("테스트멤버" + i);
+//				member.setMemberAddress("서울시 은평구 갈현" + i + "동");
+//				member.setMemberContact("0102000200" + i);
+//				
+//				member.setUser(user);
+//				
+//				try {
+//					memberMapper.insertMember(member);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//				log.info(",,,,,,,,,,,,,,,,,,,,,,,," + member);
+//				
+//			} else {
+//				// admin 생성
+//				user.setEmail("admin");
+//				user.setPassword(bCryptPasswordEncoder.encode("overwash"));
+//				user.setRole("ROLE_ADMIN");
+//				userMapper.insertUser(user);
+//			}
+//		});
+//	
+//	}
 	
 }

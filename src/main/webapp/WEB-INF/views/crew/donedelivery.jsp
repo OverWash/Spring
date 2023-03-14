@@ -44,11 +44,11 @@
 									<c:forEach items="${deliveryList}" var="delivery" varStatus="i">
 										<tr>
 											<td>${i.count}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${delivery.confirm.reservation.deliveryDate}" /></td>
-											<td>${delivery.confirm.reservation.reservationStatus}</td>
-											<td>${delivery.confirm.reservation.member.memberAddress}</td>
-											<td>${delivery.confirm.reservation.member.memberContact}</td>
-											<td>${delivery.confirm.reservation.member.nickname}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${delivery.deliveryDate}" /></td>
+											<td>${delivery.status}</td>
+											<td>${delivery.wc.confirm.reservation.member.memberAddress}</td>
+											<td>${delivery.wc.confirm.reservation.member.memberContact}</td>
+											<td>${delivery.wc.confirm.reservation.member.nickname}</td>
 										</tr>
 
 									</c:forEach>
@@ -77,6 +77,7 @@
 	<script type="text/javascript">
 		$(function() {
 			$('#collectTable').DataTable(); // table 띄우기
+		});
 			
 	</script>
 </body>
