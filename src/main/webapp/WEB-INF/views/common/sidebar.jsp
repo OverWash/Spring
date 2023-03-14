@@ -11,7 +11,7 @@
 		<div class="sidebar-brand-text mx-3">overWash</div>
 	</a>
 
-	<div id="member">
+	<div id="member" style="display:none;">
 
 		<!-- Divider -->
 		<hr class="sidebar-divider my-0">
@@ -66,7 +66,7 @@
 
 	</div>
 
-	<div id="admin">
+	<div id="admin" style="display:none;">
 
 		<!-- Divider -->
 		<hr class="sidebar-divider my-0">
@@ -99,7 +99,7 @@
 
 	</div>
 
-	<div id="crew">
+	<div id="crew" style="display:none;">
 
 		<!-- Divider -->
 		<hr class="sidebar-divider my-0">
@@ -148,11 +148,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		$("#admin").hide();
-		$("#member").hide();
-		$("#crew").hide();
-
+	$(function() { 
 		const role = $('#role').val();	 
 		if (role == "ROLE_ADMIN") {
 			$("#admin").show();
