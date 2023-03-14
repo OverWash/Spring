@@ -19,13 +19,13 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">테이블</h1>
-                    <p class="mb-4">가격표 </p>
+                   <h3 class="h3 mb-2 text-gray-800 font-weight-bold">세탁 가격 안내</h3>
+                    <p class="mb-4">이름, 가격, 타입별로 정렬하여 더욱 편하게 확인하세요. </p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">가격표</h6>
                         </div>
                         <div class="card-body">   	
                             <table id="example" class="table table-striped table-bordered" style="width:100%">

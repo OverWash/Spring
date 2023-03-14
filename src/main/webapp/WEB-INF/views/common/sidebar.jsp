@@ -52,7 +52,7 @@
 
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item"><a class="nav-link" href="/info/pricelist">
-				<i class="fas fa-fw fa-table"></i> <span>가격표</span>
+				<i class="fas fa-fw fa-table"></i> <span>가격 안내</span>
 			</a></li>		
 
 		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
