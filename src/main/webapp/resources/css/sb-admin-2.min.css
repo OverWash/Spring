@@ -76,13 +76,13 @@ body {
 	background-color: #000
 }
 /* 스크롤 제거 */
-body{
- -ms-overflow-style: none;
- }
-::-webkit-scrollbar {
-  display: none;
+body {
+	-ms-overflow-style: none;
 }
 
+::-webkit-scrollbar {
+	display: none;
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
 	outline: 0 !important
@@ -1955,7 +1955,7 @@ textarea.form-control {
 }
 
 .form-check-input:disabled ~.form-check-label, .form-check-input[disabled]
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #858796
 }
 
@@ -2006,7 +2006,7 @@ textarea.form-control {
 }
 
 .is-valid ~.valid-feedback, .is-valid ~.valid-tooltip, .was-validated :valid
-	~.valid-feedback, .was-validated :valid ~.valid-tooltip {
+	 ~.valid-feedback, .was-validated :valid ~.valid-tooltip {
 	display: block
 }
 
@@ -2050,18 +2050,18 @@ textarea.form-control {
 }
 
 .form-check-input.is-valid ~.form-check-label, .was-validated .form-check-input:valid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #1cc88a
 }
 
 .form-check-input.is-valid ~.valid-feedback, .form-check-input.is-valid
-	~.valid-tooltip, .was-validated .form-check-input:valid ~.valid-feedback,
+	 ~.valid-tooltip, .was-validated .form-check-input:valid ~.valid-feedback,
 	.was-validated .form-check-input:valid ~.valid-tooltip {
 	display: block
 }
 
 .custom-control-input.is-valid ~.custom-control-label, .was-validated .custom-control-input:valid
-	~.custom-control-label {
+	 ~.custom-control-label {
 	color: #1cc88a
 }
 
@@ -2091,12 +2091,12 @@ textarea.form-control {
 }
 
 .custom-file-input.is-valid ~.custom-file-label, .was-validated .custom-file-input:valid
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #1cc88a
 }
 
 .custom-file-input.is-valid:focus ~.custom-file-label, .was-validated .custom-file-input:valid:focus
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #1cc88a;
 	box-shadow: 0 0 0 .2rem rgba(28, 200, 138, .25)
 }
@@ -2177,18 +2177,18 @@ textarea.form-control {
 }
 
 .form-check-input.is-invalid ~.form-check-label, .was-validated .form-check-input:invalid
-	~.form-check-label {
+	 ~.form-check-label {
 	color: #e74a3b
 }
 
 .form-check-input.is-invalid ~.invalid-feedback, .form-check-input.is-invalid
-	~.invalid-tooltip, .was-validated .form-check-input:invalid ~.invalid-feedback,
+	 ~.invalid-tooltip, .was-validated .form-check-input:invalid ~.invalid-feedback,
 	.was-validated .form-check-input:invalid ~.invalid-tooltip {
 	display: block
 }
 
 .custom-control-input.is-invalid ~.custom-control-label, .was-validated .custom-control-input:invalid
-	~.custom-control-label {
+	 ~.custom-control-label {
 	color: #e74a3b
 }
 
@@ -2218,12 +2218,12 @@ textarea.form-control {
 }
 
 .custom-file-input.is-invalid ~.custom-file-label, .was-validated .custom-file-input:invalid
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #e74a3b
 }
 
 .custom-file-input.is-invalid:focus ~.custom-file-label, .was-validated .custom-file-input:invalid:focus
-	~.custom-file-label {
+	 ~.custom-file-label {
 	border-color: #e74a3b;
 	box-shadow: 0 0 0 .2rem rgba(231, 74, 59, .25)
 }
@@ -3776,7 +3776,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .custom-file-input:disabled ~.custom-file-label, .custom-file-input[disabled]
-	~.custom-file-label {
+	 ~.custom-file-label {
 	background-color: #eaecf4
 }
 
@@ -4590,7 +4590,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .card-img, .card-img-bottom, .card-img-top {
 	flex-shrink: 0;
-	width: 100%
+	width: 70%
 }
 
 .card-img, .card-img-top {
@@ -6366,14 +6366,29 @@ keyframes spinner-border {
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 transform
+
+
 :
+
+
 none
+
+
 }
 }
 @
@@ -6382,14 +6397,29 @@ keyframes spinner-grow { 0%{
 }
 
 50
+
+
 %
 {
 opacity
+
+
 :
-1;
+
+
+1
+;
+
+
 transform
+
+
 :
+
+
 none
+
+
 }
 }
 .spinner-grow {
@@ -9495,16 +9525,36 @@ a:focus {
 }
 
 100
+
+
 %
 {
 transform
+
+
 :
-scale(
+
+
+scale
+(
+
+
 1
-);
+
+
+)
+;
+
+
 opacity
+
+
 :
+
+
 1
+
+
 }
 }
 @
@@ -9514,16 +9564,36 @@ keyframes growIn { 0%{
 }
 
 100
+
+
 %
 {
 transform
+
+
 :
-scale(
+
+
+scale
+(
+
+
 1
-);
+
+
+)
+;
+
+
 opacity
+
+
 :
+
+
 1
+
+
 }
 }
 .animated--grow-in, .sidebar .nav-item .collapse {
@@ -9543,11 +9613,19 @@ opacity
 }
 
 100
+
+
 %
 {
 opacity
+
+
 :
+
+
 1
+
+
 }
 }
 @
@@ -9556,11 +9634,19 @@ keyframes fadeIn { 0%{
 }
 
 100
+
+
 %
 {
 opacity
+
+
 :
+
+
 1
+
+
 }
 }
 .animated--fade-in {
@@ -10660,11 +10746,20 @@ form.user .btn-user {
 }
 
 5
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 75px
 ,
 9999px
@@ -10672,14 +10767,27 @@ rect(
 72px
 ,
 0
+
+
 )
+
+
 }
 10
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 97px
 ,
 9999px
@@ -10687,14 +10795,27 @@ rect(
 93px
 ,
 0
+
+
 )
+
+
 }
 15
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 15px
 ,
 9999px
@@ -10702,14 +10823,27 @@ rect(
 9px
 ,
 0
+
+
 )
+
+
 }
 20
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 14px
 ,
 9999px
@@ -10717,14 +10851,27 @@ rect(
 92px
 ,
 0
+
+
 )
+
+
 }
 25
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 18px
 ,
 9999px
@@ -10732,14 +10879,27 @@ rect(
 94px
 ,
 0
+
+
 )
+
+
 }
 30
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 17px
 ,
 9999px
@@ -10747,14 +10907,27 @@ rect(
 20px
 ,
 0
+
+
 )
+
+
 }
 35
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 71px
 ,
 9999px
@@ -10762,14 +10935,27 @@ rect(
 59px
 ,
 0
+
+
 )
+
+
 }
 40
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 42px
 ,
 9999px
@@ -10777,14 +10963,27 @@ rect(
 84px
 ,
 0
+
+
 )
+
+
 }
 45
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -10792,14 +10991,27 @@ rect(
 25px
 ,
 0
+
+
 )
+
+
 }
 50
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 46px
 ,
 9999px
@@ -10807,14 +11019,27 @@ rect(
 14px
 ,
 0
+
+
 )
+
+
 }
 55
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 47px
 ,
 9999px
@@ -10822,14 +11047,27 @@ rect(
 1px
 ,
 0
+
+
 )
+
+
 }
 60
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 64px
 ,
 9999px
@@ -10837,14 +11075,27 @@ rect(
 58px
 ,
 0
+
+
 )
+
+
 }
 65
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 89px
 ,
 9999px
@@ -10852,14 +11103,27 @@ rect(
 92px
 ,
 0
+
+
 )
+
+
 }
 70
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -10867,14 +11131,27 @@ rect(
 39px
 ,
 0
+
+
 )
+
+
 }
 75
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 80px
 ,
 9999px
@@ -10882,14 +11159,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 80
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 8px
 ,
 9999px
@@ -10897,14 +11187,27 @@ rect(
 13px
 ,
 0
+
+
 )
+
+
 }
 85
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 66px
 ,
 9999px
@@ -10912,14 +11215,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 90
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 68px
 ,
 9999px
@@ -10927,14 +11243,27 @@ rect(
 4px
 ,
 0
+
+
 )
+
+
 }
 95
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -10942,14 +11271,27 @@ rect(
 14px
 ,
 0
+
+
 )
+
+
 }
 100
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 28px
 ,
 9999px
@@ -10957,7 +11299,11 @@ rect(
 53px
 ,
 0
+
+
 )
+
+
 }
 }
 @
@@ -10966,11 +11312,20 @@ keyframes noise-anim { 0%{
 }
 
 5
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 75px
 ,
 9999px
@@ -10978,14 +11333,27 @@ rect(
 72px
 ,
 0
+
+
 )
+
+
 }
 10
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 97px
 ,
 9999px
@@ -10993,14 +11361,27 @@ rect(
 93px
 ,
 0
+
+
 )
+
+
 }
 15
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 15px
 ,
 9999px
@@ -11008,14 +11389,27 @@ rect(
 9px
 ,
 0
+
+
 )
+
+
 }
 20
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 14px
 ,
 9999px
@@ -11023,14 +11417,27 @@ rect(
 92px
 ,
 0
+
+
 )
+
+
 }
 25
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 18px
 ,
 9999px
@@ -11038,14 +11445,27 @@ rect(
 94px
 ,
 0
+
+
 )
+
+
 }
 30
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 17px
 ,
 9999px
@@ -11053,14 +11473,27 @@ rect(
 20px
 ,
 0
+
+
 )
+
+
 }
 35
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 71px
 ,
 9999px
@@ -11068,14 +11501,27 @@ rect(
 59px
 ,
 0
+
+
 )
+
+
 }
 40
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 42px
 ,
 9999px
@@ -11083,14 +11529,27 @@ rect(
 84px
 ,
 0
+
+
 )
+
+
 }
 45
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -11098,14 +11557,27 @@ rect(
 25px
 ,
 0
+
+
 )
+
+
 }
 50
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 46px
 ,
 9999px
@@ -11113,14 +11585,27 @@ rect(
 14px
 ,
 0
+
+
 )
+
+
 }
 55
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 47px
 ,
 9999px
@@ -11128,14 +11613,27 @@ rect(
 1px
 ,
 0
+
+
 )
+
+
 }
 60
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 64px
 ,
 9999px
@@ -11143,14 +11641,27 @@ rect(
 58px
 ,
 0
+
+
 )
+
+
 }
 65
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 89px
 ,
 9999px
@@ -11158,14 +11669,27 @@ rect(
 92px
 ,
 0
+
+
 )
+
+
 }
 70
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -11173,14 +11697,27 @@ rect(
 39px
 ,
 0
+
+
 )
+
+
 }
 75
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 80px
 ,
 9999px
@@ -11188,14 +11725,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 80
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 8px
 ,
 9999px
@@ -11203,14 +11753,27 @@ rect(
 13px
 ,
 0
+
+
 )
+
+
 }
 85
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 66px
 ,
 9999px
@@ -11218,14 +11781,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 90
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 68px
 ,
 9999px
@@ -11233,14 +11809,27 @@ rect(
 4px
 ,
 0
+
+
 )
+
+
 }
 95
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 56px
 ,
 9999px
@@ -11248,14 +11837,27 @@ rect(
 14px
 ,
 0
+
+
 )
+
+
 }
 100
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 28px
 ,
 9999px
@@ -11263,21 +11865,14 @@ rect(
 53px
 ,
 0
+
+
 )
+
+
 }
 }
-.error:after {
-	content: attr(data-text);
-	position: absolute;
-	left: 2px;
-	text-shadow: -1px 0 #e74a3b;
-	top: 0;
-	color: #5a5c69;
-	background: #f8f9fc;
-	overflow: hidden;
-	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim 2s infinite linear alternate-reverse
-}
+
 
 @
 -webkit-keyframes noise-anim-2 { 0%{
@@ -11285,11 +11880,20 @@ rect(
 }
 
 5
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 22px
 ,
 9999px
@@ -11297,14 +11901,27 @@ rect(
 29px
 ,
 0
+
+
 )
+
+
 }
 10
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 6px
 ,
 9999px
@@ -11312,14 +11929,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 15
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 85px
 ,
 9999px
@@ -11327,14 +11957,27 @@ rect(
 95px
 ,
 0
+
+
 )
+
+
 }
 20
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 65px
 ,
 9999px
@@ -11342,14 +11985,27 @@ rect(
 91px
 ,
 0
+
+
 )
+
+
 }
 25
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 93px
 ,
 9999px
@@ -11357,14 +12013,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 30
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 10px
 ,
 9999px
@@ -11372,14 +12041,27 @@ rect(
 27px
 ,
 0
+
+
 )
+
+
 }
 35
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 37px
 ,
 9999px
@@ -11387,14 +12069,27 @@ rect(
 25px
 ,
 0
+
+
 )
+
+
 }
 40
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 12px
 ,
 9999px
@@ -11402,14 +12097,27 @@ rect(
 23px
 ,
 0
+
+
 )
+
+
 }
 45
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 40px
 ,
 9999px
@@ -11417,14 +12125,27 @@ rect(
 18px
 ,
 0
+
+
 )
+
+
 }
 50
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 19px
 ,
 9999px
@@ -11432,14 +12153,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 55
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 2px
 ,
 9999px
@@ -11447,14 +12181,27 @@ rect(
 35px
 ,
 0
+
+
 )
+
+
 }
 60
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 16px
 ,
 9999px
@@ -11462,14 +12209,27 @@ rect(
 69px
 ,
 0
+
+
 )
+
+
 }
 65
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 8px
 ,
 9999px
@@ -11477,14 +12237,27 @@ rect(
 65px
 ,
 0
+
+
 )
+
+
 }
 70
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 30px
 ,
 9999px
@@ -11492,14 +12265,27 @@ rect(
 57px
 ,
 0
+
+
 )
+
+
 }
 75
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 14px
 ,
 9999px
@@ -11507,14 +12293,27 @@ rect(
 4px
 ,
 0
+
+
 )
+
+
 }
 80
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 39px
 ,
 9999px
@@ -11522,14 +12321,27 @@ rect(
 30px
 ,
 0
+
+
 )
+
+
 }
 85
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 22px
 ,
 9999px
@@ -11537,14 +12349,27 @@ rect(
 35px
 ,
 0
+
+
 )
+
+
 }
 90
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 58px
 ,
 9999px
@@ -11552,14 +12377,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 95
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 34px
 ,
 9999px
@@ -11567,14 +12405,27 @@ rect(
 90px
 ,
 0
+
+
 )
+
+
 }
 100
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 67px
 ,
 9999px
@@ -11582,7 +12433,11 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 }
 @
@@ -11591,11 +12446,20 @@ keyframes noise-anim-2 { 0%{
 }
 
 5
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 22px
 ,
 9999px
@@ -11603,14 +12467,27 @@ rect(
 29px
 ,
 0
+
+
 )
+
+
 }
 10
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 6px
 ,
 9999px
@@ -11618,14 +12495,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 15
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 85px
 ,
 9999px
@@ -11633,14 +12523,27 @@ rect(
 95px
 ,
 0
+
+
 )
+
+
 }
 20
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 65px
 ,
 9999px
@@ -11648,14 +12551,27 @@ rect(
 91px
 ,
 0
+
+
 )
+
+
 }
 25
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 93px
 ,
 9999px
@@ -11663,14 +12579,27 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 30
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 10px
 ,
 9999px
@@ -11678,14 +12607,27 @@ rect(
 27px
 ,
 0
+
+
 )
+
+
 }
 35
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 37px
 ,
 9999px
@@ -11693,14 +12635,27 @@ rect(
 25px
 ,
 0
+
+
 )
+
+
 }
 40
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 12px
 ,
 9999px
@@ -11708,14 +12663,27 @@ rect(
 23px
 ,
 0
+
+
 )
+
+
 }
 45
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 40px
 ,
 9999px
@@ -11723,14 +12691,27 @@ rect(
 18px
 ,
 0
+
+
 )
+
+
 }
 50
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 19px
 ,
 9999px
@@ -11738,14 +12719,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 55
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 2px
 ,
 9999px
@@ -11753,14 +12747,27 @@ rect(
 35px
 ,
 0
+
+
 )
+
+
 }
 60
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 16px
 ,
 9999px
@@ -11768,14 +12775,27 @@ rect(
 69px
 ,
 0
+
+
 )
+
+
 }
 65
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 8px
 ,
 9999px
@@ -11783,14 +12803,27 @@ rect(
 65px
 ,
 0
+
+
 )
+
+
 }
 70
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 30px
 ,
 9999px
@@ -11798,14 +12831,27 @@ rect(
 57px
 ,
 0
+
+
 )
+
+
 }
 75
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 14px
 ,
 9999px
@@ -11813,14 +12859,27 @@ rect(
 4px
 ,
 0
+
+
 )
+
+
 }
 80
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 39px
 ,
 9999px
@@ -11828,14 +12887,27 @@ rect(
 30px
 ,
 0
+
+
 )
+
+
 }
 85
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 22px
 ,
 9999px
@@ -11843,14 +12915,27 @@ rect(
 35px
 ,
 0
+
+
 )
+
+
 }
 90
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 58px
 ,
 9999px
@@ -11858,14 +12943,27 @@ rect(
 71px
 ,
 0
+
+
 )
+
+
 }
 95
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 34px
 ,
 9999px
@@ -11873,14 +12971,27 @@ rect(
 90px
 ,
 0
+
+
 )
+
+
 }
 100
+
+
 %
 {
 clip
+
+
 :
-rect(
+
+
+rect
+(
+
+
 67px
 ,
 9999px
@@ -11888,10 +12999,14 @@ rect(
 68px
 ,
 0
+
+
 )
+
+
 }
 }
-.error:before {
+.error::before {
 	content: attr(data-text);
 	position: absolute;
 	left: -2px;
@@ -11901,8 +13016,23 @@ rect(
 	background: #f8f9fc;
 	overflow: hidden;
 	clip: rect(0, 900px, 0, 0);
-	animation: noise-anim-2 3s infinite linear alternate-reverse
+	animation: noise-anim-2 3s infinite linear alternate-reverse;
 }
+
+.error::after {
+	content: attr(data-text);
+	position: absolute;
+	left: 2px;
+	text-shadow: -1px 0 #e74a3b;
+	top: 0;
+	color: #5a5c69;
+	background: #f8f9fc;
+	overflow: hidden;
+	clip: rect(0, 900px, 0, 0);
+	animation: noise-anim-2 1s infinite linear alternate-reverse;
+}
+
+
 
 footer.sticky-footer {
 	padding: 1rem 0;
@@ -11917,3 +13047,64 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
 	width: 100%
 }
+
+.display-flex {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	border: 1px solid gray;
+	border-radius: 20px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.display-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-around;
+}
+
+.display-flex:hover {
+	background-color: gray;
+	color: white;
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.check-laundry {
+	width: 55%;
+}
+
+.display-item {
+	padding: 10px;
+	margin-left:30px;
+}
+.display-container-list{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	/* align-item : center; */
+	justify-content: space-around;
+}
+.display-container-list div{
+	text-align: center;
+	font-weight: bold;
+	
+}
+.perpendicular {
+	border-left: thin solid gray;
+	height: auto;
+	margin:10px 0 10px 0;
+}
+
+.card-body-scroll{
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.confirm-btn{
+	padding : 30px;
+	
+}
+

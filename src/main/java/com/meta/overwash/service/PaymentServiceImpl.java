@@ -16,7 +16,6 @@ import com.meta.overwash.domain.PaymentRequestDTO;
 import com.meta.overwash.domain.ReceiptDTO;
 import com.meta.overwash.domain.ReservationConfirmedDTO;
 import com.meta.overwash.domain.ReservationDTO;
-import com.meta.overwash.domain.UserDTO;
 import com.meta.overwash.mapper.CheckMapper;
 import com.meta.overwash.mapper.PaymentRequestMapper;
 import com.meta.overwash.mapper.ReceiptMapper;
@@ -24,7 +23,6 @@ import com.meta.overwash.mapper.ReservationConfirmedMapper;
 import com.meta.overwash.mapper.ReservationMapper;
 
 import lombok.extern.log4j.Log4j;
-import oracle.jdbc.driver.LogicalConnection;
 
 @Service
 @Log4j
@@ -72,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("paymentPaging", new PagenationDTO(cri, getCountToAdmin(cri).intValue()));
-		map.put("paymentRequests", prMapper.getListToAdmin(cri));
+		map.put("paymentRequests", prMapper.getListToAdmin(cri)); 
 		return map;
 	}
 
@@ -96,7 +94,12 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<PaymentRequestDTO> getPrListToMember(Long userId) {
 		return prMapper.getPrListToMemberNotPaging(userId);
 	}
-
+	
+	@Override
+	public List<PaymentRequestDTO> getListToMember(Long userId){
+			return prMapper.getListToMemberNotPaging(userId);
+	}
+	
 	@Override
 	public PaymentRequestDTO get(Long pno) {
 		return prMapper.getPaymentRequest(pno);
@@ -144,17 +147,8 @@ public class PaymentServiceImpl implements PaymentService {
 
 	/* ------------서비스 내부에서 쓸 메소드 -------------- */
 
-	private Long getCountToMember(Long userId, Criteria cri) {
-		UserDTO user = new UserDTO();
-		user.setUserId(userId);
-		return prMapper.getCountToMember(user);
-	}
-
 	private Long getCountToAdmin(Criteria cri) {
 
 		return prMapper.getCountToAdmin(cri);
 	}
-
-	
-
 }

@@ -1,20 +1,10 @@
 package com.meta.overwash.mapper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.stream.IntStream;
-
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.meta.overwash.domain.CrewDTO;
-import com.meta.overwash.domain.MemberDTO;
-import com.meta.overwash.domain.UserDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -120,5 +110,6 @@ public class UserMapperTests {
 //		});
 //	
 //	}
+	
 	
 }

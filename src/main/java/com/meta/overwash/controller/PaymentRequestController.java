@@ -1,16 +1,17 @@
 package com.meta.overwash.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.meta.overwash.domain.LaundryDTO;
-import com.meta.overwash.domain.ReservationConfirmedDTO;
 import com.meta.overwash.service.PaymentService;
 
 @Controller
@@ -23,14 +24,16 @@ public class PaymentRequestController {
 	@GetMapping("/member/process/{pno}")
 	public String process(@PathVariable("pno") Long pno, Model model) {
 		model.addAttribute("payment", paymentService.get(pno));
-		return "/payment/process";
+		
+		return "redirect:/member/main";
 	}
 
 	// 결제 요청
 	// 수정중 (03.12) 세탁물 안받아와짐
-	@PostMapping("/admin/payment/request")
-	public String adminPaymentRequest(ArrayList<LaundryDTO> laundryList, ReservationConfirmedDTO rcDto, Model model) {
-		if (paymentService.requestToAdmin(rcDto.getConfirmId(), laundryList) != null) {
+	@PostMapping(value = "/admin/payment/request/{rcNo}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public String adminPaymentRequest(@RequestBody List<LaundryDTO> laundryList, @PathVariable("rcNo") Long rcNo, Model model) {
+
+		if (paymentService.requestToAdmin(rcNo, laundryList) != null) {
 			model.addAttribute("msg", "결제요청이 완료되었습니다.");
 
 		} else {
