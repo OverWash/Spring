@@ -70,7 +70,7 @@ public class PaymentServiceImpl implements PaymentService {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("paymentPaging", new PagenationDTO(cri, getCountToAdmin(cri).intValue()));
-		map.put("paymentRequests", prMapper.getListToAdmin(cri));
+		map.put("paymentRequests", prMapper.getListToAdmin(cri)); 
 		return map;
 	}
 
