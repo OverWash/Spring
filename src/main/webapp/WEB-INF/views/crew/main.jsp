@@ -66,10 +66,10 @@
 									<c:set var="doneLoopC" value="false" />
 									<c:forEach var="collect" items="${collectList }" varStatus="i">
 										<c:if test="${not doneLoopC }">
-											<form action="/crew/collect/${collect.reservationId}" method="post" id="collectForm">
+											<form action="/crew/collect/${collect.reservationId}" method="post" onsubmit="collect()">
 												<div class="reservationList">
 													<h4 class="middle font-weight-bold">
-														${collect.member.memberAddress} <span class="float-right"> <button class="btn btn-secondary btn-icon-split" class="collect" id="collect" style="line-height: 1;">
+														${collect.member.memberAddress} <span class="float-right"> <button class="btn btn-secondary btn-icon-split" style="line-height: 1;">
 																<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i></span> <span class="text font-weight-bold">수거하기</span>
 															</button>
 														</span>
@@ -94,19 +94,20 @@
 									<h5 class="m-0 font-weight-bold text-gray-900">배달예정목록</h5>
 								</div>
 								<c:set var="doneLoopD" value="false" />
-									<c:forEach var="delivery" items="${deliveryList }" varStatus="k">
+									<c:forEach var="wc" items="${wcList }" varStatus="k">
 										<c:if test="${not doneLoopD }">
-												<form action="/crew/delivery/${delivery.confirm.reservation.reservationId}" method="post" id="deliveryForm">
+												<form action="/crew/delivery/${wc.confirm.reservation.reservationId }" method="post" onsubmit="delivery()">
 													<div class="reservationList">
 														<h4 class="middle font-weight-bold">
-															${delivery.confirm.reservation.member.memberAddress} <span class="float-right"> <button class="btn btn-secondary btn-icon-split" id="delivery" style="line-height: 1;">
+															${wc.confirm.reservation.member.memberAddress} <span class="float-right"> <button class="btn btn-secondary btn-icon-split" style="line-height: 1;">
 																	<span class="icon text-gray-600"> <i class="fas fa-arrow-right"></i></span> <span class="text font-weight-bold">배달하기</span>
 																</button>
 															</span>
 														</h4>
 													</div>
-													<input type="hidden" value="${delivery.confirm.reservation.reservationId}" name="reservationId">
-													<input type="hidden" name="flag" value="main">
+													<input type="hidden" name="wcId"   value="${wc.wcId }">
+													<input type="hidden" name="crewId" value="${member.crewId }">
+													<input type="hidden" name="flag"   value="main">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 												</form>
 											
@@ -132,24 +133,17 @@
 		<!-- End of Page Wrapper -->
 
 		<%@ include file="../common/footer.jsp"%>
+	<script type="text/javascript">
+	
+		function collect() {
+			alert("수거를 진행합니다.");
+		}
+			
+		function delivery() {
+			alert("배송을 진행합니다.");
+		}
+	 
+	</script>
 </body>
 
-<script>
-	$(function(){
-		 $("#collect").click(function(e){
-			e.preventDefault();
-			alert("수거를 진행합니다.");
-			$("#collectForm").submit();		
-		});
-		
-		$("#delivery").click(function(e){
-			e.preventDefault();
-			alert("배송을 진행합니다.");
-			$("#deliveryForm").submit();		
-		});
-		
-	})
-
-
-</script>
 </html>

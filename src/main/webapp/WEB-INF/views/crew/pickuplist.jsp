@@ -53,8 +53,8 @@
 											<td>${collect.member.memberContact}</td>
 											<td>${collect.member.nickname}</td>
 											<td>
-												<form action="/crew/collect/${collect.reservationId}" method="post" id="collectForm">
-													<button id="collect" class="btn btn-dark">수거하기</button>
+												<form action="/crew/collect/${collect.reservationId}" method="post" onsubmit="collect()">
+													<button class="btn btn-primary">배달하기</button>
 													<input type="hidden" value="${member.crewId }" name="crewId">
 													<input type="hidden" name="flag" value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -83,15 +83,16 @@
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
 	<script type="text/javascript">
-		$(function() {
+		
+		function collect() {
+			alert("수거를 진행합니다.");
+		}
+	
+	
+	 	$(function() {
 			$('#collectTable').DataTable(); // table 띄우기
-			
-			 $("#collect").click(function(e){
-					e.preventDefault();
-					alert("수거를 진행합니다.");
-					$("#collectForm").submit();		
-				});
-		});
+		
+		}); 
 		
 		
 				

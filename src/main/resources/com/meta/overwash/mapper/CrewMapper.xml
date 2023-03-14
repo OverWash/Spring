@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.meta.overwash.mapper.CrewMapper">
 	
-	<resultMap type="WashingCompleteDTO" id="WashingCompleteMap">
-		<id property="wcId" 	  column="wc_id"/>
+	<resultMap type="WashingCompleteDTO" id="washingCompleteMap">
+		<id     property="wcId"   column="wc_id"/>
 		<result property="wcDate" column="wc_date"/>
 		<association property="confirm" resultMap="reservationConfirmedMap"/>
 	</resultMap>
 	
 	<resultMap type="ReservationConfirmedDTO" id="reservationConfirmedMap">
-      <id property="confirmId" 		 column="confirm_id"/>
+      <id     property="confirmId" 	 column="confirm_id"/>
       <result property="confirmDate" column="confirm_date"/>
       <association property="factory"     resultMap="LaundryFactoryMap"/>
       <association property="crew"     	  resultMap="crewMap"/>
@@ -17,7 +17,7 @@
 	</resultMap>
 	
 	<resultMap type="LaundryFactoryDTO" id="LaundryFactoryMap">
-		<id property="factoryId" 		  column="factory_id"/>
+		<id     property="factoryId"      column="factory_id"/>
 		<result property="factoryContact" column="factory_contact"/>
 		<result property="factoryAddress" column="factory_address"/>
 	</resultMap>
@@ -25,7 +25,6 @@
 	<resultMap type="ReservationDTO" id="reservationMap">
 		<id property="reservationId"         column="reservation_id"/>
 		<result property="collectDate" 	 	 column="collect_date"/>
-		<result property="deliveryDate"	 	 column="delivery_date"/>
 		<result property="reservationDate"   column="reservation_date"/>
 		<result property="request"           column="request"/>
 		<result property="reservationStatus" column="reservation_status"/>
@@ -41,19 +40,27 @@
 	</resultMap>
 	
 	<resultMap type="UserDTO" id="userMap">
-		<result column="user_id"		property="userId"/>
+		<id column="user_id"		    property="userId"/>
 		<result column="email"			property="email"/>
 		<result column="password"		property="password"/>
 	</resultMap>
 	
 	<resultMap type="CrewDTO" id="crewMap">
-		<result column="crew_id" 		property="crewId"/>
+		<id     column="crew_id" 		property="crewId"/>
 		<result column="crew_contact"	property="crewContact"/>
 		<result column="crew_name"		property="crewName"/>
 		<result column="crew_birth"		property="crewBirth"/>
 		<result column="car_type"		property="carType"/>
 		<result column="car_number"		property="carNumber"/>
 		<association property="user" resultMap="userMap" />
+	</resultMap>
+	
+	<resultMap type="DeliveryDTO" id="deliveryMap">
+		<id     column="delivery_id"    property="deliveryId"/>
+		<result column="delivery_date"	property="deliveryDate"/>
+		<result column="status" 		property="status"/>
+		<association property="crew" resultMap="crewMap"/>
+		<association property="wc"   resultMap="washingCompleteMap"/>
 	</resultMap>
 	
 	<insert id="insertCrew" parameterType="CrewDTO">
@@ -152,7 +159,7 @@
 			reservation_status = '주문접수'
 	</select>
 
-	<select id="selectDelivery"  resultMap="WashingCompleteMap">
+	<select id="selectWcList"  resultMap="washingCompleteMap">
 		select
 			wc.wc_id          	 as wc_id,
 			wc.wc_date       	 as wc_date,
@@ -168,7 +175,6 @@
 			c.car_number		 as car_number,
 			r.reservation_id  	 as reservation_id,
 			r.collect_date       as collect_date,
-			r.delivery_date		 as delivery_date,
 			r.reservation_date   as reservation_date,
 			r.request 		     as request,
 			r.reservation_status as reservation_status,
@@ -189,7 +195,7 @@
 						     join member m
 						       on r.member_id = m.member_id
 		where
-			r.reservation_status in ('세탁완료', '배달중', '배달완료')
+			r.reservation_status = '세탁완료'
 	</select>
 	
 	<update id="updateDelivering" parameterType="Long">
@@ -201,14 +207,60 @@
 			reservation_id = #{reservationId}
 	</update>
 	
-	<update id="updateDoneDelivery" parameterType="Long">
+	<update id="updateResStatusDeliverDone" parameterType="Long">
 		update
 			reservation
 		set
-			reservation_status = '배달완료',
-			delivery_date = sysdate
+			reservation_status = '배달완료'
 		where
 			reservation_id = #{reservationId}
+	</update>
+	
+	<insert id="insertDelivery" parameterType="DeliveryDTO">
+		<selectKey resultType="long" order="BEFORE" keyProperty="deliveryId">
+			select delivery_seq.nextval from dual
+		</selectKey>
+	
+		insert into delivery(delivery_id, crew_id, wc_id, status)
+		values(#{deliveryId}, #{crew.crewId}, #{wc.wcId}, '배달중')
+	</insert>
+	
+	<select id="selectDeliveryList" parameterType="Long" resultMap="deliveryMap">
+		select
+			d.delivery_id    as delivery_id,
+			d.delivery_date  as delivery_date,
+			d.status 		 as status,
+			c.crew_id 		 as crew_id,
+			wc.wc_id 	 	 as wc_id,
+			wc.wc_date 		 as wc_date,
+			m.member_address as member_address,
+			m.member_contact as member_contact,
+			m.nickname 	     as nickname,
+			r.reservation_id as reservation_id
+		from
+			delivery d
+					 join crew c
+					   on d.crew_id = c.crew_id
+					 join washing_complete wc
+					   on d.wc_id = wc.wc_id
+					 join reservation_confirmed rc
+					   on rc.confirm_id = wc.confirm_id
+					 join reservation r
+					   on rc.reservation_id = r.reservation_id
+					 join member m
+					   on r.member_id = m.member_id
+		where
+			d.crew_id = #{crewId}
+	</select>
+	
+	<update id="updateDoneDelivery" parameterType="Long">
+		update
+			delivery
+		set
+			status = '배달완료',
+			delivery_date = SYSDATE
+		where
+			delivery_id = #{deliveryId}
 	</update>
 
 </mapper>
