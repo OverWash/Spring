@@ -49,8 +49,8 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${prList.confirm.confirmDate}" /></td>
 											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${prList.prPrice}" /></td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
-											<td><input id="payProcessBtn" class="btn btn-primary" type="button" value="결제하기" onclick="payProcess(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
+											<td><input id="checkListBtn" class="btn btn-dark" type="button" value="상세보기" onclick="checkList(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
+											<td><input id="payProcessBtn" class="btn btn-dark" type="button" value="결제하기" onclick="payProcess(event, ${prList.prId}, ${prList.confirm.confirmId})"></td>
 										</tr>
 
 									</c:forEach>

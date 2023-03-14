@@ -50,7 +50,7 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
 											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="checkListBtn" class="btn btn-primary" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
+											<td><input id="checkListBtn" class="btn btn-dark" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
 										
 									</c:forEach>
