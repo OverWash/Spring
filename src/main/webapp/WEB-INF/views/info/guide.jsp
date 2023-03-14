@@ -16,8 +16,8 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 					<!-- Page Heading -->
-					<h1 class="h1 mb-2 font-weight-bold text-dark">/* 이용 가이드 */</h1>
-					<p>overWash 이용 방법 안내입니다.</p>
+					<h1 class="h1 mb-2 font-weight-bold text-dark">이용 가이드</h1>
+					<p>OVERWASH 이용 방법 안내입니다.</p>
 					<p>&nbsp</p>
 					
 					<div class="row">

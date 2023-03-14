@@ -4590,7 +4590,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .card-img, .card-img-bottom, .card-img-top {
 	flex-shrink: 0;
-	width: 100%
+	width: 70%
 }
 
 .card-img, .card-img-top {

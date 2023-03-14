@@ -23,7 +23,7 @@
 							<div class="card shadow mb-4">
 								<div class="card-body">
 									<a class="btn" onclick="fnModuleInfo()">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/booking.svg">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/booking.svg" style="max-width:61%">
 									</a>
 									<h4 class="float-right m-0 font-weight-bold text-dark">+예약하기</h4>
 								</div>
@@ -41,9 +41,7 @@
 												<div class="h5 mb-0 font-weight-bold text-gray-800">최근 예약 내역</div>
 												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">가장 최근 예약 내역입니다</div>
 											</div>
-											<div class="col-auto">
-												<i class="fas fa-calendar fa-1x text-gray-300"></i>
-											</div>
+											
 										</div>
 									</div>
 									<!-- Card Body -->
