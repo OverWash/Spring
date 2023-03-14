@@ -22,8 +22,8 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 완료 내역</h3>
-					<p class="mb-4">${username}님의 결제 영수증 목록입니다.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 영수증 목록</h3>
+					<p class="mb-4">${username} 님의 결제 영수증 목록입니다. 결제가 완료된 예약 건을 확인하실 수 있습니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">

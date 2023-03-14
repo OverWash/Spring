@@ -37,7 +37,7 @@
 			</a></li>
 
 		<li class="nav-item"><a class="nav-link" href="/payment/receiptlist">
-				<i class="fas fa-fw fa-list"></i> <span>결제 완료 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>결제 영수증 목록</span>
 			</a></li>
 
 		<li class="nav-item"><a class="nav-link" href="/payment/completedlist">

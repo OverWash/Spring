@@ -22,8 +22,8 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">지난 예약 내역</h3>
-					<p class="mb-4">${username}님의 지난 예약 목록입니다.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">지난 예약 목록</h3>
+					<p class="mb-4">${username} 님의 지난 예약 목록입니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
