@@ -106,16 +106,21 @@
 								</div>
 								<div id="ajax-pr-list"></div>
 								<div class="card-body">
-									<c:forEach items="${prList}" var="prList" varStatus="status">
-										<div class="reservationList">
+									<c:forEach items="${prList}" var="prList" begin="1" end="5" varStatus="status">
+										<div class="paymentRequestList">
 											<h5 class="middle font-weight-light">
+												<input type="hidden" id="prListPrId" value="${prList.prId}">
+												<input type="hidden" id="prListConfirmId" value="${prList.confirm.confirmId}">
 												no.${prList.confirm.reservation.reservationId}&nbsp 예약날짜 :
 												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${prList.confirm.reservation.reservationDate}" />
-												결제요청금액 : ${prList.prPrice}원 <span class="float-right"> <a href="/member/process/${prList.prId}" class="btn btn-light btn-icon-split" style="line-height: 1;">
+												결제요청금액 : ${prList.prPrice}원 
+												<span class="float-right"> 
+													<a onclick="payModuleInfo(
+														${prList.prId},
+														${prList.confirm.confirmId}	
+													)" 
+														class="btn btn-light btn-icon-split" style="line-height: 1;">
 														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> <span class="text font-weight-bold">결제하기</span>
-													</a>
-													<a onclick="popPayModal('${prList.confirm.reservation.reservationId}')">
-														<i class="fa fa-arrow-circle-right fa-lg"></i>
 													</a>
 												</span>
 											</h5>
@@ -173,8 +178,6 @@
 							<span class="icon text-white-60"> <i class="fas fa-check"></i>
 							</span> <span class="text">신청하기</span>
 						</a>
-						
-						
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
@@ -187,45 +190,31 @@
 	<div class="modal fade" id="payModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form class="user" action="/member/process/${prList.prId}" method="POST">
-					<div class="col-sm-12 mb-4">
-						<!-- 수거 날짜 선택 -->
-						<div class="card shadow mb-4">
-							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">결제 수단을 선택하세요</h4>
-							</div>
+				<div class="col-sm-12 mb-4">
+					<!-- 수거 날짜 선택 -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h4 class="m-0 font-weight-bold text-primary">결제 수단을 선택하세요</h4>
+						</div>
 							<div class="card-body">
-								<select name="paymentMethod" class="custom-select custom-select-sm form-control form-control-sm">
-									<option value="문화상품권">문화상품권</option>
-									<option value="모바일결제">모바일결제</option>
-									<option value="신용카드">신용카드</option>
-									<option value="토스">토스</option>
-									<option value="PAYCO">PAYCO</option>
-									<option value="KakaoPay">KakaoPay</option>
-								</select>
-								<input type="hidden" id="prId" name="prId" >
-								<input type="hidden" id="confirmId" name="confirmId" >
+								<form id="paymentForm" class="user" action="/payment/process" method="POST">
+									<select name="paymentMethod" class="custom-select custom-select-sm form-control form-control-sm">
+										<option value="문화상품권">문화상품권</option>
+										<option value="모바일결제">모바일결제</option>
+										<option value="신용카드">신용카드</option>
+										<option value="토스">토스</option>
+										<option value="PAYCO">PAYCO</option>
+										<option value="KakaoPay">KakaoPay</option>
+									</select>
+									<input type="hidden" id="payModalPrId" name="prId" value="" >
+									<input type="hidden" id="payModalConfirmId" name="confirmId" value="" >
+ 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<button class="btn btn-primary" type="button" onclick="return paychk_form()">결제하기</button>
+								</form>
 							</div>
 						</div>
-						<!-- End 수거 날짜 선택 -->
-						<!-- 요청사항 입력 -->
-						<div class="card shadow mb-4">
-							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">요청사항을 입력해 주세요</h4>
-							</div>
-							<div class="card-body">
-								<div class="input-group">
-									<input type="text" id="request" name="request" class="form-control bg-light border-0 large" placeholder="요청사항을 입력하세요">
-								</div>
-							</div>
-						</div>
-						<input id="requestSubmit" type='submit'>
-						<!-- End of 요청사항 입력 -->
-						<button class="btn btn-primary">결제하기</button>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</form>
-			</div>
+				</div>
 		</div>
 	</div>
 	<!-- Payment Request Modal-->
@@ -234,22 +223,26 @@
 	<script type="text/javascript">
 		/* 예약신청 모달*/
 		function fnModuleInfo() {
+			event.preventDefault();
 			$('#MoaModal').modal();
 		}
-		
-		/* 결제요청 모달 */
-		function popPayModal(str) {
-			$('#payModal .modal-content').load("payModal?id="+str);
-			$('#payModal').modal();
-		}
-		
-		
-		/* 최근예약내역 progressBar */
 		function chk_form() {
 			$("#requestForm").submit();
 		}
 		
-
+ 		/* 결제요청 모달 */
+		function payModuleInfo(prId, confirmId){
+			$('#payModal').modal("show");
+			$('#payModalPrId').val(prId);
+			$('#payModalConfirmId').val(confirmId);
+		}
+		
+ 		/* 결제요청 제출 */
+		function paychk_form() {
+			$("#paymentForm").submit();
+		}
+		
+		/* 최근예약내역 progressBar */
 		let lastResStatus = $('#lastResStatus').val();
 		let resListLength = $('#reservationListSize').val();
 
@@ -284,19 +277,6 @@
 			}
 		}
 
-		/* 		
-		function getPaymentRequestlist(){
-			$.ajax({
-				url : '/member/payment',
-				method : 'GET',
-				contentType:'application/json;charaset=utf-8',
-				dataType:'json',
-				userId : $('#username').val(),
-				error : function(error, status, message) {}
-					alert("에러 : " + status + " | " + message);
-			},
-		}
-		 */
 	</script>
 </body>
 </html>
