@@ -36,7 +36,6 @@
 		<result property="collectDate" column="collect_date" />
 		<result property="request" column="request" />
 		<result property="reservationDate" column="reservation_date"/>
-		<result property="laundryType" column="laundry_type" />
 		<result property="reservationStatus" column="reservation_status" />
 		<association property="member" resultMap="memberMap" />
 	</resultMap>

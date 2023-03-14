@@ -59,7 +59,8 @@
 											</div>
 											${lastReservation.reservationId}<br />
 											<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${lastReservation.collectDate}" />
-											<br /> ${lastReservation.reservationStatus}<br /> <input type="hidden" id="lastResStatus" name="lastResStatus" value="${lastReservation.reservationStatus}">
+											<br /> ${lastReservation.reservationStatus}<br />
+											<input type="hidden" id="lastResStatus" name="lastResStatus" value="${lastReservation.reservationStatus}">
 										</div>
 									</div>
 								</div>
@@ -125,6 +126,7 @@
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
+
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -132,7 +134,6 @@
 	<!-- End of Page Wrapper -->
 
 	<%@ include file="../common/footer.jsp"%>
-
 	<!-- 예약 신청 모달창 Modal -->
 	<div class="modal fade" id="MoaModal" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
@@ -145,11 +146,11 @@
 								<h6 class="m-0 font-weight-bold text-primary">수거일을 선택하세요</h6>
 							</div>
 							<div class="card-body">
-   								 <input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
+								<input type="date" id="collectDate" name="collectDate" value="2023-01-01" min="2018-01-01" max="2023-12-31">
 							</div>
 						</div>
 						<!-- End 수거 날짜 선택 -->
-						
+
 						<!-- 요청사항 입력 -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
@@ -161,15 +162,15 @@
 								</div>
 							</div>
 						</div>
-							
+
 						<!-- a 태그 누르면 form 리턴해서 전송  -->
 						<div class="my-2"></div>
 						<a href="#" onclick="return chk_form()" class="btn btn-primary btn-icon-split btn-sm">
 							<span class="icon text-white-60"> <i class="fas fa-check"></i>
 							</span> <span class="text">신청하기</span>
 						</a>
-						
-						
+
+
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>
@@ -177,18 +178,26 @@
 		</div>
 	</div>
 	<!-- request Modal-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#reservationBtn').on("click", function() {
+				location.href = "request";
+			});
+		})
+	</script>
+
+
 
 	<script type="text/javascript">
-
 		/*모달*/
 		function fnModuleInfo() {
 			$('#MoaModal').modal();
 		}
-		
+
 		function chk_form() {
 			$("#requestForm").submit();
 		}
-		
 
 		let lastResStatus = $('#lastResStatus').val();
 		let resListLength = $('#reservationListSize').val();
@@ -210,17 +219,13 @@
 			} else if (resStat === "검수완료") {
 				$('#' + resProgressBarId).css("width", "50%");
 			} else if (resStat === "결제완료") {
-				$('#' + resProgressBarId).addClass("bg-info").css("width",
-						"60%");
+				$('#' + resProgressBarId).addClass("bg-info").css("width", "60%");
 			} else if (resStat === "세탁완료") {
-				$('#' + resProgressBarId).addClass("bg-info").css("width",
-						"80%");
+				$('#' + resProgressBarId).addClass("bg-info").css("width", "80%");
 			} else if (resStat === "배달완료") {
-				$('#' + resProgressBarId).addClass("bg-success").css("width",
-						"100%");
+				$('#' + resProgressBarId).addClass("bg-success").css("width", "100%");
 			} else if (resStat === "예약취소") {
-				$('#' + resProgressBarId).addClass("bg-dark").css("width",
-						"100%");
+				$('#' + resProgressBarId).addClass("bg-dark").css("width", "100%");
 			}
 		}
 	</script>
