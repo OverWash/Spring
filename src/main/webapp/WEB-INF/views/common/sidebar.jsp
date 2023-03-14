@@ -112,6 +112,16 @@
 		<li class="nav-item"><a class="nav-link" href="/crew/tobedelivery">
 				<i class="fas fa-fw fa-table"></i> <span>배달 예정 목록</span>
 			</a></li>
+			
+			<!-- Nav Item - Tables -->
+		<li class="nav-item"><a class="nav-link" href="/crew/delivering">
+				<i class="fas fa-fw fa-table"></i> <span>배달 중인 목록</span>
+			</a></li>
+
+		<!-- Nav Item - Tables -->
+		<li class="nav-item"><a class="nav-link" href="/crew/donedelivery">
+				<i class="fas fa-fw fa-table"></i> <span>배달 완료 목록</span>
+			</a></li>
 
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">

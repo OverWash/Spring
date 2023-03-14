@@ -27,5 +27,7 @@ public interface CrewService {
 
 	public List<WashingCompleteDTO> getDeliveryList(String status) throws Exception;
 	
-	public boolean updateStatus(Long reservationId) throws Exception;
+	public boolean updateDelivering(Long reservationId) throws Exception;
+	
+	public boolean updateDoneDelivery(Long reservationId) throws Exception;
 }

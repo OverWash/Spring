@@ -4,7 +4,7 @@
 
 
 	<update id="updateReservation">
-		UPDATE RESERVATION SET RESERVATION_STATUS =#{reservationStatus}
+		UPDATE RESERVATION SET RESERVATION_STATUS = #{reservationStatus}
 		WHERE RESERVATION_ID = #{reservationId}
 	</update>
 
@@ -65,7 +65,8 @@
 	
 	<update id="updateReservationStatus" parameterType="ReservationDTO">
 		UPDATE reservation
-		SET reservation_status =#{reservationStatus}
+		SET reservation_status = #{reservationStatus},
+			collect_date = sysdate
 		WHERE reservation_id = #{reservationId}
 	</update>
 	

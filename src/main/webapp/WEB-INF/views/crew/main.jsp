@@ -27,7 +27,7 @@
 							<!-- Project Card Example -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between"">
-									<h5 class="m-0 font-weight-bold text-gray-900">크루뭔가정보</h5>
+									<h5 class="m-0 font-weight-bold text-gray-900">${member.crewName }님, 배달 현황</h5>
 									<div class="dropdown no-arrow">
 										<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -43,13 +43,15 @@
 								</div>
 								<div class="card-body">
 									<div class="reservationList">
+										<h6>배달 중 (${deliveringCnt }개)</h6>
 										<div class="progress mb-4">
-											<div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar bg-danger" role="progressbar" style="width: ${deliveringCnt * 5}%" aria-valuenow="${deliveringCnt * 5}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 									<div class="reservationList">
+										<h6>배달 완료 (${doneDeliverCnt }개)</h6>
 										<div class="progress mb-4">
-											<div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+											<div class="progress-bar bg-warning" role="progressbar" style="width: ${doneDeliverCnt * 5}%" aria-valuenow="${doneDeliverCnt * 5}" aria-valuemin="0" aria-valuemax="100"></div>
 										</div>
 									</div>
 								</div>
@@ -133,18 +135,20 @@
 </body>
 
 <script>
-/* $(function(){
-	 $("#collect").click(function(e){
-		e.preventDefault();
-		$("#collectForm").submit();		
-	});
-	
-	$("#delivery").click(function(e){
-		e.preventDefault();
-		$("#deliveryForm").submit();		
-	});
-	
-}) */
+	$(function(){
+		 $("#collect").click(function(e){
+			e.preventDefault();
+			alert("수거를 진행합니다.");
+			$("#collectForm").submit();		
+		});
+		
+		$("#delivery").click(function(e){
+			e.preventDefault();
+			alert("배송을 진행합니다.");
+			$("#deliveryForm").submit();		
+		});
+		
+	})
 
 
 </script>

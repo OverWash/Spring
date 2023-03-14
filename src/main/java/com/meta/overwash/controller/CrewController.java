@@ -37,6 +37,8 @@ public class CrewController {
 
 		model.addAttribute("collectList", crewService.getToBeCollectList()); // 수거해야할 리스트
 		model.addAttribute("deliveryList", crewService.getDeliveryList("세탁완료")); // 배달해야할 리스트
+		model.addAttribute("deliveringCnt", crewService.getDeliveryList("배달중").size());
+		model.addAttribute("doneDeliverCnt", crewService.getDeliveryList("배달완료").size());
 		session.setAttribute("username", crew.getCrewName()); // navBar에 크루 네임 계속 보여 주기 위해
 		session.setAttribute("member", crew);
 	}
@@ -74,6 +76,16 @@ public class CrewController {
 	public void tobedelivery(Model model) throws Exception {
 		model.addAttribute("deliveryList", crewService.getDeliveryList("세탁완료")); // 배달해야할 리스트
 	}
+	
+	@GetMapping("/delivering")
+	public void delivering(Model model) throws Exception {
+		model.addAttribute("deliveryList", crewService.getDeliveryList("배달중")); // 배달해야할 리스트
+	}
+	
+	@GetMapping("/donedelivery")
+	public void donedelivery(Model model) throws Exception {
+		model.addAttribute("deliveryList", crewService.getDeliveryList("배달완료")); // 배달해야할 리스트
+	}
 
 	@PostMapping("/collect/{reservationId}")
 	public String collect(@PathVariable("reservationId") Long reservationId, CrewDTO crew, String flag) throws Exception {
@@ -85,9 +97,17 @@ public class CrewController {
 	
 	@PostMapping("/delivery/{reservationId}")
 	public String delivery(@PathVariable("reservationId") Long reservationId, String flag) throws Exception {
-		crewService.updateStatus(reservationId);
+		crewService.updateDelivering(reservationId);
 		if (flag.equals("table"))
 			return "redirect:/crew/tobedelivery";
+		return "redirect:/crew/main";
+	}
+	
+	@PostMapping("/doneDelivery/{reservationId}")
+	public String doneDelivery(@PathVariable("reservationId") Long reservationId, String flag) throws Exception {
+		crewService.updateDoneDelivery(reservationId);
+		if (flag.equals("table"))
+			return "redirect:/crew/delivering";
 		return "redirect:/crew/main";
 	}
 }

@@ -25,6 +25,7 @@
 	<resultMap type="ReservationDTO" id="reservationMap">
 		<id property="reservationId"         column="reservation_id"/>
 		<result property="collectDate" 	 	 column="collect_date"/>
+		<result property="deliveryDate"	 	 column="delivery_date"/>
 		<result property="reservationDate"   column="reservation_date"/>
 		<result property="request"           column="request"/>
 		<result property="reservationStatus" column="reservation_status"/>
@@ -167,7 +168,8 @@
 			c.car_number		 as car_number,
 			r.reservation_id  	 as reservation_id,
 			r.collect_date       as collect_date,
-			r.reservation_date    as reservation_date,
+			r.delivery_date		 as delivery_date,
+			r.reservation_date   as reservation_date,
 			r.request 		     as request,
 			r.reservation_status as reservation_status,
 			m.member_id			 as member_id,
@@ -187,17 +189,26 @@
 						     join member m
 						       on r.member_id = m.member_id
 		where
-			r.reservation_status in ('세탁완료', '배달중')
+			r.reservation_status in ('세탁완료', '배달중', '배달완료')
 	</select>
 	
-	<update id="updateStatus" parameterType="Long">
+	<update id="updateDelivering" parameterType="Long">
 		update
 			reservation
 		set
 			reservation_status = '배달중'
 		where
 			reservation_id = #{reservationId}
+	</update>
 	
+	<update id="updateDoneDelivery" parameterType="Long">
+		update
+			reservation
+		set
+			reservation_status = '배달완료',
+			delivery_date = sysdate
+		where
+			reservation_id = #{reservationId}
 	</update>
 
 </mapper>

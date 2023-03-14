@@ -26,4 +26,6 @@ public interface CrewMapper {
 	public List<WashingCompleteDTO> selectDelivery() throws Exception;
 	
 	public int updateStatus(Long reservationId) throws Exception;
+
+	public int updateDoneDelivery(Long reservationId) throws Exception;
 }

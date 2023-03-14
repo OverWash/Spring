@@ -103,8 +103,13 @@ public class CrewServiceImpl implements CrewService {
 	}
 
 	@Override
-	public boolean updateStatus(Long reservationId) throws Exception {
+	public boolean updateDelivering(Long reservationId) throws Exception {
 		return crewMapper.updateStatus(reservationId) == 1;
+	}
+
+	@Override
+	public boolean updateDoneDelivery(Long reservationId) throws Exception {
+		return crewMapper.updateDoneDelivery(reservationId) == 1;
 	}
 	
 }
