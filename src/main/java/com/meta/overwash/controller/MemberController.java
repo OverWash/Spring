@@ -35,13 +35,13 @@ public class MemberController {
 
 	@Autowired
 	private ReservationService reservationService;
-	
+
 	@Autowired
 	PaymentService paymentService;
-	
+
 	@GetMapping("/main")
 	public void main(HttpSession session, Principal principal, Model model) throws Exception {
-		
+
 		// 메인페이지에서 보여줄 것들 추가
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		MemberDTO member = memberService.getMember(user.getUserId());
@@ -51,30 +51,29 @@ public class MemberController {
 		Long usersId = user.getUserId();
 		List<ReservationDTO> reservations = reservationService.getListByMember(member.getMemberId());
 		List<PaymentRequestDTO> prList = paymentService.getPrListToMember(usersId);
-		if(reservations.size() > 0 ) {
-			int lastNum = reservations.size()-1;
+		if (reservations.size() > 0) {
+			int lastNum = reservations.size() - 1;
 			ReservationDTO lastReservation = reservations.get(lastNum);
 			model.addAttribute("reservations", reservations);
 			model.addAttribute("lastReservation", lastReservation);
 			model.addAttribute("prList", prList);
 		}
-		
-		
+
 	}
-	
+
 	@PostMapping("/mypage")
-	public String myPage(HttpServletRequest request, Model model) throws Exception{
+	public String myPage(HttpServletRequest request, Model model) throws Exception {
 		Long userId = Long.parseLong(request.getParameter("userId"));
 		model.addAttribute("memberDTO", memberService.getMember(userId));
-		
+
 		return "member/mypage";
 	}
-	
+
 	@PostMapping("/modifyInfo")
-	public String modifyInfo(HttpServletRequest request, Model model) throws Exception{
+	public String modifyInfo(HttpServletRequest request, Model model) throws Exception {
 		Long userId = Long.parseLong(request.getParameter("userId"));
 		model.addAttribute("memberDTO", memberService.getMember(userId));
 		return "member/modifyInfo";
 	}
-
+	
 }

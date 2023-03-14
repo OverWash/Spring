@@ -101,4 +101,8 @@ public class CommonController {
 		return "redirect:/login";
 	}
 
+	@GetMapping("/info/guide")
+	public void guide() {
+		
+	}
 }

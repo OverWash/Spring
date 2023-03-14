@@ -5,7 +5,6 @@
 <%@ include file="../common/header.jsp"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-
 <body id="page-top">
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -24,7 +23,7 @@
 							<div class="card shadow mb-4">
 								<div class="card-body">
 									<a class="btn" onclick="fnModuleInfo()">
-										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/undraw_booking_re_gw4j.svg">
+										<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" src="${pageContext.request.contextPath }/resources/img/booking.svg">
 									</a>
 									<h4 class="float-right m-0 font-weight-bold text-dark">+예약하기</h4>
 								</div>
@@ -111,18 +110,21 @@
 											<h5 class="middle font-weight-light">
 												<input type="hidden" id="prListPrId" value="${prList.prId}">
 												<input type="hidden" id="prListConfirmId" value="${prList.confirm.confirmId}">
-												no.${prList.confirm.reservation.reservationId}&nbsp 예약날짜 :
+												<span class="middle font-weight-bold">no.${prList.confirm.reservation.reservationId}</span>&nbsp 예약날짜 :
 												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${prList.confirm.reservation.reservationDate}" />
 												결제요청금액 : ${prList.prPrice}원 
+												<!-- 결제버튼 -->
 												<span class="float-right"> 
 													<a onclick="payModuleInfo(
 														${prList.prId},
 														${prList.confirm.confirmId}	
 													)" 
 														class="btn btn-light btn-icon-split" style="line-height: 1;">
-														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> <span class="text font-weight-bold">결제하기</span>
+														<span class="icon text-gray-600"> <i class="fas fa-arrow-right"> </i></span> 
+														<span class="text font-weight-bold">결제하기</span>
 													</a>
 												</span>
+												<!-- 결제버튼 -->
 											</h5>
 										</div>
 									</c:forEach>

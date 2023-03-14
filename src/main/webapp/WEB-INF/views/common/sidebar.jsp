@@ -28,6 +28,10 @@
 		<div class="sidebar-heading">메뉴</div>
 
 		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link" href="/info/guide">
+				<i class="fas fa-fw fa-table"></i> <span>이용방법</span>
+			</a></li>		
+		
 		<li class="nav-item"><a class="nav-link" href="/reservation/list">
 				<i class="fas fa-fw fa-table"></i> <span>예약내역</span>
 			</a></li>		
