@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.meta.overwash.domain.CrewDTO;
 import com.meta.overwash.domain.Criteria;
 import com.meta.overwash.domain.LaundryFactoryDTO;
 import com.meta.overwash.domain.PagenationDTO;
@@ -28,13 +29,16 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 
 	@Autowired
 	ReservationMapper resMapper;
-
-	
 	
 	@Override
 	@Transactional
-	// 크루가 수거하기 버튼 클릭 시 동작하는 서비스 
-	public ReservationConfirmedDTO insertReservationConfirmed(ReservationConfirmedDTO rcDto) {
+	// 크루가 수거하기 버튼 클릭 시 동작하는 서비스
+	public ReservationConfirmedDTO insertReservationConfirmed(Long reservationId, CrewDTO crew) {
+		System.out.println(crew);
+		ReservationConfirmedDTO rcDto = new ReservationConfirmedDTO();
+		rcDto.setCrew(crew);
+		rcDto.setReservation(resMapper.getReservation(reservationId));
+		System.out.println(rcDto);
 		String memberAddress = rcDto.getReservation().getMember().getMemberAddress().split(" ")[0];
 
 		LaundryFactoryDTO factory = new LaundryFactoryDTO();
@@ -46,9 +50,6 @@ public class ReservationConfirmedServiceImpl implements ReservationConfirmedServ
 		rcDto.setFactory(factory);
 		rcMapper.insertReservationConfirm(rcDto);
 		rcDto.getReservation().setReservationStatus("예약확정");
-		System.out.println("========================");
-		System.out.println(rcDto);
-		System.out.println("========================");
 		resMapper.updateReservationStatus(rcDto.getReservation());
 		return rcDto;
 	}

@@ -1,5 +1,6 @@
 package com.meta.overwash.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.meta.overwash.domain.CrewDTO;
+import com.meta.overwash.domain.ReservationDTO;
 import com.meta.overwash.domain.UserDTO;
+import com.meta.overwash.domain.WashingCompleteDTO;
 import com.meta.overwash.mapper.CrewMapper;
 import com.meta.overwash.mapper.UserMapper;
 
@@ -78,6 +81,35 @@ public class CrewServiceImpl implements CrewService {
 	}
 	public String getContact(String contact) throws Exception {
 		return crewMapper.getCrewContact(contact);
+	}
+
+	@Override
+	public List<ReservationDTO> getToBeCollectList() throws Exception {
+		return crewMapper.selectToBeCollectList();
+	}
+
+	@Override
+	public List<WashingCompleteDTO> getDeliveryList(String status) throws Exception {
+		
+		List<WashingCompleteDTO> deliveryList = new ArrayList<WashingCompleteDTO>();
+		
+		for (WashingCompleteDTO washingCompleteDTO : crewMapper.selectDelivery()) {
+			if (washingCompleteDTO.getConfirm().getReservation().getReservationStatus().equals(status)) {
+				deliveryList.add(washingCompleteDTO);
+			}
+		}
+		
+		return deliveryList;
+	}
+
+	@Override
+	public boolean updateDelivering(Long reservationId) throws Exception {
+		return crewMapper.updateStatus(reservationId) == 1;
+	}
+
+	@Override
+	public boolean updateDoneDelivery(Long reservationId) throws Exception {
+		return crewMapper.updateDoneDelivery(reservationId) == 1;
 	}
 	
 }

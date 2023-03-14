@@ -103,13 +103,23 @@
 		<!-- Nav Item - Pages Collapse Menu -->
 
 		<!-- Nav Item - Charts -->
-		<li class="nav-item"><a class="nav-link">
-				<i class="fas fa-fw fa-table"></i> <span>크루</span>
+		<li class="nav-item"><a class="nav-link" href="/crew/pickuplist">
+				<i class="fas fa-fw fa-table"></i> <span>수거 예정 목록</span>
 			</a></li>
 
 		<!-- Nav Item - Tables -->
-		<li class="nav-item"><a class="nav-link">
-				<i class="fas fa-fw fa-table"></i> <span>Tables</span>
+		<li class="nav-item"><a class="nav-link" href="/crew/tobedelivery">
+				<i class="fas fa-fw fa-table"></i> <span>배달 예정 목록</span>
+			</a></li>
+			
+			<!-- Nav Item - Tables -->
+		<li class="nav-item"><a class="nav-link" href="/crew/delivering">
+				<i class="fas fa-fw fa-table"></i> <span>배달 중인 목록</span>
+			</a></li>
+
+		<!-- Nav Item - Tables -->
+		<li class="nav-item"><a class="nav-link" href="/crew/donedelivery">
+				<i class="fas fa-fw fa-table"></i> <span>배달 완료 목록</span>
 			</a></li>
 
 		<!-- Divider -->
