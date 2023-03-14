@@ -6,6 +6,9 @@
 <%@ include file="../common/header.jsp"%>
 <meta name="_csrf" th:content="${_csrf.token}" />
 <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<head>
+	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+</head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
 	<div id="wrapper">
@@ -19,7 +22,6 @@
 				<%@ include file="../common/navbar.jsp"%>
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-				${completeList}
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
@@ -98,8 +100,11 @@
 	<%@ include file="../common/footer.jsp"%>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"></script>
-	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 	<script src="/resources/js/admin.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.table-bordered').DataTable(); // table 띄우기
+		});
+	</script>
 </body>
 </html>
