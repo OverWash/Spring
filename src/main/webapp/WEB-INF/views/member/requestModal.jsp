@@ -1,27 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<%@ include file="../common/header.jsp"%>
-
-<body id="page-top">
-
-	<!-- Page Wrapper -->
-	<div id="wrapper">
-
-		<%@ include file="../common/sidebar.jsp"%>
-
-		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
-
-			<!-- Main Content -->
-			<div id="content">
-
-				<%@ include file="../common/navbar.jsp"%>
-
-				<!-- Begin Page Content -->
-				<div class="container-fluid">
-					<div class="row">
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="" />
+<!-- histoty Modal-->
+<div class="modal-header">
+    <h5 class="modal-title" id="historyModalLabel">ID - Modal</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="table-responsive">
+        <div class="container">
+        </div>
+        <div class="row">
 						<h1 class="font-weight-bold">예약신청</h1>
 					</div>
 					<hr>
@@ -59,17 +50,8 @@
 						</div>
 					</form>
 					<!-- End of Form -->
-				</div>
-				<!-- /.container-fluid -->
-			</div>
-			<!-- End of Main Content -->
-			<%@ include file="../common/copyright.jsp"%>
-		</div>
-		<!-- End of Content Wrapper -->
-	</div>
-	<!-- End of Page Wrapper -->
+    </div>
 
-	<%@ include file="../common/footer.jsp"%>
-
-</body>
-</html>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

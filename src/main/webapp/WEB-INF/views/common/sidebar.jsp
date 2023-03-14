@@ -18,7 +18,7 @@
 
 		<!-- Nav Item - Dashboard -->
 		<li class="nav-item active"><a class="nav-link" href="/member/main">
-				<i class="fas fa-fw fa-tachometer-alt"></i> <span>멤버 홈</span>
+				<i class="fas fa-fw fa-user-circle"></i> <span>멤버 홈</span>
 			</a></li>
 
 		<!-- Divider -->
@@ -28,13 +28,20 @@
 		<div class="sidebar-heading">메뉴</div>
 
 		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link" href="/reservation/list">
+				<i class="fas fa-fw fa-list"></i> <span>예약 현황</span>
+			</a></li>		
 
-		<li class="nav-item"><a class="nav-link" href="/payment/processes">
-				<i class="fas fa-fw fa-table"></i> <span>결제요청내역</span>
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+				<i class="fas fa-fw fa-list"></i> <span>결제 요청 목록</span>
 			</a></li>
 
-		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
-				<i class="fas fa-fw fa-table"></i> <span>결제완료내역</span>
+		<li class="nav-item"><a class="nav-link" href="/payment/receiptlist">
+				<i class="fas fa-fw fa-list"></i> <span>결제 완료 목록</span>
+			</a></li>
+
+		<li class="nav-item"><a class="nav-link" href="/payment/completedlist">
+				<i class="fas fa-fw fa-list"></i> <span>지난 예역 목록</span>
 			</a></li>
 
 
@@ -42,10 +49,6 @@
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 
-		<!-- Sidebar Toggler (Sidebar) -->
-		<div class="text-center d-none d-md-inline">
-			<button class="rounded-circle border-0" id="sidebarToggle"></button>
-		</div>
 	</div>
 
 	<div id="admin">
@@ -55,7 +58,7 @@
 
 		<!-- Nav Item - Dashboard -->
 		<li class="nav-item active"><a class="nav-link" href="/admin/main">
-				<i class="fas fa-fw fa-tachometer-alt"></i> <span>관리자 홈</span>
+				<i class="fas fa-fw fa-user-secret"></i> <span>관리자 홈</span>
 			</a></li>
 
 		<!-- Divider -->
@@ -67,7 +70,7 @@
 		<!-- Nav Item - Pages Collapse Menu -->
 
 		<!-- Nav Item - Charts -->
-		<li class="nav-item"><a class="nav-link" href="/payment/receipts">
+		<li class="nav-item"><a class="nav-link">
 				<i class="fas fa-fw fa-table"></i> <span>관리자</span>
 			</a></li>
 
@@ -79,10 +82,6 @@
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 
-		<!-- Sidebar Toggler (Sidebar) -->
-		<div class="text-center d-none d-md-inline">
-			<button class="rounded-circle border-0" id="sidebarToggle"></button>
-		</div>
 	</div>
 
 	<div id="crew">
@@ -92,7 +91,7 @@
 
 		<!-- Nav Item - Dashboard -->
 		<li class="nav-item active"><a class="nav-link" href="/crew/main">
-				<i class="fas fa-fw fa-tachometer-alt"></i> <span>크루 홈</span>
+				<i class="fas fa-fw fa-car"></i> <span>크루 홈</span>
 			</a></li>
 
 		<!-- Divider -->
@@ -126,10 +125,6 @@
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 
-		<!-- Sidebar Toggler (Sidebar) -->
-		<div class="text-center d-none d-md-inline">
-			<button class="rounded-circle border-0" id="sidebarToggle"></button>
-		</div>
 	</div>
 
 

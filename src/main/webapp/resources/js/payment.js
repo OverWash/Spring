@@ -23,17 +23,31 @@ var paymentService = (function() {
 
         $.ajax({
             type : 'GET',
-            url : "/payment/rerceipt/list",
+            url : "/payment/receipt/list",
             success : function(result) {
                 if (callback) callback(result);
             }
         });
     };
 
+    function getCheckList(confirmId, callback) {
+        console.log("getCheckList() called...");
+
+        $.ajax({
+            type : 'GET',
+            url : "/check/" + confirmId,
+            success: function(result) {
+                if (callback) callback(result);
+            }
+        })
+
+    }
+
 
     return {
         getReceipt : getReceipt,
-        getReceiptList : getReceiptList
+        getReceiptList : getReceiptList,
+        getCheckList : getCheckList
     };
 
 })();

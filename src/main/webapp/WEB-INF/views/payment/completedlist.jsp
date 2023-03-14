@@ -20,16 +20,16 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">결제 완료 내역</h3>
-					<p class="mb-4">${member.nickname}님의 결제 영수증 목록입니다.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">지난 예약 내역</h3>
+					<p class="mb-4">${username}님의 지난 예약 목록입니다.</p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">영수증 목록</h6>
+							<h6 class="m-0 font-weight-bold text-primary">예약 목록</h6>
 						</div>
 						<div class="card-body">
-							<table id="receiptTable" class="table table-striped table-bordered" style="width: 100%">
+							<table id="completedTable" class="table table-striped table-bordered" style="width: 100%">
 								<thead>
 									<tr>
 										<th>No</th>
@@ -42,18 +42,16 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${receipts}" var="receipts">
+									<c:forEach items="${completedList}" var="completedList">
 										<tr>
-											<td>${receipts.receiptId}</td>
-											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${receipts.pr.prPrice}" /></td>
-											<td>${receipts.paymentMethod}</td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.reservation.reservationDate}" /></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${receipts.pr.confirm.confirmDate}" /></td>
-											<td>${receipts.pr.confirm.crew.crewContact}</td>
-											<td><input id="detailReceiptBtn" class="btn btn-primary" type="button" value="상세보기"></td>
+											<td>${completedList.receiptId}</td>
+											<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${completedList.pr.prPrice}" /></td>
+											<td>${completedList.paymentMethod}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${completedList.pr.confirm.reservation.reservationDate}" /></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${completedList.pr.confirm.confirmDate}" /></td>
+											<td>${completedList.pr.confirm.crew.crewContact}</td>
+											<td><input id="checkListBtn" class="btn btn-dark" type="button" value="상세보기" onclick="checkList(event, ${receipts.receiptId}, ${receipts.pr.confirm.confirmId})" ></td>
 										</tr>
-										<input id="receiptId" type="text" value="<c:out value='${receipts.receiptId}' />"   >
-										<input id="confirmId" type="text" value="<c:out value='${receipts.pr.confirm.confirmId}' />" >
 									</c:forEach>
 								</tbody>
 							</table>
@@ -65,8 +63,8 @@
 			</div>
 			<!-- End of Main Content -->
 
-			<!-- 상세 영수증 모달창 -->
-			<div class="modal fade" id="detailReceiptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<!-- 검수 내역 모달창 -->
+			<div class="modal fade" id="checkListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog" >
 					<div class="modal-content">
 						<div class="modal-header">
@@ -94,15 +92,7 @@
 														<th>가격</th>
 													</tr>
 												</thead>
-												<tbody>
-													<%-- <c:forEach items="${checks}" var="receipts"> --%>
-														<tr>
-															<td></td>
-															<td></td>
-														
-														</tr>
-													<%-- </c:forEach> --%>
-												</tbody>
+												<tbody id="checkTableBody"></tbody>
 											</table>
 										</div>
 									</div>
@@ -115,8 +105,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<%@ include file="../common/copyright.jsp"%>
 		</div>
 		<!-- End of Content Wrapper -->
@@ -130,23 +118,32 @@
 	<script type="text/javascript" src=https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css></script>
 
 	<script type="text/javascript">
-		$(function() {
-			$('#receiptTable').DataTable(); // table 띄우기
-			$('#receiptId').hide();
-			$('#confirmId').hide();
+	$(function() {
+		$('#completedTable').DataTable(); // table 띄우기
 
-			// modal 띄우기
-			$('#detailReceiptBtn').on("click", function(e) {
-				$('#detailReceiptModal').modal("show");				
-				const receiptId = $('#receiptId').val();
-				const confirmId = $('#confirmId').val();
-				
-				$('#receiptIdText').text(receiptId);
-				// ajax 호출
-
+	});
+	
+	function checkList(event, prId, confirmId) {
+		event.preventDefault(); // 버블링 방지
+		$('#checkListModal').modal("show"); // modal 띄우기
+		$('#prIdText').text(prId);
+		
+		// ajax 호출
+		paymentService.getCheckList(confirmId, function(data){
+			//console.log(data);
+			var html = '';
+			$(data).each(function(){
+				//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
+				html += '<tr>';
+				html += '<td>'+ this.laundry.name +'</td>';
+				html += '<td>'+ this.laundry.laundryPrice.price +'</td>';
+				html += '</tr>';	
 			});
-
+			
+			$("#checkTableBody").empty();
+			$("#checkTableBody").append(html); 
 		});
+	}
 	</script>
 </body>
 </html>

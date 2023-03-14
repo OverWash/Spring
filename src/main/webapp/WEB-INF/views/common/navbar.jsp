@@ -108,36 +108,6 @@ $(function(){
 								<h6 class="dropdown-header">Message Center</h6>
 								<a class="dropdown-item d-flex align-items-center" href="#">
 									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-										<div class="status-indicator bg-success"></div>
-									</div>
-									<div class="font-weight-bold">
-										<div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-										<div class="small text-gray-500">Emily Fowler · 58m</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-										<div class="status-indicator"></div>
-									</div>
-									<div>
-										<div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-										<div class="small text-gray-500">Jae Chun · 1d</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
-										<img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-										<div class="status-indicator bg-warning"></div>
-									</div>
-									<div>
-										<div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-										<div class="small text-gray-500">Morgan Alvarez · 2d</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex align-items-center" href="#">
-									<div class="dropdown-list-image mr-3">
 										<img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
 										<div class="status-indicator bg-success"></div>
 									</div>
@@ -153,9 +123,8 @@ $(function(){
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow"><a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small"> 안녕하세요, ${username} 님!</span> 
 
-								<img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
+								<span class="mr-2 d-none d-lg-inline text-gray-900 font-weight-bold">안녕하세요, ${username}님!</span> <img class="img-profile rounded-circle" src="/resources/img/undraw_profile.svg">
 							</a> 
 							<!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -165,14 +134,14 @@ $(function(){
 	                                <form action="/member/mypage" method="post" id="formMemberMyPage">
 	                                <a class="dropdown-item" href="#" id="memberMyPage">
 	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-	                                    MyPage
+	                                    마이페이지
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	                                </a>
       	                          </form>
                                   <form action="/member/modifyInfo" method="post" id="formMemberModifyInfo">
 	                                <a class="dropdown-item" href="#" id="memberModifyInfo">
-	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+	                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
 	                                    정보수정
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -183,14 +152,14 @@ $(function(){
 	                                <form action="/crew/mypage" method="post" id="formCrewMyPage">
 	                                <a class="dropdown-item" href="#" id="crewMyPage">
 	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-	                                    MyPage
+	                                    마이페이지
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	                                </a>
       	                          </form>
                                   <form action="/crew/modifyInfo" method="post" id="formCrewModifyInfo">
 	                                <a class="dropdown-item" href="#" id="crewModifyInfo">
-	                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+	                                    <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
 	                                    정보수정
 	                                    <input type="hidden" name="userId" value="<sec:authentication property='principal.userId'/>">
 	                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -200,13 +169,13 @@ $(function(){
                                 
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    로그아웃
                                 </a>
                             </div>
 						</li>
 					</ul>
-
 				</nav>
+				<!-- End of Topbar -->
 				<!-- Logout Modal-->
 				<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
@@ -219,9 +188,9 @@ $(function(){
 							</div>
 							<div class="modal-body">정말 로그아웃할까요?</div>
 							<div class="modal-footer">
-								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+								<button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
 								<form action="/logout" method="post">
-									<input type="submit" class="btn btn-primary" value="Logout" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<input type="submit" class="btn btn-primary" value="로그아웃" /> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 								</form>
 								
 							</div>

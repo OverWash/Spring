@@ -63,7 +63,7 @@
 		rc.confirm_id,confirm_date,rc.factory_id,rc.crew_id,
 		factory_contact,factory_address,
 		crew_contact,crew_name,crew_birth,car_type,car_number,
-		pr_price
+		pr_id,pr_price
 		FROM
 		MEMBER M
 		JOIN
@@ -185,6 +185,26 @@
 		WHERE RN > (#{pageNum}-1) * #{amount}
 	]]>
 	</select>
+	
+	<select id="getPrListToMemberNotPaging" resultMap="PrMap">
+      SELECT  
+            PR.PR_ID,
+            R.RESERVATION_DATE,
+            RC.CONFIRM_DATE,
+            PR.PR_PRICE,
+            R.RESERVATION_ID,
+            RC.CONFIRM_ID          
+      FROM
+            PAYMENT_REQUEST PR 
+      JOIN   RESERVATION_CONFIRMED RC ON PR.CONFIRM_ID = RC.CONFIRM_ID
+      JOIN   RESERVATION R ON RC.RESERVATION_ID = R.RESERVATION_ID
+      JOIN   MEMBER M ON M.MEMBER_ID = R.MEMBER_ID
+      WHERE
+            M.USER_ID = #{userId}
+     		AND 
+			RESERVATION_STATUS LIKE '%'||'검수완료'||'%'
+   </select>
+	
 
 	<select id="getCountToMember" resultType="Long">
 				SELECT
@@ -200,6 +220,6 @@
 		WHERE
 				RESERVATION_STATUS LIKE '%'||'검수완료'||'%'
 				AND
-				user_Id= #{userId}
+				user_Id = #{userId}
 	</select>
 </mapper>
