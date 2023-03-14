@@ -9,26 +9,25 @@
 
 
 	<security:http>
-		<security:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
-		<security:intercept-url pattern="/crew/*" access="hasRole('ROLE_CREW')" />
-		<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
+		<!-- Member -->
+		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/reservation/**" access="hasRole('ROLE_MEMBER')" />		
 		
+		<!-- Crew -->
+		<security:intercept-url pattern="/crew/**" access="hasRole('ROLE_CREW')" />
+		
+		<!-- Admin -->
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 
 		<security:form-login login-page="/login" authentication-success-handler-ref="customAuthenticationSuccessHandler" />
 		<security:access-denied-handler ref="customAccessDeniedHandler" />
 		<security:logout invalidate-session="true" />
-
 	</security:http>
-
-
 
 	<security:authentication-manager>
 		<security:authentication-provider user-service-ref="customUserDetailService">
-
 			<security:password-encoder ref="bcryptPasswordEncoder" />
-
 		</security:authentication-provider>
 	</security:authentication-manager>
-
-
 </beans>
