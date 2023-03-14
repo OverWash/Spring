@@ -154,7 +154,5 @@ public class PaymentServiceImpl implements PaymentService {
 
 		return prMapper.getCountToAdmin(cri);
 	}
-
 	
-
 }

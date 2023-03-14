@@ -28,6 +28,8 @@
 		<div class="sidebar-heading">메뉴</div>
 
 		<!-- Nav Item - Pages Collapse Menu -->
+		
+		
 		<li class="nav-item"><a class="nav-link" href="/reservation/list">
 				<i class="fas fa-fw fa-list"></i> <span>예약 현황</span>
 			</a></li>		
@@ -55,13 +57,13 @@
 				<i class="fas fa-fw fa-table"></i> <span>가격 안내</span>
 			</a></li>		
 
-		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
-				<i class="fas fa-fw fa-info"></i> <span>이용 방법</span>
+		<li class="nav-item"><a class="nav-link" href="/info/guide">
+				<i class="fas fa-fw fa-table"></i> <span>이용방법</span>
 			</a></li>
 			
-		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+<!-- 		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
 				<i class="fas fa-fw fa-info"></i> <span>세탁 과정</span>
-			</a></li>
+			</a></li> -->
 
 
 		<!-- Divider -->

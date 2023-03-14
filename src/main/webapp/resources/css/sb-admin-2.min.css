@@ -10182,7 +10182,11 @@ opacity
 
 @media ( min-width :768px) {
 	.sidebar {
+<<<<<<< HEAD
+		width: 9rem !important
+=======
 		width: 12rem !important
+>>>>>>> branch 'main' of https://github.com/OverWash/Spring.git
 	}
 	.sidebar .nav-item .collapse {
 		position: relative;

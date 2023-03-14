@@ -110,4 +110,8 @@ public class CommonController {
 		model.addAttribute("laundrylist", laundryService.getList());
 	}
 
+	@GetMapping("/info/guide")
+	public void guide() {
+		
+	}
 }
