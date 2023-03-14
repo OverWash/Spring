@@ -54,18 +54,13 @@
 
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item"><a class="nav-link" href="/info/pricelist">
-				<i class="fas fa-fw fa-table"></i> <span>가격 안내</span>
+				<i class="fas fa-fw fa-info"></i> <span>가격 안내</span>
 			</a></li>		
 
 		<li class="nav-item"><a class="nav-link" href="/info/guide">
-				<i class="fas fa-fw fa-table"></i> <span>이용방법</span>
+				<i class="fas fa-fw fa-info"></i> <span>이용 안내</span>
 			</a></li>
 			
-<!-- 		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
-				<i class="fas fa-fw fa-info"></i> <span>세탁 과정</span>
-			</a></li> -->
-
-
 		<!-- Divider -->
 		<hr class="sidebar-divider d-none d-md-block">
 
