@@ -42,22 +42,23 @@
 												<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">가장 최근 예약 내역입니다</div>
 											</div>
 											<div class="col-auto">
-												<i class="fas fa-calendar fa-2x text-gray-300"></i>
+												<i class="fas fa-calendar fa-1x text-gray-300"></i>
 											</div>
 										</div>
 									</div>
 									<!-- Card Body -->
 									<div class="card-body">
 										<div class="mt-4">
-											<div class="card-body">
-												No. ${reservations[0].reservationId}<br /> 예약일자 :
+											<div id="lastReservation">
+												<h5 class="h1 mb-2 font-weight-bold text-dark">No. ${reservations[0].reservationId}</h5>
+												예약일자 :
 												<fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${reservations[0].reservationDate}" />
 												<br /> 수거희망날짜 :
 												<fmt:formatDate pattern="yyyy.MM.dd" value="${reservations[0].collectDate}" />
 												<br />예약상태 : ${reservations[0].reservationStatus}<br /> <input type="hidden" id="lastResStatus" name="lastResStatus" value="${reservations[0].reservationStatus}">
-											</div>
-											<div class="progress mb-4">
+												<div class="progress mb-4">
 												<div class="progress-bar" id="lastResStatProgressBar" role="progressbar" style="width: 16%"></div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -78,7 +79,7 @@
 									<h5 class="m-0 font-weight-bold text-primary">예약리스트</h5>
 									<input type="hidden" id="reservationListSize" name="reservationListSize" value="${fn:length(reservations)}">
 								</div>
-								<div class="card-body">
+								<div class="card-body">	
 									<c:forEach items="${reservations}" var="reservations" begin="1" end="5" varStatus="status">
 										<div class="reservations">
 											<h4 class="small font-weight-bold">
@@ -104,7 +105,7 @@
 									<h5 class="m-0 font-weight-bold text-primary">결제요청내역</h5>
 								</div>
 								<div id="ajax-pr-list"></div>
-								<div class="card-body">
+								<div class="card-body">						
 									<c:forEach items="${prList}" var="prList" begin="1" end="5" varStatus="status">
 										<div class="paymentRequestList">
 											<h5 class="middle font-weight-light">
@@ -230,7 +231,7 @@
 			$('#MoaModal').modal();
 		}
 		function chk_form() {
-			$("#requestForm").submit();
+			$("#requestForm").submit().console.log("예약이 완료되었습니다.");
 		}
 		
  		/* 결제요청 모달 */
@@ -277,7 +278,14 @@
 				$('#' + resProgressBarId).addClass("bg-dark").css("width", "100%");
 			}
 		}
-
+		// Date 시간 설정
+		var now_utc = Date.now()
+		var timeOff = new Date().getTimezoneOffset()*60000;
+		var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+		$('#collectDate').val(today).attr("min", today);
+		
+		
+		
 	</script>
 </body>
 </html>
