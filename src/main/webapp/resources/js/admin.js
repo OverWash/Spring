@@ -13,10 +13,31 @@ const api = (function () {
       },
     });
   };
+  //검수완료
+  const checkComplete = (value,rcno,callback) => {
+    $.ajax({
+      type: "post",
+      url: "/admin/payment/request/"+rcno,
+     contentType: "application/json; UTF-8;",
+      complete: (res) => {
+        jQuery.ajaxSetup({
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader(header, token);
+          },
+        });
+      },
+      data: JSON.stringify(value),
+      success: function (result) {
+        if (callback) callback(result);
+      },
+    })
+  }
+
+  // 완료요청
   const getRcCompletePayment = (callback) => {
     $.ajax({
       type: "Get",
-      url: "/amdin/rc/list",
+      url: "/admin/rc/list",
       dataType: "JSON",
       success: function (result) {
         if (callback) callback(result);
@@ -59,6 +80,7 @@ const api = (function () {
     getComplete: getComplete,
     washingComplete: washingComplete,
     getRcCompletePayment: getRcCompletePayment,
+    checkComplete:checkComplete
   };
 })();
 

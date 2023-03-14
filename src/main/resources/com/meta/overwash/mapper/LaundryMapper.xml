@@ -16,7 +16,7 @@
 
 	<select id="getList" resultMap="LaundryMap">
 		<![CDATA[
-			SELECT	l.name, lp.price , l.type
+			SELECT	l.name, lp.price , l.type, l.laundry_id,lp.price_id
 			FROM	laundry l, laundry_price lp
 			WHERE	l.price_id = lp.price_id
 		]]>
