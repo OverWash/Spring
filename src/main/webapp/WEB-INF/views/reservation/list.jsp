@@ -48,7 +48,7 @@
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${reservationList.collectDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${reservationList.reservationDate}" /></td>
 											<td>${reservationList.reservationStatus}</td>
-											<td><button id="detailBtn" class="btn btn-primary" onclick="requestDetail(event, ${reservationList.reservationId}, ${reservationList.request})" >상세보기</button></td>
+											<td><button id="detailBtn" class="btn btn-dark" onclick="requestDetail(event, ${reservationList.reservationId}, ${reservationList.request})" >상세보기</button></td>
 										</tr>
 										
 									</c:forEach>
