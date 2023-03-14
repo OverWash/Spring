@@ -21,7 +21,7 @@
 
 					<!-- Page Heading -->
 					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">배송 중인 목록</h3>
-					<p class="mb-4">${username} 님, 배송 중인 내역입니다.</p>
+					<p class="mb-4">${username} 님의 현재 배송 중인 예약 목록입니다. 완료 시 배달 완료 버튼을 클릭해 주세요.</p>
 					<!-- 수거시 collect date update-->
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -52,7 +52,7 @@
 											<td>${delivery.confirm.reservation.member.nickname}</td>
 											<td>
 												<form action="/crew/doneDelivery/${delivery.confirm.reservation.reservationId}" method="post" id="doneDeliveryForm">
-													<button id="doneDelivery" class="btn btn-primary">배달완료</button>
+													<button id="doneDelivery" class="btn btn-dark">배달완료</button>
 													<input type="hidden" value="${member.crewId }" name="crewId">
 													<input type="hidden" name="flag" value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

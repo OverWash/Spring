@@ -21,7 +21,7 @@
 
 					<!-- Page Heading -->
 					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">배송 완료 목록</h3>
-					<p class="mb-4">${username} 님, 배송 완료 내역입니다.</p>
+					<p class="mb-4">${username} 님의 배송 완료 목록입니다.</p>
 					<!-- 수거시 collect date update-->
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">

@@ -20,8 +20,8 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">배송 예정 목록</h3>
-					<p class="mb-4">${username} 님, 배송 예정 내역입니다. 배송을 진행해 주세요.</p>
+					<h3 class="h3 mb-2 text-gray-800 font-weight-bold">배송 가능 목록</h3>
+					<p class="mb-4">${username} 님, 배달하기 버튼으로 원하시는 예약의 배송을 진행해 주세요.</p>
 					<!-- 수거시 collect date update-->
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -52,7 +52,7 @@
 											<td>${delivery.confirm.reservation.member.nickname}</td>
 											<td>
 												<form action="/crew/delivery/${delivery.confirm.reservation.reservationId}" method="post" id="deliveryForm">
-													<button id="delivery" class="btn btn-primary">배달하기</button>
+													<button id="delivery" class="btn btn-dark">배달하기</button>
 													<input type="hidden" value="${member.crewId }" name="crewId">
 													<input type="hidden" name="flag" value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
