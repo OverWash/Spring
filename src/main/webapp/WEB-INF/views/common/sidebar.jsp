@@ -23,7 +23,7 @@
 
 		<!-- Divider -->
 		<hr class="sidebar-divider">
-
+		
 		<!-- Heading -->
 		<div class="sidebar-heading">메뉴</div>
 
@@ -44,6 +44,24 @@
 				<i class="fas fa-fw fa-list"></i> <span>지난 예역 목록</span>
 			</a></li>
 
+		<!-- Divider -->
+		<hr class="sidebar-divider d-none d-md-block">
+		
+		<!-- Heading -->
+		<div class="sidebar-heading">안내</div>
+
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item"><a class="nav-link" href="/info/pricelist">
+				<i class="fas fa-fw fa-table"></i> <span>가격표</span>
+			</a></li>		
+
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+				<i class="fas fa-fw fa-info"></i> <span>이용 방법</span>
+			</a></li>
+			
+		<li class="nav-item"><a class="nav-link" href="/payment/requestlist">
+				<i class="fas fa-fw fa-info"></i> <span>세탁 과정</span>
+			</a></li>
 
 
 		<!-- Divider -->
