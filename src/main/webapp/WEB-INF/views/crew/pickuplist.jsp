@@ -54,7 +54,7 @@
 											<td>${collect.member.nickname}</td>
 											<td>
 												<form action="/crew/collect/${collect.reservationId}" method="post" onsubmit="collect()">
-													<button class="btn btn-primary">배달하기</button>
+													<button class="btn btn-primary">수거하기</button>
 													<input type="hidden" value="${member.crewId }" name="crewId">
 													<input type="hidden" name="flag" value="table">
 													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
