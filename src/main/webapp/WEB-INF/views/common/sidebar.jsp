@@ -41,7 +41,7 @@
 			</a></li>
 
 		<li class="nav-item"><a class="nav-link" href="/payment/completedlist">
-				<i class="fas fa-fw fa-list"></i> <span>지난 예역 목록</span>
+				<i class="fas fa-fw fa-list"></i> <span>지난 예약 목록</span>
 			</a></li>
 
 		<!-- Divider -->
