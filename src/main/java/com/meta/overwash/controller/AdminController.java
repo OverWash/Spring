@@ -48,13 +48,12 @@ public class AdminController {
 	// 의류 가격에 대한 데이터를 띄워야하므로 laundryList를 보내줌
 	@GetMapping("/check/{rcno}")
 	public String adminCheckDetail(@PathVariable("rcno") Long rcNo, Model model) {
-		System.out.println(rcNo);
 		model.addAttribute("laundryList", laundryService.getList());
 		return "admin/check/detail";
 	}
 
 	@GetMapping("/complete")
-	public void adminLaundryComplete() {
-
+	public void adminLaundryComplete(Model model) {
+		model.addAttribute("completeList",rcService.getListToPaymentCompleteList());
 	}
 }

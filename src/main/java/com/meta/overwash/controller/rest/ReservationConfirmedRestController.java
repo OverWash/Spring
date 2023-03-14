@@ -26,7 +26,7 @@ public class ReservationConfirmedRestController {
 	}
 
 	// 결제완료 내역 출력
-	@GetMapping("/amdin/rc/list")
+	@GetMapping("/admin/rc/list")
 	public ResponseEntity<List<ReservationConfirmedDTO>> reservationConfirmedCompletePayment() {
 
 		return new ResponseEntity<List<ReservationConfirmedDTO>>(rcService.getListToPaymentCompleteList(),
