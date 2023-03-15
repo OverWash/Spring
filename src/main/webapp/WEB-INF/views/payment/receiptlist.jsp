@@ -131,10 +131,8 @@
 			
 			// ajax 호출
 			paymentService.getCheckList(confirmId, function(data){
-				//console.log(data);
 				var html = '';
 				$(data).each(function(){
-					//console.log(this.laundry.name + "," + this.laundry.laundryPrice.price);	
 					html += '<tr>';
 					html += '<td>'+ this.laundry.name +'</td>';
 					html += '<td>'+ this.laundry.laundryPrice.price +'</td>';

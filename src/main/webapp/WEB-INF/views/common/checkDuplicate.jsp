@@ -77,7 +77,6 @@
 
 			// 이메일, 연락처 중복 검사를 모두 완료해야 회원가입 등록 가능
 			if (emailChecked && contactChecked) {
-				alert("회원가입이 완료되었습니다");
 				$('form').submit();
 			} else {
 				if (!emailChecked) alert('이메일 중복 검사를 완료해 주세요.');

@@ -9,9 +9,9 @@
 
 
 	<security:http>
-		<security:intercept-url pattern="/member/*" access="hasRole('ROLE_MEMBER')" />
-		<security:intercept-url pattern="/crew/*" access="hasRole('ROLE_CREW')" />
-		<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_MEMBER')" />
+		<security:intercept-url pattern="/crew/**" access="hasRole('ROLE_CREW')" />
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		
 
 		<security:form-login login-page="/login" authentication-success-handler-ref="customAuthenticationSuccessHandler" />

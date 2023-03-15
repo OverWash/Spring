@@ -27,7 +27,7 @@ public class UserDTO implements UserDetails {
 	private String password;
 	private String role;
 	private Date signDate;
-	private Integer enabled;
+	private Long enabled;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

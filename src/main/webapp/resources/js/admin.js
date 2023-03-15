@@ -3,7 +3,7 @@ var header = $("meta[name='_csrf_header']").attr("th:content");
 
 const api = (function () {
   // 결제요청 리스트
-  const getPayment = (callback) => {
+  const getPayment = function(callback) {
     $.ajax({
       type: "GET",
       url: "/admin/payment",
@@ -14,7 +14,7 @@ const api = (function () {
     });
   };
   //검수완료
-  const checkComplete = (value,rcno,callback) => {
+  const checkComplete = function(value,rcno,callback)  {
     $.ajax({
       type: "post",
       url: "/admin/payment/request/"+rcno,
@@ -153,8 +153,6 @@ api.getRcCompletePayment((result) => {
   if (result.length !== 0) {
     
     $(result).each(function (i) {
-      console.log(i);
-      console.log(result[i])
     html += "<div class='item-flexBox'>";
     html += "<span> No." + result[i].confirmId + "&nbsp</span>";
     html += "<span>" + result[i].confirmDate + "&nbsp</span>";
@@ -177,8 +175,6 @@ api.getRcCompletePayment((result) => {
   
   $(".laundry-complete").on("click", function () {
     let idx = parseInt(this.value);
-    console.log($("#confirmId" + idx).val());
-    console.log($("#reservationId" + idx).val());
 
     api.washingComplete({
       confirmId: $("#confirmId" + idx).val(),
@@ -186,6 +182,9 @@ api.getRcCompletePayment((result) => {
         reservationId: $("#reservationId" + idx).val(),
         reservationStatus: "세탁완료",
       },
+    },function(){
+    	alert("세탁신청을 완료하였습니다")
+    	location.href = "/admin/main"
     });
   });
 });

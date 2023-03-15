@@ -32,7 +32,9 @@ public class PaymentController {
 	@GetMapping("/requestlist")
 	public void getRequestList(Principal principal, Model model) {
 		UserDTO user = (UserDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // 현재 로그인 유저의 객체를 가져옴
+		System.out.println(user.getUserId());
 		model.addAttribute("prList", paymentService.getPrListToMember(user.getUserId()));
+		System.out.println(paymentService.getPrListToMember(user.getUserId()));
 	}
 	
 	// 고객의 결제진행(완료) 시 영수증 발급 

@@ -12,6 +12,6 @@ import lombok.ToString;
 public class PaymentRequestDTO {
 
 	private Long prId;
-	private Integer prPrice;
+	private Long prPrice;
 	private ReservationConfirmedDTO confirm;
 }
