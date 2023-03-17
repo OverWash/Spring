@@ -6,10 +6,10 @@
 
 
 <%@ include file="../../common/header.jsp"%>
+<head>
 <meta name="_csrf" th:content="${_csrf.token}" />
 <meta name="_csrf_header" th:content="${_csrf.headerName}" />
-<head>
-	<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 </head>
 <body id="page-top">
 	<!-- Page Wrappe r -->
@@ -27,7 +27,7 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h1 class="m-0 font-weight-bold text-primary">검수내역번호</h1>
+							<h1 class="m-0 font-weight-bold text-primary check-id">검수내역번호</h1>
 						</div>
 
 						<div class="card-body ">
@@ -88,8 +88,8 @@
 					</div>
 				</div>
 				<div class="confirm-btn">
-				<input type="button" value="검수완료" id="checkConfirm">
-				
+					<input type="button" value="검수완료" id="checkConfirm">
+
 				</div>
 			</div>
 			<!-- /.container-fluid -->
@@ -142,15 +142,17 @@
 				}
 				checkLaundryList.push(checkLaundry);
 				$(checkLaundryList).each((idx) => {
-					html += "<div class='display-flex click-motion result-laundry'><input type = 'hidden' value ='" + checkLaundryList[idx].laundryId + "' \
-						name = 'resultLaundryId' /><input type='hidden' value='"+ checkLaundryList[idx].laundryPrice.priceId + "' name='resultPriceId'/><span>" + checkLaundryList[idx].name + "\
-							</span> <span>"+ checkLaundryList[idx].laundryPrice.price + " </span></div > "
+					html += "<div class='display-flex click-motion result-laundry'>\
+						<input type = 'hidden' value ='" + checkLaundryList[idx].laundryId + "'name = 'resultLaundryId' />\
+						<input type='hidden' value='"+ checkLaundryList[idx].laundryPrice.priceId + "' name='resultPriceId'/>\
+						<span>" + checkLaundryList[idx].name + "</span> \
+						<span>"+ checkLaundryList[idx].laundryPrice.price + " </span>\
+						</div > "
 				})
 
 				$("#checkLaundry").empty();
 				$("#checkLaundry").append(html);
 
-				// 배열에서 값 제거 후 
 				$(".result-laundry").on('click', function () {
 					/* $("#checkLaundry").empty(); */
 					const laundryId = $(this).find('input')[0].value;
@@ -171,11 +173,13 @@
 			$('#checkConfirm').click(function(){
 				if(checkLaundryList.length !==0){
 					const rcNo= location.href.split('/')[5].split('?')[0];		
-					api.checkComplete(checkLaundryList,rcNo,function(data){
-						
+					api.checkComplete(checkLaundryList,rcNo,function(s){
+						alert("결제 요청서 등록이 완료되었습니다.");
+						/* location.replace('/admin/main') */
 					})
 				}
 			})
+			$('.check-id').append(":"+ location.href.split('/')[5].split('?')[0]);
 		</script>
 
 </body>

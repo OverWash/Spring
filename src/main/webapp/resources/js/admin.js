@@ -3,7 +3,7 @@ var header = $("meta[name='_csrf_header']").attr("th:content");
 
 const api = (function () {
   // 결제요청 리스트
-  const getPayment = (callback) => {
+  const getPayment = function(callback) {
     $.ajax({
       type: "GET",
       url: "/admin/payment",
@@ -14,7 +14,9 @@ const api = (function () {
     });
   };
   //검수완료
-  const checkComplete = (value,rcno,callback) => {
+  const checkComplete = function(value,rcno,callback)  {
+  console.log(token)
+  console.log(header)
     $.ajax({
       type: "post",
       url: "/admin/payment/request/"+rcno,
@@ -122,7 +124,8 @@ api.getComplete(
     if (data.reservationConfirmedPaging.total !== 0) {
       const result = data.reservationConfirmeds;
       $(result).each(function (i) {
-        var no = parseInt(i) + 1;
+      	
+        var no = result[i].confirmId;
         html += "<div class='item-flexBox'>";
         html += "<span> No." + result[i].confirmId + "&nbsp</span>";
         html += "<span>" + result[i].reservation.member.nickname + "&nbsp</span>";
@@ -131,9 +134,10 @@ api.getComplete(
         html +=
           "<form action=/admin/check/" +
           no +
-          " method='get'><span><input type='submit' class='laundry-check' value='검수하기'></input></span></form>";
+          " method='get'><span><input type='submit' class='laundry-check btn-primary' value='검수하기'></input></span></form>";
         html += "<input type='hidden' value= " + result[i].confirmId + " name='confirmId" + i + "'/>";
         html += "<input type='hidden' value= " + result[i].reservation.reservationId + " name='reservationId" + i + "'/>";
+        html += "<input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}' />" 
         html += "</div>";
       });
     } else {
@@ -153,15 +157,14 @@ api.getRcCompletePayment((result) => {
   if (result.length !== 0) {
     
     $(result).each(function (i) {
-      console.log(i);
-      console.log(result[i])
     html += "<div class='item-flexBox'>";
     html += "<span> No." + result[i].confirmId + "&nbsp</span>";
     html += "<span>" + result[i].confirmDate + "&nbsp</span>";
     html += "<span>" + result[i].reservation.reservationStatus + "&nbsp</span>";
-    html += "<span><button  class='laundry-complete' value="+ i +">세탁완료하기</button></span>";
+    html += "<span><button  class='laundry-complete btn-primary' value="+ i +">세탁완료하기</button></span>";
     html += "<input type='hidden' value= " + result[i].confirmId + " id='confirmId" + i + "'/>";
     html += "<input type='hidden' value= " + result[i].reservation.reservationId + " id='reservationId" + i + "'/>";
+    html += "<input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}' />" 
     html += "</div>";
   });
   } else {
@@ -177,8 +180,6 @@ api.getRcCompletePayment((result) => {
   
   $(".laundry-complete").on("click", function () {
     let idx = parseInt(this.value);
-    console.log($("#confirmId" + idx).val());
-    console.log($("#reservationId" + idx).val());
 
     api.washingComplete({
       confirmId: $("#confirmId" + idx).val(),
@@ -186,6 +187,9 @@ api.getRcCompletePayment((result) => {
         reservationId: $("#reservationId" + idx).val(),
         reservationStatus: "세탁완료",
       },
+    },function(){
+    	alert("세탁신청을 완료하였습니다")
+    	
     });
   });
 });

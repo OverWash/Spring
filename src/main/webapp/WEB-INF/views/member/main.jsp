@@ -229,7 +229,7 @@
 			$('#MoaModal').modal();
 		}
 		function chk_form() {
-			$("#requestForm").submit().console.log("예약이 완료되었습니다.");
+			$("#requestForm").submit();
 		}
 		
  		/* 결제요청 모달 */

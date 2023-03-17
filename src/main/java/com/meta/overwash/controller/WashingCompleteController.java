@@ -17,7 +17,6 @@ public class WashingCompleteController {
 
 	@PostMapping(value = "/admin/complete", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String washingComplete(@RequestBody ReservationConfirmedDTO rcDto) {
-		System.out.println(rcDto);
 		washingCompleteService.insertWashingComplete(rcDto);
 		
 		return "redirect:/admin/main";

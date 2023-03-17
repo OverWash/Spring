@@ -15,7 +15,6 @@
 	
 	$(function() {
 		$('#modify').click(function() {
-			alert('click');
 			var data = {
 				crewId 	    : $("#crewId").val(),
 				crewName    : $("#crewName").val(),
@@ -29,7 +28,6 @@
 				}
 			};
 			
-			console.log(data);
 			$.ajax({
 				type        : "patch",
 				contentType : "application/json; charset=UTF-8",

@@ -90,7 +90,6 @@
 		$(function() {
 			// 1을 현재 영수증 rid 로 변경하기
 			paymentService.getReceipt(1, function(data) {
-				console.log(data); // object
 				
 				$('#id').text(data.receiptId);
 				$('#price').text(data.pr.prPrice);

@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class LaundryDTO {
-	private Integer laundryId;
+	private Long laundryId;
 	private String name;
 	private String type;
 	private LaundryPriceDTO laundryPrice;
