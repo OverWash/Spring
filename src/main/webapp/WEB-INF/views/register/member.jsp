@@ -66,7 +66,7 @@
 								
 							
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="memberAddress" name="memberAddress" placeholder="주소 (ex. ○○구 ○○동)" required="required" >
+									<input type="text" class="form-control form-control-user" id="memberAddress" name="memberAddress" placeholder="주소 (ex. 서울특별시 ○○구 ○○동)" required="required" >
 								</div>
 				
 								<input id="submitBtn" type="submit" class="btn btn-primary btn-user btn-block" value="Register Account"> <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

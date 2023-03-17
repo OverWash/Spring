@@ -46,14 +46,12 @@
 		$(function(){
 			
 			$('#crewBtn').on("click", function(){
-				console.log('crewBtn clicked');
 				
 				$('#role').attr("value", "ROLE_CREW");
 				$('#form').submit();
 			});
 			
 			$('#memberBtn').on("click", function(){
-				console.log('memberBtn clicked');
 				
 				$('#role').attr("value", "ROLE_MEMBER");
 				$('#form').submit();

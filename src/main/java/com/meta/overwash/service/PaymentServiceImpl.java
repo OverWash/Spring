@@ -43,12 +43,12 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	ReceiptMapper receiptMapper;
 
-	// 결제 요청서 생성
+	// 관리자 결제 요청서 생성 서비스
 	@Override
 	@Transactional
 	public PaymentRequestDTO requestToAdmin(Long confirmId, List<LaundryDTO> laundryList) {
 		ReservationConfirmedDTO rcDto = rcMapper.getReservationConfirm(confirmId);
-		int price = 0;
+		Long price = 0L;
 		for (LaundryDTO laundry : laundryList) {
 			CheckDTO check = new CheckDTO(null, rcDto, laundry);
 			checkMapper.insertCheck(check);
@@ -59,6 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
 		prDto.setPrPrice(price);
 		prDto.setConfirm(rcDto);
 		prMapper.insertPaymentRequest(prDto);
+		System.out.println(rcDto.getReservation().getReservationId());
 		rcDto.getReservation().setReservationStatus("검수완료");
 		reservationMapper.updateReservationStatus(rcDto.getReservation());
 		return prDto;

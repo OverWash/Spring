@@ -52,7 +52,7 @@
 
 	<!-- 실제 사용할 쿼리 -->
 	<insert id="insertPaymentRequest">
-		<selectKey keyProperty="prId" order="BEFORE" resultType="Integer"> SELECT PAYMENT_REQUEST_SEQ.NEXTVAL FROM DUAL </selectKey>
+		<selectKey keyProperty="prId" order="BEFORE" resultType="Long"> SELECT PAYMENT_REQUEST_SEQ.NEXTVAL FROM DUAL </selectKey>
 		INSERT INTO payment_request(pr_id,pr_price,confirm_id) VALUES ( #{prId}, #{prPrice}, #{confirm.confirmId})
 	</insert>
 

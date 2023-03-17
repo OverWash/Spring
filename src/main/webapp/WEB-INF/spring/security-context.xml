@@ -9,10 +9,12 @@
 
 
 	<security:http>
+
 		<!-- Member -->
 		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url pattern="/payment/**" access="hasRole('ROLE_MEMBER')" />
 		<security:intercept-url pattern="/reservation/**" access="hasRole('ROLE_MEMBER')" />		
+
 		
 		<!-- Crew -->
 		<security:intercept-url pattern="/crew/**" access="hasRole('ROLE_CREW')" />
