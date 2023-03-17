@@ -1,7 +1,9 @@
 package com.meta.overwash.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -111,13 +113,12 @@ public class CrewServiceImpl implements CrewService {
 	@Override
 	public List<DeliveryDTO> getDeliveryList(Long crewId, String status) throws Exception {
 			
-		List<DeliveryDTO> deliveryList = new ArrayList<DeliveryDTO>();
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("crewId", crewId);
+		paramMap.put("status", status);
 		
-		for (DeliveryDTO deliveryDTO : crewMapper.selectDeliveryList(crewId)) {
-			if (deliveryDTO.getStatus().equals(status)) {
-				deliveryList.add(deliveryDTO);
-			}
-		}
+		List<DeliveryDTO> deliveryList = crewMapper.selectDeliveryList(paramMap);
+
 		return deliveryList;
 	}
 	

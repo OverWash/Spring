@@ -225,7 +225,7 @@
 		values(#{deliveryId}, #{crew.crewId}, #{wc.wcId}, '배달중')
 	</insert>
 	
-	<select id="selectDeliveryList" parameterType="Long" resultMap="deliveryMap">
+	<select id="selectDeliveryList" parameterType="hashmap" resultMap="deliveryMap">
 		select
 			d.delivery_id    as delivery_id,
 			d.delivery_date  as delivery_date,
@@ -251,6 +251,7 @@
 					   on r.member_id = m.member_id
 		where
 			d.crew_id = #{crewId}
+		and d.status  = #{status}
 	</select>
 	
 	<update id="updateDoneDelivery" parameterType="Long">

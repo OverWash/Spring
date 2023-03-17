@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -103,23 +104,24 @@ public class CrewController {
 			return "redirect:/crew/pickuplist";
 		return "redirect:/crew/main";
 	}
-
+//	 Long reservationId, String flag, Long wcId, Long crewId)
+	
 	@PostMapping("/delivery/{reservationId}")
-	public String delivery(@PathVariable("reservationId") Long reservationId, String flag, Long wcId, Long crewId)
+	public String delivery(@PathVariable("reservationId") HttpServletRequest request)
 			throws Exception {
 
 		CrewDTO crewDTO = new CrewDTO();
-		crewDTO.setCrewId(crewId);
+		crewDTO.setCrewId(Long.parseLong(request.getParameter("crewId")));
 
 		WashingCompleteDTO washingCompleteDTO = new WashingCompleteDTO();
-		washingCompleteDTO.setWcId(wcId);
+		washingCompleteDTO.setWcId(Long.parseLong(request.getParameter("wcId")));
 
 		DeliveryDTO deliveryDTO = new DeliveryDTO();
 		deliveryDTO.setCrew(crewDTO);
 		deliveryDTO.setWc(washingCompleteDTO);
 
-		crewService.updateDelivering(reservationId, deliveryDTO);
-		if (flag.equals("table"))
+		crewService.updateDelivering(Long.parseLong(request.getParameter("reservationId")), deliveryDTO);
+		if ( String.valueOf(request.getParameter("flag")).equals("table"))
 			return "redirect:/crew/tobedelivery";
 		return "redirect:/crew/main";
 	}
