@@ -1,6 +1,7 @@
 package com.meta.overwash.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.meta.overwash.domain.CrewDTO;
 import com.meta.overwash.domain.DeliveryDTO;
@@ -34,5 +35,5 @@ public interface CrewMapper {
 	
 	public int insertDelivery(DeliveryDTO deliveryDTO) throws Exception;
 	
-	public List<DeliveryDTO> selectDeliveryList(Long crewId) throws Exception;
+	public List<DeliveryDTO> selectDeliveryList(Map<String, Object> paramMap) throws Exception;
 }
