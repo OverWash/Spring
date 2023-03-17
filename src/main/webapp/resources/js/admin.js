@@ -131,7 +131,7 @@ api.getComplete(
         html +=
           "<form action=/admin/check/" +
           no +
-          " method='get'><span><input type='submit' class='laundry-check' value='검수하기'></input></span></form>";
+          " method='get'><span><input type='submit' class='laundry-check btn-primary' value='검수하기'></input></span></form>";
         html += "<input type='hidden' value= " + result[i].confirmId + " name='confirmId" + i + "'/>";
         html += "<input type='hidden' value= " + result[i].reservation.reservationId + " name='reservationId" + i + "'/>";
         html += "</div>";
@@ -157,7 +157,7 @@ api.getRcCompletePayment((result) => {
     html += "<span> No." + result[i].confirmId + "&nbsp</span>";
     html += "<span>" + result[i].confirmDate + "&nbsp</span>";
     html += "<span>" + result[i].reservation.reservationStatus + "&nbsp</span>";
-    html += "<span><button  class='laundry-complete' value="+ i +">세탁완료하기</button></span>";
+    html += "<span><button  class='laundry-complete btn-primary' value="+ i +">세탁완료하기</button></span>";
     html += "<input type='hidden' value= " + result[i].confirmId + " id='confirmId" + i + "'/>";
     html += "<input type='hidden' value= " + result[i].reservation.reservationId + " id='reservationId" + i + "'/>";
     html += "</div>";
@@ -184,7 +184,7 @@ api.getRcCompletePayment((result) => {
       },
     },function(){
     	alert("세탁신청을 완료하였습니다")
-    	location.href = "/admin/main"
+    	
     });
   });
 });

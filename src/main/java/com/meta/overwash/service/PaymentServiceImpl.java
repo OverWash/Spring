@@ -59,6 +59,7 @@ public class PaymentServiceImpl implements PaymentService {
 		prDto.setPrPrice(price);
 		prDto.setConfirm(rcDto);
 		prMapper.insertPaymentRequest(prDto);
+		System.out.println(rcDto.getReservation().getReservationId());
 		rcDto.getReservation().setReservationStatus("검수완료");
 		reservationMapper.updateReservationStatus(rcDto.getReservation());
 		return prDto;

@@ -27,7 +27,7 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h1 class="m-0 font-weight-bold text-primary">검수내역번호</h1>
+							<h1 class="m-0 font-weight-bold text-primary check-id">검수내역번호</h1>
 						</div>
 
 						<div class="card-body ">
@@ -175,10 +175,11 @@
 					const rcNo= location.href.split('/')[5].split('?')[0];		
 					api.checkComplete(checkLaundryList,rcNo,function(s){
 						alert("결제 요청서 등록이 완료되었습니다.");
-						location.href="/admin/main"
+						location.replace('/admin/main')
 					})
 				}
 			})
+			$('.check-id').append(":"+ location.href.split('/')[5].split('?')[0]);
 		</script>
 
 </body>
