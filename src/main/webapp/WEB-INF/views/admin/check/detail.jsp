@@ -175,7 +175,7 @@
 					const rcNo= location.href.split('/')[5].split('?')[0];		
 					api.checkComplete(checkLaundryList,rcNo,function(s){
 						alert("결제 요청서 등록이 완료되었습니다.");
-						location.replace('/admin/main')
+						/* location.replace('/admin/main') */
 					})
 				}
 			})

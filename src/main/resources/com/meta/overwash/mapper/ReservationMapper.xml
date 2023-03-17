@@ -122,7 +122,7 @@
 	</select>
 
 
-	<select id="f" resultMap="reservationMap"
+	<select id="getListCheckComplete" resultMap="reservationMap"
 		parameterType="ReservationDTO">
 	  <![CDATA[
 	  	SELECT DISTINCT r.reservation_id, r.collect_date, r.reservation_date, r.request, 

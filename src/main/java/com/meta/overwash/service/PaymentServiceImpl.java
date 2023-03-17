@@ -48,6 +48,7 @@ public class PaymentServiceImpl implements PaymentService {
 	@Transactional
 	public PaymentRequestDTO requestToAdmin(Long confirmId, List<LaundryDTO> laundryList) {
 		ReservationConfirmedDTO rcDto = rcMapper.getReservationConfirm(confirmId);
+		System.out.println(rcDto);
 		Long price = 0L;
 		for (LaundryDTO laundry : laundryList) {
 			CheckDTO check = new CheckDTO(null, rcDto, laundry);
@@ -58,8 +59,8 @@ public class PaymentServiceImpl implements PaymentService {
 		PaymentRequestDTO prDto = new PaymentRequestDTO();
 		prDto.setPrPrice(price);
 		prDto.setConfirm(rcDto);
+		System.out.println(rcDto);
 		prMapper.insertPaymentRequest(prDto);
-		System.out.println(rcDto.getReservation().getReservationId());
 		rcDto.getReservation().setReservationStatus("검수완료");
 		reservationMapper.updateReservationStatus(rcDto.getReservation());
 		return prDto;

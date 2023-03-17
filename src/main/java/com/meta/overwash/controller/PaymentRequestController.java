@@ -33,7 +33,6 @@ public class PaymentRequestController {
 	// 수정중 (03.12) 세탁물 안받아와짐
 	@PostMapping(value = "/admin/payment/request/{rcNo}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String adminPaymentRequest(@RequestBody List<LaundryDTO> laundryList, @PathVariable("rcNo") Long rcNo, Model model) {
-		System.out.println("111111111111");
 		if (paymentService.requestToAdmin(rcNo, laundryList) != null) {
 			model.addAttribute("msg", "결제요청이 완료되었습니다.");
 
