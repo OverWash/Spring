@@ -15,8 +15,6 @@ const api = (function () {
   };
   //검수완료
   const checkComplete = function(value,rcno,callback)  {
-  console.log(token)
-  console.log(header)
     $.ajax({
       type: "post",
       url: "/admin/payment/request/"+rcno,
@@ -70,11 +68,9 @@ const api = (function () {
             xhr.setRequestHeader(header, token);
           },
         });
+        return callback(res); 
       },
-      data: JSON.stringify(data),
-      success: function (result) {
-        if (callback) callback(result);
-      },
+      data: JSON.stringify(data)
     });
   };
   return {
@@ -126,11 +122,12 @@ api.getComplete(
       $(result).each(function (i) {
       	
         var no = result[i].confirmId;
-        html += "<div class='item-flexBox'>";
+        html += "<div class='item-flexBox mt-2'>";
         html += "<span> No." + result[i].confirmId + "&nbsp</span>";
         html += "<span>" + result[i].reservation.member.nickname + "&nbsp</span>";
         html += "<span>" + result[i].confirmDate + "&nbsp</span>";
         html += "<span>" + result[i].reservation.reservationStatus + "&nbsp</span>";
+
         html +=
           "<form action=/admin/check/" +
           no +
@@ -139,6 +136,7 @@ api.getComplete(
         html += "<input type='hidden' value= " + result[i].reservation.reservationId + " name='reservationId" + i + "'/>";
         html += "<input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}' />" 
         html += "</div>";
+        html += "<hr>";
       });
     } else {
       html += "<div>세탁 예정 목록이 없습니다.</div>";
